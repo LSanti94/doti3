@@ -1,0 +1,175 @@
+# conky to work with i3bar
+# parts taken from https://github.com/giacomos/i3wm-config/blob/master/conky/conky.conf
+# icons:               
+
+double_buffer       yes
+draw_outline        no
+no_buffers          yes
+net_avg_samples     2
+out_to_x            no
+out_to_console      yes
+out_to_stderr       no
+out_to_stderr       no
+own_window          no
+short_units         yes
+update_interval     1
+background          no
+total_run_times     0
+short_units         yes
+show_graph_scale    no
+show_graph_range    no
+use_spacer          none
+override_utf8_locale no
+cpu_avg_samples     2
+pad_percents	    3
+use_xft             yes
+own_window_hints    above,sticky,skip_taskbar,skip_pager
+separator           false
+separator_block_width   6
+
+TEXT
+,[
+
+  ${if_match "$gw_iface"=="(null)"}\
+   Network Unavailable " , "color" : "\#FF173E" },\
+  ${endif}\
+  ${if_match "$gw_iface"=="wlan0"}\
+   ⇋ wlan0 on ${addr wlan0} DL: ${downspeed wlan0} UL: ${upspeed wlan0} " , "color" : "\#4C7899" },\
+  ${endif}\
+  ${if_match "$gw_iface"=="wwan0"}\
+   ⇋ wwan0 on ${addr wwan0} DL: ${downspeed wwan0} UL: ${upspeed wwan0} " , "color" : "\#4C7899" },\
+  ${endif}\
+  ${if_match "$gw_iface"=="eth0"}\
+   ⇋ eth0 on ${addr eth0} DL: ${downspeed eth0} UL: ${upspeed eth0} " , "color" : "\#4C7899" },\
+  ${endif}\
+
+{"full_text": " [$memgraph] ","color": "\#B94557"},
+  {"full_text": "≣ $memeasyfree ", "color":"\#B28D4C"},
+
+# Kernel
+#{"full_text":"","color":"\#e3e3e3","separator":false,"separator_block_width":6},\
+#{"full_text":"${kernel}","color":"\#525252","separator":false,"separator_block_width":6},\
+#[${execi 1 ~/.conky/conky-mpd/cover.sh}]}
+
+# Mail
+{"full_text":"[","color":"\#555555","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#8c4665","separator":false,"separator_block_width":6},\
+# {"full_text":"${execi 300 python ~/.local/bin/gmail.py}","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":6},\
+{"full_text":"]","color":"\#555555","separator":false,"separator_block_width":6},\
+
+# Finds current volume. May need modified depending on your setup"
+#{"full_text":"[","color":"\#555555","separator":false,"separator_block_width":6},\
+#{"full_text":"","color":"\#555555","separator":false,"separator_block_width":6},\
+#{"full_text":"${exec amixer -c 0 get Master ↝ grep Mono: ↝ cut -d " " -f6} ","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":0},\
+#{"full_text":"]","color":"\#555555","separator":false,"separator_block_width":6},\
+
+# Brighness
+{"full_text":"[","color":"\#555555","separator":false,"separator_block_width":6},\
+{"full_text":" ","color":"\#7c7c99","separator":false,"separator_block_width":6},\
+# {"full_text":"${exec xbacklight|awk '{printf("%d\n",$1 + 0.5)}'}% ","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":0},\
+{"full_text":"]","color":"\#555555","separator":false,"separator_block_width":6},\
+
+# Download
+#{"full_text":"  ","color":"\#fdf6e3","separator":false,"separator_block_width":6},\
+#{"full_text":"${if_match ${downspeedf enp2s0}<100}${downspeed enp2s0}","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${downspeedf enp2s0}<300}${downspeed enp2s0}","color":"\#181818","background":"\#020202","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${downspeedf enp2s0}<700}${downspeed enp2s0}","color":"\#2f2f2f","background":"\#020202","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${downspeedf enp2s0}<1000}${downspeed enp2s0}","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${downspeedf enp2s0}>=1000}${downspeed enp2s0}","color":"\#fdf6e3","background":"\#020202","separator":false,"separator_block_width":6},\
+#{"full_text":"${endif}${endif}${endif}${endif}${endif}"},\
+
+# Upload
+#{"full_text":"  ","color":"\#fdf6e3","separator":false,"separator_block_width":6},\
+#{"full_text":"${if_match ${upspeedf enp2s0}<15}${upspeed enp2s0}","background":"\#020202","color":"\#899CA1","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${upspeedf enp2s0}<35}${upspeed enp2s0}","background":"\#020202","color":"\#2f2f2f","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${upspeedf enp2s0}>=35}${upspeed enp2s0}","background":"\#020202","color":"\#fdf6e3","separator":false,"separator_block_width":6},\
+#{"full_text":"${endif}${endif}${endif}"},\
+
+# Cpu
+#{"full_text":"  ","color":"\#fdf6e3","separator":false,"separator_block_width":6},\
+#{"full_text":"${if_match ${cpu cpu0}<25}${cpu cpu0}","color":"\#899CA1","background":"\#020202","separator":false,"separator_block_width":0},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${cpu cpu0}<50}${cpu cpu0}","color":"\#181818","background":"\#020202","separator":false,"separator_block_width":0},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${cpu cpu0}<75}${cpu cpu0}","color":"\#2f2f2f","background":"\#020202","separator":false,"separator_block_width":0},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${cpu cpu0}<=100}${cpu cpu0}","color":"\#fdf6e3","background":"\#020202","separator":false,"separator_block_width":0},\
+#{"full_text":"${endif}${endif}${endif}${endif}"},\
+#{"full_text":"%","color":"\#020202 ","background":"\#020202","separator":false,"separator_block_width":6},\
+
+# Ram
+{"full_text":"⣿","color":"\#FFFFFF68","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#395573","separator":false,"separator_block_width":6},\
+{"full_text":"${memperc}% ${memmax}","color":"\#899CA1","background":"\#60819960","separator":false,"separator_block_width":6},\
+
+# Download
+# exec bash ~/.local/bin/net.sh
+{"full_text":"⣿","color":"\#FFFFFF68","separator":false,"separator_block_width":6},\
+{"full_text":" ","color":"\#ffe57f","separator":false,"separator_block_width":6},\
+{
+    "full_text":"${downspeed wlp4s0}",
+    "color":"\#899CA1",
+    "align":"right",
+    "separator":false, "separator_block_width":6,
+    "separator_block_width": 3,
+    "min_width":120,    
+    "urgent":false
+},
+# ${if_up wlp4s0}
+# {
+#     "full_text": "  ${addr wlp4s0} ",
+#     "border": "\#cccccc",
+#     "background": "\#000000",
+#     "border_bottom": 2, "border_top": 0, "border_left": 0, "border_right": 2,
+#     "separator": false,
+#     "separator_block_width": 3
+# },
+# {
+#     "full_text": "  ${exec curl icanhazip.com} ",
+#     "color":"\#ffe57f","separator":false,"separator_block_width":6
+# },
+{"full_text":"${downspeedgraph wlp4s0 20,15 000000 ff0000}","color":"\#899CA1","separator":false,"separator_block_width":6,"minimum_width":904},
+{
+    "full_text": "   ${memperc}% ",
+    "separator": false,
+    "separator_block_width": 3,
+    "border_bottom": 1, "border_top": 1, "border_left": 1, "border_right": 1,\
+${if_match ${memperc}>=80}\
+    # red
+    "color": "\#ff0000"  # red
+${endif}\
+${if_match ${memperc}<80}\
+    ${if_match ${memperc}>=70}\
+        # orange
+        "border": "\#ff9933"\
+    ${endif}\
+${endif}\
+${if_match ${memperc}<70}\
+    ${if_match ${memperc}>=60}\
+        # yellow
+        "border": "\#ffff99"\
+    ${endif}\
+${endif}\
+${if_match ${memperc}<60}
+    # green
+    "border": "\#cccccc"\
+${endif}
+},
+# Cpu
+{"full_text":"⣿","color":"\#FFFFFF68","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#5e468c","separator":false,"separator_block_width":6},\
+{"full_text":"${cpu}","color":"\#899CA1","separator":false,"separator_block_width":6},\
+
+# Date
+{"full_text":"⣿","color":"\#FFFFFF68","separator":false,"separator_block_width":6},
+{"full_text":"","color":"\#FFD180B5","separator":false,"separator_block_width":6},
+{"full_text": "${time %b %d/%m/%y} - ${time %H:%M}","separator":false,"separator_block_width":6},
+{"full_text":"⣿","color":"\#FFFFFF68","separator":false,"separator_block_width":6}
+#{"full_text":"${memperc}","color":"${execp '~/bin/utils/conky-color 99'}"}
+]
