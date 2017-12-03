@@ -1,0 +1,160 @@
+URxvt.reverseVideo:     true
+
+! fonts
+! run fc-list for a list of available fonts
+!URxvt*font: xft:Inconsolata\\-g for Powerline:style=g:size=16:antialias=true
+URxvt.font: xft:Monoid Nerd Font:style=Retina:pixelsize=22:antialias=true:minspace=false
+! URxvt*font: xft:monofur for Powerline:style=Bold:size=20:antialias=true
+!URxvt*font: xft:mononoki-Regular Nerd Font Complete:style=Regular:size=14:antialias=true
+!URxvt*boldFont: xft:Anonymous Pro for Powerline:style=Bold Italic:size=20:antialias=true
+!URxvt*italicFont: xft:Anonymous Pro for Powerline:style=Italic:size=16:antialias=true
+!URxvt*boldItalicFont: xft:Liberation Mono for Powerline:style=Bold Italic:size=16:antialias=true
+
+! URxvt*font: xft:monofur for Powerline:style=Regular:size=18
+!URxvt*font: xft:Droid Sans Mono for Powerline:size=12
+
+
+URxvt*scrollBar:        false
+URxvt*scrollTtyOutput:  false
+URxvt*scrollTtyKeypress: true
+URxvt*secondaryScroll:  true
+URxvt*saveLines:        8000
+URxvt.shading:          20
+URxvt.transparent:      false
+URxvt.scrollstyle:      plain
+! URxvt.termName:         rxvt-256color
+xterm*utf8: true
+URxvt*.cursorBlink: true
+
+URxvt.perl-ext-common : default,matcher
+! URxvt.perl-ext-common : tabbed
+! URxvt.perl-ext-common : quake
+! URxvt.perl-ext-common:
+! URxvt.perl-ext:
+URxvt.urlLauncher     : /usr/bin/xdg-open
+URxvt.matcher.button  : 1
+
+URxvt*background: [80]White
+! URxvt.depth: 32
+
+URxvt.tabbed.tabbar-fg: 5
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    14
+URxvt.tabbed.tab-bg:    4
+
+
+
+URxvt.borderColor:      #222222
+URxvt.internalBorder:   20
+
+! This can screw up letterspacing for some reason (even with letterSpace: -1).
+! Setting it to none fixes the problem, but screws up font-rendering
+! system-wide. The correct solution is to leave it to rgb, but instead use
+! letterSpace -2 above.
+Xft.dpi:        96
+Xft.antialias:  True
+Xft.rgba:         rgb
+Xft.hinting:      true
+Xft.autohint:     true
+Xft.hintstyle:    hintfull
+Xft.lcdfilter:    lcddefault
+! URxvt.utf8:       true
+URxvt.locale:     true
+URxvt.letterSpace: -1
+
+! URxvt.keysym.KP_Up: ^[[A
+! URxvt.keysym.KP_Right: ^[[C
+! URxvt.keysym.KP_Left: ^[[D
+! URxvt.keysym.KP_Down: ^[[B
+! URxvt.keysym.KP_Insert: ^[[2~
+! URxvt.keysym.KP_Delete: ^[[3~
+! URxvt.keysym.KP_Add: +
+! URxvt.keysym.KP_Subtract: -
+! URxvt.keysym.KP_Multiply: *
+! URxvt.keysym.KP_Divide: /
+! URxvt.keysym.KP_Enter: ^M
+
+! Uncomment for aterm-like scrolling keys
+
+! URxvt.keysym.Shift-Up: command:\033]720;1\007
+! URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.url-select.underline: true
+URxvt.colorUL: #4682B4
+URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+
+URxvt*scrollWithBuffer: true
+xterm*dynamicColors: true
+urxvt*dynamicColors: on
+
+! special
+*.foreground:   #e6d4a3
+*.background:   #1e1e1e
+*.cursorColor:  #e6d4a3
+
+! black
+*.color0:       #1e1e1e
+*.color8:       #7f7061
+
+! red
+*.color1:       #be0f17
+*.color9:       #f73028
+
+! green
+*.color2:       #868715
+*.color10:      #aab01e
+
+! yellow
+*.color3:       #cc881a
+*.color11:      #f7b125
+
+! blue
+*.color4:       #377375
+*.color12:      #719586
+
+! magenta
+*.color5:       #a04b73
+*.color13:      #c77089
+
+! cyan
+*.color6:       #578e57
+*.color14:      #7db669
+
+! white
+*.color7:       #978771
+*.color15:      #e6d4a3
+
+
+
+*background: #1e1e1e
+*foreground: #1e1e1e
+
+*color0:       #1e1e1e
+*color8:       #7f7061
+
+*color1:       #be0f17
+*color9:       #f73028
+*color2:       #868715
+*color10:      #aab01e
+*color3:       #cc881a
+*color11:      #f7b125
+*color4:       #377375
+*color12:      #719586
+*color5:       #a04b73
+*color13:      #c77089
+*color6:       #578e57
+*color14:      #7db669
+*color7:       #978771
+*color15:      #e6d4a3
+
+URxvt.loginShell:       false
+URxvt.meta:             ignore
+URxvt.utmpInhibit:      true
+URxvt.insecure:         true
+!XTerm*termName:         rxvt-unicode
