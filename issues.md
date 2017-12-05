@@ -1,0 +1,3 @@
+#Issues
+
+- Missing dunst configuration
