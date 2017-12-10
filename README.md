@@ -20,7 +20,7 @@ Fonts
 
 I3 branch used
 --------------
-i3-gaps
+* i3-gaps - https://github.com/Airblader/i3
 
 Other resource configurations included
 --------------------------------------

@@ -24,7 +24,7 @@ set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
 exec_always $nsi compton --config ~/.config/compton.conf -b 
-exec_always $HOME/bin/i3test $dp0
+exec_always $HOME/bini3/i3test $dp0
 # exec_always i3-nagbar -m "reza:$DP0/n"
 set $bg-color                       #485767
 set $fg-color                       #FFFFFF
@@ -123,7 +123,7 @@ bar {
         font pango:Sauce Code Powerline regular 16
         position bottom
         #output $DP0
-        bindsym button5 exec ~/bini3/custom_wheel_down
+        #bindsym button5 exec ~/bini3/custom_wheel_down
 		  tray_output primary
         tray_padding 6 px
         separator_symbol ""
@@ -419,27 +419,27 @@ bindsym $mod+Shift+KP_Subtract move scratchpad
 bindsym $mod+KP_Subtract scratchpad show
 
 bindsym $mod+Pause mode "$mode_system"
-bindsym $mod+x exec "$HOME/bin/dump-asy.pl 3"
+bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
 bindsym --release button2 kill
 bindsym $mod+button2 floating toggle
 bindsym $mod+o move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
-bindsym $mod+p exec "/home/$USER/bin/i3test #lll"
+bindsym $mod+p exec "/home/$USER/bini3/i3test #lll"
 bindsym $mod+Shift+d exec /usr/bin/xfce4-appfinder
 # Resize
 bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # Volume
-bindsym XF86AudioMute exec "$HOME/bin/unmute && amixer -q sset Master,0 toggle && pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioMute exec "$HOME/bini3/unmute && amixer -q sset Master,0 toggle && pkill -SIGRTMIN+11 i3blocks"
 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 
-bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 
-bindsym $mod+button6 exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+button7 exec "amixer -q sset Master,0 4.097db- unmute && $HOME/bin/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+button6 exec "amixer -q sset Master,0 4.091db+ unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+button7 exec "amixer -q sset Master,0 4.097db- unmute && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 
 # Media
 bindsym XF86AudioPlay exec playerctl play-pause  
@@ -460,9 +460,9 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # screen lock
-bindsym $mod+l exec "$HOME/bin/locki3"
-exec $nsi "xautolock -time 10 -locker $HOME/bin/locki3 &"
-exec $nsi "xautolock -time 30 -locker 'sudo $HOME/bin/i3exit suspend' &"
+bindsym $mod+l exec "$HOME/bini3/i3colorlock"
+exec $nsi "xautolock -time 10 -locker $HOME/bini3/i3colorlock &"
+exec $nsi "xautolock -time 30 -locker 'sudo $HOME/bini3/i3exit suspend' &"
 
 # start a terminal
 bindsym $mod+Return exec "terminator"
