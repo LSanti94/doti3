@@ -1,0 +1,87 @@
+#!/bin/bash -e
+
+WALLPAPER_DIR="$HOME/Pictures/dual/"
+
+function lock() {
+    local wp="$(scaled_wallpaper)"
+    local cmdline=""
+    [ -z "$wp" ] || cmdline="-i $wp"
+
+    function revert() {
+        rm -f "$wp"
+        xset dpms 0 0 0
+    }
+
+    trap revert SIGHUP SIGINT SIGTERM
+    xset +dpms dpms 5 5 5
+    i3lock -n $cmdline -c 000000
+    revert
+}
+
+function scaled_wallpaper() {
+    local monitors=( $(xrandr --listactivemonitors |
+                           tail -n +2 |
+                           cut -d' ' -f 4 |
+                           sed -E 's!/[0-9]+!!g') )
+    local wps=($(ls "$WALLPAPER_DIR"/*))
+    local n=${#wps[@]}
+    local wp
+    if [ $n -ge 0 ]; then
+        out=`mktemp -t wp-XXXXXX.png`
+        local total=$(xdpyinfo | grep dimensions | awk '{ print $2; }')
+        local inputs=""
+        local filter_overlays=""
+        local filter_inputs="nullsrc=size=$total [base]"
+        local i=0
+        local name=base
+        for monitor in ${monitors[@]}; do
+            local wp_idx=$((RANDOM % n))
+            local wp="${wps[wp_idx]}"
+            local geom
+            IFS='+' read -ra geom <<< "$monitor"
+            sz="${geom[0]/x/:}"
+            inputs="$inputs -i $wp"
+            filter_inputs="$filter_inputs; [$i] scale=$sz:force_original_aspect_ratio=increase,crop=$sz [x$i]"
+            filter_overlays="$filter_overlays; [$name][x$i]overlay=x=${geom[1]}:y=${geom[2]}[out$i]"
+            name="out$i"
+            i=$((i+1))
+        done
+        ffmpeg -loglevel quiet -y $inputs -filter_complex "$filter_inputs $filter_overlays" -map "[$name]" -frames 1 "$out"
+        echo "$out"
+    fi
+}
+
+action="$1"
+
+# if called without an argument, generate menu
+if [ -z "$action" ]; then
+    actions=("<span color='#55aa33'> \uf023</span> Lock screen"         "lock"
+             "<span color='#6375cd'> \uf08b</span> Exit window manager" "logout"
+             "<span color='#aabbaa'> \uf021</span> Reboot system"       "reboot"
+             "<span color='#d61c27'> \uf011</span> Power-off system"    "shutdown")
+    printf -v menu "%s <small>(%s)</small>\n" "${actions[@]}"
+    menu="${menu%%[[:space:]]}"
+    index=$(echo -e "${menu}" |
+                rofi -dmenu -i -markup-rows \
+                     -no-custom -p "Action: " -format i)
+    action="${actions[$((index * 2 + 1))]}"
+fi
+
+case "$action" in
+    lock)
+        lock
+        ;;
+    logout)
+        emacsclient -e '(kill-emacs)' || true
+        i3-msg exit
+        ;;
+    reboot)
+        systemctl reboot
+        ;;
+    shutdown)
+        systemctl poweroff
+        ;;
+    *)
+        echo "Usage: $0 (lock|logout|reboot|shutdown)"
+        exit 1
+esac

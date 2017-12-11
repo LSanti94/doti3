@@ -7,7 +7,7 @@
 # 
 set -x
 exec 3>&1 4>&2
-trap 'i3exit exit    2>&4 1>&3' 0 1 2 3
+#trap 'i3exit exit    2>&4 1>&3' 0 1 2 3
 #QUIRK="--quirk-radeon-off"
 #exec 1>/tmp/tmp3-msg exit   :/i3exit.log 2>&1
 echo "$(date) : part 1 - start" >&1
@@ -46,7 +46,7 @@ case "$1" in
         # $HOME/bini3/rearrange
 		  echo "After susspend... "+`date` >> /tmp/i3exit.log
         sudo service autofs start
-        i3-msg exec $HOME/bini3/i3colorlock&&
+        i3-msg exec $HOME/bini3/i3colorlock
         ;;
     hibernate)
 		  echo "hibernate... "+`date` >> /tmp/i3exit.log
@@ -63,9 +63,9 @@ case "$1" in
         systemctl poweroff
         ;;
     *)
-		  echo "unknown action... "+`date` >> /tmp/i3exit.log
+		  echo "unknown [$1] action... "+`date` >> /tmp/i3exit.log
         echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
-        exit 2
+        exit 0
 esac
 
 exit 0
