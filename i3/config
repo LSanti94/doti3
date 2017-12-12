@@ -59,7 +59,18 @@ client.background               $bg-color
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# -------------------------------------------
+#                Focus related stuffs
+# -------------------------------------------
+mouse_warping none
+#focus_wrapping force
+focus_follows_mouse no
+
+
+# -------------------------------------------
 # resize window (you can also use the mouse for that)
+# -------------------------------------------
+
 mode " " {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -120,7 +131,7 @@ workspace 6 output $DP2
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango:Sauce Code Powerline regular 16
+	font pango:mononoki Nerd Font 18
         position bottom
         #output $DP0
         #bindsym button5 exec ~/bini3/custom_wheel_down
@@ -136,9 +147,9 @@ bar {
             inactive_workspace #333333 #222222 #888888
             urgent_workspace   #2f343a #900000 #ffffff
         }
-#        status_command i3blocks
-        status_command ~/bini3/conkyi3.sh
-#        status_command i3status
+        status_command i3blocks
+        #status_command ~/bini3/conkyi3.sh
+        #status_command i3status
     }
 
 
@@ -236,6 +247,7 @@ bindcode $mod+Shift+Mod2+90 move container to workspace $w0
 ## assign [class="Doublecmd"]                          → $w5
 ## assign [class="Yelp"]                               → $w6
 ## assign [class="TkMan"]                              → $w6
+##assign [instance="sun-awt-X11-XFramePeer"]                              → $w9
 for_window [class="^"] focus
 
 # Mod+Shift+F1-F3 will move the window to DP0-DP2
@@ -473,7 +485,7 @@ bindsym $mod+Shift+Prior resize shrink height $size,resize shrink width $size
 bindsym $mod+d exec rofi -show run
 
 bindsym $mod+Home exec "$HOME/bini3/tempscript"
-#focus_wrapping force
+
 # workspace arrangement
 exec i3-msg "workspace number 1, layout tabbed"
 exec i3-msg "workspace number 3, layout tabbed"
@@ -487,7 +499,8 @@ exec i3-msg "workspace number 5, layout tabbed"
 # Keyboard layout
 exec_always $nsi "$HOME/startup.sh"
 exec_always "setxkbmap -layout us,ir -option grp:caps_toggle"
-
+exec_always "killall dunst"
+exec_always "dunst -config ~/.config/dunst/dunstrc"
 exec $nsi "nitrogen --restore"
 exec $nsi "/usr/bin/terminator"
 
