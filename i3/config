@@ -100,12 +100,18 @@ mode " " {
         bindsym Right move right 100 px
 
 }
+set $normal "xset r rate 500 30"
+set $fast "xset r rate 500 30"
 
 mode "mouse" {
-   bindsym q exec xdotool click 4;exec xdotool click 4
-   bindsym a exec xdotool click 5;exec xdotool click 5
-   bindsym Return mode "default"
-   bindsym Escape mode "default"
+   #bindsym grave exec xdotool click --repeat 10 --delay 10 4
+   #bindsym Tab exec xdotool click --repeat 10 --delay 10 5
+   bindsym 1 exec "xdotool click --delay 500 1;sleep 1"
+   bindsym 2 exec "xdotool click --delay 500 2;sleep 1"
+   bindsym grave exec "xdotool click --repeat 30 --delay 50 4"
+   bindsym Tab exec "xdotool click --repeat 15 --delay 50 5"
+   bindsym Return exec $normal;mode "default"
+   bindsym Escape exec $normal;mode "default"
 }
 exec $nsi numlockx on
 # *********************************************************************************************************************************************************
@@ -469,7 +475,8 @@ bindsym $mod+q kill
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+r mode " "
-bindsym $mod+z mode "mouse"
+bindsym $mod+z exec $fast;mode "mouse"
+
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 # Switch to next or previous workspace

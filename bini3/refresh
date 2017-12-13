@@ -7,7 +7,7 @@
 # If there are two only DP0 and DP1 should have a value
 # The displays are stored in ~/.displays"
 
-source ~/.displays
+source $HOME/.displays
 
 # export left=DVI-1
 # export right=DVI-0
