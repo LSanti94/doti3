@@ -101,6 +101,12 @@ mode " " {
 
 }
 
+mode "mouse" {
+   bindsym q exec xdotool click 4;exec xdotool click 4
+   bindsym a exec xdotool click 5;exec xdotool click 5
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
 exec $nsi numlockx on
 # *********************************************************************************************************************************************************
 #                                                           monitors
@@ -463,6 +469,7 @@ bindsym $mod+q kill
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+r mode " "
+bindsym $mod+z mode "mouse"
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 # Switch to next or previous workspace
@@ -485,7 +492,6 @@ bindsym $mod+Shift+Prior resize shrink height $size,resize shrink width $size
 bindsym $mod+d exec rofi -show run
 
 bindsym $mod+Home exec "$HOME/bini3/tempscript"
-
 # workspace arrangement
 exec i3-msg "workspace number 1, layout tabbed"
 exec i3-msg "workspace number 3, layout tabbed"
