@@ -15,6 +15,7 @@ set $mod Mod4
 set $nsi --no-startup-id
 set $r --release
 set $w --whole-window
+show_marks yes
 workspace_auto_back_and_forth yes
 set_from_resource $HOME echo $HOME
 set_from_resource $USER echo $USER
@@ -110,9 +111,22 @@ mode "mouse" {
    bindsym 2 exec "xdotool click --delay 500 2;sleep 1"
    bindsym grave exec "xdotool click --repeat 30 --delay 50 4"
    bindsym Tab exec "xdotool click --repeat 15 --delay 50 5"
-   bindsym Return exec $normal;mode "default"
    bindsym Escape exec $normal;mode "default"
 }
+
+mode "mouse2" {
+   #bindsym grave exec xdotool click --repeat 10 --delay 10 4
+   #bindsym Tab exec xdotool click --repeat 10 --delay 10 5
+   bindsym 1 exec "xdotool click --delay 500 1;sleep 1"
+   bindsym 2 exec "xdotool click --delay 500 2;sleep 1"
+   bindsym grave exec "xdotool Up --repeat 30 --delay 50"
+   bindsym Tab exec "xdotool Down --repeat 15 --delay 50"
+   #bindsym Return exec $normal;mode "default"
+   bindsym Escape exec $normal;mode "default"
+}
+bindsym $mod+z exec $fast;mode "mouse"
+bindsym $mod+Shift+z exec $fast;mode "mouse2"
+
 exec $nsi numlockx on
 # *********************************************************************************************************************************************************
 #                                                           monitors
@@ -261,7 +275,7 @@ bindcode $mod+Shift+Mod2+90 move container to workspace $w0
 ## assign [class="TkMan"]                              → $w6
 ##assign [instance="sun-awt-X11-XFramePeer"]                              → $w9
 for_window [class="^"] focus
-
+for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
 # Mod+Shift+F1-F3 will move the window to DP0-DP2
 bindcode $mod+Shift+Mod2+67 move window to output $DP0
 bindcode $mod+Shift+Mod2+68 move window to output $DP1
@@ -329,10 +343,10 @@ mode "$mode_gaps_outer" {
 new_window 1pixel
 new_float normal
 
-set $fmod "floating enable, border normal, focus, move position center"
-set $fmod2 "floating enable, border hidden, focus, move position center"
-set $fmod3 "floating enable, border none, focus, move position center"
-set $fmod4 "floating disable, border none, focus"
+set $fmod "floating enable, border normal, focus, move position center, sticky enable"
+set $fmod2 "floating enable, border hidden, focus, move position center, sticky enable"
+set $fmod3 "floating enable, border none, focus, move position center, sticky enable"
+set $fmod4 "floating disable, border none, focus, sticky enable"
 
 for_window [class="^.*"] border pixel 0
 
@@ -390,6 +404,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+bindsym $mod+Shift+s sticky toggle
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -475,7 +490,6 @@ bindsym $mod+q kill
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+r mode " "
-bindsym $mod+z exec $fast;mode "mouse"
 
 bindsym $mod+Shift+g mode "$mode_gaps"
 
