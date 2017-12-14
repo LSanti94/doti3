@@ -38,7 +38,6 @@ rofi.color-window:  #282828, #282828, #181818
 
 
 rofi.bw:                             7
-rofi.location:                       0
 rofi.padding:                        5
 rofi.yoffset:                        24
 rofi.xoffset:                        0
@@ -80,7 +79,6 @@ rofi.dpi:                            -1
 rofi.threads:                        1
 rofi.scrollbar-width:                8
 rofi.scroll-method:                  0
-rofi.pid:                            /run/user/1000/rofi.pid
 rofi.display-ssh:                    (ssh)
 rofi.display-run:                    (run)
 rofi.display-drun:                   (drun)
