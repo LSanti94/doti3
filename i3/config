@@ -202,7 +202,7 @@ set $M1 reza
 set_from_resource $M1 echo [$HOME]
 set $w1 "1:  "
 set $w2 "2: ⚯❶"
-set $w3 "3:   "
+set $w3 "3:   "
 set $w4 "4: ➡❷"
 set $w5 "5: file manager"
 set $w6 "6: help"
@@ -275,7 +275,7 @@ bindcode $mod+Shift+Mod2+90 move container to workspace $w0
 ## assign [class="TkMan"]                              → $w6
 ##assign [instance="sun-awt-X11-XFramePeer"]                              → $w9
 for_window [class="^"] focus
-for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
+
 # Mod+Shift+F1-F3 will move the window to DP0-DP2
 bindcode $mod+Shift+Mod2+67 move window to output $DP0
 bindcode $mod+Shift+Mod2+68 move window to output $DP1
@@ -349,6 +349,7 @@ set $fmod3 "floating enable, border none, focus, move position center, sticky en
 set $fmod4 "floating disable, border none, focus, sticky enable"
 
 for_window [class="^.*"] border pixel 0
+for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
 
 for_window [class="albert"] $fmod3
 for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
