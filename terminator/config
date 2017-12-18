@@ -10,15 +10,38 @@
   title_transmit_fg_color = "#eeeeec"
   title_use_system_font = False
 [keybindings]
-  line_down = <Primary><Shift>Up
-  line_up = <Primary><Shift>Down
+  broadcast_all = 
+  broadcast_group = 
+  broadcast_off = 
+  close_term = 
+  close_window = 
+  cycle_next = 
+  cycle_prev = 
+  go_down = 
+  go_left = 
+  go_next = 
+  go_prev = 
+  go_right = 
+  go_up = 
+  group_all = 
+  group_tab = 
+  hide_window = 
+  line_down = 
+  line_up = 
   move_tab_left = ""
   move_tab_right = ""
   new_tab = ""
   new_terminator = ""
   next_tab = ""
   prev_tab = ""
-  search = <Primary><Shift><Alt>f
+  resize_down = ""
+  resize_left = ""
+  resize_right = ""
+  resize_up = ""
+  search = ""
+  toggle_scrollbar = ""
+  ungroup_all = ""
+  ungroup_tab = ""
 [layouts]
   [[default]]
     [[[child0]]]
