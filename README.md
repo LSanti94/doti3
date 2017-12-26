@@ -13,6 +13,7 @@ Tools used
 * conky - https://github.com/brndnmtthws/conky
 * rofi - https://github.com/DaveDavenport/rofi
 * albert - https://github.com/albertlauncher/albert
+* terminator - https://launchpad.net/terminator/gtk3/1.91
 
 Fonts
 -----
@@ -30,3 +31,11 @@ Other resource configurations included
 * ~/.xinitrc
 * i3/conkyrc as ~/.conkyrc
 * rofi/config
+* ...
+
+You can use the following script to relink your dotfiles
+
+```bash
+install/relink
+```
+
