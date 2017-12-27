@@ -620,7 +620,7 @@ exec_always $nsi "$HOME/bini3/i3-mousemon"
 exec_always $nsi "/usr/bin/x-session-manager"
 # gnome-settings-daemon
 # i3-msg exec $nsi thunderbird
-# exec "sleep 2; /usr/bin/google-chrome"
+exec "sleep 2; /usr/bin/google-chrome -no-startup-window"
 # exec "sleep 30; /usr/bin/firefox"
 # $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
 #exec "$HOME/bin/i3-exec-wait.pl -n 3 firefox;
