@@ -24,13 +24,12 @@ clear
 echo "doti3 folder is ${bG}$DIR${cZ}\n"
 
 reLink ~/.conkyrc          i3/conkyrc
-# reLink ~/.xbindkeysrc.scm  .xbindkeysrc.scm
-# reLink ~/.Xresources       .Xresources
-# reLink ~/.XresourcesLocal  .XresourcesLocal
-# reLink ~/.xinitrc          .xinitrc
-# reLink ~/bini3 bini3
-# reLink ~/.config/rofi rofi
-# reLink ~/.config/terminator terminator
-# reLink ~/.config/i3 i3
-reLink ~/Downloads downloads
+reLink ~/.xbindkeysrc.scm  .xbindkeysrc.scm
+reLink ~/.Xresources       .Xresources
+reLink ~/.XresourcesLocal  .XresourcesLocal
+reLink ~/.xinitrc          .xinitrc
+reLink ~/bini3 bini3
+reLink ~/.config/rofi rofi
+reLink ~/.config/terminator terminator
+reLink ~/.config/i3 i3
 echo "\nRelink completed\n"
