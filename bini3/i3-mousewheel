@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+lockfile-create -q -r 0 /tmp/i3-wheel || exit 1
+
+local button
+pn wheel&
+if [[ "$1" == "up" ]]; then
+   button=5
+elif [[ "$1" == "down" ]]; then
+   button=4
+else
+   echo "mouse button \"$1\" not supported"
+   exit 1
+fi
+xdotool click --clearmodifiers --repeat 5 --delay 0 $button; 
+xdotool mouseup $button
+
+lockfile-remove /tmp/i3-wheel
