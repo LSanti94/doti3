@@ -1,5 +1,5 @@
 #!/bin/zsh
-
+# s apt install lockfile-progs
 lockfile-create -q -r 0 /tmp/i3-wheel || exit 1
 
 local button

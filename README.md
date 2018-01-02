@@ -14,7 +14,7 @@ Tools used
 * rofi - https://github.com/DaveDavenport/rofi
 * albert - https://github.com/albertlauncher/albert
 * terminator - https://launchpad.net/terminator/gtk3/1.91
-
+* lockfile-progs xbindkeys xautomation mate-control-center
 Fonts
 -----
 * Nerd fonts - https://github.com/ryanoasis/nerd-fonts

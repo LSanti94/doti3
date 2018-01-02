@@ -19,8 +19,8 @@
 
 (xbindkey '(release "m:0x3" "b:1" ) "/usr/bin/xte 'mouseclick 2';pn mclick;")
 
-(xbindkey '("m:0x3" "b:5") "~/bini3/i3-mousewheel up")
-(xbindkey '("m:0x3" "b:4") "~/bini3/i3-mousewheel down")
+(xbindkey '("m:0x11" "b:5") "~/bini3/i3-mousewheel up")
+(xbindkey '("m:0x11" "b:4") "~/bini3/i3-mousewheel down")
 
 ; (xbindkey '(release shift "b:5") "pn mclick;xte 'mousedown 5' 'mouseclick 5' 'mouseup 5'")
 ; (xbindkey '(shift "b:4") "repeat 3|xte 'mouseclick 4'")
