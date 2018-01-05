@@ -515,6 +515,7 @@ bindsym $mod+y exec $nsi i3-msg border toggle
 bindsym $mod+u fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
 bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disable;"
 
+bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness Chrome 170"
 # ************************************************************************************************************
 # Rofi
 bindsym $mod+Next exec "/usr/bin/rofi -combi-modi window,drun -show combi -modi combi"

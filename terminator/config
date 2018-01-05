@@ -17,7 +17,6 @@
   close_window = ""
   cycle_next = ""
   cycle_prev = ""
-  full_screen = F11
   go_down = ""
   go_left = ""
   go_next = ""
@@ -39,7 +38,9 @@
   new_terminator = ""
   next_tab = ""
   page_down = <Shift>Page_Down
+  page_down_half = <Shift>Page_Down
   page_up = <Shift>Page_Up
+  page_up_half = <Shift>Page_Up
   prev_tab = ""
   reset = ""
   reset_clear = ""

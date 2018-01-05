@@ -1,5 +1,5 @@
 #!/bin/sh
 
 #~/git/python/move-window
-LD_LIBRARY_PATH="/usr/local/lib" ~/bin/i3-easyfocus
+LD_LIBRARY_PATH="/usr/local/lib" ~/bini3/i3-easyfocus
 
