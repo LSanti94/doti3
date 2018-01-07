@@ -1,0 +1,39 @@
+#!/bin/zsh
+#
+# To list all possible clients just type:
+# pa_volume
+#
+# Usage:
+#
+# toggle-gap {inner} {outer}
+#
+# Example:
+#
+# toggle-gap 
+#
+
+declare cmd=$1
+declare outer=10
+declare inner=5
+
+
+declare toggle
+if [[ "$cmd" = '' || "$cmd" = 'set' ]]; then
+   toggle=$(dic get "i3.gaps" "false")
+elif [[ "$cmd" = 'toggle' ]]; then
+   toggle=$(dic toggle "i3.gaps" "false")
+else
+   echo "Invalid parameter"
+   exit 1
+fi
+
+if [ "$toggle" = "true" ]; then
+   # notify.sh "Toggle Gaps" "outer: $outer inner: $inner"
+   i3-msg "gaps outer all set $outer" > /dev/null
+   i3-msg "gaps inner all set $inner" > /dev/null
+else
+   # notify.sh "Toggle Gaps" "Gaps off"
+   i3-msg "gaps outer all set 0" > /dev/null
+   i3-msg "gaps inner all set 0" > /dev/null
+fi
+echo $toggle
