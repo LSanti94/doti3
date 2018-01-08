@@ -551,7 +551,7 @@ bindcode $mod+Shift+Pev move workspace to output right
 # Use this if you want to update block information
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep 
-bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch| cut -c1-2)" "kxkb" ' ' 
+bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch -n && xkb-switch -p | cut -c1-2)" "kxkb" ' '; 
 bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
@@ -652,7 +652,7 @@ exec i3-msg "workspace number 5, layout tabbed"
 # Keyboard layout
 exec_always $nsi "$HOME/startup.sh"
 exec_always $nsi "mate-settings-daemon --replace"
-exec_always "setxkbmap -layout us,ir -option grp:caps_toggle"
+exec_always "setxkbmap -layout us,ir,sw -option grp:caps_toggle"
 exec_always "killall dunst"
 exec_always "dunst -config ~/.config/dunst/dunstrc"
 exec $nsi "sleep 1;nitrogen --restore"

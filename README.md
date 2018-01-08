@@ -38,6 +38,17 @@ You can use the following script to relink your dotfiles
 ```bash
 install/relink
 ```
+Needed applications to build
+----------------------------
+
+## xkb-switch
+```
+sudo apt install libxkbfile-dev
+git clone https://github.com/ierton/xkb-switch.git
+cd xkb-switch; mkdir build; cd build;
+cmake ..
+sudo cmake install
+```
 
 Specific Keybindings
 --------------------
