@@ -4,6 +4,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #set $HOME /home/rezasa
 set $mod Mod4
+set $alt Mod1
 set $nsi --no-startup-id
 set $r --release
 set $w --whole-window
@@ -535,10 +536,10 @@ bindsym $mod+Shift+Down move down 100 px
 bindsym $mod+Shift+Up move up 100 px
 bindsym $mod+Shift+Right move right 100 px
 # Resizing by 10
-bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Up resize grow height 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Left resize shrink width 10 px or 10 ppt
 
 bindcode $mod+Shift+Next move workspace to output left
 bindcode $mod+Shift+Pev move workspace to output right
@@ -547,8 +548,11 @@ bindcode $mod+Shift+Pev move workspace to output right
 # *********************************************************************************************************************************************************
 
 # Language selection
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks;exec beep
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks;exec beep
+# Use this if you want to update block information
+# exec pkill -SIGRTMIN+11 i3blocks;
+# bindsym Mod1+Caps_Lock exec beep 
+bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch| cut -c1-2)" "kxkb" ' ' 
+bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
 
@@ -674,6 +678,7 @@ exec $nsi "sleep 2; /usr/bin/google-chrome -no-startup-window"
 exec $nsi "sleep 4; $HOME/.dropbox-dist/dropboxd"
 exec_always $nsi "sleep 1; $HOME/bini3/toggle-gaps set"
 exec_always $nsi "killall redshift-gtk; redshift-gtk"
+exec_always $nsi exec 'killall redshift-gtk';exec 'kill all redshift'; exec redshift-gtk
 # exec "sleep 30; /usr/bin/firefox"
 # $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
 #exec "$HOME/bin/i3-exec-wait.pl -n 3 firefox;

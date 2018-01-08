@@ -32,4 +32,5 @@ reLink ~/bini3 bini3
 reLink ~/.config/rofi rofi
 reLink ~/.config/terminator terminator
 reLink ~/.config/i3 i3
+reLink ~/.config/dunst/dunstrc dunstrc
 echo "\nRelink completed\n"

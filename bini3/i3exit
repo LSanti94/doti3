@@ -15,8 +15,8 @@ echo "i3exit entered ... "+`date` >> /tmp/i3exit.log
 echo "home folder is: $HOME" >> /tmp/i3exit.log
 close_apps(){
     echo "Closing apps..."
-    i3-msg [class="Google-chrome"] kill
-    i3-msg [class="Firefox"] kill
+    i3-msg "[class="Google-chrome"] kill"
+    i3-msg "[class="Firefox"] kill"
     echo "all apps closed now"
     sleep 3
 }
