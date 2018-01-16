@@ -155,9 +155,8 @@
     # Paths to default icons.
     icon_folders = /home/existme/.icons/Paper/32x32/status/:/home/existme/.icons/Paper/32x32/devices/:/home/existme/.icons/Paper/32x32/apps/:/home/existme/.icons/Paper/32x32/panel/
 
-[frame]
-    width = 5
-    color = "#4d679a"
+    frame_width = 5
+    frame_color = "#4d679a"
 
 [shortcuts]
 
@@ -185,12 +184,12 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#383a3b"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 5
 
 [urgency_normal]
     background = "#383a3b"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 2 
 
 [urgency_critical]
     background = "#383a3b"
@@ -259,6 +258,10 @@
 [notify-send]
     appname = *notify-send*
     # new_icon = kodi
+    background = "#657b83"
+    foreground = "#073642"
+    timeout = 3
+
 [pa-applet]
 		appname = *pa-applet*
 		format = "%p"

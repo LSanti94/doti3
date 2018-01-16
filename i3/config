@@ -481,7 +481,7 @@ for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|u
 for_window [window_role="toolbar|splash|dropdown_menu|notification|popup_menu|tooltip"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book"] $fmod
-for_window [class="vscode-color-ui|Toggl Desktop|Shutter"] floating enable
+for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
 for_window [title="Postman|Mattermost|Slack"] $fmod4
 
@@ -496,6 +496,7 @@ bindsym $mod+v split v; mark "lastsplit"
 bindsym $mod+f fullscreen toggle
 bindsym $mod+g fullscreen toggle global
 bindsym Hyper_L fullscreen toggle
+bindsym Caps_Lock fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -566,7 +567,7 @@ bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disa
 # Toggle gaps
 bindsym $mod+shift+F10 exec $nsi "$HOME/bini3/toggle-gaps toggle 10 5"
 # Toggle chrome loudness
-bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness Chrome 170"
+bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' 170 && $HOME/bin/toggle-loudness Chrome 170"
 
 # ************************************************************************************************************
 # Rofi
@@ -626,7 +627,7 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # screen lock
-bindsym $mod+l exec "$HOME/bini3/i3colorlock"
+bindsym $mod+l exec 'i3colorlock'
 exec $nsi "xautolock -time 10 -locker $HOME/bini3/i3colorlock &"
 exec $nsi "xautolock -time 30 -locker 'sudo $HOME/bini3/i3exit suspend' &"
 

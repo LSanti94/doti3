@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Using i3lock-color from https://github.com/meskarune/i3lock-color.git
 #
 # git clone https://github.com/Airblader/xcb-util-xrm
@@ -7,7 +6,21 @@
 # to build you need:
 # s apt install xutils-dev
 #
-#killall i3lock
+# grep -v -E 'grep|xautolock|vim'|
+pc=`ps -aux | grep /bini3/i3colorlock | awk '$11 ~ /sh$|bash$/{print $12}'|wc -l`
+process_count=`ps -aux | grep /bini3/i3colorlock | awk '$11 ~ /sh$|bash$/{print $0}'`
+
+# I couldn't figure out why inside script this will become twice!
+if [ "$pc" -gt "2" ]; then
+   notify.sh "i3colorlock is already running<br>exiting...<br>"
+   kill 0
+   exit 1
+fi
+
+echo "process already running ($pc)"
+echo "[$process_count]"
+notify.sh "Locking computer..."
+
 echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
@@ -15,15 +28,16 @@ D='#ffbb55cc'  # default
 T='#C17CR744'  # text
 W='#880000bb'  # wrong
 V='#105C1055'  # verifying
-F="Monofur Bold for Powerline" # date font
-DATE='%A, %m %y ☘ %V'
-TIME='◴ %H:%M:%S' 
+# F="Monofur Bold for Powerline" # date font
+F="RobotoMono Nerd Font"
+DATE='%y-%m-%d W:%V'
+TIME='%H:%M:%S' 
 # STATEMENT="i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D --linecolor=$B --separatorcolor=$D --textcolor=$T --timecolor=$T --datecolor=$T --keyhlcolor=$W --bshlcolor=$W --screen 0 --blur 5 --clock --indicator --timestr=$TIME --datestr=$DATE"
 STATEMENT="i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C\
    --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D \
    --linecolor=$B --separatorcolor=$D --textcolor=$T \
    --timecolor=$T --datecolor=$T --keyhlcolor=$W \
-   --bshlcolor=$W --screen 0 --blur 6  --clock --indicator \
+   --bshlcolor=$W --screen 0 --blur 5  --clock --indicator \
    --datefont=$F --datesize=28 --radius=150 --modsize=28 \
    --datestr=\"$DATE\" --timestr=\"$TIME\" \
    --veriftext='↝ Verifying...' "
