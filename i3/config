@@ -58,7 +58,7 @@ floating_modifier $mod
 # -------------------------------------------
 mouse_warping none
 #focus_wrapping force
-focus_follows_mouse no
+focus_follows_mouse yes
 workspace_layout tabbed
 
 # -------------------------------------------
@@ -256,22 +256,6 @@ bar {
         #status_command i3status
     }
 
-
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec $nsi sudo $HOME/bini3/i3exit lock, mode "default"
-    bindsym e exec $nsi sudo $HOME/bini3/i3exit logout, mode "default"
-    bindsym s exec $nsi sudo $HOME/bini3/i3exit suspend, mode "default"
-    # use sudo pm-suspend --quirk-radeon-off for suspend
-    bindsym h exec $nsi sudo $HOME/bini3/i3exit hibernate, mode "default"
-    bindsym r exec $nsi sudo $HOME/bini3/i3exit reboot, mode "default"
-    bindsym Shift+s exec $nsi sudo $HOME/bini3/i3exit shutdown, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 # *********************************************************************************************************************************************************
 #                                                   Fancy Names for workspaces
 #                           https://github.com/giacomos/i3wm-config/blob/master/config_work_laptop
@@ -464,7 +448,7 @@ for_window [class="albert"] $fmod3
 for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
-for_window [class="Nvidia-settings|TorGuard"] $fmod
+for_window [class="Nvidia-settings|TorGuard|Update-manager"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog"] $fmod
 for_window [window_type="menu"] $fmod
@@ -552,7 +536,7 @@ bindcode $mod+Shift+Pev move workspace to output right
 # Use this if you want to update block information
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep 
-bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch -n && xkb-switch -p | cut -c1-2)" "kxkb" ' '; 
+bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
 bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
@@ -583,7 +567,7 @@ bindsym $mod+shift+n exec $nsi "/usr/bin/thunar", focus
 bindsym $mod+Shift+KP_Subtract move scratchpad
 bindsym $mod+KP_Subtract scratchpad show
 
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Pause exec "$HOME/bini3/i3-dexit"
 bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
 bindsym --release button2 kill
 bindsym --release shift+button2 kill
@@ -627,9 +611,10 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # screen lock
-bindsym $mod+l exec 'i3colorlock'
-exec $nsi "xautolock -time 10 -locker $HOME/bini3/i3colorlock &"
-exec $nsi "xautolock -time 30 -locker 'sudo $HOME/bini3/i3exit suspend' &"
+bindsym $mod+l exec "i3exit lock"
+
+# Reading xautolock settings from .Xresources
+exec $nsi "xautolock"
 
 # start a terminal
 bindsym $mod+Return exec "terminator"
@@ -651,12 +636,7 @@ exec i3-msg "workspace number 5, layout tabbed"
 # *********************************************************************************************************************************************************
 
 # Keyboard layout
-exec_always $nsi "$HOME/startup.sh"
-exec_always $nsi "mate-settings-daemon --replace"
-exec_always "setxkbmap -layout us,ir,sw -option grp:caps_toggle"
-exec_always "killall dunst"
-exec_always "dunst -config ~/.config/dunst/dunstrc"
-exec $nsi "sleep 1;nitrogen --restore"
+exec_always $nsi "$HOME/bini3/startup.sh"
 exec $nsi "/usr/bin/terminator"
 
 #exec "/usr/bin/code"
@@ -667,8 +647,6 @@ exec $nsi "/usr/bin/nm-applet"
 #exec $nsi "/usr/bin/volumeicon"
 # i3-msg exec $nsi gnome-sound-applet
 exec_always $nsi "/usr/bin/albert"
-exec_always $nsi "killall xbindkeys;/usr/bin/xbindkeys"
-exec_always $nsi "killall i3-mousemon;$HOME/bini3/i3-mousemon"
 #exec $nsi "/usr/bin/thunar --daemon"
 #exec $nsi "/usr/bin/thunar"
 #exec $nsi "/usr/local/bin/toolbox --minimize"
@@ -676,10 +654,7 @@ exec_always $nsi "/usr/bin/x-session-manager"
 # gnome-settings-daemon
 # i3-msg exec $nsi thunderbird
 exec $nsi "sleep 2; /usr/bin/google-chrome -no-startup-window"
-exec $nsi "sleep 4; $HOME/.dropbox-dist/dropboxd"
 exec_always $nsi "sleep 1; $HOME/bini3/toggle-gaps set"
-exec_always $nsi "killall redshift-gtk; redshift-gtk"
-exec_always $nsi exec 'killall redshift-gtk';exec 'kill all redshift'; exec redshift-gtk
 # exec "sleep 30; /usr/bin/firefox"
 # $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
 #exec "$HOME/bin/i3-exec-wait.pl -n 3 firefox;

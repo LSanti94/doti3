@@ -1,13 +1,8 @@
-#!/bin/sh
-
-# /etc/X11/xinit/xinitrc
 #
-# global xinitrc file, used by all X sessions started by xinit (startx)
+# X Windows startup file.
+#
+# Credit goes to: https://github.com/brandon-rhodes/homedir/blob/master/.xinitrc
 
-# invoke global X session script
-xrdb -load "$HOME/.Xdefaults"
-xrdb -load "$HOME/.Xresources"
-xrdb -load "$HOME/.XresourcesLocal"
-xset +fp "$HOME/.fonts"
-xset fp rehash
-. /etc/X11/Xsession
+# Execute the real startup file with bash.
+exec /bin/bash $HOME/.xinitrc2 </dev/null >$HOME/.xinitrc.log 2>&1
+

@@ -1,0 +1,50 @@
+#!/bin/sh
+# Using i3lock-color from https://github.com/meskarune/i3lock-color.git
+#
+# git clone https://github.com/Airblader/xcb-util-xrm
+# git submodule init update
+#
+# to build you need:
+# s apt install xutils-dev
+#
+# grep -v -E 'grep|xautolock|vim'|
+# pc=`ps -aux | grep /bini3/i3colorlock | awk '$11 ~ /sh$|bash$/{print $12}'|wc -l`
+# process_count=`ps -aux | grep /bini3/i3colorlock | awk '$11 ~ /sh$|bash$/{print $0}'`
+#
+# # I couldn't figure out why inside script this will become twice!
+#
+# if [ "$pc" -gt "2" ]; then
+#    notify.sh "i3colorlock is already running<br>exiting...<br>$pc"
+#    notify.sh "$process_count"
+#    kill 0
+#    exit 1
+# fi
+
+# echo "process already running ($pc)"
+# echo "[$process_count]"
+
+
+echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
+B='#000000FF'  # line color
+I='#99222266'  # inside color
+C='#115511EE'  # clear inside color
+D='#ffbb55cc'  # default
+D='#DD4444FF'  # default
+S='#000000FF'  # separator color
+T='#CCCCCCFF'  # text
+W='#880000bb'  # wrong
+KH='#FFBB55FF' # Keyhl color
+V='#004400FF'  # verifying ring color
+# F="Monofur Bold for Powerline" # date font
+DATE='%y-%m-%d W:%V'
+TIME='%H:%M:%S' 
+notify.sh "Locking computer..." &&
+#deamonized version of i3colorlock only allow one instance
+setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C \
+   --ringwrongcolor=$W --insidecolor=$I --ringcolor=$D \
+   --linecolor=$B --separatorcolor=$S --textcolor=$T \
+   --timecolor=$T --datecolor=$T --keyhlcolor=$KH \
+   --bshlcolor=$W --screen 0 --clock --indicator \
+   --datefont=$F --datesize=28 --radius=150 --modsize=28 --textsize=28 \
+   --datestr="$DATE" --timestr="$TIME" --line-uses-inside \
+   --veriftext='Verifying...' --wrongtext="Invalid credential!" -B 1 || notify.sh "Lock failed: already running"

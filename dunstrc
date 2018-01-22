@@ -13,7 +13,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    markup = yes
 
     # Treat incoming notifications as plain text
     plain_text = no
@@ -69,7 +69,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "800x5-30+20"
+    geometry = "600x5-30+20"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -153,9 +153,9 @@
     icon_position = left
 
     # Paths to default icons.
-    icon_folders = /home/existme/.icons/Paper/32x32/status/:/home/existme/.icons/Paper/32x32/devices/:/home/existme/.icons/Paper/32x32/apps/:/home/existme/.icons/Paper/32x32/panel/
+    icon_path = /home/existme/.icons/Paper/32x32/status/:/home/existme/.icons/Paper/32x32/devices/:/home/existme/.icons/Paper/32x32/apps/:/home/existme/.icons/Paper/32x32/panel/:/home/existme/.icons/Paper/32x32/actions/
 
-    frame_width = 5
+    frame_width = 4
     frame_color = "#4d679a"
 
 [shortcuts]
@@ -182,18 +182,20 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#383a3b"
-    foreground = "#ffffff"
+    # background = "#383a3b"
+    # foreground = "#ffffff"
+    background = "#D3D3A4"
+    foreground = "#404040"
     timeout = 5
 
 [urgency_normal]
     background = "#383a3b"
     foreground = "#ffffff"
-    timeout = 2 
+    timeout = 5 
 
 [urgency_critical]
-    background = "#383a3b"
-    foreground = "#ffffff"
+    background = "#D8E0E3"
+    foreground = "#412F27"
     timeout = 0
 
 
@@ -255,12 +257,17 @@
     appname = *Spotify*
     new_icon = spotify-client
 
-[notify-send]
-    appname = *notify-send*
-    # new_icon = kodi
-    background = "#657b83"
-    foreground = "#073642"
-    timeout = 3
+# [notify-send]
+#     appname = *notify-send*
+#     # new_icon = kodi
+#     background = "#657b83"
+#     foreground = "#073642"
+#     timeout = 6
+[session]
+   category = "session"
+   background = "#FFD149"
+   foreground = "#333333"
+   history_ignore = yes
 
 [pa-applet]
 		appname = *pa-applet*

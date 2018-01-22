@@ -116,3 +116,13 @@ Xcursor.theme:             Paper
 
 !! Colors
 !! #include "/home/mohabaks/.colors/solarized.light"
+
+Xautolock.time: 10
+Xautolock.locker: sudo $HOME/bini3/i3exit lock
+Xautolock.killtime: 15
+Xautolock.killer: sudo $HOME/bini3/i3exit suspend
+Xautolock.notify: 30
+Xautolock.notifier: /usr/bin/notify-send -c 'session' 'Screen Lock' 'Locking in <b>30 seconds</b>' -i gnome-lockscreen
+Xautolock.detectsleep: true
+Xautolock.secure: true
+Xautolock.noclose: true

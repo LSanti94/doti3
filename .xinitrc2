@@ -1,0 +1,39 @@
+#!/bin/bash
+# set -xe
+# /etc/X11/xinit/xinitrc
+#
+# global xinitrc file, used by all X sessions started by xinit (startx)
+
+# invoke global X session script
+xrdb -load "$HOME/.Xdefaults"
+xrdb -merge "$HOME/.Xresources"
+[[ -f ~/.XresourcesLocal ]] && xrdb -merge "$HOME/.XresourcesLocal"
+
+xset +fp "$HOME/.fonts"
+xset fp rehash
+. /etc/X11/Xsession
+
+xsetroot -solid "#333333"
+
+# use gnome-keyring-daemon to manage keys
+/usr/bin/gnome-keyring-daemon --start --components=gpg
+/usr/bin/gnome-keyring-daemon --start --components=ssh
+
+# dunst -config ~/.config/dunst/dunstrc
+killall dunst; dunst &
+
+mate-settings-daemon --replace
+setxkbmap -layout us,ir -option grp:caps_toggle
+
+xautolock &
+
+nitrogen --restore
+
+killall i3-mousemon;$HOME/bini3/i3-mousemon &
+killall xbindkeys;/usr/bin/xbindkeys &
+
+killall redshift-gtk; redshift-gtk &
+
+# disable caps lock
+setxkbmap -option ctrl:nocaps
+notify-send -c 'info' 'xinitrc' 'xinitrc loaded' -i dialog-information

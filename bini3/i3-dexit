@@ -1,0 +1,40 @@
+#!/bin/bash -e
+
+
+action="$1"
+
+# if called without an argument, generate menu
+if [ -z "$action" ]; then
+    actions=("<span color='#DACFAA'>  </span> Lock screen"         "lock"
+             "<span color='#C28A1E'>  </span> Suspend computer"    "suspend"
+             "<span color='#5E8E60'>  </span> Exit window manager" "logout"
+             "<span color='#B8201A'>  </span> Reboot system"       "reboot"
+             "<span color='#d61c27'>  </span> Power-off system"    "shutdown")
+    printf -v menu "%s <small>(%s)</small>\n" "${actions[@]}"
+    menu="${menu%%[[:space:]]}"
+    index=$(echo -e "${menu}" |
+                rofi -dmenu -i -markup-rows \
+                     -no-custom -p "Action: " -format i)
+    action="${actions[$((index * 2 + 1))]}"
+fi
+
+case "$action" in
+    lock)
+        i3exit lock > /dev/null
+        ;;
+    logout)
+        i3exit logout > /dev/null
+        ;;
+    reboot)
+        i3exit reboot > /dev/null
+        ;;
+    suspend)
+        sudo i3exit suspend > /dev/null
+        ;;
+    shutdown)
+        i3exit shutdown > /dev/null
+        ;;
+    *)
+        echo "Usage: $0 (lock|suspend|logout|reboot|shutdown)"
+        exit 1
+esac
