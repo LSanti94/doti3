@@ -22,7 +22,7 @@
 
 # echo "process already running ($pc)"
 # echo "[$process_count]"
-
+# This script needs "sudo  apt install daemontools"
 
 echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
 B='#000000FF'  # line color

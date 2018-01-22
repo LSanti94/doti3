@@ -468,6 +468,7 @@ for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
 for_window [title="Postman|Mattermost|Slack"] $fmod4
+for_window [class="Chromium-browser"] $fmod4
 
 #hide_edge_borders none
 
