@@ -654,7 +654,7 @@ exec_always $nsi "/usr/bin/albert"
 exec_always $nsi "/usr/bin/x-session-manager"
 # gnome-settings-daemon
 # i3-msg exec $nsi thunderbird
-exec $nsi "sleep 2; /usr/bin/google-chrome -no-startup-window"
+exec $nsi "sleep 2; /usr/bin/google-chrome -no-startup-window --force-device-scale-factor=1.5"
 exec_always $nsi "sleep 1; $HOME/bini3/toggle-gaps set"
 # exec "sleep 30; /usr/bin/firefox"
 # $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
