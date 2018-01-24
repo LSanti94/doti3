@@ -637,7 +637,7 @@ exec i3-msg "workspace number 5, layout tabbed"
 # *********************************************************************************************************************************************************
 
 # Keyboard layout
-exec_always $nsi "$HOME/bini3/startup.sh"
+exec_always $nsi "$HOME/bini3/i3-startup.sh"
 exec $nsi "/usr/bin/terminator"
 
 #exec "/usr/bin/code"
