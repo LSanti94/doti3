@@ -29,7 +29,7 @@ case "$action" in
         i3exit reboot > /dev/null
         ;;
     suspend)
-        sudo i3exit suspend > /dev/null
+        sudo $HOME/bini3/i3exit suspend > /dev/null
         ;;
     shutdown)
         i3exit shutdown > /dev/null
