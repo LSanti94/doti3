@@ -5,6 +5,7 @@
 #set $HOME /home/rezasa
 set $mod Mod4
 set $alt Mod1
+# --no-startup-id disables the startup notification so you don't have an hourglass in your way for 60 seconds.
 set $nsi --no-startup-id
 set $r --release
 set $w --whole-window
@@ -436,6 +437,8 @@ bindsym $mod+k mode "$mode_language"
 new_window 1pixel
 new_float normal
 
+# Available criterias are listed here
+# https://i3wm.org/docs/userguide.html#command_criteria
 set $fmod "floating enable, border normal, focus, move position center, sticky enable"
 set $fmod2 "floating enable, border hidden, focus, move position center, sticky enable"
 set $fmod3 "floating enable, border none, focus, move position center, sticky enable"
@@ -462,13 +465,17 @@ for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Ala
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
-for_window [window_role="toolbar|splash|dropdown_menu|notification|popup_menu|tooltip"] $fmod
+for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
 for_window [title="Postman|Mattermost|Slack"] $fmod4
 for_window [class="Chromium-browser"] $fmod4
+
+for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
+# bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
+bindsym $mod+m exec "$HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
 
 #hide_edge_borders none
 
