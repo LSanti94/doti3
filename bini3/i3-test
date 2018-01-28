@@ -1,0 +1,9 @@
+#!/bin/sh
+FILE=/tmp/i3test.log
+
+echo "==============" >> $FILE 
+echo `/bin/date` >> $FILE 
+echo "args: [$@]" >> $FILE 
+
+exec "/usr/bin/pango-view" ~/bin/sample/pango-test.markup --hinting full --markup
+

@@ -1,7 +1,8 @@
-# vim: set filetype=yaml :tw=14
+# vim: set filetype=cfg :tw=14
 
 [global]
-    font = InconsolataGo Nerd Font 20
+    # font = InconsolataGo Nerd Font 20
+    font = monofur for Powerline 20
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
@@ -144,20 +145,19 @@
     startup_notification = false
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    # dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox -new-tab
+    browser = xdg-open #/usr/bin/google-chrome
 
     # Align icons left/right/off
     icon_position = left
 
     # Paths to default icons.
-    icon_path = /home/existme/.icons/Paper/32x32/status/:/home/existme/.icons/Paper/32x32/devices/:/home/existme/.icons/Paper/32x32/apps/:/home/existme/.icons/Paper/32x32/panel/:/home/existme/.icons/Paper/32x32/actions/
-
+    icon_path = /usr/share/icons/Paper/32x32/:/usr/share/icons/Paper/32x32/devices/:/usr/share/icons/Paper/32x32/apps/:/usr/share/icons/Paper/32x32/panel/:/usr/share/icons/Paper/32x32/actions:/usr/share/icons/Paper/48x48/status/
     frame_width = 4
     frame_color = "#4d679a"
-
 [shortcuts]
 
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -191,7 +191,7 @@
 [urgency_normal]
     background = "#383a3b"
     foreground = "#ffffff"
-    timeout = 5 
+    timeout = 5
 
 [urgency_critical]
     background = "#D8E0E3"
@@ -264,11 +264,26 @@
 #     foreground = "#073642"
 #     timeout = 6
 [session]
-   category = "session"
-   background = "#FFD149"
-   foreground = "#333333"
+   appname = beeper
+   new_icon = kodi
+   # category = "session"
+   # background = "#FFD149"
+   # foreground = "#333333"
+   # foreground = "#FF3333"
    history_ignore = yes
+   # script = "/home/existme/bin/beep"
+   # script = "paplay" "~/sounds/corsica-s__ding.wav"
+   script = ",ding"
+
+[layout]
+   appname = layout
+   new_icon = kxkb
+   history_ignore = yes
+   foreground = "#ebdbb2"
+   # background = "#292929"
+   background = "#00364F5b"
+   script = ",ding"
 
 [pa-applet]
-		appname = *pa-applet*
-		format = "%p"
+   appname = *pa-applet*
+   format = "%p"

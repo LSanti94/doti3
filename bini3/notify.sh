@@ -9,10 +9,10 @@ if [[ $category = "normal" ]]; then
    dunstify -p "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon
 else
    ID=$(cat /tmp/notify-$category)
-   if [ $ID ]; then
-      dunstify -p "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon > /tmp/notify-$category
+   if [ -n "$ID" ]; then
+      dunstify -p -r $ID "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon 
    else
-      dunstify -p -r $ID "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon > /tmp/notify-$category
+      dunstify -p "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon > /tmp/notify-$category
    fi
 fi
 

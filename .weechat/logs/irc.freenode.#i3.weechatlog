@@ -1,0 +1,36 @@
+2018-01-27 00:07:44	-->	existme (~existme@c-4595db54.02-29-6c756e10.cust.bredbandsbolaget.se) has joined #i3
+2018-01-27 00:07:44	--	Topic for #i3 is "i3 v4.14.1 released | i3status 2.11 released | i3lock 2.9.1 released | http://code.i3wm.org/ | http://i3wm.org/ | http://faq.i3wm.org/ | https://bintray.com/i3/i3-autobuild/i3-wm#statistics | paste at http://p.nnev.de/ | file upload at https://transfer.sh/ | Container tutorial: https://youtu.be/AWA8Pl57UBY | #i3-offtopic"
+2018-01-27 00:07:44	--	Topic set by sECuRE (~sECuRE@midna.zekjur.net) on Sun, 24 Sep 2017 19:31:04
+2018-01-27 00:07:45	--	Channel #i3: 423 nicks (3 ops, 0 voices, 420 normals)
+2018-01-27 00:07:46	--	Channel created on Thu, 22 Jul 2010 21:58:13
+2018-01-27 00:08:25	sentinel166	and it's a freakin' bad news for me not to have a terminal or dmenu, and not being able to move the window on the upper screen, because i have too screens, the first (laptop) being destroyed, only the auxiliary works
+2018-01-27 00:09:05	sentinel166	without accessing arandr or something like that FROM the inside of X, I'm screwed
+2018-01-27 00:09:37	sentinel166	that's why no MATE, lxde or anything works, since I see nothing I do... the primary output being the broken one...
+2018-01-27 00:09:51	--	irc: disconnected from server
+2018-01-27 00:32:13	-->	existme (~existme@84.219.149.69) has joined #i3
+2018-01-27 00:32:13	--	Topic for #i3 is "i3 v4.14.1 released | i3status 2.11 released | i3lock 2.9.1 released | http://code.i3wm.org/ | http://i3wm.org/ | http://faq.i3wm.org/ | https://bintray.com/i3/i3-autobuild/i3-wm#statistics | paste at http://p.nnev.de/ | file upload at https://transfer.sh/ | Container tutorial: https://youtu.be/AWA8Pl57UBY | #i3-offtopic"
+2018-01-27 00:32:13	--	Topic set by sECuRE (~sECuRE@midna.zekjur.net) on Sun, 24 Sep 2017 19:31:03
+2018-01-27 00:32:14	--	Channel #i3: 421 nicks (3 ops, 0 voices, 418 normals)
+2018-01-27 00:32:15	--	Channel created on Thu, 22 Jul 2010 21:58:13
+2018-01-27 00:32:45	<--	notis (~notis@46.246.247.22.dsl.dyn.forthnet.gr) has quit (Ping timeout: 264 seconds)
+2018-01-27 00:36:30	-->	BenG83 (~BenG83@HSI-KBW-078-042-091-037.hsi3.kabel-badenwuerttemberg.de) has joined #i3
+2018-01-27 00:37:27	-->	gwoplock (~quassel@rrcs-97-77-48-3.sw.biz.rr.com) has joined #i3
+2018-01-27 00:47:34	-->	nac (~nac@p200300ECEBD682009731227B46B57FD4.dip0.t-ipconnect.de) has joined #i3
+2018-01-27 00:49:06	<--	gwoplock (~quassel@rrcs-97-77-48-3.sw.biz.rr.com) has quit (Remote host closed the connection)
+2018-01-27 00:52:25	-->	gwoplock (~quassel@rrcs-97-77-48-3.sw.biz.rr.com) has joined #i3
+2018-01-27 00:54:48	ℹ 	irc: disconnected from server
+2018-01-27 02:10:30	-->	existme (~existme@c-4595db54.02-29-6c756e10.cust.bredbandsbolaget.se) has joined #i3
+2018-01-27 02:10:30	ℹ 	Topic for #i3 is "i3 v4.14.1 released | i3status 2.11 released | i3lock 2.9.1 released | http://code.i3wm.org/ | http://i3wm.org/ | http://faq.i3wm.org/ | https://bintray.com/i3/i3-autobuild/i3-wm#statistics | paste at http://p.nnev.de/ | file upload at https://transfer.sh/ | Container tutorial: https://youtu.be/AWA8Pl57UBY | #i3-offtopic"
+2018-01-27 02:10:30	ℹ 	Topic set by sECuRE (~sECuRE@midna.zekjur.net) on Sun, 24 Sep 2017 19:31:04
+2018-01-27 02:10:30	ℹ 	Channel #i3: 419 nicks (3 ops, 0 voices, 416 normals)
+2018-01-27 02:10:32	ℹ 	Channel created on Thu, 22 Jul 2010 21:58:13
+2018-01-27 02:10:33	<--	oblique (~oblique@unaffiliated/oblique) has quit (Ping timeout: 264 seconds)
+2018-01-27 02:13:32	<--	tyranny__ (~tyranny@81.171.98.64) has quit (Ping timeout: 268 seconds)
+2018-01-27 02:15:57	<--	jouty (~taygeta@xvm-110-143.dc2.ghst.net) has quit (Ping timeout: 264 seconds)
+2018-01-27 02:16:19	-->	oblique (~oblique@unaffiliated/oblique) has joined #i3
+2018-01-27 02:20:19	<--	silverhom (~silverhom@c83-252-239-43.bredband.comhem.se) has quit (Quit: Leaving)
+2018-01-27 02:23:44	<--	meffe (meffe@2ProIntl/Staff/meffe) has left #i3 (""meƒƒe √•®"")
+2018-01-27 02:29:10	<--	jade__ (~jade__@97-113-9-230.tukw.qwest.net) has quit (Ping timeout: 256 seconds)
+2018-01-27 02:42:30	-->	jouty (~taygeta@xvm-110-143.dc2.ghst.net) has joined #i3
+2018-01-27 02:43:42	<--	beemo_ceniza (~beemo_cen@unaffiliated/beemo-ceniza/x-9577736) has quit (Ping timeout: 246 seconds)
+2018-01-27 02:46:07	<--	magnetophon (~user@a83-163-205-75.adsl.xs4all.nl) has quit (Ping timeout: 248 seconds)

@@ -19,7 +19,7 @@ set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
 exec_always $nsi compton --config ~/.config/compton.conf -b 
-exec_always $HOME/bini3/i3test $dp0
+exec_always $HOME/bini3/i3-test $dp0
 
 set $bg-color                       #485767
 set $fg-color                       #FFFFFF
@@ -34,6 +34,8 @@ set $status-bg-color                #4C7899
 set $status-dark-bg-color           #24364F
 set $active-indicator-color         #00FF00
 set $inactive-indicator-color       #005500
+set $key_layout_msg                 "<span font_variant='smallcaps'>$(xkb-switch | cut -c1-2)</span> <b><span foreground='#cccccc' background='#00364F7B' > </span></b>"
+set $loud_volume                    150
 # before urgent-bg was 242c33
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -453,8 +455,7 @@ for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqlite
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
 for_window [class="Nvidia-settings|TorGuard|Update-manager"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
-for_window [window_type="dialog"] $fmod
-for_window [window_type="menu"] $fmod
+for_window [window_type="dialog|menu"] $fmod
 for_window [class="Doublecmd" title="File operations"] $fmod
 
 for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Terminator Preferencese|xfce4-appfinder"] $fmod
@@ -467,7 +468,7 @@ for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
 for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip"] $fmod
 for_window [window_role="^$"] $fmod
-for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book"] $fmod
+for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
 for_window [title="Postman|Mattermost|Slack"] $fmod4
@@ -544,7 +545,8 @@ bindcode $mod+Shift+Pev move workspace to output right
 # Use this if you want to update block information
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep 
-bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
+# bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
+bindsym Mod1+ISO_Next_Group      exec dunstify -app "layout" $key_layout_msg -i "kxkb" -r 10001
 bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
@@ -559,7 +561,7 @@ bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disa
 # Toggle gaps
 bindsym $mod+shift+F10 exec $nsi "$HOME/bini3/toggle-gaps toggle 10 5"
 # Toggle chrome loudness
-bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' 170 && $HOME/bin/toggle-loudness Chrome 170"
+bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true"
 
 # ************************************************************************************************************
 # Rofi
@@ -582,7 +584,7 @@ bindsym --release shift+button2 kill
 bindsym $mod+button2 floating toggle
 bindsym $mod+o move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
-bindsym $mod+p exec "/home/$USER/bini3/i3test #lll"
+bindsym $mod+p exec "/home/$USER/bini3/i3-test #lll"
 bindsym $mod+Shift+d exec /usr/bin/xfce4-appfinder
 # Resize
 bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
@@ -650,19 +652,14 @@ exec $nsi "/usr/bin/terminator"
 #exec "/usr/bin/code"
 
 #exec $nsi "/usr/bin/doublecmd"
-exec $nsi "/usr/bin/nm-applet"
 #exec $nsi pasystray
 #exec $nsi "/usr/bin/volumeicon"
 # i3-msg exec $nsi gnome-sound-applet
-exec_always $nsi "/usr/bin/albert"
 #exec $nsi "/usr/bin/thunar --daemon"
 #exec $nsi "/usr/bin/thunar"
 #exec $nsi "/usr/local/bin/toolbox --minimize"
-exec_always $nsi "/usr/bin/x-session-manager"
 # gnome-settings-daemon
 # i3-msg exec $nsi thunderbird
-exec $nsi "sleep 2; /usr/bin/google-chrome -no-startup-window --force-device-scale-factor=1.5"
-exec_always $nsi "sleep 1; $HOME/bini3/toggle-gaps set"
 # exec "sleep 30; /usr/bin/firefox"
 # $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
 #exec "$HOME/bin/i3-exec-wait.pl -n 3 firefox;
