@@ -1,5 +1,5 @@
-# vim: set filetype=cfg :tw=14
-
+# vim: ft=cfg tw=75 ts=4 sw=4 et sts=4 shiftwidth=4 
+        
 [global]
     # font = InconsolataGo Nerd Font 20
     font = monofur for Powerline 20
@@ -79,7 +79,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 10
+    transparency = 10 
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -156,8 +156,8 @@
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Paper/32x32/:/usr/share/icons/Paper/32x32/devices/:/usr/share/icons/Paper/32x32/apps/:/usr/share/icons/Paper/32x32/panel/:/usr/share/icons/Paper/32x32/actions:/usr/share/icons/Paper/48x48/status/
-    frame_width = 4
-    frame_color = "#4d679a"
+    frame_width = 2 
+    # frame_color = "#4d679a"
 [shortcuts]
 
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -189,10 +189,11 @@
     timeout = 5
 
 [urgency_normal]
-    background = "#383a3b"
-    foreground = "#ffffff"
-    timeout = 5
-
+    frame_color = "#665c54"
+    background  = "#a89984"
+    foreground  = "#ffffff"
+    timeout = 5 
+    # background = "#383a3b"
 [urgency_critical]
     background = "#D8E0E3"
     foreground = "#412F27"
@@ -263,27 +264,27 @@
 #     background = "#657b83"
 #     foreground = "#073642"
 #     timeout = 6
+
 [session]
-   appname = beeper
-   new_icon = kodi
-   # category = "session"
-   # background = "#FFD149"
-   # foreground = "#333333"
-   # foreground = "#FF3333"
-   history_ignore = yes
-   # script = "/home/existme/bin/beep"
-   # script = "paplay" "~/sounds/corsica-s__ding.wav"
-   script = ",ding"
+    appname = beeper
+    new_icon = kodi
+    # category = "session"
+    # background = "#FFD149"
+    # foreground = "#333333"
+    # foreground = "#FF3333"
+    history_ignore = yes
+    # script = "/home/existme/bin/beep"
+    # script = "paplay" "~/sounds/corsica-s__ding.wav"
+    script = ",ding"
 
 [layout]
-   appname = layout
-   new_icon = kxkb
-   history_ignore = yes
-   foreground = "#ebdbb2"
-   # background = "#292929"
-   background = "#00364F5b"
-   script = ",ding"
-
+    appname = layout
+    # new_icon = ~/bini3/ext-icons/kb-2.png
+    history_ignore = yes
+    # foreground = "#ebdbb2"
+    # background = "#292929"
+    # background = "#364F5B"
+    script = ",ding"
 [pa-applet]
    appname = *pa-applet*
    format = "%p"
