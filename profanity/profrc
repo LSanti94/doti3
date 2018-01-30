@@ -1,9 +1,14 @@
 [connection]
 account=rezasa@talk.axis.com
+account=reza@jabber.axis.com tls disable 
+
+defaccount=reza@jabber.axis.com
 
 [alias]
 q=/quit
 p=/msg
+c1=/script run c1
+c2=/script run c2
 
 [ui]
 theme=gruvbox

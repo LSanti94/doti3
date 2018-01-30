@@ -1,0 +1,5 @@
+
+To enable scripts you need to manually link the script folder
+
+rm -rf $HOME/.local/share/profanity/scripts
+ln -s $HOME/git/doti3/profanity/scripts/ $HOME/.local/share/profanity/
