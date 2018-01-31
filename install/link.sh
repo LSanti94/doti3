@@ -67,5 +67,6 @@ reLink ~/.config/dunst/dunstrc   dunstrc
 reLink ~/.config/geany           geany
 reLink ~/.weechat                .weechat 
 reLink ~/.config/profanity       profanity
+reLink ~/.config/Code/User       vscode/User
 
 echo "\nRelink completed\n"

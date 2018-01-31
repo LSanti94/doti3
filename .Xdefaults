@@ -3,7 +3,8 @@ URxvt.reverseVideo:     true
 ! fonts
 ! run fc-list for a list of available fonts
 !URxvt*font: xft:Inconsolata\\-g for Powerline:style=g:size=16:antialias=true
-URxvt.font: xft:Monoid Nerd Font:style=Retina:pixelsize=22:antialias=true:minspace=false
+! URxvt.font: xft:Monoid Nerd Font:style=Retina:pixelsize=22:antialias=true:minspace=false
+URxvt.font: xft:Inconsolata-g for Powerline:style=g:size=20:antialias=true, xft:Inconsolata Nerd Font:style=Medium:size=20:antialias=true
 ! URxvt*font: xft:monofur for Powerline:style=Bold:size=20:antialias=true
 !URxvt*font: xft:mononoki-Regular Nerd Font Complete:style=Regular:size=14:antialias=true
 !URxvt*boldFont: xft:Anonymous Pro for Powerline:style=Bold Italic:size=20:antialias=true

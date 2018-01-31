@@ -1,0 +1,32 @@
+// Place your settings in this file to overwrite the default settings
+// For colors see: https://code.visualstudio.com/docs/getstarted/theme-color-reference
+{
+    // to list all mono fonts use: fc-list :mono
+    "editor.fontFamily": "'Inconsolata-g for Powerline','Inconsolata Nerd Font'",
+    "editor.fontSize": 18,
+    "editor.fontLigatures": true,
+    "window.restoreWindows": "none",
+    "files.hotExit": "off",
+    "code-runner.runInTerminal": true,
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#881021A8"
+    },
+    "python.linting.pylintArgs": [
+        "--rcfile=~/.config/pylint/pylint.config",
+        "--include-naming-hint=y",
+        "--name-group=ignore"
+    ],
+    "files.autoSave": "onFocusChange",
+    "workbench.tips.enabled": true,
+    "window.zoomLevel": 1,
+    "window.openFoldersInNewWindow":"off",
+    "editor.minimap.showSlider":"mouseover",
+    "editor.minimap.enabled": false,
+    "git.enabled": false,
+    "editor.folding": true,
+    "editor.renderWhitespace": "all",
+    "workbench.startupEditor": "newUntitledFile",
+    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.fontFamily": "'Inconsolata Nerd Font'",
+    "terminal.integrated.fontSize": 18
+}
