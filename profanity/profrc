@@ -10,6 +10,12 @@ p=/msg
 c1=/script run c1
 c2=/script run c2
 
+h=/help
+c=/close
+mw=/msg  wendy@jabber.axis.com
+mr=/msg robing@jabber.axis.com
+mj=/msg jeanielk@jabber.axis.com
+
 [ui]
 theme=gruvbox
 occupants=true
