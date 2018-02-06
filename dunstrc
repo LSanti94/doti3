@@ -1,8 +1,8 @@
 # vim: ft=cfg tw=75 ts=4 sw=4 et sts=4 shiftwidth=4 
         
 [global]
-    # font = InconsolataGo Nerd Font 20
-    font = monofur for Powerline 20
+    font = InconsolataGo Nerd Font 20
+    # font = monofur for Powerline 20
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
@@ -174,7 +174,7 @@
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+shift+grave
+    history = ctrl+grave
 
     # Context menu.
     context = ctrl+shift+period

@@ -586,7 +586,8 @@ bindsym $mod+button2 floating toggle
 bindsym $mod+o move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
 bindsym $mod+p exec "/home/$USER/bini3/i3-test #lll"
-bindsym $mod+Shift+d exec /usr/bin/xfce4-appfinder
+bindsym $mod+Shift+d exec $nsi /usr/bin/xfce4-appfinder
+bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 # Resize
 bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
