@@ -1,22 +1,46 @@
-#!/bin/bash
+#!/bin/zsh
 source ~/.displays
-clear
 
-w1="<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   " 
+w1="<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
 w2="2: ⚯❶"
-set $w3 "3:   "
-set $w4 "4: ➡❷"
-set $w5 "5: file manager"
-set $w6 "6: help"
-set $w7 "7: x7"
-set $w8 "8: x8"
-set $w9 "9: x9"
-set $w0 "0:  "
-# i3-msg workspace '"'$w1'"', move workspace to output $DP1, layout tabbed
-i3-msg workspace "$w2"
+w3="3:   "
+w4="4: ➡❷"
+w5="5: file manager"
+w6="6: help"
+w7="7: x7"
+w8="8: x8"
+w9="9: x9"
+w0="0:  "
+
+# run and replace all ' with "
+function i3-run(){
+   msg=${1//\'/\"}
+   i3-msg $msg > /dev/null
+   echo ${msg//workspace/${bY}workspace}
+}
+
+# run without replace
+function i3-run2(){
+   msg=$1
+   # echo $(sur $msg $bY)
+   i3-msg $msg > /dev/null
+}
+function sur(){
+   msg=$1
+   c=$2
+   echo 1: $1
+   echo 2: $2
+   echo 3: $3
+   # echo ${1//$msg/$c$msg$cZ}
+}
+echo $(echo "workspace salamat mikonad"|sur workspace $bY)
+
+i3-run2 "workspace $w1, move workspace to output $DP1, layout tabbed"
 # i3-msg workspace '"'$w3'"', move workspace to output $DP2, layout tabbed
 # i3-msg workspace '"'$w4'"', move workspace to output $DP2, layout tabbed
 # i3-msg workspace '"'$w5'"', move workspace to output $DP0, layout tabbed
 # i3-msg workspace '"'$w6'"', move workspace to output $DP0, layout tabbed
 # i3-msg workspace '"'$w0'"', move workspace to output $DP0, layout tabbed
-# i3-msg workspace '"'$w2'"', move workspace to output $DP0
+# i3-msg workspace $w2, move workspace to output $DP0
+# i3-msg for_window [class="Terminator"] move to workspace $w2
+i3-run "[class='Google-chrome'] move to workspace '$w3'"
