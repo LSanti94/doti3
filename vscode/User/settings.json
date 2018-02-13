@@ -17,6 +17,7 @@
         "--name-group=ignore"
     ],
     "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
     "workbench.tips.enabled": true,
     "window.zoomLevel": 1,
     "window.openFoldersInNewWindow":"off",
@@ -24,9 +25,10 @@
     "editor.minimap.enabled": false,
     "git.enabled": false,
     "editor.folding": true,
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "default",
     "terminal.integrated.fontFamily": "'Inconsolata Nerd Font'",
-    "terminal.integrated.fontSize": 18
+    "terminal.integrated.fontSize": 18,
+    "editor.renderControlCharacters": false
 }
