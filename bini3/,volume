@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # You can call this script like this:
 # $./volume.sh up
@@ -13,14 +13,31 @@ function is_mute {
     amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
 }
 
+#Repeat char n times
+function rchar {
+   print "${$(printf "%$1s" "")// /$2}"
+}
+
 function send_notification {
-    volume=`get_volume`
+   volume=`get_volume`
     # Make the bar with the special character ─ (it's not dash -)
     # https://en.wikipedia.org/wiki/Box-drawing_character
-    bar=$(seq -s "█" $(($volume / 5)) | sed 's/[0-9]//g')
-    barrest=$(seq -s "░" $((100 / 5 - $volume / 5)) | sed 's/[0-9]//g')
+    # bar=$(seq -s "█" $(($volume / 5)) | sed 's/[0-9]//g')
+    # barrest=$(seq -s "░" $((100 / 5 - $volume / 5)) | sed 's/[0-9]//g')
+    bar=$(rchar $(($volume / 5)) "█")
+    barrest=$(rchar $((20 - $volume / 5)) "░")
+    case $(($volume)) in
+       (0)              s="muted";; # 0
+       ([0-9]|[1][0-9]) s="low";; # <20
+       ([2-3][0-9])     s="low";; # 20>=x>40
+       ([4-5][0-9])     s="medium";; # 40>=x>60
+       ([6-7][0-9])     s="medium";; # 60>=x>80
+       ([8-9][0-9])     s="high";; # 80>=x>100
+       (100)            s="muted-blocking";; # 100
+    esac
     # Send the notification
-    dunstify -i audio-volume-muted-blocking -r 2593 -u normal "    $bar$barrest ($volume)"
+    # dunstify -i audio-volume-muted-blocking -r 2593 -u normal "    $bar$barrest ($volume)"
+    dunstify -i "av-$s" -r 2593 -u normal "$(printf "  $bar$barrest  (%03d)\n" $volume)"
 }
 
 case $1 in

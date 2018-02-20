@@ -351,8 +351,8 @@ bindcode $mod+Shift+Mod2+69 move window to output $DP2
 #                                                               Gaps mode
 # *********************************************************************************************************************************************************
 # it was both 5
-gaps outer 0
-gaps inner 0
+# gaps outer 0
+# gaps inner 0
 
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
@@ -454,7 +454,7 @@ for_window [class="albert"] $fmod3
 for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
-for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff"] $fmod
+for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|GitKraken"] $fmod
 for_window [class="Nvidia-settings|TorGuard|Update-manager"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
