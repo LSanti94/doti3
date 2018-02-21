@@ -23,15 +23,16 @@ function reLink(){
    # The physicalFolder link that is going to be symlinked
    declare local pFolder=$1               # 
    local appFolder=$2                     # 
+   [ "$3" = "true" ] && useSudo="sudo" || useSudo=""
    local ppFolder=${pFolder//$appFolder/} # ~/bini3 -> ~/
    local linkedPath="$DIR/$2"
    if [[ -L "$pFolder" ]]; then
       echo " ${bW}${cZ} Removing ${bY}$pFolder${cZ} (It was symlink)"
       if [ "$skip" = 1 ]; then
-         rm $pFolder
+         $useSudo rm $pFolder
       else
          echo -n "  "
-         rm -i $pFolder
+         $useSudo rm -i $pFolder
       fi
 	else
       if [[ -a "$pFolder" ]]; then 
@@ -43,7 +44,7 @@ function reLink(){
 	fi
    # exec 3>&1 4>&2 #set up extra file descriptors
    # error=$( { ln -s $linkedPath $ppFolder | sed 's/Output/Useless/' 2>&4 1>&3; } 2>&1 )
-   ln -s $linkedPath $ppFolder 2> /tmp/install_error
+   $useSudo ln -s $linkedPath $ppFolder 2> /tmp/install_error
    error=$(</tmp/install_error)
    [ "$error" = "" ] && echo "$green  ${cZ}ln -s ${bY}$linkedPath${bW}  ${bY}$ppFolder${cZ}  " || \
       echo "${bR} ${cZ} link failed [$error]"
@@ -68,5 +69,5 @@ reLink ~/.config/geany           geany
 reLink ~/.weechat                .weechat 
 reLink ~/.config/profanity       profanity
 reLink ~/.config/Code/User       vscode/User
-
+reLink /usr/share/icons/ext-icons   bini3/ext-icons true
 echo "\nRelink completed\n"
