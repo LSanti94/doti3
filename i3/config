@@ -468,7 +468,7 @@ for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Ala
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
-for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip"] $fmod
+for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
