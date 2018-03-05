@@ -266,16 +266,25 @@ bar {
 # *********************************************************************************************************************************************************
 set $M1 reza
 set_from_resource $M1 echo [$HOME]
-set $w1 "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
-set $w2 "2: ⚯❶"
-set $w3 "3:   "
-set $w4 "4: ➡❷"
-set $w5 "5: file manager"
-set $w6 "6: help"
+# set $w1 "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
+# set $w2 "2: ⚯❶"
+# set $w3 "3:   "
+# set $w4 "4: ➡❷"
+# set $w5 "5: file manager"
+# set $w6 "6: help"
+# set $w7 "7: x7"
+# set $w8 "8: x8"
+# set $w9 "9: x9"
+set $w0 "0: Chat"
+set $w1 "1: Web"
+set $w2 "2: Term"
+set $w3 "3: IDE"
+set $w4 "4: Term"
+set $w5 "5: FM"
+set $w6 "6: Help"
 set $w7 "7: x7"
 set $w8 "8: x8"
 set $w9 "9: x9"
-set $w0 "0:  "
 
 # ❸ ➛➜➝➞➟➠➡
 # focus on workspaces
@@ -454,7 +463,7 @@ for_window [class="albert"] $fmod3
 for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
-for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff"] $fmod
+for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox"] $fmod
 for_window [class="Nvidia-settings|TorGuard|Update-manager"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
@@ -467,6 +476,8 @@ for_window [class="System-config-printer\.py|Nm-connection-editor|com-sun-deploy
 for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte"] $fmod
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
+for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
+for_window [class="com.existme.*"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
 for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog"] $fmod
 for_window [window_role="^$"] $fmod

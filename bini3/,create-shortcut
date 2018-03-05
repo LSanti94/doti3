@@ -1,8 +1,11 @@
 #!/bin/zsh
-
+[ -z "$2" ] && {
+   echo "${bW}Usage:${cZ}\n"
+   echo ",create-shortcut ${bY}<executable-file> ${bB}<shortcut name>${cZ}"
+   return
+}
 [ -f /usr/share/applications/$2.desktop ] ||
 {
-echo "${bW}Usage:${cZ} ,create-shortcut <executable-file> <name>"
 sudo sh -c "cat >> /usr/share/applications/$2.desktop << EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -15,6 +18,6 @@ Comment=comment here
 Icon=$1.icon
 EOF"
 }
-
+echo
 echo "${bW}File:${cZ} /usr/share/applications/$2.desktop"
-sudo gnome-desktop-item-edit /usr/share/applications/$2.desktop
+sudo gnome-desktop-item-edit /usr/share/applications/$2.desktop > /dev/null 2>&1
