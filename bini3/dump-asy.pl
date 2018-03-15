@@ -43,7 +43,8 @@ sub dump_node {
         $type = $n->{orientation} . '-split';
     }
     my $name = qq|``$na'' ($type)|;
-
+    # fix for names containing %
+    $name =~ s/%/\\%/g;
     print $tmp "TreeNode n" . $n->{id} . " = makeNode(";
 
     print $tmp "n" . $parent->{id} . ", " if defined($parent);
