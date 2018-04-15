@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-u=$user
+u=$USER
 sudo chown "$u" "/tmp/i3exit.log"
 i3exit suspend
 

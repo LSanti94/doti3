@@ -348,8 +348,10 @@ bindcode $mod+Shift+Mod2+90 move container to workspace $w0
 ## assign [class="Doublecmd"]                          → $w5
 ## assign [class="Yelp"]                               → $w6
 ## assign [class="TkMan"]                              → $w6
-##assign [instance="sun-awt-X11-XFramePeer"]                              → $w9
+## assign [instance="sun-awt-X11-XFramePeer"]          → $w9
 for_window [class="^"] focus
+## assign [class="Google-chrome" title="^Developer Tools -.*"] → $w2
+## assign [class="Firefox" instance="Devtools"]                → $w2
 
 # Mod+Shift+F1-F3 will move the window to DP0-DP2
 bindcode $mod+Shift+Mod2+67 move window to output $DP0
@@ -369,9 +371,9 @@ bindcode $mod+Shift+Mod2+69 move window to output $DP2
 # smart_borders on
 # smart_gaps on 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner, (b) border
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+# set $mode_gaps Gaps: (o) outer, (i) inner, (b) border
+# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_border Border (1..9) pixel 0 for none, Shift +|- (border on/off)
 
 mode "$mode_gaps" {
@@ -486,6 +488,10 @@ for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
 for_window [title="Postman|Mattermost|Slack"] $fmod4
 for_window [class="Chromium-browser"] $fmod4
+
+# For chrome and firefox Developer Tools, we want them in separate workspace
+for_window [class="Google-chrome" title="^Developer Tools -.*"] floating disable, move container to workspace $w2
+for_window [class="Firefox" instance="Devtools"]                floating disable, move container to workspace $w2
 
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
@@ -606,11 +612,15 @@ bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name:
 # Volume
 bindsym XF86AudioMute exec "$HOME/bini3/unmute && amixer -q sset Master,0 toggle && pkill -SIGRTMIN+11 i3blocks"
 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioRaiseVolume exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
+# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioLowerVolume exec "$HOME/bini3/,volume down" exec "pkill -SIGRTMIN+11 i3blocks"
 
-bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+# bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F10 exec "$HOME/bini3/,volume down" exec "pkill -SIGRTMIN+11 i3blocks"
+# bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F11 exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
 
 bindsym $mod+button6 exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 bindsym $mod+button7 exec "amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"

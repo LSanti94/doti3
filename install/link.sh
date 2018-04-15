@@ -60,7 +60,9 @@ reLink ~/.xbindkeysrc.scm        .xbindkeysrc.scm
 reLink ~/.Xresources             .Xresources
 reLink ~/.XresourcesLocal        .XresourcesLocal
 reLink ~/.xinitrc                .xinitrc
+reLink ~/.i3blocks.conf          i3/i3blocks.conf 
 reLink ~/bini3                   bini3
+reLink ~/.config/compton.conf    i3/compton.conf
 reLink ~/.config/rofi            rofi
 reLink ~/.config/terminator      terminator
 reLink ~/.config/i3              i3
