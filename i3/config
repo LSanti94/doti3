@@ -645,7 +645,7 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # screen lock
-bindsym $mod+l exec "i3exit lock"
+bindsym $mod+l exec "$HOME/bini3/i3exit lock"
 
 # Reading xautolock settings from .Xresources
 exec $nsi "xautolock"

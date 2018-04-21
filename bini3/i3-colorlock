@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # Using i3lock-color from https://github.com/meskarune/i3lock-color.git
 #
 # git clone https://github.com/Airblader/xcb-util-xrm
@@ -23,7 +23,6 @@
 # echo "process already running ($pc)"
 # echo "[$process_count]"
 # This script needs "sudo  apt install daemontools"
-
 echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
 B='#000000FF'  # line color
 I='#99222266'  # inside color
@@ -32,19 +31,155 @@ D='#ffbb55cc'  # default
 D='#DD4444FF'  # default
 S='#000000FF'  # separator color
 T='#CCCCCCFF'  # text
+CR='#FF0000FF'  # text
+CT='#FF000000'  # text
 W='#880000bb'  # wrong
 KH='#FFBB55FF' # Keyhl color
 V='#004400FF'  # verifying ring color
-# F="Monofur Bold for Powerline" # date font
+F="Monofur Bold for Powerline" # date font
 DATE='%y-%m-%d W:%V'
 TIME='%H:%M:%S' 
 notify.sh "Locking computer..." &&
 #deamonized version of i3colorlock only allow one instance
 setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C \
    --ringwrongcolor=$W --insidecolor=$I --ringcolor=$D \
-   --linecolor=$B --separatorcolor=$S --textcolor=$T \
-   --timecolor=$T --datecolor=$T --keyhlcolor=$KH \
-   --bshlcolor=$W --screen 0 --clock --indicator \
-   --datefont=$F --datesize=28 --radius=150 --modsize=28 --textsize=28 \
+   --linecolor=$B --separatorcolor=$S  \
+   --insidevercolor=$C   \
+   --ringvercolor=$V     \
+   \
+   --insidewrongcolor=$C \
+   --ringwrongcolor=$W   \
+   \
+   --insidecolor=$B      \
+   --ringcolor=$D        \
+   --linecolor=$B        \
+   --separatorcolor=$D   \
+   \
+   --verifcolor=$CR --wrongcolor=$T --timecolor=$T --datecolor=$T --layoutcolor=$T \
+   --keyhlcolor=$W --bshlcolor=$W        \
+   --insidevercolor=$CT \
+   \
+   --blur 8              \
+   --clock               \
+   --indicator           \
+   --timestr="%H:%M:%S"  \
+   --datestr="%A, %m %Y" \
+   --keylayout 1         \
+   --screen 0 --indicator \
+   --date-font=$f --datesize=28 --radius=150 --modsize=28  \
+   --veriftext='Verifying...' --wrongtext="Invalid credential!" \
    --datestr="$DATE" --timestr="$TIME" --line-uses-inside \
-   --veriftext='Verifying...' --wrongtext="Invalid credential!" -B 1 || notify.sh "Lock failed: already running"
+    || notify.sh "Lock failed: already running"
+
+ # ALL THE OPTIONS
+ #
+ # struct option longopts[] = {
+ #  {"version", no_argument, NULL, 'v'},
+ #  {"nofork", no_argument, NULL, 'n'},
+ #  {"beep", no_argument, NULL, 'b'},
+ #  {"dpms", no_argument, NULL, 'd'},
+ #  {"color", required_argument, NULL, 'c'},
+ #  {"pointer", required_argument, NULL, 'p'},
+ #  {"debug", no_argument, NULL, 999},
+ #  {"help", no_argument, NULL, 'h'},
+ #  {"no-unlock-indicator", no_argument, NULL, 'u'},
+ #  {"image", required_argument, NULL, 'i'},
+ #  {"tiling", no_argument, NULL, 't'},
+ #  {"ignore-empty-password", no_argument, NULL, 'e'},
+ #  {"inactivity-timeout", required_argument, NULL, 'I'},
+ #  {"show-failed-attempts", no_argument, NULL, 'f'},
+ #
+ #  /* options for unlock indicator colors */
+ #  {"insidevercolor", required_argument, NULL, 300},
+ #  {"insidewrongcolor", required_argument, NULL, 301},
+ #  {"insidecolor", required_argument, NULL, 302},
+ #  {"ringvercolor", required_argument, NULL, 303},
+ #  {"ringwrongcolor", required_argument, NULL, 304},
+ #  {"ringcolor", required_argument, NULL, 305},
+ #  {"linecolor", required_argument, NULL, 306},
+ #  {"verifcolor", required_argument, NULL, 307},
+ #  {"wrongcolor", required_argument, NULL, 308},
+ #  {"layoutcolor", required_argument, NULL, 309},
+ #  {"timecolor", required_argument, NULL, 310},
+ #  {"datecolor", required_argument, NULL, 311},
+ #  {"keyhlcolor", required_argument, NULL, 312},
+ #  {"bshlcolor", required_argument, NULL, 313},
+ #  {"separatorcolor", required_argument, NULL, 314},
+ #
+ #  {"line-uses-ring", no_argument, NULL, 'r'},
+ #  {"line-uses-inside", no_argument, NULL, 's'},
+ #
+ #  {"screen", required_argument, NULL, 'S'},
+ #  {"blur", required_argument, NULL, 'B'},
+ #  {"clock", no_argument, NULL, 'k'},
+ #  {"force-clock", no_argument, NULL, 400},
+ #  {"indicator", no_argument, NULL, 401},
+ #  {"radius", required_argument, NULL, 402},
+ #  {"ring-width", required_argument, NULL, 403},
+ #
+ #  // alignment
+ #
+ #  {"time-align", required_argument, NULL, 500},
+ #  {"date-align", required_argument, NULL, 501},
+ #  {"verif-align", required_argument, NULL, 502},
+ #  {"wrong-align", required_argument, NULL, 503},
+ #  {"layout-align", required_argument, NULL, 504},
+ #  {"modif-align", required_argument, NULL, 505},
+ #
+ #  // string stuff
+ #
+ #  {"timestr", required_argument, NULL, 510},
+ #  {"datestr", required_argument, NULL, 511},
+ #  {"veriftext", required_argument, NULL, 512},
+ #  {"wrongtext", required_argument, NULL, 513},
+ #  {"keylayout", required_argument, NULL, 514},
+ #  {"noinputtext", required_argument, NULL, 515},
+ #
+ #  // fonts
+ #
+ #  {"time-font", required_argument, NULL, 520},
+ #  {"date-font", required_argument, NULL, 521},
+ #  {"verif-font", required_argument, NULL, 522},
+ #  {"wrong-font", required_argument, NULL, 523},
+ #  {"layout-font", required_argument, NULL, 524},
+ #
+ #  // text size
+ #
+ #  {"timesize", required_argument, NULL, 530},
+ #  {"datesize", required_argument, NULL, 531},
+ #  {"verifsize", required_argument, NULL, 532},
+ #  {"wrongsize", required_argument, NULL, 533},
+ #  {"layoutsize", required_argument, NULL, 534},
+ #  {"modsize", required_argument, NULL, 535},
+ #
+ #  // text/indicator positioning
+ #
+ #  {"timepos", required_argument, NULL, 540},
+ #  {"datepos", required_argument, NULL, 541},
+ #  {"verifpos", required_argument, NULL, 542},
+ #  {"wrongpos", required_argument, NULL, 543},
+ #  {"layoutpos", required_argument, NULL, 544},
+ #  {"statuspos", required_argument, NULL, 545},
+ #  {"modifpos", required_argument, NULL, 546},
+ #  {"indpos", required_argument, NULL, 547},
+ #
+ #
+ #  // bar indicator stuff
+ #
+ #  {"bar-indicator", no_argument, NULL, 700},
+ #  {"bar-direction", required_argument, NULL, 701},
+ #  {"bar-width", required_argument, NULL, 702},
+ #  {"bar-orientation", required_argument, NULL, 703},
+ #  {"bar-step", required_argument, NULL, 704},
+ #  {"bar-max-height", required_argument, NULL, 705},
+ #  {"bar-base-width", required_argument, NULL, 706},
+ #  {"bar-color", required_argument, NULL, 707},
+ #  {"bar-periodic-step", required_argument, NULL, 708},
+ #  {"bar-position", required_argument, NULL, 709},
+ #
+ #  // misc.
+ #
+ #  {"redraw-thread", no_argument, NULL, 900},
+ #  {"refresh-rate", required_argument, NULL, 901},
+ #  {"composite", no_argument, NULL, 902},
+ #  {"pass-media-keys", no_argument, NULL, 'm'},
