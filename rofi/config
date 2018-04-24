@@ -4,6 +4,7 @@ rofi.width:                          50
 rofi.lines:                          15
 rofi.columns:                        1
 rofi.font:                           InconsolataGo Nerd Font 18
+# rofi.font:                           EmojiOne Color Regular 16
 rofi.color-normal:                   #22231D, #fefeca, #22231D, #8aaf85, #fefeca
 rofi.color-urgent:                   #22231D, #d6b48d, #22231D, #d6b48d, #fefeca
 rofi.color-active:                   #22231D, #fee07a, #22231D, #fee07a, #22231D
@@ -85,4 +86,4 @@ rofi.display-drun:                   (drun)
 rofi.display-window:                 (window)
 rofi.display-windowcd:               (windowcd)
 rofi.display-combi:                  (combi)
-#include "/usr/share//rofi/themes//gruvbox-dark-hard.theme"
+#include "/usr/share/rofi/themes/gruvbox-dark-hard.theme"

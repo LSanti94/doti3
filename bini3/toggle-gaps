@@ -1,8 +1,5 @@
 #!/bin/zsh
 #
-# To list all possible clients just type:
-# pa_volume
-#
 # Usage:
 #
 # toggle-gap {inner} {outer}
