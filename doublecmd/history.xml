@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd>
+  <History>
+    <Navigation>
+      <Item>/home/existme/Downloads/</Item>
+      <Item>/home/existme/</Item>
+      <Item>/home/existme/Dropbox/</Item>
+      <Item>/home/existme/Dropbox/purchased-music/</Item>
+      <Item>/home/existme/Dropbox/purchased-music/audible/</Item>
+      <Item>/home/existme/Dropbox/Purchased music/audible/</Item>
+      <Item>/home/existme/Dropbox/Purchased music/negar-bouban/</Item>
+      <Item>/home/existme/Dropbox/Purchased music/</Item>
+      <Item>/home/existme/git/</Item>
+      <Item>/home/existme/git/MyDotFiles/</Item>
+      <Item>/home/existme/Downloads/locales/</Item>
+      <Item>/home/existme/Downloads/check-0.12.0/</Item>
+      <Item>/home/existme/git/MyDotFiles/vim/</Item>
+      <Item>/usr/share/</Item>
+      <Item>/usr/share/kodi/</Item>
+      <Item>/usr/share/kodi/addons/</Item>
+      <Item>/usr/share/kodi/addons/metadata.tvdb.com/</Item>
+      <Item>/usr/</Item>
+      <Item>/</Item>
+      <Item>/home/</Item>
+      <Item>/home/existme/Dropbox/Config/</Item>
+      <Item>/home/existme/Dropbox/.dropbox.cache/</Item>
+      <Item>/home/existme/Dropbox/ImageClips/</Item>
+      <Item>/home/existme/Dropbox/Memo/</Item>
+      <Item>/home/existme/Dropbox/Memo/Mails/</Item>
+      <Item>/home/existme/Dropbox/Reza-Parastoo/</Item>
+      <Item>/home/existme/Dropbox/Windows/</Item>
+      <Item>/home/existme/Dropbox/Work/</Item>
+      <Item>/home/existme/Dropbox/WriteRoom/</Item>
+      <Item>/home/existme/Dropbox/Docs/Visa/apply for family/</Item>
+      <Item>/home/existme/Dropbox/Docs/Visa/</Item>
+      <Item>/home/existme/Dropbox/Docs/</Item>
+      <Item>/home/existme/Dropbox/scratch/</Item>
+      <Item>/home/existme/Dropbox/todo/</Item>
+      <Item>/home/existme/Dropbox/UniBookShelf/</Item>
+      <Item>/home/existme/Dropbox/Reading Materials/</Item>
+      <Item>/home/existme/Dropbox/ToRead/</Item>
+      <Item>/home/existme/Dropbox/ToListen/</Item>
+      <Item>/home/existme/Dropbox/Sounds/</Item>
+      <Item>/home/existme/Dropbox/SoundCloud/</Item>
+      <Item>/home/existme/Dropbox/ScreenShots/</Item>
+      <Item>/home/existme/Dropbox/RPNCalculator/</Item>
+      <Item>/home/existme/Dropbox/RPNCalculator/RPNCalculator/</Item>
+      <Item>/home/existme/Dropbox/RezaMehdi/</Item>
+      <Item>/home/existme/Dropbox/Reading Materials (Selective Sync Conflict)/</Item>
+      <Item>/home/existme/Dropbox/Public/</Item>
+      <Item>/home/existme/Dropbox/Elements/</Item>
+      <Item>/home/existme/Dropbox/Elements/trnasparent 3d/</Item>
+      <Item>/home/existme/Dropbox/Apps/</Item>
+      <Item>/home/existme/Dropbox/Apps/Books/</Item>
+    </Navigation>
+    <CommandLine>
+      <Item>cd /var/lib/tomcat8/</Item>
+      <Item>cd /usr/share/tomcat8/</Item>
+    </CommandLine>
+    <FileMask>
+      <Item>*</Item>
+    </FileMask>
+    <SearchText>
+      <Item>terminal</Item>
+    </SearchText>
+    <SearchTextPath/>
+    <ReplaceText/>
+    <ReplaceTextPath/>
+    <SearchDirectories/>
+    <SearchExcludeFiles/>
+    <SearchExcludeDirectories/>
+  </History>
+</doublecmd>

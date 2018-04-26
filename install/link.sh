@@ -71,6 +71,7 @@ reLink ~/.config/geany           geany
 reLink ~/.config/ranger          ranger
 reLink ~/.weechat                .weechat 
 reLink ~/.config/profanity       profanity
+reLink ~/.config/doublecmd       doublecmd
 reLink ~/.config/Code/User       vscode/User
 reLink /usr/share/icons/ext-icons   bini3/ext-icons true
 echo "\nRelink completed\n"

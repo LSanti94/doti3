@@ -1,0 +1,23 @@
+--------------- 03-07-2017, 21:26:35 ---------------
+| DC v0.7.8 beta Rev. 7400 -- x86_64-Linux-gtk2
+| Ubuntu Artful Aardvark (development branch) -- GTK 2.24.31 | PID 26227
+Unhandled exception: Exception: TControl.InvalidatePreferredSize loop detected frmMain:TfrmMain Bounds=l=0,t=1104,r=1916,b=66614
+  Stack trace:
+  $00000000005723EB line 5353, column 5 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000572363 line 5369, column 7 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $000000000056621E line 749, column 6 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000558F1A line 3812, column 3 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000565AD5 line 679, column 3 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000571E11 line 5200, column 3 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $00000000005574F6 line 3022, column 7 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000556BCE line 3135, column 27 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $000000000055667D line 3210, column 11 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $00000000004D0723 line 94, column 44 of include/scrollingwincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $000000000055E8A7 line 6373, column 5 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $000000000056B055 line 2858, column 7 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $000000000056ADB4 line 2908, column 7 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $0000000000558511 line 3523, column 7 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $00000000005727AC line 5463, column 7 of include/control.inc in /usr/lib/doublecmd/doublecmd
+  $000000000056280F line 8034, column 7 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+  $000000000055FCD9 line 6997, column 47 of include/wincontrol.inc in /usr/lib/doublecmd/doublecmd
+

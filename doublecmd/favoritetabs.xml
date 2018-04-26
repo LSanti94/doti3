@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd>
+  <FavoriteTabsList>
+    <FavoriteTabs UniqueID="{E79C04EF-79B7-4178-BF6D-5AB8A7D79F09}" Name="-test"/>
+    <FavoriteTabs UniqueID="{22410FDF-9049-49A0-8F15-C98A6C922FDF}" Name="test-item" DestLeft="0" DestRight="1" ExistingKeep="5" SaveDirHistory="False"/>
+    <FavoriteTabs UniqueID="{4AB28E20-1A98-401B-8727-BC20BE23C031}" Name="--"/>
+  </FavoriteTabsList>
+</doublecmd>
