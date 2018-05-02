@@ -3,3 +3,5 @@ notes.md
 geany/geany_socket_*
 .weechat/logs/*
 vscode/User/workspaceStorage
+ranger/bookmarks
+ranger/history
