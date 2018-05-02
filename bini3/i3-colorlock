@@ -39,7 +39,7 @@ V='#004400FF'  # verifying ring color
 F="Monofur Bold for Powerline" # date font
 DATE='%y-%m-%d W:%V'
 TIME='%H:%M:%S' 
-notify.sh "Locking computer..." &&
+$HOME/bini3/notify.sh "Locking computer..." &&
 #deamonized version of i3colorlock only allow one instance
 setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C \
    --ringwrongcolor=$W --insidecolor=$I --ringcolor=$D \
@@ -71,6 +71,7 @@ setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercol
    --datestr="$DATE" --timestr="$TIME" --line-uses-inside \
     || notify.sh "Lock failed: already running"
 
+ $HOME/bini3/notify.sh "Locking computer..."
  # ALL THE OPTIONS
  #
  # struct option longopts[] = {
