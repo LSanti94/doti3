@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="0.8.0 beta" ConfigVersion="10">
+<doublecmd DCVersion="0.8.2 beta" ConfigVersion="10">
   <Configuration Save="True" SortOrder="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
   </Configuration>
@@ -56,7 +56,7 @@
     <WlxPlugins>
       <WlxPlugin Enabled="True">
         <Name>wlxMplayer</Name>
-        <Path>%COMMANDER_PATH%/plugins/wlx/wlxmplayer/wlxmplayer.wlx</Path>
+        <Path>%commander_path%/plugins/wlx/wlxmplayer/wlxmplayer.wlx</Path>
         <DetectString>(EXT="MPG")|(EXT="AVI")|(EXT="MPEG")|(EXT="FLV")</DetectString>
       </WlxPlugin>
     </WlxPlugins>
@@ -533,7 +533,7 @@
               </Sorting>
             </Sortings>
             <History>
-              <Entry>
+              <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
                   <Path Filename="todo">/home/existme/Dropbox/</Path>
@@ -585,7 +585,7 @@
                   <Path Filename="..">/home/existme/Dropbox/Purchased music/negar-bouban/</Path>
                   <Path Filename="..">/home/existme/Downloads/</Path>
                   <Path Filename="Downloads">/home/existme/</Path>
-                  <Path Filename="">/home/existme/Downloads/</Path>
+                  <Path Filename="..">/home/existme/Downloads/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -1350,7 +1350,7 @@
       <Left>0</Left>
       <Top>30</Top>
       <Width>1920</Width>
-      <Height>1016</Height>
+      <Height>1017</Height>
       <Maximized>False</Maximized>
       <Splitter>51.4390371533229</Splitter>
       <PixelsPerInch>95</PixelsPerInch>

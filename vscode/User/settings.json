@@ -31,4 +31,6 @@
     "terminal.integrated.fontFamily": "'Inconsolata Nerd Font'",
     "terminal.integrated.fontSize": 18,
     "editor.renderControlCharacters": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
 }

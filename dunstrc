@@ -2,8 +2,8 @@
         
 [global]
     # font = InconsolataGo Nerd Font 20
-    # font = monofur for Powerline 20
-
+    font = monofur for Powerline 16
+    # font = InconsolataGo Nerd Font 14
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
     #   <i>italic</i>
@@ -71,7 +71,7 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     # geometry = "600x5-30+20"
-    geometry = "600x5-10+33"
+    geometry = "400x5-10+38"
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
     shrink = yes
@@ -200,12 +200,12 @@
     background  = "#1B262F"
     foreground  = "#ffffff"
     timeout = 5 
-    font = InconsolataGo Nerd Font 12
+    shrink = no
     # background = "#383a3b"
 [urgency_critical]
     # background = "#630213"
     # foreground = "#F0F4F6"
-    font = InconsolataGo Nerd Font 14
+    # font = InconsolataGo Nerd Font 14          # fonts doesn't work here
     background = "#630213"
     foreground = "#F6F9FA"
     timeout = 8
@@ -286,7 +286,11 @@
     # script = "/home/existme/bin/beep"
     # script = "paplay" "~/sounds/corsica-s__ding.wav"
     script = ",ding"
-
+[volume]
+    appname = volume
+    # script = ",click-s"
+    history_ignore = yes
+    foreground = "#ebdbb2"
 [layout]
     appname = layout
     # new_icon = ~/bini3/ext-icons/kb-2.png

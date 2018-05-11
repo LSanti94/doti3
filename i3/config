@@ -466,7 +466,7 @@ for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubu
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
 for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox"] $fmod
-for_window [class="Nvidia-settings|TorGuard|Update-manager"] $fmod
+for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
 for_window [class="Doublecmd" title="File operations"] $fmod
@@ -481,7 +481,7 @@ for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
 for_window [class="com.existme.*"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
-for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog"] $fmod
+for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable

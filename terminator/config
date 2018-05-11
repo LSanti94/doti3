@@ -53,7 +53,7 @@
   resize_up = ""
   rotate_ccw = ""
   rotate_cw = ""
-  search = ""
+  search = <Primary>f
   split_horiz = ""
   split_vert = ""
   toggle_scrollbar = ""
