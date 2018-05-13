@@ -1,5 +1,5 @@
 #!/bin/bash -e
-
+sudo chown "$USER" "/tmp/i3exit.log"
 
 action="$1"
 
@@ -17,22 +17,22 @@ if [ -z "$action" ]; then
                      -no-custom -p "Action: " -format i)
     action="${actions[$((index * 2 + 1))]}"
 fi
-
+dunstify "i3-dexit called with [$action] Home is [$HOME]"
 case "$action" in
     lock)
-        i3exit lock > /dev/null
+        i3exit $HOME/bini3/lock 
         ;;
     logout)
-        i3exit logout > /dev/null
+        i3exit $HOME/bini3/logout 
         ;;
     reboot)
-        i3exit reboot > /dev/null
+        sudo $HOME/bini3/i3exit reboot 
         ;;
     suspend)
-        sudo $HOME/bini3/i3exit suspend > /dev/null
+        sudo $HOME/bini3/i3exit suspend 
         ;;
     shutdown)
-        i3exit shutdown > /dev/null
+        sudo $HOME/bini3/i3exit shutdown 
         ;;
     *)
         echo "Usage: $0 (lock|suspend|logout|reboot|shutdown)"
