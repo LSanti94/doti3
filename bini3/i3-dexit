@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash 
 sudo chown "$USER" "/tmp/i3exit.log"
 
 action="$1"

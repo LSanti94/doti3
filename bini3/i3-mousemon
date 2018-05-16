@@ -1,8 +1,9 @@
-#!/usr/bin/python3.6m
+#!/usr/bin/python
 # 
 # Thanks 2 [Maxim](https://askubuntu.com/users/269589/maxim)
 # Script for catching mouse input without changing the event
 # pip3.6 install PyUserInput
+# pip install tendo
 from pymouse import PyMouseEvent
 from pykeyboard import PyKeyboard
 import os
