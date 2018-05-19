@@ -36,8 +36,7 @@ function send_notification {
        (100)            s="muted-blocking";; # 100
     esac
     # Send the notification
-    # dunstify -i audio-volume-muted-blocking -r 2593 -u normal "    $bar$barrest ($volume)"
-    dunstify -i "av-$s" -r 2593 -u volume "$(printf "$bar$barrest [%03d]" $volume)" -a volume
+    dunstify -i "av-$s" -r 2593 -u normal "$(printf "$bar$barrest [%03d]" $volume)" -a volume
 }
 
 case $1 in

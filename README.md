@@ -36,8 +36,9 @@ Other resource configurations included
 You can use the following script to relink your dotfiles
 
 ```bash
-install/relink
+install/link.sh
 ```
+
 Needed applications to build
 ----------------------------
 

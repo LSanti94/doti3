@@ -1,22 +1,25 @@
-#!/usr/bin/python
+#!/usr/bin/python3.6
 
 import i3ipc
 
 # Create the Connection object that can be used to send commands and subscribe
 # to events.
 i3 = i3ipc.Connection()
+print("i3-focus started now.")
 
 
 # Dynamically change border for active window
 def on_window_focus(i3, e):
     focused = i3.get_tree().find_focused()
-    print(focused.name)
+    print("Focused on:" + focused.name)
     if focused.name:
-        print("focused")
-        i3.command('[class="[.]*"] border pixel 0')
-        i3.command("border pixel 50")
-        i3.command("gaps outer current minus 4")
-        i3.command("gaps inner current minus 4")
+        # i3.command('[class="[.]*"] border pixel 0')
+        i3.command('[class="[.]*"] border pixel 5')
+        i3.command('border normal')
+        # i3.command("gaps outer current minus 4")F
+        # i3.command("gaps inner current minus 4")
+
+
 # else:
 #    print("not focused")
 #    i3.command("border pixel 0")

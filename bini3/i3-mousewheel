@@ -2,7 +2,7 @@
 # s apt install lockfile-progs
 lockfile-create -q -r 0 /tmp/i3-wheel || exit 1
 
-local button
+declare button
 pn wheel&
 if [[ "$1" == "up" ]]; then
    button=5

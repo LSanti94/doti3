@@ -1,26 +1,2 @@
-#!/bin/zsh
-# !! It's important to use bash or zsh otherwise reads doesn't work
-prj=i3
-echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
-read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?" 
-echo
-cd ~/git/$prj
-
-if [[ $pr =~ ^[Yy]$ ]]; then
-   git pull
-fi
-read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?" 
-echo
-if [[ ! $pr =~ ^[Yy]$ ]]; then
-   exit
-fi
-
-autoreconf -fi
-rm -rf ~/git/$prj/build
-mkdir ~/git/$prj/build
-cd ~/git/$prj/build
-grc ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-grc make -j8
-grc sudo make install
-
-echo "${bY}Build script exited$cZ?"
+#!/bin/bash
+,build i3

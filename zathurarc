@@ -1,0 +1,88 @@
+# zathurarc
+
+# colors
+set default-bg "#282828"
+#set default-fg "#fbf1c7"
+set statusbar-bg "#282828"
+set statusbar-fg "#fbf1c7"
+set index-bg "#282828"
+set index-fg "#fbf1c7"
+set index-active-bg "#268bd2"
+set index-active-fg "#eee8d5"
+
+set recolor true
+set recolor-keephue true
+set recolor-darkcolor \#cccccc
+set recolor-lightcolor \#121212
+
+set recolor-darkcolor "#657b83"
+set recolor-darkcolor "#282828"
+set recolor-lightcolor "#fdf6e3"
+
+set recolor-keephue false
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#F2F2F2"
+set recolor-darkcolor "#F9F8F5"
+
+set notification-bg  "#252525"
+set notification-fg  "#F2F2F2"
+# font
+# set font "monospace 16"
+set font "Inconsolata-g for Powerline 16"
+
+# settings
+set window-height 1024
+set window-width 1000
+set adjust-open width
+set window-title-basename true
+set window-icon /usr/share/icons/Paper/32x32/apps/xpdf.png
+# use sqlite as bookmarks database backend
+set database sqlite
+set synctex true
+set selection-notification false
+set incremental-search true
+
+
+set guioptions s             #svhc
+set n-completion-items 10
+set show-scrollbars true
+set window-title-basename true
+set statusbar-basename false
+set statusbar-v-padding 0
+set statusbar-h-padding 20
+set page-padding 10
+set pages-per-row 1
+set smooth-scroll true
+set scroll-step 60
+# set scroll-page-aware true
+# set scroll-wrap true
+# set scroll-full-overlap 0.1
+set zoom-min 5
+set zoom-max 1000
+set zoom-step 5
+set selection-clipboard primary
+set scroll-full-overlap 0.1
+# key bindings
+
+# map <S-PageUp> navigate previous
+# map <S-PageDown> navigate next
+map <S-PageUp> scroll full-up
+map <S-PageDown> scroll full-down
+map <PageUp> scroll half-up
+map <PageDown> scroll half-down
+
+map + zoom in
+map - zoom out
+
+map <C-q> quit
+
+map <BackSpace> navigate previous
+map <S-Space> navigate previous
+map w adjust_window width
+
+# use m for toggling recolor, use escape to remove the notification
+map m set recolor abort; exec "xdotool key Escape"
+# map f change_mode fullscreen
+map f toggle_fullscreen
+map [presentation] q change_mode normal
+# vim: set ft=config:

@@ -30,8 +30,8 @@
 ; (xbindkey '(shift "b:4") "repeat 3|xte 'mouseclick 4'")
 
 ;; Shift + PageDown/Pageup should result in Home/End
-(xbindkey '(release "m:0x3" "Prior") "xdotool key --clearmodifiers Home")
-(xbindkey '(release "m:0x3" "Next")  "xdotool key --clearmodifiers End")
+; (xbindkey '(release "m:0x3" "Prior") "xdotool key --clearmodifiers Home")
+; (xbindkey '(release "m:0x3" "Next")  "xdotool key --clearmodifiers End")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; End of xbindkeys configuration ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
