@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# Usage:
+#
+# ,o 1 "terminator"
+#
+# open terminator in workspace 1
+
+w=$1
+shift
+cmd=$1
+cmd=$(which $cmd)
+shift
+rest=$@
+W=$(xgetres i3.w$w)
+i3-msg "workspace $W"
+echo "${bY}Executing:${cZ}\n"
+echo "$cmd $rest"
+exec $cmd $rest

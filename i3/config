@@ -266,6 +266,17 @@ bar {
 # *********************************************************************************************************************************************************
 set $M1 reza
 set_from_resource $M1 echo [$HOME]
+set_from_resource $w1  i3.w1
+set_from_resource $w2  i3.w2
+set_from_resource $w3  i3.w3
+set_from_resource $w4  i3.w4
+set_from_resource $w5  i3.w5
+set_from_resource $w6  i3.w6
+set_from_resource $w7  i3.w7
+set_from_resource $w8  i3.w8
+set_from_resource $w9  i3.w9
+set_from_resource $w0  i3.w0
+
 # set $w1 "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
 # set $w2 "2: ⚯❶"
 # set $w3 "3:   "
@@ -275,16 +286,16 @@ set_from_resource $M1 echo [$HOME]
 # set $w7 "7: x7"
 # set $w8 "8: x8"
 # set $w9 "9: x9"
-set $w0 "0: Chat"
-set $w1 "1: Web"
-set $w2 "2: Term"
-set $w3 "3: IDE"
-set $w4 "4: Term"
-set $w5 "5: FM"
-set $w6 "6: Help"
-set $w7 "7: x7"
-set $w8 "8: x8"
-set $w9 "9: x9"
+# set $w0 "0: Chat"
+# set $w1 "1: Web"
+# set $w2 "2: Term"
+# set $w3 "3: IDE"
+# set $w4 "4: Term"
+# set $w5 "5: FM"
+# set $w6 "6: Help"
+# set $w7 "7: x7"
+# set $w8 "8: x8"
+# set $w9 "9: x9"
 
 # ❸ ➛➜➝➞➟➠➡
 # focus on workspaces
@@ -603,7 +614,7 @@ bindsym --release shift+button2 kill
 bindsym $mod+button2 floating toggle
 bindsym $mod+o move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
-bindsym $mod+p exec "/home/$USER/bini3/i3-test #lll"
+bindsym $mod+p exec /home/$USER/bini3/i3-test $IW0
 bindsym $mod+Shift+d exec $nsi /usr/bin/xfce4-appfinder
 bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 # Resize

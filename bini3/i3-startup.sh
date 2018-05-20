@@ -26,6 +26,8 @@ killall redshift &> /dev/null
 exec "redshift-gtk" &> /dev/null &
 $HOME/bini3/toggle-gaps set
 exec "/usr/bin/albert" &> /dev/null &
+killall xbindkeys
+exec "/usr/bin/xbindkeys" &> /dev/null &
 exec `(which twmnd)` &
 (
    sleep 2 && \

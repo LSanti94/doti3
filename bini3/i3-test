@@ -7,9 +7,10 @@ echo "args: [$@]" >> $FILE
 
 # pango-view test
 # exec "/usr/bin/pango-view" ~/bin/sample/pango-test.markup --hinting full --markup
-
+exec dunstify "$1"
 # dunst test
 killall dunst ; dunst -config ~/.config/dunst/dunstrc -print &
+sleep 1
 # killall compton ; compton --config ~/.config/compton.conf -b -d :0
 key_layout_msg="<span font_variant='smallcaps' foreground='#eeeeee' font='ProFontIIx Nerd Font Book 50'>en</span> <b><span foreground='#000000' font='40'> </span></b>"
 exec dunstify -app "layout" "$key_layout_msg" -r 10001 -u n -i "$HOME/bini3/ext-icons/kb-4.png"

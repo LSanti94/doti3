@@ -1,4 +1,29 @@
+! vim:filetype=xdefaults
+! use `xrdb ~/.Xresources` to reload
+
 i3.dp0: "DVI-1"
 i3.dp1: "DVI-0"
 i3.dp2: "DVI-1"
+
+i3.w1: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span> Web "
+i3.w2: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 2: </span> ⚯❶ "
+i3.w3: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 3: </span>   "
+i3.w4: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 4: </span> ➡❷ "
+i3.w5: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 5: </span> FM "
+i3.w6: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 6: </span> Help "
+i3.w7: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 7: </span> x7 "
+i3.w8: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 8: </span> x8 "
+i3.w9: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 9: </span> x9 "
+i3.w0: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 0: </span> x0 "
+
+! set $w0 "0: Chat"
+! set $w1 "1: Web"
+! set $w2 "2: Term"
+! set $w3 "3: IDE"
+! set $w4 "4: Term"
+! set $w5 "5: FM"
+! set $w6 "6: Help"
+! set $w7 "7: x7"
+! set $w8 "8: x8"
+! set $w9 "9: x9"
 

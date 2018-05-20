@@ -1,0 +1,4 @@
+#!/bin/sh
+# Usage ,o# "application"
+# Opens "application" in workspace #
+exec ~/bini3/,o 1 $@
