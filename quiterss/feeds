@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+    <head>
+        <title>QuiteRSS</title>
+        <dateModified>Mon May 21 06:06:43 2018</dateModified>
+    </head>
+    <body>
+        <outline text="QuiteRSS" type="rss" htmlUrl="http://quiterss.org/en/frontpage" xmlUrl="http://quiterss.org/en/rss.xml"/>
+        <outline text="It's FOSS" type="rss" htmlUrl="https://itsfoss.com" xmlUrl="http://feeds.feedburner.com/ItsFoss"/>
+        <outline text="Hacker News" type="rss" htmlUrl="https://news.ycombinator.com/" xmlUrl="https://news.ycombinator.com/showrss"/>
+        <outline text="Slashdot" type="rss" htmlUrl="https://slashdot.org/" xmlUrl="http://rss.slashdot.org/Slashdot/slashdotMain"/>
+        <outline text="Hacker News: Show HN" type="rss" htmlUrl="https://news.ycombinator.com/shownew" xmlUrl="https://hnrss.org/show"/>
+        <outline text="Hacker News: Polls" type="rss" htmlUrl="https://news.ycombinator.com/" xmlUrl="https://hnrss.org/polls"/>
+        <outline text="point 100+ comments 25+" type="rss" htmlUrl="https://news.ycombinator.com/shownew" xmlUrl="https://hnrss.org/show?points=100&amp;comments=25"/>
+    </body>
+</opml>
