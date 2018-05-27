@@ -56,7 +56,7 @@
     <WlxPlugins>
       <WlxPlugin Enabled="True">
         <Name>wlxMplayer</Name>
-        <Path>%commander_path%/plugins/wlx/wlxmplayer/wlxmplayer.wlx</Path>
+        <Path>%COMMANDER_PATH%/plugins/wlx/wlxmplayer/wlxmplayer.wlx</Path>
         <DetectString>(EXT="MPG")|(EXT="AVI")|(EXT="MPEG")|(EXT="FLV")</DetectString>
       </WlxPlugin>
     </WlxPlugins>
@@ -481,7 +481,7 @@
     <ProcessComments>False</ProcessComments>
     <RenameSelOnlyName>False</RenameSelOnlyName>
     <ShowCopyTabSelectPanel>False</ShowCopyTabSelectPanel>
-    <UseTrash>False</UseTrash>
+    <UseTrash>True</UseTrash>
     <SkipFileOpError>False</SkipFileOpError>
     <TypeOfDuplicatedRename>0</TypeOfDuplicatedRename>
     <ShowDialogOnDragDrop>True</ShowDialogOnDragDrop>
@@ -725,7 +725,7 @@
     <Theme>dctheme</Theme>
     <DiskSize>16</DiskSize>
     <CustomIcons>0</CustomIcons>
-    <PixelsPerInch>95</PixelsPerInch>
+    <PixelsPerInch>94</PixelsPerInch>
     <ShowButtonGlyphs>0</ShowButtonGlyphs>
     <DiskAlpha>50</DiskAlpha>
   </Icons>
@@ -741,6 +741,7 @@
     <HotDir Name="  ~/Dropbox" Path="~/Dropbox"/>
     <HotDir Name="  ~/documents" Path="/home/existme/documents"/>
     <HotDir Name="  ~/Pictures" Path="/home/existme/Pictures"/>
+    <HotDir Name="Desktop-WD" Path="/home/existme/mnt/wd/Desktop"/>
     <HotDir Name="  /tmp" Path="/tmp"/>
     <HotDir Name="  /" Path=""/>
     <HotDir Name="  /etc" Path="/etc"/>
@@ -824,7 +825,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default</Name>
       <CustomView>False</CustomView>
-      <PixelsPerInch>95</PixelsPerInch>
+      <PixelsPerInch>94</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
       </CursorBorder>
@@ -832,7 +833,7 @@
         <Column>
           <Title>Name</Title>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>357</Width>
+          <Width>561</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata Nerd Font</Name>
@@ -855,7 +856,7 @@
         <Column>
           <Title>Ext</Title>
           <FuncString>[DC().GETFILEEXT{}]</FuncString>
-          <Width>89</Width>
+          <Width>88</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata Nerd Font</Name>
@@ -878,7 +879,7 @@
         <Column>
           <Title>Size</Title>
           <FuncString>[DC().GETFILESIZE{}]</FuncString>
-          <Width>83</Width>
+          <Width>107</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata Nerd Font</Name>
@@ -901,7 +902,7 @@
         <Column>
           <Title>Date</Title>
           <FuncString>[DC().GETFILETIME{}]</FuncString>
-          <Width>201</Width>
+          <Width>199</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata Nerd Font</Name>
@@ -924,7 +925,7 @@
         <Column>
           <Title>Attr</Title>
           <FuncString>[DC().GETFILEATTR{}]</FuncString>
-          <Width>139</Width>
+          <Width>138</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata Nerd Font</Name>
@@ -949,7 +950,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default (2017-08-12@10-46-30)</Name>
       <CustomView>True</CustomView>
-      <PixelsPerInch>95</PixelsPerInch>
+      <PixelsPerInch>94</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
       </CursorBorder>
@@ -957,7 +958,7 @@
         <Column>
           <Title>Ext</Title>
           <FuncString>[DC().GETFILEEXT{}]</FuncString>
-          <Width>49</Width>
+          <Width>48</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -980,7 +981,7 @@
         <Column>
           <Title>Size</Title>
           <FuncString>[DC().GETFILESIZE{}]</FuncString>
-          <Width>69</Width>
+          <Width>68</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1003,7 +1004,7 @@
         <Column>
           <Title>Date</Title>
           <FuncString>[DC().GETFILETIME{}]</FuncString>
-          <Width>139</Width>
+          <Width>138</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1026,7 +1027,7 @@
         <Column>
           <Title>Attr</Title>
           <FuncString>[DC().GETFILEATTR{}]</FuncString>
-          <Width>144</Width>
+          <Width>142</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1049,7 +1050,7 @@
         <Column>
           <Title>alias</Title>
           <FuncString>[DC().GETFILELINKTO{}] </FuncString>
-          <Width>442</Width>
+          <Width>437</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1074,7 +1075,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default (2017-08-12@10-46-30)(2017-08-12@10-48-23)</Name>
       <CustomView>True</CustomView>
-      <PixelsPerInch>95</PixelsPerInch>
+      <PixelsPerInch>94</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
       </CursorBorder>
@@ -1082,7 +1083,7 @@
         <Column>
           <Title>Ext</Title>
           <FuncString>[DC().GETFILEEXT{}]</FuncString>
-          <Width>165</Width>
+          <Width>163</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1105,7 +1106,7 @@
         <Column>
           <Title>Size</Title>
           <FuncString>[DC().GETFILESIZE{}]</FuncString>
-          <Width>69</Width>
+          <Width>68</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1128,7 +1129,7 @@
         <Column>
           <Title>Date</Title>
           <FuncString>[DC().GETFILETIME{}]</FuncString>
-          <Width>139</Width>
+          <Width>138</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1151,7 +1152,7 @@
         <Column>
           <Title>Attr</Title>
           <FuncString>[DC().GETFILEATTR{}]</FuncString>
-          <Width>392</Width>
+          <Width>388</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1174,7 +1175,7 @@
         <Column>
           <Title>alias</Title>
           <FuncString>[DC().GETFILELINKTO{}] </FuncString>
-          <Width>442</Width>
+          <Width>437</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1199,7 +1200,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>with link</Name>
       <CustomView>True</CustomView>
-      <PixelsPerInch>95</PixelsPerInch>
+      <PixelsPerInch>94</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
       </CursorBorder>
@@ -1207,7 +1208,7 @@
         <Column>
           <Title>Name</Title>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>247</Width>
+          <Width>244</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1230,7 +1231,7 @@
         <Column>
           <Title>Ext</Title>
           <FuncString>[DC().GETFILEEXT{}]</FuncString>
-          <Width>137</Width>
+          <Width>136</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1253,7 +1254,7 @@
         <Column>
           <Title>Size</Title>
           <FuncString>[DC().GETFILESIZE{}]</FuncString>
-          <Width>111</Width>
+          <Width>110</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1276,7 +1277,7 @@
         <Column>
           <Title>Date</Title>
           <FuncString>[DC().GETFILETIME{}]</FuncString>
-          <Width>139</Width>
+          <Width>138</Width>
           <Align>1</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1299,7 +1300,7 @@
         <Column>
           <Title>Attr</Title>
           <FuncString>[DC().GETFILEATTR{}]</FuncString>
-          <Width>190</Width>
+          <Width>188</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>
@@ -1322,7 +1323,7 @@
         <Column>
           <Title>Link</Title>
           <FuncString>[DC().GETFILELINKTO{}] </FuncString>
-          <Width>451</Width>
+          <Width>446</Width>
           <Align>0</Align>
           <Font>
             <Name>Inconsolata-g for Powerline</Name>

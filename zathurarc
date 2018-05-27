@@ -10,7 +10,7 @@ set index-fg "#fbf1c7"
 set index-active-bg "#268bd2"
 set index-active-fg "#eee8d5"
 
-set recolor true
+set recolor false
 set recolor-keephue true
 set recolor-darkcolor \#cccccc
 set recolor-lightcolor \#121212

@@ -621,7 +621,6 @@ bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # Volume
-bindsym XF86AudioMute exec "$HOME/bini3/unmute && amixer -q sset Master,0 toggle && pkill -SIGRTMIN+11 i3blocks"
 
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 bindsym XF86AudioRaiseVolume exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
@@ -632,6 +631,7 @@ bindsym XF86AudioLowerVolume exec "$HOME/bini3/,volume down" exec "pkill -SIGRTM
 bindsym $mod+F10 exec "$HOME/bini3/,volume down" exec "pkill -SIGRTMIN+11 i3blocks"
 # bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 bindsym $mod+F11 exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioMute exec "$HOME/bini3/,volume mute" exec "pkill -SIGRTMIN+11 i3blocks"
 
 bindsym $mod+button6 exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 bindsym $mod+button7 exec "amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
