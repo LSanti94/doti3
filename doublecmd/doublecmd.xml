@@ -536,56 +536,56 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="todo">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/todo/</Path>
-                  <Path Filename="scratch">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/scratch/</Path>
-                  <Path Filename="WriteRoom">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/WriteRoom/</Path>
-                  <Path Filename="Work">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Work/</Path>
-                  <Path Filename="Windows">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Windows/</Path>
-                  <Path Filename="Reza-Parastoo">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Reza-Parastoo/</Path>
-                  <Path Filename="Memo">/home/existme/Dropbox/</Path>
-                  <Path Filename="Mails">/home/existme/Dropbox/Memo/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Memo/Mails/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Memo/</Path>
-                  <Path Filename="ImageClips">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/ImageClips/</Path>
-                  <Path Filename=".dropbox.cache">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/.dropbox.cache/</Path>
-                  <Path Filename="Config">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Config/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/</Path>
-                  <Path Filename="..">/home/</Path>
-                  <Path Filename="usr">/</Path>
-                  <Path Filename="share">/usr/</Path>
-                  <Path Filename="kodi">/usr/share/</Path>
-                  <Path Filename="addons">/usr/share/kodi/</Path>
-                  <Path Filename="..">/usr/share/kodi/addons/</Path>
-                  <Path Filename="addons">/usr/share/kodi/</Path>
-                  <Path Filename="metadata.tvdb.com">/usr/share/kodi/addons/</Path>
-                  <Path Filename="..">/usr/share/kodi/addons/metadata.tvdb.com/</Path>
-                  <Path Filename="..">/usr/share/kodi/addons/</Path>
-                  <Path Filename="..">/usr/share/kodi/</Path>
-                  <Path Filename="..">/usr/share/</Path>
-                  <Path Filename="MyDotFiles">/home/existme/git/</Path>
-                  <Path Filename="..">/home/existme/git/MyDotFiles/</Path>
-                  <Path Filename="MyDotFiles">/home/existme/git/</Path>
-                  <Path Filename="vim">/home/existme/git/MyDotFiles/</Path>
-                  <Path Filename="..">/home/existme/git/MyDotFiles/vim/</Path>
-                  <Path Filename="check-0.12.0">/home/existme/Downloads/</Path>
-                  <Path Filename="..">/home/existme/Downloads/check-0.12.0/</Path>
-                  <Path Filename="locales">/home/existme/Downloads/</Path>
-                  <Path Filename="..">/home/existme/Downloads/locales/</Path>
-                  <Path Filename="..">/home/existme/Downloads/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Purchased music/negar-bouban/</Path>
-                  <Path Filename="..">/home/existme/Downloads/</Path>
-                  <Path Filename="Downloads">/home/existme/</Path>
-                  <Path Filename="..">/home/existme/Downloads/</Path>
+                  <Path Filename="NewFilms">/media/existme/My Book/Cinematic/</Path>
+                  <Path Filename="Ghazal Films">/media/existme/My Book/Cinematic/NewFilms/</Path>
+                  <Path Filename="Habib Khani">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/Habib Khani/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/</Path>
+                  <Path Filename="P">/media/existme/My Book/Cinematic/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/P/</Path>
+                  <Path Filename="Serials">/media/existme/My Book/Cinematic/</Path>
+                  <Path Filename="Of">/media/existme/My Book/Cinematic/Serials/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Of/</Path>
+                  <Path Filename="Season">/media/existme/My Book/Cinematic/Serials/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Season/</Path>
+                  <Path Filename="Sex">/media/existme/My Book/Cinematic/Serials/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Sex/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/</Path>
+                  <Path Filename="..">/media/existme/My Book/Cinematic/</Path>
+                  <Path Filename="DESKTOP">/media/existme/My Book/</Path>
+                  <Path Filename="Books">/media/existme/My Book/DESKTOP/</Path>
+                  <Path Filename="AudioBook">/media/existme/My Book/DESKTOP/Books/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/AudioBook/</Path>
+                  <Path Filename="EBook">/media/existme/My Book/DESKTOP/Books/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="EBook">/media/existme/My Book/DESKTOP/Books/</Path>
+                  <Path Filename="To-Categorize">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/To-Categorize/</Path>
+                  <Path Filename="History">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/History/</Path>
+                  <Path Filename="History">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/History/</Path>
+                  <Path Filename="Entertainment">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Entertainment/</Path>
+                  <Path Filename="English">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="IELTS">/media/existme/My Book/DESKTOP/Books/EBook/English/</Path>
+                  <Path Filename="IELTS 4">/media/existme/My Book/DESKTOP/Books/EBook/English/IELTS/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/English/IELTS/IELTS 4/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/English/IELTS/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/English/</Path>
+                  <Path Filename="Diet &amp; Fitness">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Diet &amp; Fitness/</Path>
+                  <Path Filename="Deleteable">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Deleteable/</Path>
+                  <Path Filename="Cooking&amp;Foods">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Cooking&amp;Foods/</Path>
+                  <Path Filename="Comic">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Comic/</Path>
+                  <Path Filename="Comic">/media/existme/My Book/DESKTOP/Books/EBook/</Path>
+                  <Path Filename="TinTin">/media/existme/My Book/DESKTOP/Books/EBook/Comic/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Comic/TinTin/</Path>
+                  <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Comic/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -609,28 +609,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="..">/home/existme/git/</Path>
-                  <Path Filename="bin">/home/existme/</Path>
-                  <Path Filename=".idea">/home/existme/bin/</Path>
-                  <Path Filename="..">/home/existme/bin/.idea/</Path>
-                  <Path Filename="fixes">/home/existme/bin/</Path>
-                  <Path Filename="..">/home/existme/bin/fixes/</Path>
-                  <Path Filename="utils">/home/existme/bin/</Path>
-                  <Path Filename="..">/home/existme/bin/utils/</Path>
-                  <Path Filename="..">/home/existme/bin/</Path>
-                  <Path Filename="bin">/home/existme/</Path>
-                  <Path Filename="..">/home/existme/bin/</Path>
-                  <Path Filename="tmp">/home/existme/</Path>
-                  <Path Filename="neosnippets">/home/existme/tmp/</Path>
-                  <Path Filename="neosnippets">/home/existme/tmp/neosnippets/</Path>
-                  <Path Filename="..">/home/existme/tmp/neosnippets/neosnippets/</Path>
-                  <Path Filename="Docs">/home/existme/Dropbox/</Path>
-                  <Path Filename="Visa">/home/existme/Dropbox/Docs/</Path>
-                  <Path Filename="apply 2017">/home/existme/Dropbox/Docs/Visa/</Path>
-                  <Path Filename="From-NordicRelocation">/home/existme/Dropbox/Docs/Visa/apply 2017/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Docs/Visa/apply 2017/From-NordicRelocation/</Path>
-                  <Path Filename="Send-To-Fredrik">/home/existme/Dropbox/Docs/Visa/apply 2017/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Docs/Visa/apply 2017/Send-To-Fredrik/</Path>
                   <Path Filename="For-Parastoo">/home/existme/Dropbox/Docs/Visa/apply 2017/</Path>
                   <Path Filename="visa-parastoo">/home/existme/Dropbox/Docs/Visa/apply 2017/For-Parastoo/</Path>
                   <Path Filename="bl_forsakran_228011F-filled.pdf">/home/existme/Dropbox/Docs/Visa/apply 2017/For-Parastoo/visa-parastoo/</Path>
@@ -659,6 +637,28 @@
                   <Path Filename="..">/home/existme/Dropbox/</Path>
                   <Path Filename="Downloads">/home/existme/</Path>
                   <Path Filename="..">/home/existme/Downloads/</Path>
+                  <Path Filename="h1hXJr_rlib">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/h1hXJr_rlib/</Path>
+                  <Path Filename="VMdE17_rlib">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/VMdE17_rlib/</Path>
+                  <Path Filename="apk">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/apk/</Path>
+                  <Path Filename="apk">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/apk/</Path>
+                  <Path Filename="apk">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/apk/</Path>
+                  <Path Filename="Fonts">/home/existme/mnt/wd/Desktop/</Path>
+                  <Path Filename="Farsi fonts">/home/existme/mnt/wd/Desktop/Fonts/</Path>
+                  <Path Filename="..">/home/existme/mnt/wd/Desktop/Fonts/Farsi fonts/</Path>
+                  <Path Filename="Noise-Graphic">/home/existme/mnt/wd/Desktop/Fonts/</Path>
+                  <Path Filename="Telegram Desktop">/home/existme/Downloads/</Path>
+                  <Path Filename="..">/home/existme/Downloads/Telegram Desktop/</Path>
+                  <Path Filename="..">/home/existme/Downloads/</Path>
+                  <Path Filename=".thumbnails">/home/existme/</Path>
+                  <Path Filename="normal">/home/existme/.thumbnails/</Path>
+                  <Path Filename="..">/home/existme/.thumbnails/normal/</Path>
+                  <Path Filename="..">/home/existme/.thumbnails/</Path>
+                  <Path Filename=".ansible">/home/existme/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -1351,10 +1351,10 @@
       <Left>0</Left>
       <Top>30</Top>
       <Width>1920</Width>
-      <Height>1017</Height>
+      <Height>1016</Height>
       <Maximized>False</Maximized>
       <Splitter>51.4390371533229</Splitter>
-      <PixelsPerInch>95</PixelsPerInch>
+      <PixelsPerInch>94</PixelsPerInch>
     </Position>
   </MainWindow>
   <Description>

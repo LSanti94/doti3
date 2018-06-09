@@ -18,8 +18,9 @@ set_from_resource $DP0 i3.dp0
 set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
-exec_always $nsi compton --config ~/.config/compton.conf -b 
-exec_always $HOME/bini3/i3-test $dp0
+# exec_always $nsi compton --config ~/.config/compton.conf -b 
+exec_always 'exec $HOME/bini3/i3-test $dp0'
+exec_always 'exec $HOME/bin/flog -st i3.config'
 
 set $bg-color                       #485767
 set $fg-color                       #FFFFFF
@@ -225,9 +226,9 @@ exec $nsi numlockx on
 #exe $nsi xrandr --output $left --pos 0x0 --output $right --pos 1920x1200 --right-of $left
 
 
-exec $nsi randr --output $DP0 --verbose --auto
-exec $nsi randr --output $DP1 --verbose --auto --primary --right-of $DP0
-exec $nsi randr --output $DP2 --verbose --auto --right-of $DP1
+exec $nsi 'exec randr --output $DP0 --verbose --auto'
+exec $nsi 'exec randr --output $DP1 --verbose --auto --primary --right-of $DP0'
+exec $nsi 'exec randr --output $DP2 --verbose --auto --right-of $DP1'
 
 workspace 1 output $DP1
 workspace 2 output $DP0
@@ -506,7 +507,7 @@ for_window [class="Firefox" instance="Devtools"]                floating disable
 
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
-bindsym $mod+m exec "$HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
+# bindsym $mod+m exec "exec $HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
 
 #hide_edge_borders none
 
@@ -576,8 +577,8 @@ bindcode $mod+Shift+Pev move workspace to output right
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep 
 # bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
-bindsym Mod1+ISO_Next_Group      exec dunstify -app "layout" $key_layout_msg -i $key_icon -r 10001
-bindsym --release Num_Lock       exec beep
+bindsym Mod1+ISO_Next_Group      exec "exec dunstify -app layout $key_layout_msg -i $key_icon -r 10001"
+bindsym --release Num_Lock       exec "exec beep"
 
 #bindsym F1 exec $nsi "default"
 
@@ -591,14 +592,14 @@ bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disa
 # Toggle gaps
 bindsym $mod+shift+F10 exec $nsi "$HOME/bini3/toggle-gaps toggle 10 5"
 # Toggle chrome loudness
-bindsym $mod+shift+F12 exec $nsi "$HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true"
+bindsym $mod+shift+F12 exec $nsi "exec $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true"
 
 # ************************************************************************************************************
 # Rofi
-bindsym $mod+Next exec "/usr/bin/rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+Next exec "exec /usr/bin/rofi -combi-modi window,drun -show combi -modi combi"
 # htop
-bindsym $mod+F1 exec $nsi "/usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'", focus
-bindsym $mod+shift+n exec $nsi "/usr/bin/thunar", focus
+bindsym $mod+F1 exec $nsi "exec /usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'", focus
+bindsym $mod+shift+n exec $nsi "exec /usr/bin/thunar", focus
 # thunar
 # bindsym $mod+
 # ************************************************************************************************************
@@ -623,23 +624,23 @@ bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name:
 # Volume
 
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioRaiseVolume exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioRaiseVolume exec $nsi "exec $HOME/bini3/,volume up" 
 # bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioLowerVolume exec "$HOME/bini3/,volume down" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioLowerVolume exec $nsi "exec $HOME/bini3/,volume down"
 
 # bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F10 exec "$HOME/bini3/,volume down" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F10 exec $nsi "exec $HOME/bini3/,volume down" 
 # bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F11 exec "$HOME/bini3/,volume up" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioMute exec "$HOME/bini3/,volume mute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F11 exec $nsi "exec $HOME/bini3/,volume up" 
+bindsym XF86AudioMute exec $nsi "exec $HOME/bini3/,volume mute" 
 
-bindsym $mod+button6 exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+button7 exec "amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+button6 exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" 
+bindsym $mod+button7 exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" 
 
 # Media
-bindsym XF86AudioPlay exec playerctl play-pause  
-bindsym XF86AudioNext exec playerctl next  
-bindsym XF86AudioPrev exec playerctl previous  
+bindsym XF86AudioPlay exec $nsi "exec playerctl play-pause"
+bindsym XF86AudioNext exec $nsi "exec playerctl next"
+bindsym XF86AudioPrev exec $nsi "exec playerctl previous"
 
 # kill focused window
 bindsym $mod+q kill
@@ -706,4 +707,4 @@ exec $nsi "/usr/bin/terminator"
 
 # for_window [class="^.*"] border pixel 0
 hide_edge_borders both
-
+exec_always "exec $HOME/bin/flog -se i3.config"

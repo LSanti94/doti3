@@ -21,20 +21,23 @@ exec "/usr/bin/x-session-manager" &> /dev/null &
 exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null & 
 
 exec "/usr/bin/nm-applet"&
-exec "mate-settings-daemon" --replace &> /dev/null & 
+# exec "mate-settings-daemon" --replace &> /dev/null & 
 killall redshift &> /dev/null  
 exec "redshift-gtk" &> /dev/null &
 $HOME/bini3/toggle-gaps set
 exec "/usr/bin/albert" &> /dev/null &
 killall xbindkeys
 exec "/usr/bin/xbindkeys" &> /dev/null &
-exec `(which twmnd)` &
+
 (
    sleep 2 && \
    exec "/usr/bin/google-chrome" -no-startup-window --force-device-scale-factor=1.25 &> /dev/null 
 )&
 (
    sleep 15 && \
-   twmnc -c "nitrogen background restored" -i info && \
    exec `which nitrogen` --restore &> /dev/null 
+   notify.sh "nitrogen background restored" -i info && \
 )&
+
+# compton --config ~/.config/compton.conf -b
+
