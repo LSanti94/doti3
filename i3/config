@@ -19,8 +19,8 @@ set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
 # exec_always $nsi compton --config ~/.config/compton.conf -b 
-exec_always 'exec $HOME/bini3/i3-test $dp0'
-exec_always 'exec $HOME/bin/flog -st i3.config'
+exec_always $HOME/bini3/i3-test $dp0
+exec_always "$HOME/bin/flog -st i3.config"
 
 set $bg-color                       #485767
 set $fg-color                       #FFFFFF
@@ -223,16 +223,6 @@ exec $nsi numlockx on
 #set $DP2 "HDMI-1"
 
 
-#exe $nsi xrandr --output $left --pos 0x0 --output $right --pos 1920x1200 --right-of $left
-
-
-exec $nsi 'exec randr --output $DP0 --verbose --auto'
-exec $nsi 'exec randr --output $DP1 --verbose --auto --primary --right-of $DP0'
-exec $nsi 'exec randr --output $DP2 --verbose --auto --right-of $DP1'
-
-workspace 1 output $DP1
-workspace 2 output $DP0
-workspace 6 output $DP2
 # *********************************************************************************************************************************************************
 #                                                               i3bar
 # *********************************************************************************************************************************************************
@@ -277,6 +267,16 @@ set_from_resource $w7  i3.w7
 set_from_resource $w8  i3.w8
 set_from_resource $w9  i3.w9
 set_from_resource $w0  i3.w0
+
+
+#exe $nsi xrandr --output $left --pos 0x0 --output $right --pos 1920x1200 --right-of $left
+# exec $nsi exec xrandr --output $DP0 --verbose --auto
+# exec $nsi exec xrandr --output $DP1 --verbose --auto --primary --right-of $DP0
+# exec $nsi exec xrandr --output $DP2 --verbose --auto --right-of $DP1
+
+workspace $w2 output $DP0
+workspace $w1 output $DP1
+
 
 # set $w1 "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
 # set $w2 "2: ⚯❶"
@@ -370,31 +370,8 @@ bindcode $mod+Shift+Mod2+67 move window to output $DP0
 bindcode $mod+Shift+Mod2+68 move window to output $DP1
 bindcode $mod+Shift+Mod2+69 move window to output $DP2
 
-# *********************************************************************************************************************************************************
-#                                                               Gaps mode
-# *********************************************************************************************************************************************************
-# it was both 5
-# gaps outer 0
-# gaps inner 0
-
-
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
-# smart_gaps on 
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-# set $mode_gaps Gaps: (o) outer, (i) inner, (b) border
-# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_border Border (1..9) pixel 0 for none, Shift +|- (border on/off)
 
-mode "$mode_gaps" {
-    bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
-    bindsym b      mode "$mode_border"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 mode "$mode_border" {
     # The different borders I use from time to time
     bindsym 1 border 1pixel
@@ -409,31 +386,6 @@ mode "$mode_border" {
     bindsym 0 border none
     bindsym shift+plus border normal
     bindsym shift+minus border none
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     gaps inner current set 0
-
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     gaps inner all set 0
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     gaps outer current set 0
-
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     gaps outer all set 0
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -577,8 +529,8 @@ bindcode $mod+Shift+Pev move workspace to output right
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep 
 # bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
-bindsym Mod1+ISO_Next_Group      exec "exec dunstify -app layout $key_layout_msg -i $key_icon -r 10001"
-bindsym --release Num_Lock       exec "exec beep"
+bindsym Mod1+ISO_Next_Group      exec dunstify -app layout $key_layout_msg -i $key_icon -r 10001
+bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
 
@@ -589,10 +541,8 @@ bindsym $mod+y exec $nsi i3-msg border toggle
 bindsym $mod+u fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
 bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disable;"
 
-# Toggle gaps
-bindsym $mod+shift+F10 exec $nsi "$HOME/bini3/toggle-gaps toggle 10 5"
 # Toggle chrome loudness
-bindsym $mod+shift+F12 exec $nsi "exec $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true"
+bindsym $mod+shift+F12 exec $nsi $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true
 
 # ************************************************************************************************************
 # Rofi
@@ -648,8 +598,6 @@ bindsym $mod+q kill
 # exit i3 (logs you out of your X session)
 bindsym $mod+r mode " "
 
-bindsym $mod+Shift+g mode "$mode_gaps"
-
 # Switch to next or previous workspace
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
@@ -658,9 +606,6 @@ bindsym $mod+Control+Left workspace prev
 
 # screen lock
 bindsym $mod+l exec "$HOME/bini3/i3exit lock"
-
-# Reading xautolock settings from .Xresources
-exec $nsi "xautolock"
 
 # start a terminal
 bindsym $mod+Return exec "terminator"

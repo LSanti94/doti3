@@ -15,6 +15,8 @@ sudo apt install lockfile-progs
 sudo apt install xdotool
 # xbindkeys for additional shortcut configuration
 sudo apt install xbindkeys xbindkeys_config
+# for setting numlock state
+sudo apt install numlockx
 
 
 # For mounting remote file systems

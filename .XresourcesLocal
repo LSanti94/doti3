@@ -1,9 +1,9 @@
 ! vim:filetype=xdefaults
 ! use `xrdb ~/.Xresources` to reload
 
-i3.dp0: "DVI-1"
-i3.dp1: "DVI-0"
-i3.dp2: "DVI-1"
+i3.dp0: "DP-2"
+i3.dp1: "DP-0"
+i3.dp2: ""
 
 i3.w1: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span> Web "
 i3.w2: "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 2: </span> ⚯❶ "

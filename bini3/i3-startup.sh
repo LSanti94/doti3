@@ -20,18 +20,25 @@ set -x
 exec "/usr/bin/x-session-manager" &> /dev/null &
 exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null & 
 
-exec "/usr/bin/nm-applet"&
+# this is network applet
+killall nm-applet &> /dev/null
+exec "/usr/bin/nm-applet" &> /dev/null &
+
 # exec "mate-settings-daemon" --replace &> /dev/null & 
 killall redshift &> /dev/null  
 exec "redshift-gtk" &> /dev/null &
-$HOME/bini3/toggle-gaps set
+
+# $HOME/bini3/toggle-gaps set
+
+killall albert &> /dev/null  
 exec "/usr/bin/albert" &> /dev/null &
+
 killall xbindkeys
 exec "/usr/bin/xbindkeys" &> /dev/null &
 
 (
-   sleep 2 && \
-   exec "/usr/bin/google-chrome" -no-startup-window --force-device-scale-factor=1.25 &> /dev/null 
+   sleep 3 && \
+   $HOME/bini3/,o1 "/usr/bin/google-chrome" --force-device-scale-factor=1.25 &> /dev/null 
 )&
 (
    sleep 15 && \

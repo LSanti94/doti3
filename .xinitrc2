@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # set -xe
 # /etc/X11/xinit/xinitrc
 #
@@ -12,13 +12,18 @@ $HOME/bin/flog -st "~/.xinitrc2"
 
 xrdb -load "$HOME/.Xdefaults"
 xrdb -merge "$HOME/.Xresources"
-[[ -f ~/.XresourcesLocal ]] && xrdb -merge "$HOME/.XresourcesLocal"
+
+if [ -f ~/.XresourcesLocal ]; then 
+   xrdb -merge "$HOME/.XresourcesLocal"
+fi
 
 xset +fp "$HOME/.fonts"
 xset fp rehash
 $HOME/bin/flog "fonts rehashed"
 
-(. /etc/X11/Xsession) || true
+#
+# (. /etc/X11/Xsession) || true
+#
 
 xsetroot -solid "#333333"
 
@@ -26,20 +31,19 @@ xsetroot -solid "#333333"
 /usr/bin/gnome-keyring-daemon --start --components=gpg
 /usr/bin/gnome-keyring-daemon --start --components=ssh
 
-# dunst -config ~/.config/dunst/dunstrc
-killall dunst; dunst &
+killall dunst; dunst -config ~/.config/dunst/dunstrc &
 $HOME/bin/flog "dunst loaded"
 
 # mate-settings-daemon --replace
 setxkbmap -layout us,ir -option grp:caps_toggle
 
-xautolock &
-pasystray &
+# xautolock &
+# pasystray &
 nitrogen --restore
 
 $HOME/bin/flog "nitrogen restored"
 
-killall i3-mousemon;$HOME/bini3/i3-mousemon &
+# killall i3-mousemon;$HOME/bini3/i3-mousemon &
 killall xbindkeys;/usr/bin/xbindkeys &
 
 killall redshift-gtk; redshift-gtk &

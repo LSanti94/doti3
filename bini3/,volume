@@ -67,4 +67,6 @@ case $1 in
       fi
 	;;
 esac
+echo `get_volume`
+
 pkill -SIGRTMIN+11 i3blocks
