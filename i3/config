@@ -628,27 +628,6 @@ exec i3-msg "workspace number 5, layout tabbed"
 
 # Keyboard layout
 exec_always $nsi "$HOME/bini3/i3-startup.sh"
-exec $nsi "/usr/bin/terminator"
-
-#exec "/usr/bin/code"
-
-#exec $nsi "/usr/bin/doublecmd"
-#exec $nsi pasystray
-#exec $nsi "/usr/bin/volumeicon"
-# i3-msg exec $nsi gnome-sound-applet
-#exec $nsi "/usr/bin/thunar --daemon"
-#exec $nsi "/usr/bin/thunar"
-#exec $nsi "/usr/local/bin/toolbox --minimize"
-# gnome-settings-daemon
-# i3-msg exec $nsi thunderbird
-# exec "sleep 30; /usr/bin/firefox"
-# $HOME/bin/i3-exec-wait.pl -n 3 code ~/.config/i3/config;
-#exec "$HOME/bin/i3-exec-wait.pl -n 3 firefox;
-#    $HOME/bin/i3-exec-wait.pl -n 3 google-chrome;
-#    sleep 7;
-#    $HOME/bin/refresh;sleep 3/$HOME/bin/rearrange;"
-# exec_always "~/bin/refresh"
-# exec_always "sleep 5;~/bin/rearrange;~/bin/rearrange"
 
 # for_window [class="^.*"] border pixel 0
 hide_edge_borders both

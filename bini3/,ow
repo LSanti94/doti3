@@ -1,0 +1,12 @@
+#!/bin/zsh
+# open in workspace $1 wait for $2 the command $@
+
+w=$1
+shift
+t=$1
+shift
+
+~/bin/flog "WAITING $t secs to OPEN-IN w[$w]: $@"
+
+sleep $t && \
+exec ,o $w $@
