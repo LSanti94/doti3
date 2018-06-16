@@ -31,22 +31,15 @@ xsetroot -solid "#333333"
 /usr/bin/gnome-keyring-daemon --start --components=gpg
 /usr/bin/gnome-keyring-daemon --start --components=ssh
 
-killall dunst; dunst -config ~/.config/dunst/dunstrc &
-$HOME/bin/flog "dunst loaded"
-
 # mate-settings-daemon --replace
 setxkbmap -layout us,ir -option grp:caps_toggle
 
 # xautolock &
 # pasystray &
-nitrogen --restore
-
-$HOME/bin/flog "nitrogen restored"
 
 # killall i3-mousemon;$HOME/bini3/i3-mousemon &
-killall xbindkeys;/usr/bin/xbindkeys &
 
-killall redshift-gtk; redshift-gtk &
+exec "/usr/bin/x-session-manager" &> /dev/null &
 
 # disable caps lock
 setxkbmap -option ctrl:nocaps

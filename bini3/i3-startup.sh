@@ -16,8 +16,13 @@ elif [ -n "$1" ]; then
    exit
 fi
 set -x
+
+$HOME/bin/flog -st "i3-startup"
+
+killall dunst; dunst -config ~/.config/dunst/dunstrc &
+$HOME/bin/flog "dunst loaded"
+
 # use " &> /dev/null " to get rid of both errors and outputs of an exec
-exec "/usr/bin/x-session-manager" &> /dev/null &
 exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null & 
 
 # this is network applet
@@ -25,10 +30,6 @@ killall nm-applet &> /dev/null
 exec "/usr/bin/nm-applet" &> /dev/null &
 
 # exec "mate-settings-daemon" --replace &> /dev/null & 
-killall dunst; dunst -config ~/.config/dunst/dunstrc &
-$HOME/bin/flog "dunst loaded"
-
-
 
 # to fix redshift error for geolocation edit `/etc/geoclue/geoclue.conf` add:
 # [redshift]
@@ -50,7 +51,9 @@ killall xbindkeys &> /dev/null
 exec "/usr/bin/xbindkeys" &> /dev/null &
 
 killall compton &> /dev/null
-compton --config ~/.config/compton.conf -b
+exec compton --config ~/.config/compton.conf -b &
+$HOME/bin/flog "compton loaded"
+
 #it's important that you distinguish between the command and its parameters
 #Open in        $Workspace $WaitTime   $Command
 W1=$(xgetres i3.w1)
@@ -73,8 +76,10 @@ exec /usr/bin/terminator &
 exec /usr/bin/terminator &
 exec "/usr/bin/thunar" --daemon &
 exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
-exec gedit ~/notes.md
-exec redshift-gtk &
+exec gedit ~/notes.md &
+
+$HOME/bin/flog "delay loading redshift"
+(sleep 10 && exec redshift-gtk) &
 
 exec "$HOME/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox" --minimize &> /dev/null &
 exec `which nitrogen` --restore &> /dev/null &
@@ -83,6 +88,8 @@ $HOME/bin/flog "nitrogen restored"
 amixer -D pulse sset Master 60% > /dev/null
 $HOME/bini3/,volume up # to show the current volume on i3bar
 paplay ~/sounds/milton__kualalumpur-international.wav &
+
+$HOME/bin/flog -se "i3-startup"
 
 
 
