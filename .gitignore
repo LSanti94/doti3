@@ -2,9 +2,11 @@
 notes.md
 geany/geany_socket_*
 .weechat/logs/*
+.weechat/xfer/*
 vscode/User/workspaceStorage
 ranger/bookmarks
 ranger/history
 doublecmd/pixmaps.cache
 doublecmd/history.xml
 doublecmd/session.ini
+

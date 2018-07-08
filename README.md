@@ -31,6 +31,7 @@ Other resource configurations included
 * ~/.xinitrc
 * i3/conkyrc as ~/.conkyrc
 * rofi/config
+* ~/.weechat
 * ...
 
 You can use the following script to relink your dotfiles
