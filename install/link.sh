@@ -68,6 +68,7 @@ reLink ~/.config/terminator               terminator
 reLink ~/.config/i3                       i3
 reLink ~/.config/dunst/dunstrc            dunstrc
 reLink ~/.config/geany                    geany
+reLink ~/.config/mpv                      mpv
 reLink ~/.config/ranger                   ranger
 reLink ~/.weechat                         .weechat 
 reLink ~/.config/profanity                profanity
