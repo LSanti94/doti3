@@ -1,0 +1,22 @@
+// vim:ts=4:sw=4:et
+{
+    "layout": "tabbed",
+    "nodes":[{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "name": "InteliJ placeholder",
+
+    "current_border_width": 0,
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^jetbrains\\-idea$",
+        "instance": "^sun\\-awt\\-X11\\-XFramePeer$"
+       }
+    ],
+    "type": "con"
+    }]
+}
+
+

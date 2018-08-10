@@ -64,22 +64,27 @@ W2=$(xgetres i3.w2)
 #     i3-save-tree --workspace 1 > browser.json
 #
 # don't forget that you should edit the file afterwards
-i3-msg "workspace $W1; append_layout $HOME/bini3/layout/w1-browser.json"
-i3-msg "workspace $W2; append_layout $HOME/bini3/layout/w2-terminal.json"
+alreadyRunning=`xdotool search --class "gedit" | wc -l`
 
-# $HOME/bini3/,ow 2          0           "/usr/bin/terminator" 
-# $HOME/bini3/,ow 2          1           "/usr/bin/thunar" --daemon
-# $HOME/bini3/,ow 1          3           "/usr/bin/google-chrome" --force-device-scale-factor=1.25 &
-# $HOME/bini3/,ow 1          15          "redshift-gtk" &
+if [ $alreadyRunning = 0 ]; then
+   i3-msg "workspace $W1; append_layout $HOME/bini3/layout/w1-browser.json"
+   i3-msg "workspace $W2; append_layout $HOME/bini3/layout/w2-terminal.json"
 
-exec /usr/bin/terminator &
-exec /usr/bin/terminator &
+   # $HOME/bini3/,ow 2          0           "/usr/bin/terminator" 
+   # $HOME/bini3/,ow 2          1           "/usr/bin/thunar" --daemon
+   # $HOME/bini3/,ow 1          3           "/usr/bin/google-chrome" --force-device-scale-factor=1.25 &
+   # $HOME/bini3/,ow 1          15          "redshift-gtk" &
+
+   exec /usr/bin/terminator &
+   exec /usr/bin/terminator &
+   exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
+   exec gedit ~/notes.md &
+   $HOME/bin/flog "delay loading redshift"
+   (sleep 10 && exec redshift-gtk) &
+fi
+
 exec "/usr/bin/thunar" --daemon &
-exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
-exec gedit ~/notes.md &
 
-$HOME/bin/flog "delay loading redshift"
-(sleep 10 && exec redshift-gtk) &
 
 exec "$HOME/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox" --minimize &> /dev/null &
 exec `which nitrogen` --restore &> /dev/null &
