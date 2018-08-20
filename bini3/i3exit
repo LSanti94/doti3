@@ -21,7 +21,8 @@ close_apps(){
 }
 
 lock() {
-    i3-msg "exec $HOME/bini3/i3-colorlock"
+    # i3-msg "exec $HOME/bini3/i3-colorlock"
+    $HOME/bini3/i3-colorlock
 }
 
 echo "i3exit was called with: $1" >> /tmp/i3exit.log
@@ -67,4 +68,5 @@ case "$1" in
         exit 0
 esac
 
+echo "i3exit exited ... "+`date` >> /tmp/i3exit.log
 exit 0

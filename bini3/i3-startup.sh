@@ -1,4 +1,6 @@
 #!/usr/bin/env /bin/zsh
+~/.screenlayout/layout.sh
+
 if [ "$1" = "-v" ]; then
    LOG='/tmp/i3-start.log'
    echo "Debug is enabled. logging to [$LOG]"

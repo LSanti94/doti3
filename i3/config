@@ -630,6 +630,7 @@ exec i3-msg "workspace number 5, layout tabbed"
 
 # Keyboard layout
 exec_always $nsi "$HOME/bini3/i3-startup.sh"
+exec_always $nsi xset dpms 600
 
 # for_window [class="^.*"] border pixel 0
 hide_edge_borders both

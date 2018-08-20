@@ -41,6 +41,7 @@ DATE='%y-%m-%d W:%V'
 TIME='%H:%M:%S' 
 $HOME/bini3/notify.sh "Locking computer..." &&
 #deamonized version of i3colorlock only allow one instance
+export LD_PRELOAD=
 setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C \
    --ringwrongcolor=$W --insidecolor=$I --ringcolor=$D \
    --linecolor=$B --separatorcolor=$S  \
@@ -59,7 +60,7 @@ setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercol
    --keyhlcolor=$W --bshlcolor=$W        \
    --insidevercolor=$CT \
    \
-   --blur 8              \
+   --blur 4             \
    --clock               \
    --indicator           \
    --timestr="%H:%M:%S"  \
@@ -71,7 +72,7 @@ setlock -nX /tmp/i3colorlock i3lock -f --nofork --insidevercolor=$C --ringvercol
    --datestr="$DATE" --timestr="$TIME" --line-uses-inside \
     || notify.sh "Lock failed: already running"
 
- $HOME/bini3/notify.sh "Locking computer..."
+#  $HOME/bini3/notify.sh "Locking computer..."
  # ALL THE OPTIONS
  #
  # struct option longopts[] = {
