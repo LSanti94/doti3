@@ -572,7 +572,7 @@ bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 # bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 bindsym $mod+Control+r exec i3-msg rename workspace to `zenity --entry --text "Rename workspace to:"`
 bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
-bindsym Print exec shutter -s
+bindsym Print exec "shutter -s"
 bindsym $mod+Print exec shutter 
 # Volume
 
