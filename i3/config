@@ -445,11 +445,12 @@ for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
 for_window [class="com.existme.*"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
-for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp"] $fmod
+for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp|Transfers|ChanList|servlist"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
 
+for_window [window_role="Transfers"] $fmod
 for_window [title="Postman|Mattermost|Slack"] $fmod4
 for_window [class="Chromium-browser"] $fmod4
 
