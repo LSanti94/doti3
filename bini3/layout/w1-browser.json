@@ -43,8 +43,8 @@
             "percent": 0.333333333333333,
             "swallows": [
                {
-                "class": "^Gedit$",
-                "instance": "^gedit$",
+                "class": "^Code$",
+                "instance": "^code$",
                 "transient_for": "^$"
                }
             ],

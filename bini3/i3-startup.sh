@@ -80,7 +80,7 @@ if [ $alreadyRunning = 0 ]; then
    exec /usr/bin/terminator &
    exec /usr/bin/terminator &
    exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
-   exec gedit ~/notes.md &
+   exec code ~/notes.md &
    $HOME/bin/flog "delay loading redshift"
    (sleep 10 && exec redshift-gtk) &
 fi
