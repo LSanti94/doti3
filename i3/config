@@ -417,10 +417,11 @@ new_float normal
 
 # Available criterias are listed here
 # https://i3wm.org/docs/userguide.html#command_criteria
-set $fmod "floating enable, border normal, focus, move position center, sticky enable"
-set $fmod2 "floating enable, border hidden, focus, move position center, sticky enable"
-set $fmod3 "floating enable, border none, focus, move position center, sticky enable"
-set $fmod4 "floating disable, border none, focus, sticky enable"
+set $fmod  "floating enable,  border normal, focus, move position center"
+set $fmod2 "floating enable,  border hidden, focus, move position center"
+set $fmod3 "floating enable,  border none,   focus, move position center"
+set $fmod4 "floating disable, border none,   focus"
+set $fmod5 "floating disable, border none,   focus, sticky enable"
 
 for_window [class="^.*"] border pixel 0
 for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
