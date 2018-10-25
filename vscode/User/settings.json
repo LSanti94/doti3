@@ -33,4 +33,5 @@
     "editor.renderControlCharacters": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "editor.tabSize": 3,
 }

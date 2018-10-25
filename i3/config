@@ -522,6 +522,7 @@ bindsym $mod+Ctrl+Shift+Left resize shrink width 10 px or 10 ppt
 
 bindcode $mod+Shift+Next move workspace to output left
 bindcode $mod+Shift+Pev move workspace to output right
+
 # *********************************************************************************************************************************************************
 #                                                             Key Bindings
 # *********************************************************************************************************************************************************
@@ -613,7 +614,8 @@ bindsym $mod+Control+Left workspace prev
 bindsym $mod+l exec "$HOME/bini3/i3exit lock"
 
 # start a terminal
-bindsym $mod+Return exec "terminator"
+# bindsym $mod+Return exec "terminator"
+bindsym $mod+Return exec "tilix"
 
 set $size 100 px or 100 ppt
 bindsym $mod+Shift+Next  resize grow height $size,resize grow width $size
@@ -621,6 +623,7 @@ bindsym $mod+Shift+Prior resize shrink height $size,resize shrink width $size
 bindsym $mod+d exec rofi -show run
 
 bindsym $mod+Home exec "$HOME/bini3/tempscript"
+bindsym $mod+grave exec --no-startup-id tilix --quake --profile="quack"
 # workspace arrangement
 exec i3-msg "workspace number 1, layout tabbed"
 exec i3-msg "workspace number 3, layout tabbed"

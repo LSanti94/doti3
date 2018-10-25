@@ -1,0 +1,24 @@
+#!/bin/zsh
+source ~/bin/,autoload
+set -e
+# palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
+# palette=['#181818', '#cc241d', '#98971a', '#d79921', '#458588', '#b16286', '#689d6a', '#ebdbb2', '#928374', '#fb4934', '#b8bb26', '#fabd2f', '#83a598', '#d3869b', '#8ec07c', '#ebdbb2']
+CONF_FILE=~/git/doti3/tilix/tilix.conf
+,c-streaks
+case $1 in
+    export)
+        dconf dump /com/gexperts/Tilix/ > $CONF_FILE
+        cat $CONF_FILE
+        echo "Configuration exported to ${bG}$CONF_FILE${cZ}"
+        ;;
+    import)
+        (okPrompt "Your Tilix settings will be overwritten, are you sure?" "Import") || exit
+        dconf load /com/gexperts/Tilix/ < $CONF_FILE
+        echo "Configuration imported from ${bY}$CONF_FILE${cZ}"
+        ;;
+    *)
+        echo "Usage:"
+        echo "${bW},tilix ${bY}import${cZ}|${bY}export${cZ}"
+        exit 1
+        ;;
+esac
