@@ -10,3 +10,5 @@ doublecmd/pixmaps.cache
 doublecmd/history.xml
 doublecmd/session.ini
 doublecmd/wfx.ini
+ranger/colorschemes/*.pyo
+ranger/tagged

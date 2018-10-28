@@ -21,8 +21,8 @@
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^Terminator$",
-                "instance": "^terminator$",
+                "class": "^Tilix$",
+                "instance": "^tilix$",
                 "transient_for": "^$"
                }
             ],
@@ -42,8 +42,8 @@
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^Terminator$",
-                "instance": "^terminator$",
+                "class": "^Tilix$",
+                "instance": "^tilix$",
                 "transient_for": "^$"
                }
             ],

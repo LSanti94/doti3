@@ -77,8 +77,8 @@ if [ $alreadyRunning = 0 ]; then
    # $HOME/bini3/,ow 1          3           "/usr/bin/google-chrome" --force-device-scale-factor=1.25 &
    # $HOME/bini3/,ow 1          15          "redshift-gtk" &
 
-   exec /usr/bin/terminator &
-   exec /usr/bin/terminator &
+   exec /usr/bin/tilix &
+   exec /usr/bin/tilix &
    exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
    exec code ~/notes.md &
    $HOME/bin/flog "delay loading redshift"
