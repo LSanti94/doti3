@@ -94,7 +94,7 @@ $HOME/bin/flog "nitrogen restored"
 
 amixer -D pulse sset Master 60% > /dev/null
 $HOME/bini3/,volume up # to show the current volume on i3bar
-paplay ~/sounds/milton__kualalumpur-international.wav &
+paplay ~/sounds/effects/UL_FS_Low_Boom_Var4.wav &
 
 $HOME/bin/flog -se "i3-startup"
 
