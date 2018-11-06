@@ -72,6 +72,8 @@ reLink ~/.config/mpv                      mpv
 reLink ~/.config/ranger                   ranger
 reLink ~/.weechat                         .weechat 
 reLink ~/.config/profanity                profanity
+reLink ~/.config/bumblebee-status         bumblebee-status
+reLink ~/.config/bumblebee-status.conf    bumblebee-status/bumblebee-status.conf
 reLink ~/.config/doublecmd                doublecmd
 reLink ~/.config/Code/User                vscode/User
 reLink ~/.config/zathura/zathurarc        zathurarc

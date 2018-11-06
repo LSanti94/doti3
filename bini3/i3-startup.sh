@@ -66,9 +66,10 @@ W2=$(xgetres i3.w2)
 #     i3-save-tree --workspace 1 > browser.json
 #
 # don't forget that you should edit the file afterwards
-alreadyRunning=`xdotool search --class "gedit" | wc -l`
+alreadyRunning=`xdotool search --class "chrome" | wc -l`
 
-if [ $alreadyRunning = 0 ]; then
+if [ "$alreadyRunning" = "0" ]; then
+   alert "alreadyRunning $alreadyRunning"
    i3-msg "workspace $W1; append_layout $HOME/bini3/layout/w1-browser.json"
    i3-msg "workspace $W2; append_layout $HOME/bini3/layout/w2-terminal.json"
 
@@ -83,6 +84,8 @@ if [ $alreadyRunning = 0 ]; then
    exec code ~/notes.md &
    $HOME/bin/flog "delay loading redshift"
    (sleep 10 && exec redshift-gtk) &
+else
+   alert "passing..."
 fi
 
 exec "/usr/bin/thunar" --daemon &

@@ -22,7 +22,7 @@ set_from_resource $DP2 i3.dp2
 exec_always $HOME/bini3/i3-test $dp0
 exec_always "$HOME/bin/flog -st i3.config"
 
-set $bg-color                       #485767
+set $bg-color                       #1d2021
 set $fg-color                       #FFFFFF
 set $active-bg-color                #c10101
 set $active-fg-color                #F4B909
@@ -229,27 +229,35 @@ exec $nsi numlockx on
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+set $bumbleModules  cpu         \
+                    memory      \
+                    traffic     \
+                    datetime    \
+                    spacer      \
+                    pasink
+
 bar {
-	font pango:mononoki Nerd Font 18
-        position bottom
-        #output $DP0
-        #bindsym button5 exec ~/bini3/custom_wheel_down
-		  tray_output primary
-        tray_padding 6 px
-        separator_symbol ""
-        colors {
-            background #24364F
-            statusline #CCCCCC
-            separator #999999
-            focused_workspace  #4c7899 #285577 #ffffff
-            active_workspace   #333333 #5f676a #ffffff
-            inactive_workspace #333333 #222222 #888888
-            urgent_workspace   #2f343a #900000 #ffffff
-        }
-        status_command i3blocks
-        #status_command ~/bini3/conkyi3.sh
-        #status_command i3status
-    }
+	font pango:FantasqueSansMono Nerd Font 18
+   position bottom
+   #output $DP0
+   #bindsym button5 exec ~/bini3/custom_wheel_down
+   tray_output primary
+   tray_padding 6 px
+   separator_symbol ""
+   colors {
+      background $bg-color
+      statusline #CCCCCC
+      separator #999999
+      focused_workspace  #1d2021 #d79921 #ffffff
+      active_workspace   #333333 #484848 #ffffff
+      inactive_workspace #333333 #282828 #888888
+      urgent_workspace   #2f343a #cc241d #ffffff
+   }
+   status_command ~/git/bumblebee-status/bumblebee-status -d -m $bumbleModules -t gruvbox-reza
+   # status_command i3blocks
+   #status_command ~/bini3/conkyi3.sh
+   #status_command i3status
+}
 
 # *********************************************************************************************************************************************************
 #                                                   Fancy Names for workspaces
