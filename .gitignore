@@ -12,3 +12,5 @@ doublecmd/session.ini
 doublecmd/wfx.ini
 ranger/colorschemes/*.pyo
 ranger/tagged
+*.pyo
+vscode/User/User
