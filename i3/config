@@ -248,7 +248,7 @@ bar {
       background $bg-color
       statusline #CCCCCC
       separator #999999
-      focused_workspace  #1d2021 #d79921 #ffffff
+      focused_workspace  #1d2021 #523333 #ffffff
       active_workspace   #333333 #484848 #ffffff
       inactive_workspace #333333 #282828 #888888
       urgent_workspace   #2f343a #cc241d #ffffff

@@ -69,7 +69,7 @@ W2=$(xgetres i3.w2)
 alreadyRunning=`xdotool search --class "chrome" | wc -l`
 
 if [ "$alreadyRunning" = "0" ]; then
-   alert "alreadyRunning $alreadyRunning"
+   alert "We didn't found chrome instance so we restore the layout" "alreadyRunning=$alreadyRunning"
    i3-msg "workspace $W1; append_layout $HOME/bini3/layout/w1-browser.json"
    i3-msg "workspace $W2; append_layout $HOME/bini3/layout/w2-terminal.json"
 
