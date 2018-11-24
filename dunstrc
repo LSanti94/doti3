@@ -15,7 +15,7 @@
     # If markup is not allowed, those tags will be stripped out of the
     # message.
     markup = yes
-
+    tack_duplicates = true
     # Treat incoming notifications as plain text
     plain_text = no
 
@@ -288,9 +288,10 @@
     script = ",ding"
 [volume]
     appname = volume
-    # script = ",click-s"
+    script = ",click-s"
     history_ignore = yes
     foreground = "#ebdbb2"
+    set_stack_tag = "volume"
 [layout]
     appname = layout
     # new_icon = ~/bini3/ext-icons/kb-2.png
