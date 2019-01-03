@@ -238,7 +238,7 @@ set $bumbleModules  cpu         \
 
 bar {
 	font pango:FantasqueSansMono Nerd Font 18
-   position bottom
+   position top
    #output $DP0
    #bindsym button5 exec ~/bini3/custom_wheel_down
    tray_output primary
