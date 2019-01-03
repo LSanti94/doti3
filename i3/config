@@ -439,7 +439,7 @@ for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubu
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
 for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox|Xbindkeys-config"] $fmod
-for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince"] $fmod
+for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince|Flutter"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
 for_window [class="Doublecmd" title="File operations"] $fmod
@@ -466,6 +466,7 @@ for_window [class="Chromium-browser|Xdot"] $fmod4
 # For chrome and firefox Developer Tools, we want them in separate workspace
 for_window [class="Google-chrome" title="^Developer Tools -.*"] floating disable, move container to workspace $w2
 for_window [class="Firefox" instance="Devtools"]                floating disable, move container to workspace $w2
+for_window [class="jetbrains-studio" instance="sun-awt-X11-XFramePeer"]  floating disable, move container to workspace $w2
 
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
