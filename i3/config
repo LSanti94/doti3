@@ -27,10 +27,11 @@ set $fg-color                       #FFFFFF
 set $active-bg-color                #c10101
 set $active-fg-color                #F4B909
 set $active-child-border-color      #F4B909
+# bordor for childs inside a workspace (not the splitted ones)
+set $active-border-color            #F4B909
 set $inactive-bg-color              #242C33
 set $urgent-bg-color                #F7E610
 set $inactive-text-color            #aaaaaa
-set $inactive-border-color          #240000
 set $status-bg-color                #4C7899
 set $status-dark-bg-color           #24364F
 set $active-indicator-color         #00FF00
@@ -47,8 +48,8 @@ font pango:FuraCode Nerd Font Medium 16
 
 # Layout colors                 border                  background              text                    indicator                       child_border
 # -----------------------------------------------------------------------------------------------------------------------------------------------------
-client.focused                  $active-fg-color      $bg-color               $fg-color               $active-fg-color                $active-child-border-color
-client.focused_inactive         $inactive-border-color  $inactive-bg-color      $inactive-text-color    $active-indicator-color         #5f676a
+client.focused                  $active-fg-color        $bg-color               $fg-color               $active-fg-color                $active-child-border-color
+client.focused_inactive         $active-border-color    $inactive-bg-color      $inactive-text-color    $active-indicator-color         #5f676a
 client.unfocused                $status-bg-color        $status-dark-bg-color   $inactive-text-color    $inactive-indicator-color       #222222
 client.urgent                   $inactive-bg-color      $urgent-bg-color        $urgent-bg-color        $inactive-bg-color              #900000
 client.placeholder              #000000                 #0c0c0c                 #ffffff                 #000000                         #0c0c0c
