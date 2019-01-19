@@ -1,4 +1,5 @@
 #!/usr/bin/env /bin/zsh
+export $(dbus-launch)
 ~/.screenlayout/layout.sh
 
 if [ "$1" = "-v" ]; then
