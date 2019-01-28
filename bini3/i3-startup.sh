@@ -1,4 +1,8 @@
 #!/usr/bin/env /bin/zsh
+alreadyRunning=`xdotool search --class "chrome" | wc -l`
+if [ "$alreadyRunning" != "0" ]; then
+   exit
+fi
 export $(dbus-launch)
 ~/.screenlayout/layout.sh
 
@@ -30,7 +34,7 @@ exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null &
 
 # this is network applet
 killall nm-applet &> /dev/null
-exec "/usr/bin/nm-applet" &> /dev/null &
+sudo /usr/bin/nm-applet &> /dev/null &
 
 # exec "mate-settings-daemon" --replace &> /dev/null & 
 
@@ -67,7 +71,6 @@ W2=$(xgetres i3.w2)
 #     i3-save-tree --workspace 1 > browser.json
 #
 # don't forget that you should edit the file afterwards
-alreadyRunning=`xdotool search --class "chrome" | wc -l`
 
 if [ "$alreadyRunning" = "0" ]; then
    alert "We didn't found chrome instance so we restore the layout" "alreadyRunning=$alreadyRunning"

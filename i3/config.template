@@ -1,0 +1,660 @@
+# vim:filetype=i3
+#@IgnoreInspection BashAddShebang
+
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#set $HOME /home/rezasa
+set $mod Mod4
+set $alt Mod1
+# --no-startup-id disables the startup notification so you don't have an hourglass in your way for 60 seconds.
+set $nsi --no-startup-id
+set $r --release
+set $w --whole-window
+show_marks yes
+workspace_auto_back_and_forth yes
+set_from_resource $HOME echo $HOME
+set_from_resource $USER echo $USER
+set_from_resource $net i3.net
+set_from_resource $DP0 i3.dp0
+set_from_resource $DP1 i3.dp1
+set_from_resource $DP2 i3.dp2
+
+# exec_always $nsi compton --config ~/.config/compton.conf -b 
+exec_always $HOME/bini3/i3-test $dp0
+exec_always "$HOME/bin/flog -st i3.config"
+
+set $bg-color                       #1d2021
+set $fg-color                       #FFFFFF
+set $active-bg-color                #c10101
+set $active-fg-color                #F4B909
+set $active-child-border-color      #F4B909
+# bordor for childs inside a workspace (not the splitted ones)
+# set $active-border-color            #F4B909
+set $active-border-coloru           #292929
+set $active-border-color            #b9b8b8
+set $inactive-bg-color              #242C33
+set $urgent-bg-color                #F7E610
+set $inactive-text-color            #9E9E9E
+set $status-bg-color                #4C7899
+set $unfocused-border-color         #0D1C3A
+set $unfocused-bg-color             #1A1C1C
+set $status-dark-bg-color           #24364F
+set $active-indicator-color         #00FF00
+set $inactive-indicator-color       #005500
+set $focused-inactive-text          #FBFBFB
+set $key_layout_msg                 "<span font_variant='smallcaps' font='ProFontIIx Nerd Font Book 50' foreground='#eeeeee'>$(xkb-switch | cut -c1-2)</span> <b><span foreground='#bbbbbb' font='40'> </span></b>"
+set $key_icon                       $HOME/bini3/ext-icons/kb-4.png 
+set $loud_volume                    150
+# before urgent-bg was 242c33
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:Inconsolata-g for Powerline Medium 14
+font pango:CodeNewRoman Nerd Font Book 12
+
+# Layout colors                 border                  background              text                    indicator                       child_border
+# -----------------------------------------------------------------------------------------------------------------------------------------------------
+client.focused                  $active-border-color    $bg-color               $fg-color               $active-fg-color                $active-child-border-color
+client.focused_inactive         $active-border-coloru   $inactive-bg-color      $focused-inactive-text  $active-indicator-color         #5f676a
+client.unfocused                $unfocused-border-color $unfocused-bg-color     $inactive-text-color    $inactive-indicator-color       #222222
+client.urgent                   $inactive-bg-color      $urgent-bg-color        $urgent-bg-color        $inactive-bg-color              #900000
+client.placeholder              #000000                 #0c0c0c                 #ffffff                 #000000                         #0c0c0c
+
+client.background               $bg-color
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# -------------------------------------------
+#                Focus related stuffs
+# -------------------------------------------
+mouse_warping none
+#focus_wrapping force
+focus_follows_mouse yes
+workspace_layout tabbed
+
+# -------------------------------------------
+# resize window (you can also use the mouse for that)
+# -------------------------------------------
+
+mode " " {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Shift+Left resize shrink width 100 px or 100 ppt
+        bindsym Shift+Down resize grow height 100 px or 100 ppt
+        bindsym Shift+Up resize shrink height 100 px or 100 ppt
+        bindsym Shift+Right resize grow width 100 px or 100 ppt
+
+        # Resizing by 10
+        bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
+        bindsym $mod+Ctrl+Shift+Up resize grow height 10 px or 10 ppt
+        bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
+        bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+
+        # alternatively, you can use the cursor keys:
+        bindsym Left move left 100 px
+        bindsym Down move down 100 px
+        bindsym Up move up 100 px
+        bindsym Right move right 100 px
+
+}
+set $normal "xset r rate 500 30"
+set $fast "xset r rate 500 30"
+
+# Use Tab and ~/<S-Tab> for scrolling up and down
+# Use 1 for click and 2 for middle click, Escape to exit
+# Currently not working correctly
+mode "mouse" {
+   set $repeat 5
+   bindsym 1 exec "xdotool click --clearmodifier --delay 500 1"
+   bindsym 2 exec "xdotool click --clearmodifier --delay 500 2"
+   bindsym grave exec xdotool click --clearmodifier --repeat 5 --delay 50 4
+   bindsym Tab exec xdotool click --clearmodifier --repeat 10 --delay 50 5
+   bindsym Shift+Tab exec xdotool click --clearmodifier --repeat 10 --delay 50 5
+   bindsym Shift+Escape exec $normal;mode "default"
+}
+
+mode "mouse-keys" {
+    # set your three speeds here
+
+    set $slow 10
+    set $quick 50
+    set $fast 100
+
+    # Mouse movement (slow/fine-tuned) -- vim keybindings
+
+    bindsym h exec xdotool mousemove_relative -- -$slow 0
+    bindsym j exec xdotool mousemove_relative 0 $slow
+    bindsym k exec xdotool mousemove_relative -- 0 -$slow
+    bindsym l exec xdotool mousemove_relative $slow 0
+
+    # Mouse movement (slow/fine-tuned) -- arrow keys
+
+    bindsym Left exec xdotool mousemove_relative -- -$slow 0
+    bindsym Down exec xdotool mousemove_relative 0 $slow
+    bindsym Up exec xdotool mousemove_relative -- 0 -$slow
+    bindsym Right exec xdotool mousemove_relative $slow 0
+
+    # Mouse movement (quicker) -- vim keybindings
+
+    bindsym Shift+h exec xdotool mousemove_relative -- -$quick 0
+    bindsym Shift+j exec xdotool mousemove_relative 0 $quick
+    bindsym Shift+k exec xdotool mousemove_relative -- 0 -$quick
+    bindsym Shift+l exec xdotool mousemove_relative $quick 0
+
+    # Mouse movement (quicker) -- arrow keys
+
+    bindsym Shift+Left exec xdotool mousemove_relative -- -$quick 0
+    bindsym Shift+Down exec xdotool mousemove_relative 0 $quick
+    bindsym Shift+Up exec xdotool mousemove_relative -- 0 -$quick
+    bindsym Shift+Right exec xdotool mousemove_relative $quick 0
+
+    # Mouse movement (fast) -- vim keybindings
+
+    bindsym Shift+$mod1+h exec xdotool mousemove_relative -- -$fast 0
+    bindsym Shift+$mod1+j exec xdotool mousemove_relative 0 $fast
+    bindsym Shift+$mod1+k exec xdotool mousemove_relative -- 0 -$fast
+    bindsym Shift+$mod1+l exec xdotool mousemove_relative $fast 0
+
+    # Mouse movement (fast) -- arrow keys
+
+    bindsym Shift+$mod1+Left exec xdotool mousemove_relative -- -$fast 0
+    bindsym Shift+$mod1+Down exec xdotool mousemove_relative 0 $fast
+    bindsym Shift+$mod1+Up exec xdotool mousemove_relative -- 0 -$fast
+    bindsym Shift+$mod1+Right exec xdotool mousemove_relative $fast 0
+
+    # Mouse movement (special down-right)
+
+    bindsym m exec xdotool mousemove_relative 10 10
+
+    # Left Click
+    bindsym s exec xdotool click 1
+
+    # Middle Click
+    bindsym d exec xdotool click 2
+
+    # Right Click
+    bindsym f exec xdotool click 3
+
+    # Left Click-and-drag
+    bindsym Shift+s exec xdotool mousedown 1
+
+    # Middle Click-and-drag
+    bindsym Shift+d exec xdotool mousedown 2
+
+    # Right Click-and-drag
+    bindsym Shift+f exec xdotool mousedown 3
+
+    bindsym --release $mod1 exec "xdotool mouseup 1;xdotool mouseup 2;xdotool mouseup 3;$HOME/bini3/notify.sh 'mouseup'"
+    # Left Drag release
+    bindsym --release $mod1+s exec xdotool mouseup 1
+
+    # Middle Drag release
+    bindsym --release $mod1+d exec xdotool mouseup 2
+
+    # Right Drag release
+    bindsym --release $mod1+f exec xdotool mouseup 3
+
+
+    # return to normal keybindings -- IMPORTANT!!
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+z exec $fast;mode "mouse-keys"
+bindsym $mod+Shift+z exec $fast;mode "mouse"
+
+exec $nsi numlockx on
+# *********************************************************************************************************************************************************
+#                                                           monitors
+# *********************************************************************************************************************************************************
+
+#set $DP0 DVI-1
+#set $DP1 DVI-0
+#set $DP2 DVI-1
+#set $DP0 "DVI-D-0"
+#set $DP1 "DP-0.8"
+#set $DP2 "HDMI-1"
+
+
+# *********************************************************************************************************************************************************
+#                                                               i3bar
+# *********************************************************************************************************************************************************
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+set $bumbleModules  cpu         \
+                    memory      \
+                    traffic     \
+                    datetime    \
+                    spacer      \
+                    pasink
+
+bar {
+	# font pango:FantasqueSansMono Nerd Font 14
+	font pango:SauceCodePro Nerd Font 12
+   position top
+   #output $DP0
+   #bindsym button5 exec ~/bini3/custom_wheel_down
+   tray_output primary
+   tray_padding 6 px
+   separator_symbol ""
+   colors {
+      background $bg-color
+      statusline #CCCCCC
+      separator #999999
+      focused_workspace  #1d2021 #523333 #ffffff
+      active_workspace   #333333 #484848 #ffffff
+      inactive_workspace #333333 #282828 #888888
+      urgent_workspace   #2f343a #cc241d #ffffff
+   }
+   status_command ~/git/bumblebee-status/bumblebee-status -d -m $bumbleModules -t gruvbox-reza
+   # status_command i3blocks
+   #status_command ~/bini3/conkyi3.sh
+   #status_command i3status
+}
+
+# *********************************************************************************************************************************************************
+#                                                   Fancy Names for workspaces
+#                           https://github.com/giacomos/i3wm-config/blob/master/config_work_laptop
+# *********************************************************************************************************************************************************
+set $M1 reza
+set_from_resource $M1 echo [$HOME]
+set_from_resource $w1  i3.w1
+set_from_resource $w2  i3.w2
+set_from_resource $w3  i3.w3
+set_from_resource $w4  i3.w4
+set_from_resource $w5  i3.w5
+set_from_resource $w6  i3.w6
+set_from_resource $w7  i3.w7
+set_from_resource $w8  i3.w8
+set_from_resource $w9  i3.w9
+set_from_resource $w0  i3.w0
+
+
+#exe $nsi xrandr --output $left --pos 0x0 --output $right --pos 1920x1200 --right-of $left
+# exec $nsi exec xrandr --output $DP0 --verbose --auto
+# exec $nsi exec xrandr --output $DP1 --verbose --auto --primary --right-of $DP0
+# exec $nsi exec xrandr --output $DP2 --verbose --auto --right-of $DP1
+
+workspace $w2 output $DP0
+workspace $w1 output $DP1
+
+
+# set $w1 "<span color='#FF8C00FF' bgcolor='#4C789977' weight='heavy'> 1: </span>   "
+# set $w2 "2: ⚯❶"
+# set $w3 "3:   "
+# set $w4 "4: ➡❷"
+# set $w5 "5: file manager"
+# set $w6 "6: help"
+# set $w7 "7: x7"
+# set $w8 "8: x8"
+# set $w9 "9: x9"
+# set $w0 "0: Chat"
+# set $w1 "1: Web"
+# set $w2 "2: Term"
+# set $w3 "3: IDE"
+# set $w4 "4: Term"
+# set $w5 "5: FM"
+# set $w6 "6: Help"
+# set $w7 "7: x7"
+# set $w8 "8: x8"
+# set $w9 "9: x9"
+
+# ❸ ➛➜➝➞➟➠➡
+# focus on workspaces
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w0
+
+# to bind numpad there is a bug and as workaround Mod2 should be included
+bindsym $mod+Mod2+KP_1 workspace $w1; 
+bindsym $mod+Mod2+KP_2 workspace $w2;
+bindsym $mod+Mod2+KP_3 workspace $w3;
+bindsym $mod+Mod2+KP_4 workspace $w4;
+bindsym $mod+Mod2+KP_5 workspace $w5;
+bindsym $mod+Mod2+KP_6 workspace $w6;
+bindsym $mod+Mod2+KP_7 workspace $w7;
+bindsym $mod+Mod2+KP_8 workspace $w8;
+bindsym $mod+Mod2+KP_9 workspace $w9;
+bindsym $mod+Mod2+KP_0 workspace $w0;
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w0
+
+bindcode $mod+Shift+Mod2+87 move container to workspace $w1
+bindcode $mod+Shift+Mod2+88 move container to workspace $w2
+bindcode $mod+Shift+Mod2+89 move container to workspace $w3
+bindcode $mod+Shift+Mod2+83 move container to workspace $w4
+bindcode $mod+Shift+Mod2+84 move container to workspace $w5
+bindcode $mod+Shift+Mod2+85 move container to workspace $w6
+bindcode $mod+Shift+Mod2+79 move container to workspace $w7
+bindcode $mod+Shift+Mod2+80 move container to workspace $w8
+bindcode $mod+Shift+Mod2+81 move container to workspace $w9
+bindcode $mod+Shift+Mod2+90 move container to workspace $w0
+
+## Assign sectiond
+## assign [class="^Firefox$"]                          → $w1
+## assign [class="^Firefox$"]                          → $w1
+## assign [window_role="^browser$"]                    → $w1
+## assign [title="^Print$"]                            → $w1
+## assign [class="X-terminal-emulator|Terminator"]     → $w2
+## assign [class="Pidgin"]                             → $w0
+## assign [class="Buddy List"]                         → $w0
+## assign [class="^Thunderbird$"]                      → $w0
+## assign [class="Code"]                               → $w3
+## assign [class="jetbrains-idea"]                     → $w4
+## assign [class="Doublecmd"]                          → $w5
+## assign [class="Yelp"]                               → $w6
+## assign [class="TkMan"]                              → $w6
+## assign [instance="sun-awt-X11-XFramePeer"]          → $w9
+for_window [class="^"] focus
+## assign [class="Google-chrome" title="^Developer Tools -.*"] → $w2
+## assign [class="Firefox" instance="Devtools"]                → $w2
+
+# Mod+Shift+F1-F3 will move the window to DP0-DP2
+bindcode $mod+Shift+Mod2+67 move window to output $DP0
+bindcode $mod+Shift+Mod2+68 move window to output $DP1
+bindcode $mod+Shift+Mod2+69 move window to output $DP2
+
+set $mode_border Border (1..9) pixel 0 for none, Shift +|- (border on/off)
+
+mode "$mode_border" {
+    # The different borders I use from time to time
+    bindsym 1 border 1pixel
+    bindsym 2 border pixel 2
+    bindsym 3 border pixel 3
+    bindsym 4 border pixel 4
+    bindsym 5 border pixel 5
+    bindsym 6 border pixel 6
+    bindsym 7 border pixel 7
+    bindsym 8 border pixel 8
+	 bindsym 9 border pixel 9
+    bindsym 0 border none
+    bindsym shift+plus border normal
+    bindsym shift+minus border none
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_language Key Layout - Mod + (E)nglish / (F)arsi / (S)wedish
+mode "$mode_language" {
+    # 'f' for farsi
+    bindcode $mod+41 exec setxkbmap ir
+    # 'e' for English
+    bindcode $mod+26 exec setxkbmap us
+    # 's' for Swedish
+    bindsym $mod+s exec setxkbmap se 
+
+    bindsym Escape mode "default" exec setxkbmap us
+}
+bindsym $mod+k mode "$mode_language"
+# *********************************************************************************************************************************************************
+#                                                             Float settings
+# *********************************************************************************************************************************************************
+
+#fibonacci toggle
+# default_orientation vertical 
+# for_window [class=".*"] split toggle
+# bindsym $mod+shift+q split toggle kill 
+# bindsym $mod+alt+e layout toggle split 
+new_window 1pixel
+new_float normal
+
+# Available criterias are listed here
+# https://i3wm.org/docs/userguide.html#command_criteria
+set $fmod  "floating enable,  border normal, focus, move position center"
+set $fmod2 "floating enable,  border hidden, focus, move position center"
+set $fmod3 "floating enable,  border none,   focus, move position center"
+set $fmod4 "floating disable, border none,   focus"
+set $fmod5 "floating disable, border none,   focus, sticky enable"
+
+for_window [class="^.*"] border pixel 0
+for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
+
+for_window [class="albert"] $fmod3
+for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
+for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
+for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
+for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox|Xbindkeys-config"] $fmod
+for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince|Flutter"] $fmod
+for_window [class="Terminator" title="Terminator Preferences"] $fmod
+for_window [window_type="dialog|menu"] $fmod
+for_window [class="Doublecmd" title="File operations"] $fmod
+
+for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Terminator Preferencese|xfce4-appfinder"] $fmod
+for_window [class="Thunderbird" instance="Calendar|Msgcompose"] $fmod
+for_window [class="Xbindkeys_show|Qtconfig-qt4"] $fmod
+for_window [class="System-config-printer\.py|Nm-connection-editor|com-sun-deploy-panel-ControlPanel"] $fmod
+for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte"] $fmod
+for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
+for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
+for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
+for_window [class="com.existme.*"] $fmod
+for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
+for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp|Transfers|ChanList|servlist"] $fmod
+for_window [window_role="^$"] $fmod
+for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
+for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
+
+for_window [window_role="Transfers"] $fmod
+for_window [title="Postman|Mattermost|Slack"] $fmod4
+for_window [class="Chromium-browser|Xdot"] $fmod4
+
+# For chrome and firefox Developer Tools, we want them in separate workspace
+for_window [class="Google-chrome" title="^Developer Tools -.*"] floating disable, move container to workspace $w2
+for_window [class="Firefox" instance="Devtools"]                floating disable, move container to workspace $w2
+for_window [class="jetbrains-studio" instance="sun-awt-X11-XFramePeer"]  floating disable, move container to workspace $w2
+
+for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
+# bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
+# bindsym $mod+m exec "exec $HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
+
+#hide_edge_borders none
+
+# *********************************************************************************************************************************************************
+#                                                           Standard key bindings
+# *********************************************************************************************************************************************************
+
+bindsym $mod+h split h
+bindsym $mod+v split v; mark "lastsplit"
+bindsym $mod+f fullscreen toggle
+bindsym $mod+g fullscreen toggle global
+bindsym Hyper_L fullscreen toggle
+bindsym Caps_Lock fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# focus the parent container
+bindsym $mod+a focus parent
+# focus the child container
+#bindsym $mod+d focus child
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+s sticky toggle
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left 100 px
+bindsym $mod+Shift+Down move down 100 px
+bindsym $mod+Shift+Up move up 100 px
+bindsym $mod+Shift+Right move right 100 px
+# Resizing by 10
+bindsym $mod+Ctrl+Shift+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Left resize shrink width 10 px or 10 ppt
+
+bindcode $mod+Shift+Next move workspace to output left
+bindcode $mod+Shift+Pev move workspace to output right
+
+# *********************************************************************************************************************************************************
+#                                                             Key Bindings
+# *********************************************************************************************************************************************************
+
+# Language selection
+# Use this if you want to update block information
+# exec pkill -SIGRTMIN+11 i3blocks;
+# bindsym Mod1+Caps_Lock exec beep 
+# bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
+bindsym Mod1+ISO_Next_Group      exec dunstify -app layout $key_layout_msg -i $key_icon -r 10001
+bindsym --release Num_Lock       exec beep
+
+#bindsym F1 exec $nsi "default"
+
+# Toggle border
+bindsym $mod+y exec $nsi i3-msg border toggle
+
+# put YouTube into fullscreen and execute this for media mode
+bindsym $mod+u fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
+bindsym $mod+F12 exec "sleep 0.2;/usr/bin/xdotool key F11;i3-msg fullscreen disable;"
+
+# Toggle chrome loudness
+bindsym $mod+shift+F12 exec $nsi $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $loud_volume false && $HOME/bin/toggle-loudness Chrome $loud_volume true
+
+# ************************************************************************************************************
+# Rofi
+bindsym $mod+Next exec "exec /usr/bin/rofi -combi-modi window,drun -show combi -modi combi"
+# htop
+bindsym $mod+F1 exec $nsi "exec /usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'", focus
+bindsym $mod+shift+n exec $nsi "exec /usr/bin/thunar", focus
+# thunar
+# bindsym $mod+
+# ************************************************************************************************************
+
+# Scratch pad
+bindsym $mod+Shift+KP_Subtract move scratchpad
+bindsym $mod+KP_Subtract scratchpad show
+
+bindsym $mod+Pause exec "$HOME/bini3/i3-dexit"
+bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
+bindsym --release button2 kill
+bindsym --release shift+button2 kill
+bindsym $mod+button2 floating toggle
+bindsym $mod+o move window to mark "lastsplit"
+#bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
+bindsym $mod+p exec /home/$USER/bini3/i3-test $IW0
+bindsym $mod+Shift+d exec $nsi /usr/bin/xfce4-appfinder
+bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
+# Resize
+# bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+Control+r exec i3-msg rename workspace to `zenity --entry --text "Rename workspace to:"`
+bindsym $mod+Shift+w exec /home/$USER/bini3/i3-renamewindow `zenity --entry --text "Rename window to:"`
+bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
+bindsym Print exec "shutter -s"
+bindsym $mod+Print exec shutter 
+# Volume
+
+# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioRaiseVolume exec $nsi "exec $HOME/bini3/,volume up" 
+# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioLowerVolume exec $nsi "exec $HOME/bini3/,volume down"
+
+# bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F10 exec $nsi "exec $HOME/bini3/,volume down" 
+# bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
+bindsym $mod+F11 exec $nsi "exec $HOME/bini3/,volume up" 
+bindsym XF86AudioMute exec $nsi "exec $HOME/bini3/,volume mute" 
+
+bindsym $mod+button6 exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" 
+bindsym $mod+button7 exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" 
+
+# Media
+bindsym XF86AudioPlay exec $nsi "exec playerctl play-pause"
+bindsym XF86AudioNext exec $nsi "exec playerctl next"
+bindsym XF86AudioPrev exec $nsi "exec playerctl previous"
+
+# kill focused window
+bindsym $mod+q kill
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+r mode " "
+
+# Switch to next or previous workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+
+# screen lock
+bindsym $mod+l exec "$HOME/bini3/i3exit lock"
+
+# start a terminal
+# bindsym $mod+Return exec "terminator"
+bindsym $mod+Return exec "tilix"
+
+set $size 100 px or 100 ppt
+bindsym $mod+Shift+Next  resize grow height $size,resize grow width $size
+bindsym $mod+Shift+Prior resize shrink height $size,resize shrink width $size
+bindsym $mod+d exec zsh -c "rofi -show run"
+
+bindsym $mod+Home exec "$HOME/bini3/tempscript"
+bindsym $mod+grave exec --no-startup-id tilix --quake --profile="quack"
+# workspace arrangement
+exec i3-msg "workspace number 1, layout tabbed"
+exec i3-msg "workspace number 3, layout tabbed"
+exec i3-msg "workspace number 4, layout tabbed"
+exec i3-msg "workspace number 5, layout tabbed"
+
+# *********************************************************************************************************************************************************
+#                                                           StartUp
+# *********************************************************************************************************************************************************
+
+# Keyboard layout
+exec_always $nsi "$HOME/bini3/i3-startup.sh"
+exec_always $nsi xset dpms 600
+
+# for_window [class="^.*"] border pixel 0
+hide_edge_borders both
+exec_always "exec $HOME/bin/flog -se i3.config"

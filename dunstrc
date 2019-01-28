@@ -288,10 +288,10 @@
     script = ",ding"
 [volume]
     appname = volume
-    script = ",click-s"
     history_ignore = yes
     foreground = "#ebdbb2"
     set_stack_tag = "volume"
+    script = ",click-s"
 [layout]
     appname = layout
     # new_icon = ~/bini3/ext-icons/kb-2.png
