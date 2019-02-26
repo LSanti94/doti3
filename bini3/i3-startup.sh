@@ -25,8 +25,8 @@ fi
 set -x
 
 $HOME/bin/flog -st "i3-startup"
-
-killall dunst; dunst -config ~/.config/dunst/dunstrc &
+sudo killall dunst
+dunst -config ~/.config/dunst/dunstrc &
 $HOME/bin/flog "dunst loaded"
 
 # use " &> /dev/null " to get rid of both errors and outputs of an exec

@@ -15,3 +15,4 @@ ranger/tagged
 *.pyo
 vscode/User/User
 **/__pycache__/**
+vscode/User/globalStorage/state.vscdb
