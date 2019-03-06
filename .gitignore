@@ -16,3 +16,6 @@ ranger/tagged
 vscode/User/User
 **/__pycache__/**
 vscode/User/globalStorage/state.vscdb
+mutt/account.axis2
+mutt/cache
+mutt/b-certificates

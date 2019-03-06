@@ -1,0 +1,30 @@
+# -*- muttrc -*-
+#
+# account settings
+set smtp_url = "smtps://existme@gmail.com@smtp.gmail.com:587/"
+#set smtp_pass = `$HOME/bin/getkey mail gmail`
+set smtp_pass = "`sudo cat ~/.private/gmail.key`"
+set imap_user = "existme@gmail.com"
+#set imap_pass = `$HOME/bin/getkey mail gmail`
+set imap_pass = `sudo cat ~/.private/gmail.key`
+set ssl_starttls = yes                                                           
+set ssl_force_tls = yes
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "imaps://imap.gmail.com:993/INBOX"
+set record="+[Gmail]/Sent Mail"
+set postponed="+[Gmail]/Drafts"
+
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file="~/.mutt/certificates"
+set header_cache="~/.mutt/cache/headers"
+#
+# List of folders that are considered to be "mailboxes" (folders that
+# receive incoming mail).
+#
+mailboxes =INBOX 
+mailboxes =[Gmail]/Sent\ Mail
+mailboxes =[Gmail]/Drafts 
+mailboxes =[Gmail]/Spam 
+mailboxes =[Gmail]/Trash
+

@@ -1,0 +1,170 @@
+# vim: fdm=marker
+# vim: filetype=muttrc
+# https://github.com/tomauty/dotfiles/blob/master/mutt/.mutt/muttrc
+# https://github.com/ervandew/dotfiles/blob/master/.muttrc
+set from="existme@gmail.com"
+set realname="Reza"
+set use_from=yes
+set mail_check_stats
+
+# macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter>'
+# set beep=yes
+source ~/.mutt/account.gmail
+# source ~/.mutt/account.axis
+source ~/.mutt/auto_views
+
+# G to get mail
+bind index G imap-fetch-mail
+set editor = "vim -c 'set tw=74' -c 'set wrap'"
+set editor="emacs -geometry 90x73+298+0"
+
+set record = ''
+# set folder="~/Maildir"
+# set mask="!^\\.[^.]"
+# set mbox="~/Maildir"
+# set record="+.Sent"
+# set postponed="+.Drafts"
+# set spoolfile="~/Maildir"
+set mbox_type = mh
+#--------------------------------------
+# Mail options
+#-------~---~----------~----------~----
+set confirmappend=no # don't prompt when moving a message to another folder.
+set edit_headers # allow editing headers when composing mail.
+set fast_reply # don't prompt for forward subject or to/subject on reply
+# when forwarding, include attachments
+set mime_forward=yes
+set mime_forward_rest=yes
+# set up the pager (use vim)
+# set pager="vim -nc 'setlocal readonly ignorecase ft=mail' -c 'nmap q :q!<CR>'"
+# set pager="w3m -o auto_image=TRUE "
+# set pager="elinks -dump"
+# set pager="cat %s|pipe2w3m.sh"
+# set pager_format="-%S- %-20.20f %s"
+set pager_stop
+set pager_context=3
+set pager_index_lines=20  # Split the view and show pager at line 20
+set noprompt_after
+# set the format and sorting of the index page
+set date_format="%Y-%m-%d %H:%M:%S"
+set index_format="%4C %4c %S%Z %D %-25.25F %?M?(%3M)&     ? %s"
+set sort=threads
+set sort_aux=reverse-last-date-received
+set sort_browser=reverse-date
+set sort_re # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+
+auto_view text/html
+# alternative_order text/plain text/enriched text/html
+alternative_order text/html text/enriched text/plain
+folder-hook . exec collapse-all
+set nomark_old # don't mark messages old
+
+#-------~---~----------~----------~----
+# Sidebar Config
+#-------~---~----------~----------~----
+set sidebar_width         = 30
+set sidebar_visible       = yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+
+bind index \cp sidebar-prev
+bind index \cn sidebar-next
+bind index \co sidebar-open
+bind index G imap-fetch-mail
+
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+# Sidebar binds
+bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
+bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
+bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
+bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+
+
+#-------~---~----------~----------~----
+# Various Settings
+#-------~---~----------~----------~----
+# bind pager <down> next-line
+# bind pager <up> previous-line
+#
+# macro index y '<change-folder>?<toggle-mailboxes>
+# macro pager \cU 'urlview' 'Follow links with urlview'
+#
+# set confirmappend     = "no"
+# set delete            = "yes"
+# set followup_to       = "yes"
+# set sleep_time        = 0
+# set wait_key          = "no"
+#
+# auto_view text/html
+#
+# set smart_wrap
+# unset metoo
+#
+
+#-------~---~----------~----------~----
+# Browsing / Composing
+#-------~---~----------~----------~----
+set strict_threads  = "yes"
+set charset = "utf-8"
+set signature="echo Reza|"
+
+# set display_filter="sed -e '/^\[-- Autoview using \.\j* --\]$/d'"
+
+#-------~---~----------~----------~----
+# IMAP Settings
+#-------~---~----------~----------~----
+# set imap_keepalive = 300
+# set mail_check     = 20
+# set imap_check_subscribed
+
+# #-------~---~----------~----------~----
+# # Key bindings
+# #-------~---~----------~----------~----
+# bind index r group-reply
+# bind index g first-entry
+# bind index G last-entry
+# bind index N search-opposite
+# bind index o collapse-thread
+# bind index O collapse-all
+# bind index R toggle-new
+# bind index \# sync-mailbox
+# #-------~---~----------~----------~----
+# # use tab to complete address.
+# bind editor <Tab> complete-query
+# bind editor ^T complete
+# #-------~---~----------~----------~----
+# bind attach g first-entry
+# bind attach G last-entry
+# # use a graphical browser configured via mailcap like so:
+# #  # bound as <return> on attachments view in mutt
+# #  text/html;xdg-open...
+# #  # default command for mutt to use when viewing html emails w/ no text version
+# #  text/html;w3m...
+# bind attach <return> view-mailcap
+# # default saving of attachments to ~/downloads
+# macro attach s <save-entry><bol>~/downloads/<eol>
+# #-------~---~----------~----------~----
+# bind pager g top
+# bind pager G bottom
+# #-------~---~----------~----------~----
+# bind attach,index,pager \CD next-page
+# bind attach,index,pager \CU previous-page
+#
+#
+#
+bind index N search-opposite
+bind pager N search-opposite
+
+# The following macro will open the HTML mail selected from the attachment view in the web browser defined in the environment
+macro attach 'V' "<pipe-entry>cat >~/.mutt/cache/mail.html && $BROWSER ~/.mutt/cache/mail.html && rm ~/.mutt/cache/mail.html<enter>"
+
+# source ~/.mutt/schemes/vombatidae.muttrc
+source ~/.mutt/schemes/reza.muttrc
+
+# sudo apt install lbdb
+set query_command="lbdbq '%s'"            # Use the little brother database for doing queries.
+
+set text_flowed=yes

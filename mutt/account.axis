@@ -1,0 +1,21 @@
+set spoolfile  = "imap://rezasa@localhost:1143/INBOX"
+set mbox_type  = Maildir
+set folder     = "imap://rezasa@localhost:1143/"
+set trash      = "imap://rezasa@localhost:1143/Trash"
+set record     = +Sent
+set postponed  = "+Drafts"
+
+set from      	= "rezasa@axis.com"
+set realname   = 'Reza Shams'
+set imap_user  			= "rezasa@axis.com"
+set imap_pass           = "`sudo cat .private/axis.key`"
+set imap_keepalive      = 900
+mailboxes =INBOX =Drafts =Sent =gh
+set ssl_starttls=yes
+set sendmail="/usr/bin/msmtp"
+set imap_authenticators = "login"
+
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file="~/.mutt/certificates"
+set header_cache="~/.mutt/cache/headers"
+

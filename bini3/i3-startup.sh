@@ -3,9 +3,10 @@ alreadyRunning=`xdotool search --class "chrome" | wc -l`
 if [ "$alreadyRunning" != "0" ]; then
    exit
 fi
-export $(dbus-launch)
+# export $(dbus-launch)
+export BUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 ~/.screenlayout/layout.sh
-
+gnome-keyring-daemon
 if [ "$1" = "-v" ]; then
    LOG='/tmp/i3-start.log'
    echo "Debug is enabled. logging to [$LOG]"
