@@ -56,7 +56,7 @@ set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 
 auto_view text/html
-# alternative_order text/plain text/enriched text/html
+#alternative_order text/plain text/enriched text/html
 alternative_order text/html text/enriched text/plain
 folder-hook . exec collapse-all
 set nomark_old # don't mark messages old
@@ -96,7 +96,7 @@ bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility 
 # set delete            = "yes"
 # set followup_to       = "yes"
 # set sleep_time        = 0
-# set wait_key          = "no"
+set wait_key          = "no"        # Don't ask press enter to continue on external viewers
 #
 # auto_view text/html
 #
@@ -159,7 +159,7 @@ bind index N search-opposite
 bind pager N search-opposite
 
 # The following macro will open the HTML mail selected from the attachment view in the web browser defined in the environment
-macro attach 'V' "<pipe-entry>cat >~/.mutt/cache/mail.html && $BROWSER ~/.mutt/cache/mail.html && rm ~/.mutt/cache/mail.html<enter>"
+macro attach 'V' "<pipe-entry>cat >~/.mutt/cache/mail.html && surf -z 2 ~/.mutt/cache/mail.html && rm ~/.mutt/cache/mail.html<enter>"
 
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
@@ -168,3 +168,4 @@ source ~/.mutt/schemes/reza.muttrc
 set query_command="lbdbq '%s'"            # Use the little brother database for doing queries.
 
 set text_flowed=yes
+set mailcap_path 	= ~/.mutt/.mailcap

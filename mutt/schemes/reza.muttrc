@@ -7,53 +7,55 @@
 # color249  normal white
 # color255  bright white
 
-# Default colour definitions
+# Basic Colors ====================================================
 # color  object      foreground     background
-color    normal      color249       default       # background
-color hdrdefault black        cyan
-color quoted     red          white
-color signature  brightblack  white
-color indicator  brightwhite  red
-color attachment black        green
-color error      red          white
-color message    blue         white
-color search     brightwhite  magenta
-color status     brightyellow blue
-color tree       red          white
-color tilde      green        white
-color bold       brightyellow white
-color markers    red          white
+# =================================================================
+color    normal      color249       default       # background color
+color    indicator   brightwhite    red
+color    attachment  color226       default
+color    error       red            white
+color    message     blue           white
+color    quoted      red            white
+color    signature   brightblack    white
+color    search      brightwhite    magenta
+color    status      brightyellow   color16       # Status bars
+color    tree        red            white
+color    tilde       green          color234       # Message ending blank section
+color    bold        brightyellow   white
+color    markers     red            white
 
-# Colours for items in the reader
-color header brightwhite cyan "^(From|Subject):"
-color header red         cyan "^X-Junked-Because: "
-color header red         cyan "^X-Virus-hagbard: .* FOUND"
-mono  header bold             "^(From|Subject|X-Junked-Because|X-Virus-hagbard):"
+# Colours for items in the reader =================================
+# color  object      foreground     background
+# =================================================================
+color hdrdefault     color247       color237
+color header         color255       color237    "^(From|Subject):"
+color header         red            color236    "^X-Junked-Because: "
+color header         red            color236    "^X-Virus-hagbard: .* FOUND"
 
-# Colours for items in the index
-#     object      foreground     backg.   RegExp
-color index       color255       default  ~N!~D    # New or Old
-color index       color221    black    ~D       # Deleted
-color index       color221    color242  ~N~D     # Deleted
-color index       color221    red  ~F~D     # Deleted Flagged
-#color index brightgreen white "~N (~x hagbard\.davep\.org | ~h \"^In-[Rr]eply-[Tt]o: .*hagbard\.davep\.org\")"
-color index       color210       default  ~F       # Flagged
-color index black       green ~T
+# Colours for items in the index ==================================
+# color  object      foreground     background RegExp
+# =================================================================
+
+color index       color255       default     ~N!~D    # New or Old
+color index       color221       black       ~D       # Deleted
+color index       color221       color242    ~N~D     # Deleted
+color index       color221       red         ~F~D     # Deleted Flagged
+#color index      brightgreen    white       "~N (~x hagbard\.davep\.org | ~h \"^In-[Rr]eply-[Tt]o: .*hagbard\.davep\.org\")"
+color index       brightgreen    white       "~N (~x Mani.Abedini | ~h .*infographic.*)"
+color index       color210       default     ~F       # Flagged
+color index       black          green       ~T
 
 
 # Highlights inside the body of a message.
 
-# URLs
-color body brightblue  white "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
-color body brightblue  white "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
-color body brightblue  white "news:[^ \">\t\r\n]*"
-mono  body bold              "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
-mono  body bold              "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
-mono  body bold              "news:[^ \">\t\r\n]*"
+# URLS ============================================================
+# color  object      foreground     background
+# =================================================================
+color body brightblue   default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightblue   default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body green        default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body brightblue   white "news:[^ \">\t\r\n]*"
 
-# email addresses
-color body brightblue  white "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
-mono  body bold              "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
 # Various smilies and the like
 color body brightgreen white "<[Gg]>"                                            # <g>
