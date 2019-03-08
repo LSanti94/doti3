@@ -24,13 +24,15 @@ text/x-diff;vim %s
 application/octet-stream;vim %s
 
 # bound as <return> on attachments view in mutt
-# text/html;xdg-open %s &; needsterminal;
+#text/html;xdg-open %s &; needsterminal;
 
 # default command for mutt to use when viewing html emails w/ no text version
-# text/html;w3m -I %{charset} -T text/html; copiousoutput;
-text/html;elinks -dump; copiousoutput;
-message/html;elinks -dump; copiousoutput;
-message/htm;elinks -dump; copiousoutput;
+#text/html; surf %s; nametemplate=%s.html; copiousoutput;
+text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+#text/html;w3m -I %{charset} -T text/html; copiousoutput;
+#text/html;elinks -dump; copiousoutput;
+#message/html;elinks -dump; copiousoutput;
+#message/htm;elinks -dump; copiousoutput;
 
 # pdf
 application/pdf;zathura %s

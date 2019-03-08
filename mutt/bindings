@@ -1,0 +1,68 @@
+# Sidebar binds
+bind index \cp sidebar-prev
+bind index \cn sidebar-next
+bind index \co sidebar-open
+bind index G imap-fetch-mail
+bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
+bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
+bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
+bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+
+
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+
+# bind pager <down> next-line
+# bind pager <up> previous-line
+#
+# macro index y '<change-folder>?<toggle-mailboxes>
+# macro pager \cU 'urlview' 'Follow links with urlview'
+
+# #-------~---~----------~----------~----
+# # Key bindings
+# #-------~---~----------~----------~----
+# bind index r group-reply
+# bind index g first-entry
+# bind index G last-entry
+# bind index N search-opposite
+# bind index o collapse-thread
+# bind index O collapse-all
+# bind index R toggle-new
+# bind index \# sync-mailbox
+# #-------~---~----------~----------~----
+# # use tab to complete address.
+# bind editor <Tab> complete-query
+# bind editor ^T complete
+# #-------~---~----------~----------~----
+# bind attach g first-entry
+# bind attach G last-entry
+# # use a graphical browser configured via mailcap like so:
+# #  # bound as <return> on attachments view in mutt
+# #  text/html;xdg-open...
+# #  # default command for mutt to use when viewing html emails w/ no text version
+# #  text/html;w3m...
+# bind attach <return> view-mailcap
+# # default saving of attachments to ~/downloads
+# macro attach s <save-entry><bol>~/downloads/<eol>
+# #-------~---~----------~----------~----
+# bind pager g top
+# bind pager G bottom
+# #-------~---~----------~----------~----
+# bind attach,index,pager \CD next-page
+# bind attach,index,pager \CU previous-page
+#
+#
+#
+
+bind index N search-opposite
+bind pager N search-opposite
+bind index G imap-fetch-mail     # G to get mail
+macro index,pager L "lall\n"
+
+# inorder for this to work you need to install 'libmime-tools-perl'
+macro index,pager <right> '<pipe-entry>htmail-decode<enter>' # Use V (shift+v) to view html
+# macro index,browser .r "<enter-command>source ~/.muttrc<enter>"
+
+# macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter>'
+# macro pager \` <pipe-entry>'urlview'<enter> 'Follow links with urlview' # will open all urls in urlview!
