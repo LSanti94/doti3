@@ -126,3 +126,4 @@ Xautolock.notifier: /usr/bin/notify-send -c 'session' 'Screen Lock' 'Locking in 
 Xautolock.detectsleep: true
 Xautolock.secure: true
 Xautolock.noclose: true
+*TkTheme: clam

@@ -1,16 +1,29 @@
-set spoolfile  = "imap://rezasa@localhost:1143/INBOX"
-set mbox_type  = Maildir
-set folder     = "imap://rezasa@localhost:1143/"
-set trash      = "imap://rezasa@localhost:1143/Trash"
+# vim: fdm=marker
+# vim: filetype=muttrc
+
+set mbox_type     = Maildir
+
+set folder        = imaps://localhost:1357
+set smtp_url      ="smtp://localhost:1358"
+set spoolfile     = +INBOX
+set postponed     = +Drafts
+mailboxes         = +INBOX
+set mail_check = 30
+set timeout=10
+set imap_check_subscribed
+
+
 set record     = +Sent
 set postponed  = "+Drafts"
+
+set preconnect="ssh -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX"
 
 set from      	= "rezasa@axis.com"
 set realname   = 'Reza Shams'
 set imap_user  			= "rezasa@axis.com"
-set imap_pass           = "`sudo cat .private/axis.key`"
+set imap_pass           = "`sudo cat ~/.private/axis.key`"
+
 set imap_keepalive      = 900
-mailboxes =INBOX =Drafts =Sent =gh
 set ssl_starttls=yes
 set sendmail="/usr/bin/msmtp"
 set imap_authenticators = "login"
@@ -19,3 +32,7 @@ set message_cachedir="~/.mutt/cache/bodies"
 set certificate_file="~/.mutt/certificates"
 set header_cache="~/.mutt/cache/headers"
 
+mailboxes =INBOX
+mailboxes =Drafts
+mailboxes =Sent
+mailboxes =Trash

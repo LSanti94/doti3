@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Import text/calendar files from mutt
+# to calcurse.
+#
+
+echo reza
+# Make sure calcurse is running
+if [ ! -f "$HOME/.calcurse/.daemon.pid" ]; then
+	exit 1
+fi
+
+# Extract the attachments
+TEMPDIR=$(mktemp -d add-to-calcurse.XXXXXXXX)
+echo $TEMPDIR
+cat "$@" | uudeview -i -m -n -q -p $TEMPDIR - > /dev/null 2>&1
+
+# Add the calendar file (last attachment) to calcurse
+FILE=$(ls $TEMPDIR | sort -r | head -1)
+calcurse -i "$TEMPDIR/$FILE" > /dev/null 2>&1
+
+# Remove the temporary dir and trigger a reload in calcurse
+rm -rf $TEMPDIR > /dev/null 2>&1
+kill -USR1 `cat $HOME/.calcurse/.daemon.pid` > /dev/null 2>&1

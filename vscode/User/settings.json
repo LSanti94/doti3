@@ -19,7 +19,7 @@
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
     "workbench.tips.enabled": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -1,
     "window.openFoldersInNewWindow":"off",
     "editor.minimap.showSlider":"mouseover",
     "editor.minimap.enabled": false,
