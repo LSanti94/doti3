@@ -73,7 +73,6 @@ set wait_key          = "no"           # Don't ask press enter to continue on ex
 set nomark_old                         # don't mark messages old
 auto_view text/html
 alternative_order text/html text/enriched text/plain
-folder-hook . exec collapse-all
 
 #-------~---~----------~----------~----
 # Browsing / Composing
@@ -104,7 +103,15 @@ set status_format= "-%r-Personal: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d
 
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
-# source ~/.mutt/account.gmail
+#source ~/.mutt/account.gmail
 source ~/.mutt/account.axis
 source ~/.mutt/auto_views
 source ~/.mutt/bindings
+
+
+
+#-------~---~----------~----------~----
+# Hooks
+#-------~---~----------~----------~----
+folder-hook . exec collapse-all
+folder-hook . 'exec first-entry'

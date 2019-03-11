@@ -61,9 +61,11 @@ bind index G imap-fetch-mail     # G to get mail
 macro index,pager L "lall\n"
 
 # inorder for this to work you need to install 'libmime-tools-perl'
-macro index,pager <right> '<pipe-entry>htmail-decode<enter>' # Use V (shift+v) to view html
+macro index,pager <right> '<pipe-entry>htmail-decode<enter>' # Use right arrow to view html
 # macro index,browser .r "<enter-command>source ~/.muttrc<enter>"
 
-# macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter>'
 # macro pager \` <pipe-entry>'urlview'<enter> 'Follow links with urlview' # will open all urls in urlview!
 macro index,pager ",m" ":unset wait_key\n |~/.mutt/add_to_calcurse<enter><exit>"
+
+macro index <f1> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter><redraw-screen>'
+macro index <f2> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter><redraw-screen>'

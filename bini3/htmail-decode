@@ -86,10 +86,12 @@ $parser->output_under($dir);
 my $mail = $parser->parse(\*STDIN);
 close(STDIN);
 
-unless($mail->is_multipart || $mail->effective_type eq 'text/html') {
+unless($mail->is_multipart || $mail->effective_type eq 'text/html' || $mail->effective_type eq 'text/plain') {
     print STDERR 'ERROR: Unexpected MIME type '.$mail->effective_type."!\n";
     exit 1;
 }
+
+print "Opening file".$mail->bodyhandle->path."\n";
 
 my %cids;
 sub find_cid {
@@ -97,14 +99,14 @@ sub find_cid {
     my $cid;
 
     if($part->is_multipart) {
-	for my $sub ($part->parts) {
-	    find_cid($sub);
-	}
+      for my $sub ($part->parts) {
+          find_cid($sub);
+      }
     }
     elsif($cid = $part->head->mime_attr('content-id')) {
-	$cid =~ s/(^<|>$)//g;
-	$cids{$cid} = 'file://'.$part->bodyhandle->path;
-	print STDERR "FINDCID#CIDREF $cid => $cids{$cid}\n" if($opt_v);
+      $cid =~ s/(^<|>$)//g;
+      $cids{$cid} = 'file://'.$part->bodyhandle->path;
+      print STDERR "FINDCID#CIDREF $cid => $cids{$cid}\n" if($opt_v);
     }
 }
 
@@ -112,12 +114,12 @@ sub find_htmail {
     my $part = shift;
 
     if($part->effective_type eq 'text/html') {
-	&launch_viewer($part);
+   	&launch_viewer($part);
     }
     elsif($part->is_multipart) {
-	for my $sub ($part->parts) {
-	    find_htmail($sub);
-	}
+      for my $sub ($part->parts) {
+          find_htmail($sub);
+      }
     }
 }
 
