@@ -91,7 +91,6 @@ unless($mail->is_multipart || $mail->effective_type eq 'text/html' || $mail->eff
     exit 1;
 }
 
-print "Opening file".$mail->bodyhandle->path."\n";
 
 my %cids;
 sub find_cid {
@@ -127,21 +126,23 @@ sub launch_viewer {
     my $part = shift;
 
     my $pid = open(HPIPE, '|-');
+
     unless(defined($pid)) {
-	print STDERR "ERROR: Failed to fork: $!\n";
-	exit 2;
+      print STDERR "ERROR: Failed to fork: $!\n";
+      exit 2;
     }
 
     if($pid) {
-	print HPIPE join("\n", %cids, '');
-	close(HPIPE);
+      print HPIPE join("\n", %cids, '');
+      close(HPIPE);
     }
     else {
-	print STDERR "TXTHTML#VIEWER ".join(' ', @viewer_cmd, 'file://'.$part->bodyhandle->path)." \n" if($opt_v);
-	unless(exec(@viewer_cmd, 'file://'.$part->bodyhandle->path)) {
-	    print STDERR "ERROR: Failed to run 'htmail-view': $!\n";
-	    exit 3;
-	}
+      print "Opening file: ".$part->bodyhandle->path."\n";
+	   print STDERR "TXTHTML#VIEWER ".join(' ', @viewer_cmd, 'file://'.$part->bodyhandle->path)." \n" if($opt_v);
+   	unless(exec(@viewer_cmd, 'file://'.$part->bodyhandle->path)) {
+         print STDERR "ERROR: Failed to run 'htmail-view': $!\n";
+	      exit 3;
+	   }
     }
 
     print STDERR "Waiting for HTMaiL-Viewer to return...\n\n";

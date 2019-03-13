@@ -16,7 +16,7 @@ set timeout=10
 set record     = +Sent
 set postponed  = "+Drafts"
 
-set preconnect="ssh -q -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX &> /dev/null"
+set preconnect="ssh -q -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX &> /dev/null && sleep 10"
 
 set from      	= "rezasa@axis.com"
 set realname   = 'Reza Shams'

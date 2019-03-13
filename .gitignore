@@ -17,7 +17,7 @@ vscode/User/User
 **/__pycache__/**
 vscode/User/globalStorage/state.vscdb
 vscode/User/globalStorage/state.vscdb.backup
-mutt/account.axis2
-mutt/cache
-mutt/b-certificates
-mutt/certificates
+.mutt/account.axis2
+.mutt/cache
+.mutt/b-certificates
+.mutt/certificates
