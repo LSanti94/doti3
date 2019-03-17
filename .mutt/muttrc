@@ -2,15 +2,14 @@
 # vim: filetype=muttrc
 # https://github.com/tomauty/dotfiles/blob/master/mutt/.mutt/muttrc
 # https://github.com/ervandew/dotfiles/blob/master/.muttrc
-set from="existme@gmail.com"
-set realname="Reza"
 set use_from=yes
 set mail_check_stats
 
 # set beep=yes
 
 set editor = "vim -c 'set tw=74' -c 'set wrap'"
-set editor="emacs -geometry 90x73+298+0"
+set editor = "vim"
+# set editor="emacs -geometry 90x73+298+0"
 
 set record = ''
 # set folder="~/Maildir"
@@ -103,8 +102,8 @@ set status_format= "-%r-Personal: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d
 
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
-#source ~/.mutt/account.gmail
-source ~/.mutt/account.axis
+source ~/.mutt/account.gmail
+#source ~/.mutt/account.axis
 source ~/.mutt/auto_views
 source ~/.mutt/bindings
 

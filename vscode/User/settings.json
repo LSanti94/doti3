@@ -35,5 +35,6 @@
     "editor.tabSize": 3,
     "diffEditor.renderSideBySide": true,
     "diffEditor.ignoreTrimWhitespace": true,
-
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }

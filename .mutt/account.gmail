@@ -11,6 +11,9 @@ set imap_pass = `sudo cat ~/.private/gmail.key`
 set ssl_starttls = yes
 set ssl_force_tls = yes
 
+set from="existme@gmail.com"
+set realname="Reza"
+
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "imaps://imap.gmail.com:993/INBOX"
 set record="+[Gmail]/Sent Mail"
