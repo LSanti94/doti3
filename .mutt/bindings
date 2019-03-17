@@ -1,12 +1,14 @@
 # Sidebar binds
-bind index \cp sidebar-prev
-bind index \cn sidebar-next
-bind index \co sidebar-open
 bind index G imap-fetch-mail
-bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
-bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
-bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
-bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+
+bind index,pager <C-UP> sidebar-prev                  # Ctrl-up to select next folder
+bind index,pager <C-DOWN> sidebar-next                # Ctrl-down to select previous folder
+bind index,pager <C-RIGHT> sidebar-open               # Ctrl-right to open selected folder
+bind index,pager <C-LEFT> sidebar-toggle-visible      # Ctrl-left to toggle visibility of the sidebar
+
+macro index,pager <S-UP>    "<previous-entry><tag-message><previous-entry>"   # Shift-up to toggle tagging message upwardly
+macro index,pager <S-DOWN>  "<tag-message>"                                   # Shift-down to toggle tagging message downwardly
+macro index,pager <S-LEFT>  "<untag-pattern>~A<enter>"                        # Shift-left to untag all messages
 
 
 macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
@@ -31,9 +33,6 @@ macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 # bind index R toggle-new
 # bind index \# sync-mailbox
 # #-------~---~----------~----------~----
-# # use tab to complete address.
-# bind editor <Tab> complete-query
-# bind editor ^T complete
 # #-------~---~----------~----------~----
 # bind attach g first-entry
 # bind attach G last-entry
@@ -55,6 +54,11 @@ macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 #
 #
 
+
+# use tab to complete address.
+# bind editor <Tab> complete-query
+bind editor ^T complete
+
 bind index N search-opposite
 bind pager N search-opposite
 bind index G imap-fetch-mail     # G to get mail
@@ -69,3 +73,14 @@ macro index,pager ",m" ":unset wait_key\n |~/.mutt/add_to_calcurse<enter><exit>"
 
 macro index <f1> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter><redraw-screen>'
 macro index <f2> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter><redraw-screen>'
+
+
+# navigation/saving ---------------------------------------------------
+bind index,pager            w   sync-mailbox # default is $, but this is more like vim 'write'
+macro index,pager           W   "<sync-mailbox><shell-escape>mailrun<enter>" "Sync mailbox and offlineimap." #<shell-escape>
+macro index,pager           $   "<sync-mailbox><shell-escape>mailrun<enter>" "Sync mailbox and offlineimap." #<shell-escape>
+bind index,pager            ZZ  quit # save changes to mailbox and quit
+bind pager                  q   exit # exit back to index
+bind index                  q   noop # remove q binding
+bind index                  qq  exit # exit mutt without syncing changes
+#bind generic,pager,browser,attach,compose,pgp,smime,postpone,query <esc> exit

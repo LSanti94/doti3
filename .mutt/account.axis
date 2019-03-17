@@ -7,13 +7,12 @@ set folder        = imaps://localhost:1357
 set smtp_url      ="smtp://localhost:1358"
 set spoolfile     = +INBOX
 set postponed     = +Drafts
-mailboxes         = +INBOX
 set mail_check = 30
 set timeout=10
 #set imap_check_subscribed
 
 
-set record     = +Sent
+set record     = "+Sent Items"
 set postponed  = "+Drafts"
 
 set preconnect="ssh -q -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX &> /dev/null && sleep 2"
@@ -28,11 +27,20 @@ set ssl_starttls=yes
 set sendmail="/usr/bin/msmtp"
 set imap_authenticators = "login"
 
-set message_cachedir="~/.mutt/cache/bodies"
-set certificate_file="~/.mutt/certificates"
-set header_cache="~/.mutt/cache/headers"
+set display_filter="$HOME/.mutt/addalias $HOME/.mutt/alias_a.key"
 
+# Sepecific bindings ------------------------------------
+bind index g noop
+bind editor <space> noop      # To handle space in folder names
+macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gs "<change-folder>=Sent Items<enter>" "Go to sent items folder"
+macro index gt "<change-folder>=Deleted Items<enter>" "Go to trash"
+
+
+
+# Sepecific Mailboxes ------------------------------------
 mailboxes =INBOX
 mailboxes =Drafts
-mailboxes =Sent
-mailboxes =Trash
+mailboxes ="Sent Items"
+mailboxes ="Deleted Items"

@@ -19,11 +19,24 @@ set spoolfile = "imaps://imap.gmail.com:993/INBOX"
 set record="+[Gmail]/Sent Mail"
 set postponed="+[Gmail]/Drafts"
 
-set message_cachedir="~/.mutt/cache/bodies"
-set certificate_file="~/.mutt/certificates"
-set header_cache="~/.mutt/cache/headers"
-
 set preconnect=""
+
+
+set display_filter="$HOME/.mutt/addalias $HOME/.mutt/alias_g.key"
+
+
+bind index g noop
+bind editor <space> noop      # To handle space in folder names
+#macro index ga "<change-folder>=[Gmail]/All Mail<enter>"      "Go to all mail"
+macro index ga "<change-folder>=[Gmail]/Starred<enter>"        "Go to starred messages"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>"         "Go to drafts"
+macro index gi "<change-folder>=INBOX<enter>"                  "Go to inbox"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>"      "Go to sent messages"
+macro index gt "<change-folder>=[Gmail]/Trash<enter>"          "Go to trash"
+
+macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
+macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
+
 
 #
 # List of folders that are considered to be "mailboxes" (folders that
@@ -32,6 +45,7 @@ set preconnect=""
 mailboxes =INBOX
 mailboxes =[Gmail]/Sent\ Mail
 mailboxes =[Gmail]/Drafts
+mailboxes =[Gmail]/Starred
 mailboxes =[Gmail]/Spam
 mailboxes =[Gmail]/Trash
 

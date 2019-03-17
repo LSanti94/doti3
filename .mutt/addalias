@@ -1,0 +1,20 @@
+#! /bin/zsh
+ALIAS_FILE=$1
+MESSAGE=$(cat)
+
+AWK='{$1=""; if (NF == 3) {print "alias" $0;} else if (NF == 2) '
+AWK+='{print "alias" $0 $0;} else if (NF > 3) {print "alias", '
+AWK+='tolower($2)"-"tolower($(NF-1)) $0;}}'
+
+NEWALIAS=$(echo "${MESSAGE}" | grep "^From: " | sed "s/[\,\"\']//g" | awk $AWK)
+
+if grep -Fxq "$NEWALIAS" "$1"; then
+    :
+else
+    echo "$NEWALIAS" >> "$1"
+fi
+
+# echo "${AWK}" > /tmp/out
+# echo "----------------" >> /tmp/out
+# echo "${MESSAGE}" >> /tmp/out
+echo "${MESSAGE}"
