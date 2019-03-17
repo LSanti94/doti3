@@ -81,6 +81,9 @@ set message_cachedir="~/.mutt/cache/bodies"
 set header_cache="~/.mutt/cache/headers"
 
 
+# macro compose \e5 "F pandoc --template=$HOME/.mutt/template.markdown --standalone -s -f gfm -t html \ny^T^Utext/html; charset=us-ascii\n"
+macro compose \e5 "F pandoc --css $HOME/.mutt/github.css --standalone --self-contained -s -f gfm -t html \ny^T^Utext/html; charset=us-ascii\n"
+
 #-------~---~----------~----------~----
 # Browsing / Composing
 #-------~---~----------~----------~----
