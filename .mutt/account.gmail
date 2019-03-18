@@ -34,7 +34,7 @@ macro index gi "<change-folder>=INBOX<enter>"                  "Go to inbox"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>"      "Go to sent messages"
 macro index gt "<change-folder>=[Gmail]/Trash<enter>"          "Go to trash"
 
-macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
+# macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
 macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 
 
@@ -43,9 +43,11 @@ macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 # receive incoming mail).
 #
 mailboxes =INBOX
+mailboxes =[Gmail]/Important
 mailboxes =[Gmail]/Sent\ Mail
 mailboxes =[Gmail]/Drafts
 mailboxes =[Gmail]/Starred
 mailboxes =[Gmail]/Spam
 mailboxes =[Gmail]/Trash
+
 
