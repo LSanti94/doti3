@@ -1,3 +1,5 @@
+#! /bin/bash      just for vscode highlighting
+
 image/bmp;feh %s
 image/gif;feh %s
 image/ilbm;feh %s
@@ -51,3 +53,6 @@ application/x-msexcel;gnumeric %s; copiousoutput; nametemplate=%s.xls
 
 text/calendar; mutt-ics; copiousoutput
 application/ics; mutt-ics; copiousoutput
+
+# vim: fdm=marker
+# vim: filetype=muttrc

@@ -1,5 +1,4 @@
-# vim: fdm=marker
-# vim: filetype=muttrc
+#! /bin/bash      just for vscode highlighting
 
 set mbox_type     = Maildir
 
@@ -44,3 +43,6 @@ mailboxes =INBOX
 mailboxes =Drafts
 mailboxes ="Sent Items"
 mailboxes ="Deleted Items"
+
+# vim: fdm=marker
+# vim: filetype=muttrc

@@ -1,39 +1,36 @@
-# vim: fdm=marker
-# vim: filetype=muttrc
+#! /bin/bash      just for vscode highlighting
+
 # https://github.com/tomauty/dotfiles/blob/master/mutt/.mutt/muttrc
 # https://github.com/ervandew/dotfiles/blob/master/.muttrc
 set use_from=yes
 set mail_check_stats
 
-# set beep=yes
+# +/^s searches and jumps to the first empty line; ++1 goes one line further then 'noh' removes syntax highlighting
+set editor = 'vim +/^$ ++1 -c "noh" -c "set spell spelllang=en" -c "set textwidth=72" -c "set wrap"'
 
-set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set spell spelllang=en"'
-set editor = "vim +/^$ ++1"
 # set editor="emacs -geometry 90x73+298+0"
 set edit_headers
 
 
 set record = ''
-# set folder="~/Maildir"
-# set mask="!^\\.[^.]"
-# set mbox="~/Maildir"
-# set record="+.Sent"
-# set postponed="+.Drafts"
-# set spoolfile="~/Maildir"
 set mbox_type = mh
 
 #--------------------------------------
 # Mail options
 #-------~---~----------~----------~----
-set confirmappend=no                   # don't prompt when moving a message to another folder.
+set confirmappend = no                 # don't prompt when moving a message to another folder.
 set edit_headers                       # allow editing headers when composing mail.
-set include=yes
-set fast_reply                         # don't prompt for forward subject or to/subject on reply
-set mime_forward=yes                   # when forwarding, include attachments
-set mime_forward_rest=yes
-set send_charset="utf-8"
-set move = no                          # By default, Mutt will ask you to move read messages from INBOX to another mailbox (set by mbox)
+set include = yes
+set mime_forward = yes                   # when forwarding, include attachments
+set mime_forward_rest = yes
+set send_charset = "utf-8"
+set smart_wrap
 
+set move = no                          # By default, Mutt will ask you to move read messages from INBOX to another mailbox (set by mbox)
+set recall=no                          # Prevent Mutt from asking me to recall a postponed message when composing
+set delete                             # Don't ask for comfirmation to append a message to an existing mailbox
+set fast_reply                         # don't prompt for forward subject or to/subject on reply
+set noprompt_after
 
 # set up the pager (use vim)
 # set pager="vim -nc 'setlocal readonly ignorecase ft=mail' -c 'nmap q :q!<CR>'"
@@ -42,11 +39,9 @@ set move = no                          # By default, Mutt will ask you to move r
 # set pager="cat %s|pipe2w3m.sh"
 # set pager_format="-%S- %-20.20f %s"
 
-set smart_wrap
 set pager_stop
 set pager_context=3
 set pager_index_lines=20               # Split the view and show pager at line 20
-set noprompt_after
 
 
 # %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>
@@ -58,14 +53,19 @@ set noprompt_after
 set index_format="%3C %zs %?X?A& ? %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%d ]> %-20.20F %s (%-4.4c)"
 # --------------------------------                   Date portion                    --------------------"
 # -------------------------------- %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%d ]> --------------------"
+
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_on_top
+
 
 set sort=threads
 set sort_aux=reverse-last-date-received
 set sort_browser=reverse-date
 set sort_re # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set uncollapse_jump
+unset collapse_unread
 
 
 #-------~---~----------~----------~----
@@ -79,14 +79,13 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
 # Various Settings
 #-------~---~----------~----------~----
 #
-# set confirmappend     = "no"
-# set delete            = "yes"
 # set followup_to       = "yes"
-# set sleep_time        = 0
-# set smart_wrap
 # unset metoo
+
+set beep_new
+set sleep_time = 0
 set wait_key          = "no"           # Don't ask press enter to continue on external viewers
-set nomark_old                         # don't mark messages old
+set nomark_old                         # Don't mark messages old
 auto_view text/html
 alternative_order text/html text/enriched text/plain
 
@@ -145,3 +144,5 @@ folder-hook . exec collapse-all
 folder-hook . 'exec first-entry'
 
 
+# vim: fdm=marker
+# vim: filetype=muttrc

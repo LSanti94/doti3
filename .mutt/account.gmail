@@ -1,6 +1,7 @@
-# -*- muttrc -*-
+#! /bin/bash      just for vscode highlighting
 #
-# account settings
+#
+# Gmail account settings
 
 set smtp_url = "smtp://existme@smtp.gmail.com:587/"
 #set smtp_pass = `$HOME/bin/getkey mail gmail`
@@ -50,4 +51,5 @@ mailboxes =[Gmail]/Starred
 mailboxes =[Gmail]/Spam
 mailboxes =[Gmail]/Trash
 
-
+# vim: fdm=marker
+# vim: filetype=muttrc

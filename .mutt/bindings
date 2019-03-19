@@ -1,5 +1,4 @@
-# vim: fdm=marker
-# vim: filetype=muttrc
+#! /bin/bash      just for vscode highlighting
 
 # Sidebar binds
 bind index G imap-fetch-mail
@@ -99,3 +98,6 @@ bind pager                  q   exit # exit back to index
 bind index                  q   noop # remove q binding
 bind index                  qq  exit # exit mutt without syncing changes
 #bind generic,pager,browser,attach,compose,pgp,smime,postpone,query <esc> exit
+
+# vim: fdm=marker
+# vim: filetype=muttrc

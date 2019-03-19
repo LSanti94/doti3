@@ -1,3 +1,4 @@
+#! /bin/bash      just for vscode highlighting
 # -*- muttrc -*-
 #
 # Colour settings for mutt.
@@ -37,8 +38,8 @@ color header         red            color236    "^X-Virus-hagbard: .* FOUND"
 # =================================================================
 
 color index       color255       default     ~N!~D    # New and not Delete
-color index       color221       color242    ~N~D     # New and Deleted
-color index       color221       red         ~F~D     # Flagged Deleted
+color index       color221       default     ~N~D     # New and Deleted
+color index       color220       default     ~F~D     # Flagged Deleted
 # color index       brightgreen    white       "(~x existme | ~h \"^In-[Rr]eply-[Tt]o: .*rezasa.*\")"
 # color index       brightgreen    white       "(~x rezasa.* | ~h .*infographic.*)"
 color index       color210       default     ~F       # Flagged
@@ -66,15 +67,19 @@ color body brightblue  white "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"    
 
 # neomutt specific colors, see https://neomutt.org/feature/index-color
 #                              https://neomutt.org/guide/advancedusage.html#patterns
+
 color index_number   brightwhite default
-color index_subject  color255    default '.*'
-color index_subject  black    green ~T
-color index_subject  color221    default ~D
-color index_size     color229       default
-color index_flags     white      default '~A'
-color index_date     color250       default
-color index_author   color153       default  '.*'
-color sidebar_new    yellow         default
-color index_author  color151    default        "(~h \"From: (Peter|Ola|Gustav|John).*\")"
-color index_author  color208    color238       "(~h \"From: (Johan|Emil S).*\")"
+color index_subject  color255    default     '.*'
+color index_subject  black       green       ~T
+color index_subject  color0      color220    ~D
+color index_size     color229    default
+color index_flags    white       default     '~A'
+color index_date     color250    default
+color index_author   color153    default     '.*'
+color sidebar_new    yellow      default
+color index_author   color151    default     "(~h \"From: (Peter|Ola|Gustav|John).*\")"
+color index_author   color208    color238    "(~h \"From: (Johan|Emil S).*\")"
+
 # source ~/.mutt/schemes/reza.muttrc
+# vim: fdm=marker
+# vim: filetype=muttrc

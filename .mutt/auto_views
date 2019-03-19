@@ -1,3 +1,5 @@
+#! /bin/bash      just for vscode highlighting
+
 # -*- muttrc -*-
 #
 # Tell mutt which MIME types to auto-view
@@ -27,3 +29,6 @@ auto_view text/x-lisp
 auto_view text/x-diff
 auto_view image/tiff
 auto_view text/calendar application/ics
+
+# vim: fdm=marker
+# vim: filetype=muttrc
