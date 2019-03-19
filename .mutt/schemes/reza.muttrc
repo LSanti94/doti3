@@ -75,6 +75,6 @@ color index_flags     white      default '~A'
 color index_date     color250       default
 color index_author   color153       default  '.*'
 color sidebar_new    yellow         default
-color index_author  color151    color238       "(~h \"From: (Peter|Ola|Gustav|John).*\")"
+color index_author  color151    default        "(~h \"From: (Peter|Ola|Gustav|John).*\")"
 color index_author  color208    color238       "(~h \"From: (Johan|Emil S).*\")"
 # source ~/.mutt/schemes/reza.muttrc
