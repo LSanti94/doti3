@@ -7,7 +7,7 @@ set mail_check_stats
 
 # set beep=yes
 
-set editor = "vim -c 'set tw=74' -c 'set wrap'"
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set spell spelllang=en"'
 set editor = "vim +/^$ ++1"
 # set editor="emacs -geometry 90x73+298+0"
 set edit_headers
@@ -27,9 +27,13 @@ set mbox_type = mh
 #-------~---~----------~----------~----
 set confirmappend=no                   # don't prompt when moving a message to another folder.
 set edit_headers                       # allow editing headers when composing mail.
+set include=yes
 set fast_reply                         # don't prompt for forward subject or to/subject on reply
 set mime_forward=yes                   # when forwarding, include attachments
 set mime_forward_rest=yes
+set send_charset="utf-8"
+set move = no                          # By default, Mutt will ask you to move read messages from INBOX to another mailbox (set by mbox)
+
 
 # set up the pager (use vim)
 # set pager="vim -nc 'setlocal readonly ignorecase ft=mail' -c 'nmap q :q!<CR>'"
@@ -38,13 +42,25 @@ set mime_forward_rest=yes
 # set pager="cat %s|pipe2w3m.sh"
 # set pager_format="-%S- %-20.20f %s"
 
+set smart_wrap
 set pager_stop
 set pager_context=3
 set pager_index_lines=20               # Split the view and show pager at line 20
 set noprompt_after
 
-set date_format="%Y-%m-%d %H:%M:%S"    # set the format and sorting of the index page
-set index_format="%4C %4c %S%Z %D %-25.25F %?M?(%3M)&     ? %s"
+
+# %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>
+# %<[y?                                       &%[%m/%y ]>  Older
+#      %<[m?                        &%[%b %d]>             This year
+#           %<[d?         &%[%a %d]>                       This month
+#                %[%H:%M ]                                 Today
+#
+set index_format="%3C %zs %?X?A& ? %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%d ]> %-20.20F %s (%-4.4c)"
+# --------------------------------                   Date portion                    --------------------"
+# -------------------------------- %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%d ]> --------------------"
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
 set sort=threads
 set sort_aux=reverse-last-date-received
 set sort_browser=reverse-date
@@ -57,8 +73,7 @@ set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 #-------~---~----------~----------~----
 set sidebar_width         = 30
 set sidebar_visible       = yes
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
 
 #-------~---~----------~----------~----
 # Various Settings
@@ -115,6 +130,7 @@ source ~/.mutt/alias_g.key
 source ~/.mutt/alias_a.key
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
+# source ~/.mutt/schemes/lukesmith.muttrc
 source ~/.mutt/account.gmail
 #source ~/.mutt/account.axis
 source ~/.mutt/auto_views

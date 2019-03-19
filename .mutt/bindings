@@ -27,8 +27,8 @@ macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>
 
 
 # [m]ove a mail to another folder (in Gmail, "m" would be "[m]ute").
-macro pager m "<save-message>?<toggle-mailboxes>" "move to..."
-macro index m "<tag-prefix><save-message>?<toggle-mailboxes>" "move to..."
+# macro pager m "<save-message>?<toggle-mailboxes>" "move to..."
+# macro index m "<tag-prefix><save-message>?<toggle-mailboxes>" "move to..."
 
 # bind pager <down> next-line
 # bind pager <up> previous-line
