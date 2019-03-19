@@ -59,13 +59,16 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 set status_on_top
 
 
-set sort=threads
-set sort_aux=reverse-last-date-received
-set sort_browser=reverse-date
-set sort_re # thread based on regex
+set sort             = "threads"
+set strict_threads   = "yes"
+set sort_aux         = "reverse-last-date-received"
+set sort_browser     = "reverse-date"
+set sort_re             # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-set uncollapse_jump
+unset uncollapse_jump
 unset collapse_unread
+set collapse_all = no
+set uncollapse_new = yes
 
 
 #-------~---~----------~----------~----
@@ -101,7 +104,6 @@ macro compose \e5 "F pandoc --css $HOME/.mutt/github.css --standalone --self-con
 #-------~---~----------~----------~----
 # Browsing / Composing
 #-------~---~----------~----------~----
-set strict_threads  = "yes"
 set charset = "utf-8"
 set signature="echo Reza|"
 
@@ -125,15 +127,16 @@ set status_format= "-%r-Personal: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d
 # Sourcing
 #-------~---~----------~----------~----
 
+source ~/.mutt/folder-hooks
 source ~/.mutt/alias_g.key
 source ~/.mutt/alias_a.key
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
 # source ~/.mutt/schemes/lukesmith.muttrc
-source ~/.mutt/account.gmail
-#source ~/.mutt/account.axis
 source ~/.mutt/auto_views
 source ~/.mutt/bindings
+source ~/.mutt/account.$DEFAUL_MAIL
+#source ~/.mutt/account.axis
 
 
 
