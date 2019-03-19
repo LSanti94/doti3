@@ -135,7 +135,7 @@ source ~/.mutt/schemes/reza.muttrc
 # source ~/.mutt/schemes/lukesmith.muttrc
 source ~/.mutt/auto_views
 source ~/.mutt/bindings
-source ~/.mutt/account.$DEFAUL_MAIL
+source ~/.mutt/account.$DEFAULT_MAIL
 #source ~/.mutt/account.axis
 
 
