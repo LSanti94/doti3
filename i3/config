@@ -635,12 +635,13 @@ bindsym $mod+l exec "$HOME/bini3/i3exit lock"
 bindsym $mod+Return exec "tilix"
 
 set $size 100 px or 100 ppt
-bindsym $mod+Shift+Next  resize grow height $size,resize grow width $size
-bindsym $mod+Shift+Prior resize shrink height $size,resize shrink width $size
-bindsym $mod+d exec zsh -c "rofi -show run"
+bindsym $mod+Shift+Next    resize grow height $size,resize grow width $size
+bindsym $mod+Shift+Prior   resize shrink height $size,resize shrink width $size
+bindsym $mod+d             exec zsh -c "rofi -show run"
 
-bindsym $mod+Home exec "surf http://localhost:8091/unix-utils/mutt"
-bindsym $mod+Shift+Home exec "$HOME/bini3/tempscript"
+bindsym $mod+Home          exec "surf http://localhost:8091/unix-utils/mutt"
+bindsym $mod+Shift+Home    exec "surf http://localhost:8090/info/info"
+# bindsym $mod+Shift+Home exec "$HOME/bini3/tempscript"
 bindsym $mod+grave exec --no-startup-id tilix --quake --profile="quack"
 # workspace arrangement
 exec i3-msg "workspace number 1, layout tabbed"
