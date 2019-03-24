@@ -5,7 +5,7 @@ Parses a mail file, extracts information from (from, to, cc, resent_to, and rese
 updates and mantains the extracted information in the given alias file.
 
 Usage:
-  alias-manager.py [-p] --file=<aliasFile> [<mailFilePath>]
+  alias-manager.py [-p] [-l] --file=<aliasFile> [<mailFilePath>]
 
 Arguments:
     <aliasFile>     Path to the alias file to be maintained
@@ -14,6 +14,8 @@ Options:
     mailFilePath    Path to the mail file to read
     -p              Print outs the message, this is useful when used within the display filter
                     in mmutt
+
+    -l              export aliases and calls rofi for selecting an email, the selected email will be printed
 """
 
 from email.parser import Parser
@@ -26,6 +28,7 @@ import tempfile
 import shutil
 import subprocess
 from operator import itemgetter
+from rofi import Rofi
 
 
 def parsBlackList(blackListFilePath):
@@ -160,16 +163,34 @@ def parsMail(aliases, aMailPath, printMessage):
         print(msg)
 
 
+def exportToRofi(aliases):
+    selection = []
+    for alias in aliases.values():
+        name = alias['name'].strip()
+        if name == '':
+            name = alias['alias']
+        # print("%s | %s" % (name, alias['email']))
+        selection.append("%s | %s" % (name, alias['email']))
+    r = Rofi(rofi_args=['-i', '-disable-history', '-levenshtein-sort', '-matching', 'normal', '-e'])
+    index, key = r.select("what", selection)
+    selected = selection[index].split('|')
+    print("%s <%s>" % (selected[0], selected[1].strip()))
 # print(getAliasFromEmail('<kurser.syd@folkuniversitetet.se>'))
 # sys.exit
+
 
 args = docopt(__doc__, version='1')
 # print(args)
 aliasFilePath = args['--file']
 mailFilePath = args['<mailFilePath>']
 printMessage = args['-p']
+aExportToRofi = args['-l']
 
 blackList = parsBlackList('~/.mutt/blacklist_emails.txt')
 aliases = parsAliasFile(aliasFilePath)
-parsMail(aliases, mailFilePath, printMessage)
-writeAliasFile(aliases, aliasFilePath)
+
+if aExportToRofi:
+    exportToRofi(aliases)
+else:
+    parsMail(aliases, mailFilePath, printMessage)
+    writeAliasFile(aliases, aliasFilePath)
