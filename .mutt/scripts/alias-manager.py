@@ -1,26 +1,19 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
-"""alias-decoder
-decodes a mail file, updates relative aliases
+"""alias-manager.py
+Parses a mail file, extracts information from (from, to, cc, resent_to, and resent_cc)
+updates and mantains the extracted information in the given alias file.
 
 Usage:
-  alias-decoder [-p] --file=<aliasFile> [<mailFilePath>]
+  alias-manager.py [-p] --file=<aliasFile> [<mailFilePath>]
 
 Arguments:
-    <aliasFile>  Path to the alias file to be updated
+    <aliasFile>  Path to the alias file to be maintained
 
 Options:
-    -l|list     Shows the list of embeded content
-    --p         Print outs the <TYPE> address to output, <TYPE> can be:
-                    mail    prints the text file address
-                    html    prints the html file address
-                    best    If html is available print it otherwise
-                            go with the text version
-                    worst   If text is available print it otherwise
-                            go with the html version
-                    temp    prints the temp folder address
-    -k|--keep   Do not delete the extracted files
-
+    --file      This mandatory arguments tells the script which alias file it should maintain
+    -p          Print outs the message, this is useful when used within the display filter
+                in mmutt
 """
 
 from email.parser import Parser
