@@ -17,7 +17,7 @@ color    attachment  color226       default
 color    error       red            white
 color    message     blue           white
 color    quoted      red            white
-color    signature   brightblack    white
+color    signature   cyan           default
 color    search      brightwhite    magenta
 color    status      brightyellow   color16       # Status bars
 color    tree        red            white
@@ -71,6 +71,7 @@ color body brightblue  white "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"    
 color index_number   brightwhite default
 color index_subject  color255    default     '.*'
 color index_subject  black       green       ~T
+color index_subject  color214    default     ~N
 color index_subject  color0      color220    ~D
 color index_size     color229    default
 color index_flags    white       default     '~A'

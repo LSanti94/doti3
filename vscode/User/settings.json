@@ -39,4 +39,5 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "python.jediEnabled": false,
 }

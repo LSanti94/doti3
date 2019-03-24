@@ -1,0 +1,125 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+"""mail-decoder
+decodes a mail file, extract/display it's relevant contents
+
+Usage:
+  mail-decoder [-d|--dump] [-s|--separator] [-p|--path] [-l|--list] [--select=TYPE] [-k|--keep] [-v|--view] [<filepath>]
+
+Arguments:
+    <filepath>  Path to the encoded mail message
+
+Options:
+    -l|list     Shows the list of embeded content
+    --p         Print outs the <TYPE> address to output, <TYPE> can be:
+                    mail    prints the text file address
+                    html    prints the html file address
+                    best    If html is available print it otherwise
+                            go with the text version
+                    worst   If text is available print it otherwise
+                            go with the html version
+                    temp    prints the temp folder address
+    -k|--keep   Do not delete the extracted files
+
+"""
+
+from email.parser import Parser
+from docopt import docopt           # sudo -H pip install docop
+import os, sys
+import tempfile
+import shutil
+import subprocess
+
+viewer = "surf -z 2"
+def main():
+    args = docopt(__doc__, version='1')
+    aShowList = args['--list'] or args['-l']
+    aDump = args['--dump'] or args['-d']
+    aSelectContent = args['--select']
+    aKeepFolder = args['-k'] or args['--keep']
+    aView = args['-v'] or args['--view']
+    aPrintPath = args['-p'] or args['--path']
+    aSeparator = args['-s'] or args['--separator']
+    aMailPath = args['<filepath>']
+    # print(args)
+
+    p = Parser()
+    tmpdir =  tempfile.mkdtemp()
+    printed = False
+    partCounter = 1
+    bestContentPath = ""
+    bestContent = ""
+    acceptedType = ""
+
+    if aMailPath == None:
+        msg=p.parse(sys.stdin)
+    else:
+        mailFile = open(aMailPath, "rb")
+        msg = p.parse(mailFile)
+        mailFile.close()
+
+    if aView and not aSelectContent:
+        aSelectContent="best"
+
+    for part in msg.walk():
+        # print dir(part)
+        subType = part.get_content_type()
+        mainType = part.get_content_maintype()
+        isHtml = subType=='text/html'
+        isText = subType=='text/plain'
+        ext=""
+        if isHtml: ext=".html"
+        if isText: ext=".txt"
+
+        if part.get_content_maintype()=="multipart":
+            continue
+        name = part.get_param("name")
+
+        if name==None:
+            name = "part-%i%s" % (partCounter, ext)
+        filename = tmpdir + "/" + name
+
+        partCounter+=1
+
+        if isHtml:
+            if (aSelectContent=="html" or aSelectContent=="best"  or aSelectContent=="worst"):
+                if bestContentPath=="" or aSelectContent!="worst": # Since text has a priority in best
+                    bestContentPath = filename
+                    bestContent = part.get_payload(decode=1)
+                    acceptedType="html"
+
+        if isText:
+            if (aSelectContent == "text" or aSelectContent=="best" or aSelectContent=="worst"):
+                if bestContentPath == "" or aSelectContent!="best": # Since html has a priority in best
+                    bestContentPath = filename
+                    bestContent = part.get_payload(decode=1)
+                    acceptedType="text"
+
+        if (aShowList):
+            print("{:<30} main-type: {:<30} sub-type: {}".format(name,mainType,subType))
+
+        if aView or aKeepFolder:
+            f = open(filename,"wb")
+            f.write(part.get_payload(decode=1))
+            f.close()
+
+    if aPrintPath:
+        if aSelectContent=="temp":
+            print(tmpdir)
+        elif aSelectContent!="":
+            print(bestContentPath)
+
+    if aDump:
+        if aSeparator:
+            print("══════╣{:^10}╠═════╣{:^10}╠══════".format(acceptedType,bestContentPath))
+        print(bestContent)
+
+    if aView:
+        process = subprocess.Popen("%s %s"%(viewer,bestContentPath), shell=True, stdout=subprocess.PIPE)
+        process.wait()
+        print(process.returncode)
+
+    if not aKeepFolder:
+        shutil.rmtree(tmpdir)
+
+main()

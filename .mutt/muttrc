@@ -13,7 +13,7 @@ set edit_headers
 
 
 set record = ''
-set mbox_type = mh
+set mbox_type = Maildir
 
 #--------------------------------------
 # Mail options
@@ -23,7 +23,7 @@ set edit_headers                       # allow editing headers when composing ma
 set include = yes
 set mime_forward = yes                   # when forwarding, include attachments
 set mime_forward_rest = yes
-set send_charset = "utf-8"
+set send_charset      = 'us-ascii:utf-8'
 set smart_wrap
 
 set move = no                          # By default, Mutt will ask you to move read messages from INBOX to another mailbox (set by mbox)
@@ -43,6 +43,9 @@ set pager_stop
 set pager_context=3
 set pager_index_lines=20               # Split the view and show pager at line 20
 
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
 
 # %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]>
 # %<[y?                                       &%[%m/%y ]>  Older
@@ -55,7 +58,10 @@ set index_format="%3C %zs %?X?A& ? %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%
 # -------------------------------- %<[m?%<[d?%[ %H:%M:%S]&%[%a %m-%d]>&%[%y-%m-%d ]> --------------------"
 
 set status_chars  = " *%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+set status_format = "─┤   %-20f ├─┤%r%m messages%?n? (%n new  )?%?d? (  %d to delete )?%?t? (  %t tagged)? ├───%>─%?p?┤  %p postponed ├?───"
+# set status_format= "-%r-Personal: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---\n"
+
 set status_on_top
 
 
@@ -98,9 +104,6 @@ set message_cachedir="~/.mutt/cache/bodies"
 set header_cache="~/.mutt/cache/headers"
 
 
-# macro compose \e5 "F pandoc --template=$HOME/.mutt/template.markdown --standalone -s -f gfm -t html \ny^T^Utext/html; charset=us-ascii\n"
-macro compose \e5 "F pandoc --css $HOME/.mutt/github.css --standalone --self-contained -s -f gfm -t html \ny^T^Utext/html; charset=us-ascii\n"
-
 #-------~---~----------~----------~----
 # Browsing / Composing
 #-------~---~----------~----------~----
@@ -121,7 +124,6 @@ set query_command="lbdbq '%s'"            # Use the little brother database for 
 set text_flowed=yes
 set mailcap_path 	= ~/.mutt/.mailcap
 
-set status_format= "-%r-Personal: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---\n"
 
 #-------~---~----------~----------~----
 # Sourcing

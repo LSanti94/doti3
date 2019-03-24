@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-# you need to install the following package:
-# sudo apt install libmime-tools-perl
 use MIME::Parser;
 use Data::Dumper;
 use File::Path;
@@ -13,8 +11,7 @@ use strict;
 use warnings;
 
 my $version = q(0.5);
-# my @viewer_cmd = qw(htmail-view -m);
-my @viewer_cmd = qw(surf -z 2);
+my @viewer_cmd = qw(gedit );
 
 # getopt stuff
 $Getopt::Std::STANDARD_HELP_VERSION++;
@@ -22,27 +19,38 @@ $Getopt::Std::STANDARD_HELP_VERSION++;
 sub HELP_MESSAGE {
     print <<USG;
 Usage:
+
   htmail-decode [-v]
+
     -v		be more verbose
+
     --help      show this help
     --version   show version information
+
     The raw mail is read from STDIN.
+
 USG
 }
 
 sub VERSION_MESSAGE {
     print <<LIC;
+
  htmail-view $version - single web page renderer based on WebKit
+
  Authors:
    Thomas Liske <thomas\@fiasko-nw.net>
+
  Copyright Holder:
    2015 (C) Thomas Liske [http://fiasko-nw.net/~thomas/]
+
 Upstream:
   https://github.com/liske/htmail-view
+
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 LIC
 #/
 }
@@ -76,21 +84,21 @@ $SIG{USR1} = sub {
 };
 
 # detach session
-setsid;
+# setsid;
 
 # parse message via stdin
 my $dir = File::Temp->newdir;
 my $parser = new MIME::Parser;
 $parser->output_under($dir);
-
+print "parsing";
 my $mail = $parser->parse(\*STDIN);
+print "parsing done";
 close(STDIN);
 
-unless($mail->is_multipart || $mail->effective_type eq 'text/html' || $mail->effective_type eq 'text/plain') {
+unless($mail->is_multipart || $mail->effective_type eq 'text/html') {
     print STDERR 'ERROR: Unexpected MIME type '.$mail->effective_type."!\n";
     exit 1;
 }
-
 
 my %cids;
 sub find_cid {
@@ -98,14 +106,14 @@ sub find_cid {
     my $cid;
 
     if($part->is_multipart) {
-      for my $sub ($part->parts) {
-          find_cid($sub);
-      }
+	for my $sub ($part->parts) {
+	    find_cid($sub);
+	}
     }
     elsif($cid = $part->head->mime_attr('content-id')) {
-      $cid =~ s/(^<|>$)//g;
-      $cids{$cid} = 'file://'.$part->bodyhandle->path;
-      print STDERR "FINDCID#CIDREF $cid => $cids{$cid}\n" if($opt_v);
+	$cid =~ s/(^<|>$)//g;
+	$cids{$cid} = 'file://'.$part->bodyhandle->path;
+	print STDERR "FINDCID#CIDREF $cid => $cids{$cid}\n" if($opt_v);
     }
 }
 
@@ -113,12 +121,12 @@ sub find_htmail {
     my $part = shift;
 
     if($part->effective_type eq 'text/html') {
-   	&launch_viewer($part);
+	&launch_viewer($part);
     }
     elsif($part->is_multipart) {
-      for my $sub ($part->parts) {
-          find_htmail($sub);
-      }
+	for my $sub ($part->parts) {
+	    find_htmail($sub);
+	}
     }
 }
 
@@ -126,23 +134,21 @@ sub launch_viewer {
     my $part = shift;
 
     my $pid = open(HPIPE, '|-');
-
     unless(defined($pid)) {
-      print STDERR "ERROR: Failed to fork: $!\n";
-      exit 2;
+	print STDERR "ERROR: Failed to fork: $!\n";
+	exit 2;
     }
 
     if($pid) {
-      print HPIPE join("\n", %cids, '');
-      close(HPIPE);
+	print HPIPE join("\n", %cids, '');
+	close(HPIPE);
     }
     else {
-      print "Opening file: ".$part->bodyhandle->path."\n";
-	   print STDERR "TXTHTML#VIEWER ".join(' ', @viewer_cmd, 'file://'.$part->bodyhandle->path)." \n" if($opt_v);
-   	unless(exec(@viewer_cmd, 'file://'.$part->bodyhandle->path)) {
-         print STDERR "ERROR: Failed to run 'htmail-view': $!\n";
-	      exit 3;
-	   }
+	print STDERR "TXTHTML#VIEWER ".join(' ', @viewer_cmd, 'file://'.$part->bodyhandle->path)." \n" if($opt_v);
+	unless(exec(@viewer_cmd, 'file://'.$part->bodyhandle->path)) {
+	    print STDERR "ERROR: Failed to run 'htmail-view': $!\n";
+	    exit 3;
+	}
     }
 
     print STDERR "Waiting for HTMaiL-Viewer to return...\n\n";

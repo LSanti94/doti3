@@ -166,6 +166,9 @@ handle_image() {
 handle_mime() {
     local mimetype="${1}"
     case "${mimetype}" in
+        message/* | text/plain )
+            ~/bini3/,mail-decoder "${FILE_PATH}" --select=worst -d -s && exit 5
+            exit 1;;
         # Text
         text/* | */xml)
             # Syntax highlight

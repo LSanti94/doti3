@@ -16,10 +16,10 @@ macro index,pager <S-LEFT>  "<untag-pattern>~A<enter>"                        # 
 macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 
-macro pager U <set-flag>N "mark as unread"
-macro index U "<tag-prefix><set-flag>N" "mark as unread"
-macro pager I <clear-flag>N "mark as read"
-macro index I "<tag-prefix><clear-flag>N" "mark as read"
+macro pager I <set-flag>N "mark as unread"
+macro index I "<tag-prefix><set-flag>N" "mark as unread"
+macro pager i <clear-flag>N "mark as read"
+macro index i "<tag-prefix><clear-flag>N" "mark as read"
 
 bind pager \\ noop
 macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
@@ -79,14 +79,21 @@ bind index G imap-fetch-mail     # G to get mail
 macro index,pager L "lall\n"
 
 # inorder for this to work you need to install 'libmime-tools-perl'
-macro index,pager <right> '<pipe-entry>htmail-decode<enter>' # Use right arrow to view html
+# macro index,pager <right> '<pipe-entry>htmail-decode<enter>' # Use right arrow to view html
+macro index,pager,compose <right> '<pipe-entry>~/bini3/,mail-decoder -v --select=best<enter>' # Use right arrow to view html
 # macro index,browser .r "<enter-command>source ~/.muttrc<enter>"
 
 # macro pager \` <pipe-entry>'urlview'<enter> 'Follow links with urlview' # will open all urls in urlview!
 macro index,pager ",m" ":unset wait_key\n |~/.mutt/add_to_calcurse<enter><exit>"
 
-macro index <f1> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter><redraw-screen>'
-macro index <f2> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter><redraw-screen>'
+# See more flags at https://man.cx/pandoc or http://pandoc.org/MANUAL.html
+macro compose \e5 "F pandoc --css $HOME/.mutt/github.css --standalone --self-contained  -s -f gfm+line_blocks+hard_line_breaks -t html --quiet \ny^T^Utext/html; charset=us-ascii\n"
+
+
+
+
+macro index,pager <f1> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter><redraw-screen>'
+macro index,pager <f2> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-command>source ~/.mutt/account.axis<enter><change-folder>!<enter><redraw-screen>'
 
 
 # navigation/saving ---------------------------------------------------
