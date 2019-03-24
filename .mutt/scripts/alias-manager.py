@@ -147,14 +147,13 @@ def parsMail(aliases, aMailPath, printMessage):
             name = decodedName
         alias = name.strip('.').lower().replace(' ', '-')
 
-        if alias == '':
-            alias = getAliasFromEmail(lemail)
-
         val = {'alias': alias, 'name': name, 'email': email}
 
         if lemail in aliases:
             aliases[lemail] = merge_existing(aliases[lemail], val)
         else:
+            if alias == '':
+                alias = getAliasFromEmail(lemail)
             aliases[lemail] = val
 
     if printMessage:
