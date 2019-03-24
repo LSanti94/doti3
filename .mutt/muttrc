@@ -1,7 +1,5 @@
 #! /bin/bash      just for vscode highlighting
 
-# https://github.com/tomauty/dotfiles/blob/master/mutt/.mutt/muttrc
-# https://github.com/ervandew/dotfiles/blob/master/.muttrc
 set use_from=yes
 set mail_check_stats
 
@@ -130,8 +128,8 @@ set mailcap_path 	= ~/.mutt/.mailcap
 #-------~---~----------~----------~----
 
 source ~/.mutt/folder-hooks
-source ~/.mutt/alias_g.key
-source ~/.mutt/alias_a.key
+source ~/.mutt/alias.key
+source ~/.mutt/alias_ac.key
 # source ~/.mutt/schemes/vombatidae.muttrc
 source ~/.mutt/schemes/reza.muttrc
 # source ~/.mutt/schemes/lukesmith.muttrc

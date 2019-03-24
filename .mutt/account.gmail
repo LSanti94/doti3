@@ -21,8 +21,6 @@ set record     = "+[Gmail]/Sent Mail"
 set postponed  = "+[Gmail]/Drafts"
 set preconnect = ""
 
-
-set display_filter   = "$HOME/.mutt/addalias $HOME/.mutt/alias_g.key"
 set signature        = "~/.mutt/gmail-signature.key"
 set sig_dashes       = no
 set sig_on_top       = yes    # When replying put the signature on top not at the bottom!
@@ -44,13 +42,14 @@ macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 # List of folders that are considered to be "mailboxes" (folders that
 # receive incoming mail).
 #
-mailboxes = INBOX
-mailboxes = [Gmail]/Important
-mailboxes = [Gmail]/Sent\ Mail
-mailboxes = [Gmail]/Drafts
-mailboxes = [Gmail]/Starred
-mailboxes = [Gmail]/Spam
-mailboxes = [Gmail]/Trash
+mailboxes = "+INBOX"
+mailboxes = "+[Gmail]/Important"
+mailboxes = "+[Gmail]/Sent\ Mail"
+mailboxes = "+[Gmail]/Drafts"
+mailboxes = "+[Gmail]/Starred"
+mailboxes = "+[Gmail]/Spam"
+mailboxes = "+[Gmail]/All Mail"
+mailboxes = "+[Gmail]/Trash"
 
 # vim: fdm=marker
 # vim: filetype=muttrc

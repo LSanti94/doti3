@@ -24,7 +24,6 @@ set ssl_starttls        = yes
 set sendmail            = "/usr/bin/msmtp"
 set imap_authenticators = "login"
 
-set display_filter      = "$HOME/.mutt/addalias $HOME/.mutt/alias_a.key"
 set signature           = "~/.mutt/axis-signature.key"
 set sig_dashes          = no
 set sig_on_top          = yes    # When replying put the signature on top not at the bottom

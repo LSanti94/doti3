@@ -1,0 +1,17 @@
+# The emails on this list will not be added to aliases if an email starts with them
+# ---------------------------------------------------------------------------------
+notification
+noreply
+no-reply
+crm@
+crm+
+root@
+info@
+icinga@
+support@
+telefonist@
+curity@
+reception@
+axis@
+gerrit@
+invitation@linkedin.com

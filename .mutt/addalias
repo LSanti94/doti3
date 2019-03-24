@@ -6,15 +6,18 @@ AWK='{$1=""; if (NF == 3) {print "alias" $0;} else if (NF == 2) '
 AWK+='{print "alias" $0 $0;} else if (NF > 3) {print "alias", '
 AWK+='tolower($2)"-"tolower($(NF-1)) $0;}}'
 
-NEWALIAS=$(echo "${MESSAGE}" | grep "^From: " | sed "s/[\,\"\']//g" | awk $AWK)
+# NEWALIAS=$(echo "${MESSAGE}" | grep "^From: " | sed "s/[\,\"\']//g" | awk $AWK)
+NEWALIAS=$(echo "${MESSAGE}" | grep "^To: " | sed "s/[\,\"\']//g" | awk $AWK)
 
-if grep -Fxq "$NEWALIAS" "$1"; then
-    :
+echo "[$NEWALIAS]"
+if grep -Fxq "$NEWALIAS" "$ALIAS_FILE"; then
+    echo "found"
 else
-    echo "$NEWALIAS" >> "$1"
+    echo "not found"
+    # echo "$NEWALIAS" >> "$ALIAS_FILE"
 fi
 
 # echo "${AWK}" > /tmp/out
 # echo "----------------" >> /tmp/out
 # echo "${MESSAGE}" >> /tmp/out
-echo "${MESSAGE}"
+# echo "${MESSAGE}"
