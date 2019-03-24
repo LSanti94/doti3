@@ -8,12 +8,12 @@ Usage:
   alias-manager.py [-p] --file=<aliasFile> [<mailFilePath>]
 
 Arguments:
-    <aliasFile>  Path to the alias file to be maintained
+    <aliasFile>     Path to the alias file to be maintained
 
 Options:
-    --file      This mandatory arguments tells the script which alias file it should maintain
-    -p          Print outs the message, this is useful when used within the display filter
-                in mmutt
+    mailFilePath    Path to the mail file to read
+    -p              Print outs the message, this is useful when used within the display filter
+                    in mmutt
 """
 
 from email.parser import Parser
