@@ -4,7 +4,7 @@
 decodes a mail file, extract/display it's relevant contents
 
 Usage:
-  mail-decoder [-d|--dump] [-s|--separator] [-p|--path] [-l|--list] [--select=TYPE] [-k|--keep] [-v|--view] [<filepath>]
+  mail-decoder [-d|--dump] [-a] [-s|--separator] [-p|--path] [-l|--list] [--select=TYPE] [-k|--keep] [-v|--view] [<filepath>]
 
 Arguments:
     <filepath>  Path to the encoded mail message
@@ -20,6 +20,7 @@ Options:
                             go with the html version
                     temp    prints the temp folder address
     -k|--keep   Do not delete the extracted files
+    -a          Open in alternate browser
 
 """
 
@@ -30,7 +31,6 @@ import tempfile
 import shutil
 import subprocess
 
-viewer = "surf -z 2"
 def main():
     args = docopt(__doc__, version='1')
     aShowList = args['--list'] or args['-l']
@@ -41,6 +41,11 @@ def main():
     aPrintPath = args['-p'] or args['--path']
     aSeparator = args['-s'] or args['--separator']
     aMailPath = args['<filepath>']
+    aAlternateBrowser = args['-a']
+    if aAlternateBrowser:
+        viewer = "netsurf --scale 200 "
+    else:
+        viewer = "surf -z 2"
     # print(args)
 
     p = Parser()

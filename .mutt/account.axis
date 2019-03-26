@@ -37,10 +37,10 @@ macro index gs "<change-folder>=Sent Items<enter>" "Go to sent items folder"
 macro index gt "<change-folder>=Deleted Items<enter>" "Go to trash"
 
 # Sepecific Mailboxes ------------------------------------
-mailboxes = INBOX
-mailboxes = Drafts
-mailboxes = "Sent Items"
-mailboxes = "Deleted Items"
+mailboxes = "+INBOX"
+mailboxes = "+Drafts"
+mailboxes = "+Sent Items"
+mailboxes = "+Deleted Items"
 
 # vim: fdm=marker
 # vim: filetype=muttrc

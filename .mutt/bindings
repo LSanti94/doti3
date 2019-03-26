@@ -83,12 +83,16 @@ macro index,pager L "lall\n"
 bind pager \\ noop
 macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
 # inorder for this to work you need to install 'libmime-tools-perl'
-macro index,pager,compose <right> '<pipe-entry>~/bini3/,mail-decoder -v --select=best<enter>' # Use right arrow to view html
+macro index,pager,compose <RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v --select=best<enter>' # Use right arrow to view html
+
+macro index,pager,compose <S-RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v -a --select=best<enter>' # Use right arrow to view html
+
 macro index,pager ",m" ":unset wait_key\n |~/.mutt/scripts/add_to_calcurse<enter><exit>"
 # See more flags at https://man.cx/pandoc or http://pandoc.org/MANUAL.html
 macro compose \e5 "F pandoc --css $HOME/.mutt/github.css --standalone --self-contained  -s -f gfm+line_blocks+hard_line_breaks -t html --quiet \ny^T^Utext/html; charset=us-ascii\n"
 
 set display_filter      = "$HOME/.mutt/scripts/alias-manager.py  --file=$HOME/.mutt/alias.key -p"
+
 # -----------------------------
 # -----------------------------
 
