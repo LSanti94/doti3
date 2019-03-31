@@ -21,6 +21,11 @@ macro index I "<tag-prefix><set-flag>N" "mark as unread"
 macro pager i <clear-flag>N "mark as read"
 macro index i "<tag-prefix><clear-flag>N" "mark as read"
 
+macro pager <S-HOME>       "q<first-entry><enter>"
+macro pager <S-END>        "q<last-entry><enter>"
+macro pager <S-Prev>       "<previous-page>"
+macro pager <S-Next>       "<next-page>"
+
 # [m]ove a mail to another folder (in Gmail, "m" would be "[m]ute").
 # macro pager m "<save-message>?<toggle-mailboxes>" "move to..."
 # macro index m "<tag-prefix><save-message>?<toggle-mailboxes>" "move to..."
@@ -81,11 +86,12 @@ macro index,pager L "lall\n"
 # Script section:
 # ----------------------------
 bind pager \\ noop
-macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
+macro index,pager ",u" "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
 # inorder for this to work you need to install 'libmime-tools-perl'
 macro index,pager,compose <RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v --select=best<enter>' # Use right arrow to view html
 
-macro index,pager,compose <S-RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v -a --select=best<enter>' # Use right arrow to view html
+macro index,pager,compose <S-RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v -a 1 --select=best<enter>' # Use Shift+right arrow to view html with netsurf
+macro index,pager,compose <A-RIGHT> '<pipe-entry>~/bini3/,mail-decoder -v -a 2 --select=best<enter>' # Use Alt+right arrow to view html with chrome
 
 macro index,pager ",m" ":unset wait_key\n |~/.mutt/scripts/add_to_calcurse<enter><exit>"
 # See more flags at https://man.cx/pandoc or http://pandoc.org/MANUAL.html

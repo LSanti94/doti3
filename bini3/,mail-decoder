@@ -4,7 +4,7 @@
 decodes a mail file, extract/display it's relevant contents
 
 Usage:
-  mail-decoder [-d|--dump] [-a] [-s|--separator] [-p|--path] [-l|--list] [--select=TYPE] [-k|--keep] [-v|--view] [<filepath>]
+  mail-decoder [-d|--dump] [-a NUM] [-s|--separator] [-p|--path] [-l|--list] [--select=TYPE] [-k|--keep] [-v|--view] [<filepath>]
 
 Arguments:
     <filepath>  Path to the encoded mail message
@@ -33,6 +33,7 @@ import subprocess
 
 def main():
     args = docopt(__doc__, version='1')
+    #print(args)
     aShowList = args['--list'] or args['-l']
     aDump = args['--dump'] or args['-d']
     aSelectContent = args['--select']
@@ -42,10 +43,18 @@ def main():
     aSeparator = args['-s'] or args['--separator']
     aMailPath = args['<filepath>']
     aAlternateBrowser = args['-a']
+    aBrowserType = args['NUM']
     if aAlternateBrowser:
-        viewer = "netsurf --scale 200 "
+        # netsurf-fb --fb_toolbar_size 1 --fb_furniture_size 0 --scale 200 -b 24 -w 1915 -h 1000
+        if aBrowserType=='1':
+            viewer = "netsurf-fb --scale 200 --fb_toolbar_size 1 -w 1915 -h 1000 file://%s"
+        elif aBrowserType=='2':
+            viewer = "google-chrome %s > /dev/null 2>&1 && sleep 1"
+        else:
+            print("Unknown browser selected %s"%aBrowserType);
+            sys.exit()
     else:
-        viewer = "surf -z 2"
+        viewer = "surf -z 2 %s"
     # print(args)
 
     p = Parser()
@@ -120,9 +129,9 @@ def main():
         print(bestContent)
 
     if aView:
-        process = subprocess.Popen("%s %s"%(viewer,bestContentPath), shell=True, stdout=subprocess.PIPE)
+        # print(viewer%bestContentPath);
+        process = subprocess.Popen(viewer%bestContentPath, shell=True, stdout=subprocess.PIPE)
         process.wait()
-        print(process.returncode)
 
     if not aKeepFolder:
         shutil.rmtree(tmpdir)

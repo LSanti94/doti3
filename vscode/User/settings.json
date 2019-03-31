@@ -2,9 +2,9 @@
 // For colors see: https://code.visualstudio.com/docs/getstarted/theme-color-reference
 {
     // to list all mono fonts use: fc-list :mono
-    "editor.fontFamily": "'Inconsolata-g for Powerline','Inconsolata Nerd Font'",
+    "editor.fontFamily": "'Fira Code','Inconsolata Nerd Font'",
     "editor.fontSize": 18,
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": false,
     "window.restoreWindows": "none",
     "files.hotExit": "off",
     "code-runner.runInTerminal": true,
@@ -45,5 +45,18 @@
     "python.formatting.autopep8Args": [
         "--max-line-length=200"
     ],
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "prettifySymbolsMode.substitutions": [
+        {
+            "language": "shellscript",
+            "revealOn": "active-line",
+            "substitutions": [
+                {
+                    "ugly": "macro index",
+                    "pretty": "MACRO INDEX",
+                    "pre": "$"
+                },
+            ]
+        }
+    ]
 }

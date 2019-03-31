@@ -1,0 +1,173 @@
+#!/bin/bash
+
+usage() {
+  echo "usage: $(basename $0) '<prompt>' [['<select>' | <row>]] [<option>]*"
+  exit 1
+}
+
+# unset fzf query highlight to list all
+# hilite=true
+MONOFONT="Fira Code"
+wbg=argb:B0000000
+bg=argb:00000000
+fg=argb:FFFDF6E3
+abg=$bg
+hbg=$bg
+hfg=argb:FF20bbfc
+
+# leader left or right (prompt case Right, RIGHT, right)
+lead=right
+leader=' '
+indent=''
+declare -i rresult=50
+# .......................................................................... GUI
+
+[ -e $MENU ] && window=MENU || window=STACK
+
+if [ -z $TERMINAL ] ;then
+  if gui ;then
+      display=$(,query-current-display)
+      width=$(,query-display-width)
+  else
+      width=$(tput cols)
+  fi
+
+  # fullscreen only fills the herbstluftwm (virtual) monitor coordinates, so to
+  # fill the actual physical display area, tweak rofi padding and fontsize
+  # for 2560, 1680 (secondary), 1440, 1024 displays
+
+  # set padding and fontsize
+  padsize() {
+    # padding calculation = displaywidth / fontsize * factor
+    padding=$(( $1 / $2 * $3 ))
+    fontsize=$2
+  }
+
+  # tune padding to displaywidth / (font * factor) for current monitor resolutions in system
+  if [ $width -gt 1920 ] ;then
+    padsize $width 14 '3 / 2'
+  elif [ $width -gt 1680 ] ;then
+    padsize $width 12 '5 / 3'
+  elif [ $width -gt 1440 ] ;then
+    padsize $width 11 2
+  elif [ $width -gt 1024 ] ;then
+    padsize $width 11 '3 / 2'
+  else
+    padsize $width 11 1
+  fi
+fi
+
+# ....................................................................... Prompt
+
+if [ "$1" ] ;then
+  title=$1
+  prompt="$1  "
+  shift
+else
+  usage
+fi
+# convert prompt right to lower case
+[ $lead = left ] && prompt="${prompt}$leader   " || case $lead in
+  RIGHT) prompt="$leader   $(echo "$prompt" | uppercase)" ;;
+  right) prompt="$leader   $(echo "$prompt" | lowercase)" ;;
+  *    ) prompt="$leader   $prompt" ;;
+  esac
+
+
+# ....................................................................... Select
+
+if [ "$1" ] ;then
+  # if not parameter
+  if [ "${1%%-*}" != '' ] ;then
+    if echo "$1" | grep -q '^[0-9]*$' ;then
+      select="-selected-row $1"
+    else
+      # use ctrl-u to clear query and list all
+      [ $hilite ] && query=$1
+      select="-select '$1'"
+    fi
+    shift
+  fi
+fi
+
+# fzf --print-query
+parms=$@
+[ "${parms#*-no-custom}" = "$parms" ] && print=--print-query
+
+# ......................................................................... Read
+rofi_stub() {
+   fontsize=18
+   matching=normal
+
+   MESG=$(cat <<-END
+   """You can preview themes by hitting <b>Enter</b>.
+   <b>Alt-a</b> to accept the new theme.
+   <b>Escape</b> to cancel
+   Current theme: <b>Reza</b>"""
+END
+)
+
+   local MORE_FLAGS=( -dmenu -monitor $display -i -levenshtein-sort )
+   MORE_FLAGS+=( $@ )
+   MORE_FLAGS+=( -font \"$MONOFONT $fontsize\" )
+   MORE_FLAGS+=( -bw 2 -color-enabled -eh 1 -markup-rows -show-icons -no-custom )
+   # MORE_FLAGS+=( -disable-history )
+   MORE_FLAGS+=( -theme "/usr/share/rofi/themes/glue_pro_blue.rasi" )
+   # MORE_FLAGS+=( -kb-custom-1 "Alt-a")
+   MORE_FLAGS+=( -matching ${matching:-fuzzy})
+   MORE_FLAGS+=( -theme-str "'#window mainbox listview box { border: 14px 2px; border-radius: 80px 14px 8px; }'")
+   MORE_FLAGS+=( -p "\"$prompt\"" )
+   MORE_FLAGS+=( -i $select )
+   # MORE_FLAGS+=( -u 2-3 )
+   # MORE_FLAGS+=( -a 1-1 )
+   MORE_FLAGS+=( -width 80 )
+   # MORE_FLAGS+=( -fullscreen )
+   MORE_FLAGS+=( -separator-style dash )
+   MORE_FLAGS+=( -fake-transparency 1 )
+   # MORE_FLAGS+=( -line-margin $(( $fontsize + 2 )))
+
+   eval rofi ${MORE_FLAGS[@]} \
+            -mesg "${MESG}" 
+
+   # Write rofi output to a file
+   echo $? > /tmp/rmenu-res
+
+   # -theme-str "'inputbar { padding: 1.2em; }'" \
+   # -theme-str "'textbox-prompt-colon { str: \"\"; }'" \
+   # -theme-str "'* { highlight: none; }'" \
+   # -color-active "$bg,$fg,$abg,$hbg,$hfg" \
+   # -color-normal "$bg,$fg,$abg,$hbg,$hfg" \
+   # -color-urgent "$bg,$fg,$abg,$hbg,$hfg" \
+   # -color-window "$wbg,$wbg" \
+   # -padding $padding \
+   # -hide-scrollbar \
+}
+
+if [ $display ] ;then
+  NCURSES=1 #remove this later /reza
+  if [ -e $NCURSES ] ;then
+    stdin=$(mktemp)
+    stdout=$(mktemp)
+    trap "rm -f $stdin $stdout" EXIT
+    sed "s/^/$indent/" >$stdin
+    # escape movie title (year) parentheses and quotes for terminal wrappers (see alacritty and urxvt wrappers in ~/bin)
+    # dash "$(escape $title)" WAIT $window SHELL "cat $stdin | fzf $print --prompt=\\\"$(escape $prompt)  \\\" --query=\\\"$query\\\" >$stdout"
+    cat $stdin | fzf $print --prompt="$(escape $prompt)  " --query="$query" >$stdout
+    input=$(tail -1 $stdout)
+    [ -n "$input" ]
+  else
+    input=$(sed "s/^/$indent/" | rofi_stub $@)
+    rresult=$(cat /tmp/rmenu-res)
+  fi
+else
+  input=$(sed "s/^/$indent/" | fZf $print --prompt="\"$prompt\"" | tail -1)
+  [ -n "$input" ]
+fi
+[ $? -ne 0 ] && exit 1
+
+# strip indent from input!
+echo "$input" | sed "s/^$indent//"
+
+
+exit $rresult
+# vim: set ft=sh: #

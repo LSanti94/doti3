@@ -1,0 +1,46 @@
+#!/bin/zsh
+APP="thunar"
+windowid=$(xdotool getwindowfocus)
+MESG=$(cat <<-END
+   """Use <b>Alt-e</b> to copy to open in VSCODE or <b>Alt-c</b> to paste to current app or <b>Enter</b> to open with thunar
+   """
+END
+)
+
+declare -a FOLDERS
+FSTR=""
+additem(){
+   local ICON=$1
+   local PATH=$2
+   FSTR+="<span foreground='#f15d22'>$ICON</span>\t$PATH|"
+   FOLDERS+=( $PATH )
+}
+additem "  " "~/Downloads"
+additem "  " "~/Pictures"
+additem "  " "~/Documents"
+additem "  " "~/Dropbox"
+additem " " "~/Dropbox/UniBookShelf/sync/MoonReader/attachments"
+additem "  " "~/git"
+additem "  " "~/git/MyDotFiles"
+additem "  " "~/git/doti3"
+additem "  " "~/.config"
+additem "  " "/tmp"
+additem "  " "~/tmp"
+additem "  " "/opt"
+
+res=$(echo $FSTR | $HOME/bini3/rmenu "Select document to view" row -kb-custom-1 "Alt-e" -kb-custom-2 "Alt-c" -mesg $MESG -theme $HOME/git/doti3/rofi/themes/gruvbox-dark-hard.rasi  -sep "\|" -format i )
+RTR=$?
+
+[ $RTR = "1" ] && exit 1
+res=${FOLDERS[$res+1]}
+res=${res//\~\//$HOME/}
+
+echo $RTR
+if [ $RTR = "10" ]; then 
+   code $res
+elif [ $RTR = "11" ]; then
+   sleep 0.5 && xdotool windowactivate --sync $windowid type $res
+else
+   thunar "$res"
+fi
+
