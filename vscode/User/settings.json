@@ -33,19 +33,27 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "editor.tabSize": 3,
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.tabSize": 3
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    },
     "diffEditor.renderSideBySide": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Material Theme Darker High Contrast",
     "python.jediEnabled": false,
     "editor.formatOnSave": true,
     "html.format.wrapLineLength": 160,
     "python.formatting.autopep8Args": [
-        "--max-line-length=200"
+        "--max-line-length=200",
+        "--indent-size=4"
     ],
-    "vsicons.dontShowNewVersionMessage": true,
     "prettifySymbolsMode.substitutions": [
         {
             "language": "shellscript",
@@ -58,5 +66,7 @@
                 },
             ]
         }
-    ]
+    ],
+    "python.linting.pylintEnabled": true,
+    "breadcrumbs.enabled": true
 }
