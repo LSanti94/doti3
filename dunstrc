@@ -14,7 +14,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    markup = yes
+    markup = full
     tack_duplicates = true
     # Treat incoming notifications as plain text
     plain_text = no

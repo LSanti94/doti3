@@ -1,18 +1,18 @@
 #!/bin/zsh
 icon=dialog-information
-ticon="<span color='#FFFFFF' weight='heavy'> </span>"
+ticon=" "
 category="normal"
 [ $3 ] && icon=$3
-[ $4 ] && ticon="<span color='#FFFFFF' weight='heavy'>$4</span>"
+[ $4 ] && ticon="$4"
 [ $5 ] && category=$5
 if [[ $category = "normal" ]]; then  
-   dunstify -p "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon
+   dunstify -p "$ticon $1" $2  -i $icon
 else
    ID=$(cat /tmp/notify-$category)
    if [ -n "$ID" ]; then
-      dunstify -p -r $ID "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon 
+      dunstify -p -r $ID "$1 $ticon" $2  -i $icon 
    else
-      dunstify -p "$ticon<span color='#FBCA31' weight='heavy'>$1</span>" $2  -i $icon > /tmp/notify-$category
+      dunstify -p "$1 $ticon" $2  -i $icon > /tmp/notify-$category
    fi
 fi
 
