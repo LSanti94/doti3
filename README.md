@@ -98,3 +98,7 @@ Mod + Home           | Run `~/bini3/tempscript`
 Mod + Pause          | Show system dmenu
 Caps_Lock             | Change keyboard layout
 
+Scripts which are used
+--------------------------------------
+1. `~/bini3/i3exit` : Contains the routings for hibernate and lock
+1. `~/bini3/i3-colorlock`: Contains routins for calling 
