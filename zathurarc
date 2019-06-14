@@ -42,7 +42,6 @@ set font "Fira Code 16"
 # settings
 set window-height 900
 set window-width 1200
-set adjust-open width
 set window-title-basename true
 set window-icon /usr/share/icons/Paper/32x32/apps/xpdf.png
 # use sqlite as bookmarks database backend
@@ -73,12 +72,12 @@ set selection-clipboard primary
 set scroll-full-overlap 0.1
 set scroll-page-aware "true"
 set guioptions "v"
+set adjust-open width
 # key bindings
 
-# map <S-PageUp> navigate previous
-# map <S-PageDown> navigate next
 map <S-PageUp> scroll full-up
 map <S-PageDown> scroll full-down
+
 map <PageUp> scroll half-up
 map <PageDown> scroll half-down
 
@@ -146,5 +145,4 @@ map <S-PageUp> navigate previous
 map [presentation] <S-Up> navigate previous
 map [fullscreen] <S-Up> navigate previous 
 
-# map i toggle_page_mode
 # vim: set ft=config:
