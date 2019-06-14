@@ -451,11 +451,11 @@ for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
 for_window [class="Doublecmd" title="File operations"] $fmod
 
-for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Terminator Preferencese|xfce4-appfinder"] $fmod
+for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Terminator Preferencese|xfce4-appfinder|copyq"] $fmod
 for_window [class="Thunderbird" instance="Calendar|Msgcompose"] $fmod
 for_window [class="Xbindkeys_show|Qtconfig-qt4"] $fmod
 for_window [class="System-config-printer\.py|Nm-connection-editor|com-sun-deploy-panel-ControlPanel"] $fmod
-for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte"] $fmod
+for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte|Zathura"] $fmod
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
@@ -509,6 +509,8 @@ bindsym $mod+a focus parent
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+bindsym $mod+c exec "copyq toggle"
+bindsym $mod+Shift+v exec "copyq menu"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 

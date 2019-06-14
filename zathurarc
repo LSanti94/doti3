@@ -1,5 +1,5 @@
 # zathurarc
-
+set dbus-service false
 # colors
 set default-bg "#282828"
 #set default-fg "#fbf1c7"
@@ -12,6 +12,13 @@ set index-active-fg "#eee8d5"
 
 set recolor false
 set recolor-keephue true
+
+set recolor-keephue false
+
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#F2F2F2"
+set recolor-darkcolor "#F9F8F5"
+
 set recolor-darkcolor \#cccccc
 set recolor-lightcolor \#121212
 
@@ -19,20 +26,22 @@ set recolor-darkcolor "#657b83"
 set recolor-darkcolor "#282828"
 set recolor-lightcolor "#fdf6e3"
 
-set recolor-keephue false
-set recolor-lightcolor "#282828"
-set recolor-darkcolor "#F2F2F2"
-set recolor-darkcolor "#F9F8F5"
-
+# Khaki
 set notification-bg  "#252525"
 set notification-fg  "#F2F2F2"
+
+# Dark dark blue
+set recolor-lightcolor  "#2E3440"
+set recolor-darkcolor "#D8DEE9"
+
 # font
 # set font "monospace 16"
-set font "Inconsolata-g for Powerline 16"
+# set font "Inconsolata-g for Powerline 16"
+set font "Fira Code 16"
 
 # settings
-set window-height 1024
-set window-width 1000
+set window-height 900
+set window-width 1200
 set adjust-open width
 set window-title-basename true
 set window-icon /usr/share/icons/Paper/32x32/apps/xpdf.png
@@ -43,7 +52,7 @@ set selection-notification false
 set incremental-search true
 
 
-set guioptions s             #svhc
+set guioptions csv             #svhc
 set n-completion-items 10
 set show-scrollbars true
 set window-title-basename true
@@ -62,6 +71,8 @@ set zoom-max 1000
 set zoom-step 5
 set selection-clipboard primary
 set scroll-full-overlap 0.1
+set scroll-page-aware "true"
+set guioptions "v"
 # key bindings
 
 # map <S-PageUp> navigate previous
@@ -72,17 +83,68 @@ map <PageUp> scroll half-up
 map <PageDown> scroll half-down
 
 map + zoom in
+map [presentation] + zoom in
+map [fullscreen] + zoom in
+
 map - zoom out
+map [presentation] - zoom out
+map [fullscreen] - zoom out
 
 map <C-q> quit
 
 map <BackSpace> navigate previous
 map <S-Space> navigate previous
+
 map w adjust_window width
+map [presentation] w adjust_window width
+map [fullscreen] w adjust_window width
+
+map a adjust_window best-fit
+map [presentation] a adjust_window best-fit
+map [fullscreen] a adjust_window best-fit
 
 # use m for toggling recolor, use escape to remove the notification
 map m set recolor abort; exec "xdotool key Escape"
-# map f change_mode fullscreen
 map f toggle_fullscreen
-map [presentation] q change_mode normal
+map [fullscreen] f toggle_fullscreen
+
+# map f change_mode fullscreen
+# map [presentation] q change_mode normal
+
+map [presentation] p toggle_presentation
+map [fullscreen] p toggle_presentation
+map p toggle_presentation
+
+map b toggle_statusbar
+map [presentation] b toggle_statusbar
+map [fullscreen] b toggle_statusbar
+map [index] b toggle_statusbar
+
+map i toggle_index
+map [index] i toggle_index
+map [presentation] i toggle_index
+map [fullscreen] i toggle_index
+
+map <Tab> toggle_index
+map [index] <Tab> toggle_index
+map [presentation] <Tab> toggle_index
+map [fullscreen] <Tab> toggle_index
+
+
+
+map <C-0> adjust_window width
+map [presentation] <C-0> adjust_window width
+map [fullscreen] <C-0> adjust_window width
+map <C-1> zoom out
+
+
+# next/previous page
+map <S-PageDown> navigate next
+map [presentation] <S-PageDown> navigate next
+map [fullscreen] <S-PageDown> navigate next
+map <S-PageUp> navigate previous
+map [presentation] <S-Up> navigate previous
+map [fullscreen] <S-Up> navigate previous 
+
+# map i toggle_page_mode
 # vim: set ft=config:
