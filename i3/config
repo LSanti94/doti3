@@ -445,7 +445,7 @@ for_window [class="albert"] $fmod3
 for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubuntu-system-settings|P4Merge"] $fmod
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
-for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox|Xbindkeys-config"] $fmod
+for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox|Xbindkeys-config|Shutter"] $fmod
 for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince|Flutter"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
@@ -464,7 +464,7 @@ for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|u
 for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp|Transfers|ChanList|servlist"] $fmod
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
-for_window [class="vscode-color-ui|Toggl Desktop|Shutter|Paman"] floating enable
+for_window [class="vscode-color-ui|Toggl Desktop|Paman"] floating enable
 
 for_window [window_role="Transfers"] $fmod
 for_window [title="Postman|Mattermost|Slack"] $fmod4
