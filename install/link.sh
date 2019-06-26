@@ -91,6 +91,7 @@ reLink $HOME/.config/QuiteRss/QuiteRss.ini    quiterss/QuiteRss.ini
 reLink $HOME/.gcalclirc                       .gcalclirc
 reLink $HOME/.mutt                            .mutt
 reLink $HOME/.muttrc                          .mutt/muttrc
+reLink $HOME/.config/gtk-3.0                  gtk-3.0
 
 reLink /usr/share/icons/ext-icons             bini3/ext-icons true
 
