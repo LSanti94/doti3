@@ -39,7 +39,7 @@ macro pager <S-Next>       "<next-page>"
 # #-------~---~----------~----------~----
 # # Key bindings
 # #-------~---~----------~----------~----
-# bind index r group-reply
+bind index r group-reply
 # bind index g first-entry
 # bind index G last-entry
 # bind index N search-opposite
