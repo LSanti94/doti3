@@ -1,0 +1,94 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+"""i3-ws
+Gives information about i3 workspaces
+
+Usage:
+  i3-ws [-c|--current] [-l|--list] [-n|--name]  [-o|--output] [-v|--visible] [-g <ws_number>]
+
+Options:
+    -c          Get information about the current workspace
+    -l          List all workspaces
+    -n          Print workspace->name
+    -o          Print workspace->output
+    -v          Print workspace->visible
+
+"""
+
+import json
+
+import sh
+from docopt import docopt  # sudo -H pip install docop
+
+
+def append_field(str, param):
+    separator = ""
+    if len(str) != 0:
+        separator += ","
+    return "%s%s" % (separator, param)
+
+
+def get_workspace_string(ws):
+    ws_name = ""
+    if aName:
+        current = ""
+        if aCurrent and aList and ws['focused']:
+            current = "*"
+        ws_name += append_field(ws_name, current + ws['name'])
+    if aVisible:
+        ws_name += append_field(ws_name, ws['visible'])
+    if aOutput:
+        ws_name += append_field(ws_name, ws['output'])
+    return ws_name
+
+
+def return_workspace(workspaces):
+    current_workspace = None
+    index = 1
+    for ws in workspaces:
+        focused = ws['focused']
+        if aGetSpecific and get_ws_number == index:
+            current_workspace = ws
+            break
+        if aCurrent and focused:
+            current_workspace = ws
+        if aList:
+            print(get_workspace_string(ws))
+        index += 1
+
+    if aGetSpecific and current_workspace is not None:
+        print(get_workspace_string(current_workspace))
+    elif aCurrent and not aList:
+        print(get_workspace_string(current_workspace))
+
+
+def main():
+    x = i3msg('-t', 'get_workspaces')
+    j = json.loads(x.stdout)
+    # print(j)
+    return_workspace(j)
+
+
+args = docopt(__doc__, version='1')
+i3msg = sh.Command('i3-msg')
+aCurrent = args['--current'] or args['-c']
+aList = args['--list'] or args['-l']
+aName = args['--name'] or args['-n']
+aOutput = args['--output'] or args['-o']
+aVisible = args['--visible'] or args['-v']
+
+if not (aList or aCurrent):
+    aList = True
+# if nothing is specified `name` should be the default property
+if not (aName or aVisible or aOutput):
+    aName = True
+
+aGetSpecific = False
+if args['-g'] and args['<ws_number>']:
+    get_ws_number = int(args['<ws_number>'])
+    aGetSpecific = True
+    aList = False
+    aCurrent = False
+
+# print(args)
+main()

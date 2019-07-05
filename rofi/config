@@ -61,7 +61,7 @@ rofi.levenshtein-sort:               false
 rofi.case-sensitive:                 false
 rofi.sidebar-mode:                   true
 rofi.eh:                             1
-rofi.auto-select:                    true
+rofi.auto-select:                    false
 rofi.parse-hosts:                    false
 rofi.parse-known-hosts:              true
 rofi.combi-modi:                     drun,run
