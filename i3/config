@@ -455,7 +455,7 @@ for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Termina
 for_window [class="Thunderbird" instance="Calendar|Msgcompose"] $fmod
 for_window [class="Xbindkeys_show|Qtconfig-qt4"] $fmod
 for_window [class="System-config-printer\.py|Nm-connection-editor|com-sun-deploy-panel-ControlPanel"] $fmod
-for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte|Zathura"] $fmod
+for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte|Zathura|Audacious"] $fmod
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
@@ -465,6 +465,7 @@ for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_
 for_window [window_role="^$"] $fmod
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Paman"] floating enable
+for_window [class="Apache Directory Studio" title="Properties for.*"] resize grow right 900px, floating enable,  border normal, focus, move position center
 
 for_window [window_role="Transfers"] $fmod
 for_window [title="Postman|Mattermost|Slack"] $fmod4
