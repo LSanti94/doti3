@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/zsh
 # i3-get-window-criteria - Get criteria for use with i3 config commands
 
 # To use, run this script, then click on a window.

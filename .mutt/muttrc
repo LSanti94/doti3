@@ -1,4 +1,4 @@
-#! /bin/bash      just for vscode highlighting
+#!/bin/bash      just for vscode highlighting
 
 set use_from=yes
 set mail_check_stats

@@ -1,4 +1,4 @@
-#! /bin/bash      just for vscode highlighting
+#!/bin/bash      just for vscode highlighting
 #
 #
 # Gmail account settings
@@ -15,11 +15,13 @@ set ssl_force_tls = yes
 set from       = "existme@gmail.com"
 set realname   = "Reza"
 
-set folder     = "imaps://imap.gmail.com:993"
-set spoolfile  = "imaps://imap.gmail.com:993/INBOX"
-set record     = "+[Gmail]/Sent Mail"
-set postponed  = "+[Gmail]/Drafts"
+set folder     = "~/mail/Gmail"
+set spoolfile  = "~/mail/Gmail/INBOX"
+set record     = "~/mail/Gmail/Sent"
+set postponed  = "~/mail/[Gmail].Drafts"
 set preconnect = ""
+
+set mbox_type=Maildir
 
 set signature        = "~/.mutt/gmail-signature.key"
 set sig_dashes       = no
@@ -37,6 +39,7 @@ macro index gt "<change-folder>=[Gmail]/Trash<enter>"          "Go to trash"
 # macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
 macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 
+macro index,pager $ "<sync-mailbox><shell-escape>mailsync Gmail<enter>" "run mbsync to sync Gmail"
 
 #
 # List of folders that are considered to be "mailboxes" (folders that
@@ -44,12 +47,9 @@ macro index,pager y "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 #
 mailboxes = "+INBOX"
 mailboxes = "+[Gmail]/Important"
-mailboxes = "+[Gmail]/Sent\ Mail"
-mailboxes = "+[Gmail]/Drafts"
-mailboxes = "+[Gmail]/Starred"
-mailboxes = "+[Gmail]/Spam"
-mailboxes = "+[Gmail]/All Mail"
-mailboxes = "+[Gmail]/Trash"
+mailboxes = "+[Gmail].Drafts"
+mailboxes = "+[Gmail].Sent Mail"
+mailboxes = "+Drafts"
 
 # vim: fdm=marker
 # vim: filetype=muttrc

@@ -111,8 +111,8 @@ macro index,pager <f2> '<sync-mailbox><enter-command>unmailboxes *<enter><enter-
 
 # navigation/saving ---------------------------------------------------
 bind index,pager            w   sync-mailbox # default is $, but this is more like vim 'write'
-macro index,pager           W   "<sync-mailbox><shell-escape>mailrun<enter>" "Sync mailbox and offlineimap." #<shell-escape>
-macro index,pager           $   "<sync-mailbox><shell-escape>mailrun<enter>" "Sync mailbox and offlineimap." #<shell-escape>
+macro index,pager           W   "<sync-mailbox><shell-escape>mailsync<enter>" "Sync mailbox and offlineimap." #<shell-escape>
+macro index,pager           $   "<sync-mailbox><shell-escape>mailsync -V $title<enter>" "run mbsync to sync $title"
 bind index,pager            ZZ  quit # save changes to mailbox and quit
 bind pager                  q   exit # exit back to index
 bind index                  q   noop # remove q binding

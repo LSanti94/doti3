@@ -6,6 +6,4 @@ scrollbar slider {
 
     /* Padding around the slider */
     border: 2px solid black;
-    has-secondary-forward-stepper: true;
-    has-backward-stepper: true;
 }
