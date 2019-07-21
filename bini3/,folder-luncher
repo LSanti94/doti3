@@ -17,6 +17,7 @@ additem(){
 }
 additem "  " "~/Downloads"
 additem "  " "~/Pictures"
+additem "  " "~/git/doti3/bini3/ext-icons"
 additem "  " "~/Documents"
 additem "  " "~/Dropbox"
 additem " " "~/Dropbox/UniBookShelf/sync/MoonReader/attachments"

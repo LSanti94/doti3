@@ -71,7 +71,7 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     # geometry = "600x5-30+20"
-    geometry = "400x5-10+38"
+    geometry = "600x5-10+38"
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
     shrink = yes
@@ -146,7 +146,7 @@
 
     # dmenu path.
     # dmenu = /usr/bin/dmenu -p dunst:
-    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    dmenu = /usr/local/bin/rofi -dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = xdg-open #/usr/bin/google-chrome
@@ -156,8 +156,9 @@
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Paper/32x32/:/usr/share/icons/Paper/32x32/devices/:/usr/share/icons/Paper/32x32/apps/:/usr/share/icons/Paper/32x32/panel/:/usr/share/icons/Paper/32x32/actions:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/24x24/panel/:/usr/share/icons/ext-icons/
-    frame_width = 0
-    frame_color = "#ececec"
+
+    frame_width = 1
+    frame_color = "#000000"
     stack_duplicates = no
     hide_duplicates_count = no
 [experimental]
@@ -182,7 +183,6 @@
 
     # Context menu.
     context = ctrl+shift+period
-
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
@@ -193,7 +193,7 @@
     timeout = 5
 
 [urgency_normal]
-    frame_color = "#665c54"
+    frame_color = "#000000"
     # background  = "#a89984"
     # background  = "#003333"
     # background  = "#143B4E"
@@ -292,13 +292,15 @@
     foreground = "#ebdbb2"
     set_stack_tag = "volume"
     script = ",click-s"
+[agenda]
+    appname = agenda
+    history_ignore = yes
+    set_stack_tag = "agenda"
+    frame_color = "#788388"
+    background = "#142C30"
 [layout]
     appname = layout
-    # new_icon = ~/bini3/ext-icons/kb-2.png
     history_ignore = yes
-    # foreground = "#ebdbb2"
-    # background = "#292929"
-    # background = "#364F5B"
     script = ",ding"
 [pa-applet]
    appname = *pa-applet*
