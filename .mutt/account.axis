@@ -24,7 +24,7 @@ set realname   = "Reza Shams"
 set from       = "rezasa@axis.com"
 
 set ssl_starttls        = yes
-set sendmail            = "/home/existme/.mutt/scripts/tmsmtp -a Axis"
+set sendmail            = "$HOME/.mutt/scripts/tmsmtp -a Axis"
 set imap_authenticators = "login"
 
 set signature           = "~/.mutt/axis-signature.key"
