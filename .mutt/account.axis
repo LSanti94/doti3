@@ -1,7 +1,9 @@
-#! /bin/bash      just for vscode highlighting
+#! /bin/bash
+#
+#
+# Axis account settings
 
-set folder        = imaps://localhost:1357
-set smtp_url      = "smtp://localhost:1358"
+set smtp_url      = ""
 set spoolfile     = +INBOX
 set postponed     = +Drafts
 set mail_check    = 30
@@ -9,19 +11,20 @@ set timeout       = 10
 #set imap_check_subscribed
 
 
-set record     = "+Sent Items"
-set postponed  = "+Drafts"
+set folder     = "~/mail/Axis/"
+set spoolfile  = "~/mail/Axis/INBOX"
+set record     = "~/mail/Axis/Sent Items"
+set postponed  = "~/mail/Axis/Drafts"
+set trash      = "~/mail/Axis/Deleted Items"
+# set preconnect="ssh -q -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX &> /dev/null && sleep 2"
 
-set preconnect="ssh -q -f -N -M -S /tmp/ssh_tunnel_%h.sock -o ExitOnForwardFailure=yes -L 1357:imap.axis.com:993  -L 1358:xmail.axis.com:25  LNAX &> /dev/null && sleep 2"
+set mbox_type=Maildir
 
-set from      	= "rezasa@axis.com"
-set realname   = 'Reza Shams'
-set imap_user  = "rezasa@axis.com"
-set imap_pass  = "`sudo cat ~/.private/axis.key`"
+set realname   = "Reza Shams"
+set from       = "rezasa@axis.com"
 
-set imap_keepalive      = 900
 set ssl_starttls        = yes
-set sendmail            = "/usr/bin/msmtp"
+set sendmail            = "/home/existme/.mutt/scripts/tmsmtp -a Axis"
 set imap_authenticators = "login"
 
 set signature           = "~/.mutt/axis-signature.key"
@@ -35,6 +38,8 @@ macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index gs "<change-folder>=Sent Items<enter>" "Go to sent items folder"
 macro index gt "<change-folder>=Deleted Items<enter>" "Go to trash"
+
+macro index,pager $ "<sync-mailbox><shell-escape>mailsync Axis<enter>" "run mbsync to sync Gmail"
 
 # Sepecific Mailboxes ------------------------------------
 mailboxes = "+INBOX"

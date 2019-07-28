@@ -1,4 +1,7 @@
 #!/bin/zsh
+
+# Use --s  for skip saying yes for removing symlinks
+
 show_help(){
    echo "usage:\n"
    echo "${bY}--help${cZ}     Show this page"
@@ -89,10 +92,15 @@ reLink $HOME/.config/Code/User                vscode/User
 reLink $HOME/.config/zathura/zathurarc        zathurarc
 reLink $HOME/.config/QuiteRss/QuiteRss.ini    quiterss/QuiteRss.ini
 reLink $HOME/.gcalclirc                       .gcalclirc
+reLink $HOME/.config/gtk-3.0                  gtk-3.0
+reLink /usr/share/icons/ext-icons             bini3/ext-icons true
+
+# Mutt related
 reLink $HOME/.mutt                            .mutt
 reLink $HOME/.muttrc                          .mutt/muttrc
-reLink $HOME/.config/gtk-3.0                  gtk-3.0
-
-reLink /usr/share/icons/ext-icons             bini3/ext-icons true
+reLink $HOME/.mbsyncrc                        .mutt/.mbsyncrc
+# Unfortunately msmtprc cannot be linked since `msmtp -Sd` will fail on symlinked files
+cp     $DIR/.mutt/msmtprc                     $HOME/.msmtprc
+echo "$green  ${cZ}cp ${bY}$DIR/.mutt/msmtprc${bW}  ${bY}$HOME/.msmtprc${cZ}  " || \
 
 echo "\nRelink completed\n"

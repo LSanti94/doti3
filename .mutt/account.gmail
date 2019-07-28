@@ -1,4 +1,4 @@
-#!/bin/bash      just for vscode highlighting
+#!/bin/bash
 #
 #
 # Gmail account settings
@@ -12,8 +12,6 @@ set imap_pass  = `sudo cat ~/.private/gmail.key`
 set ssl_starttls  = yes
 set ssl_force_tls = yes
 
-set from       = "existme@gmail.com"
-set realname   = "Reza"
 
 set folder     = "~/mail/Gmail"
 set spoolfile  = "~/mail/Gmail/INBOX"
@@ -23,10 +21,20 @@ set preconnect = ""
 
 set mbox_type=Maildir
 
+set from       = "existme@gmail.com"
+set realname   = "Reza"
 set signature        = "~/.mutt/gmail-signature.key"
 set sig_dashes       = no
 set sig_on_top       = yes    # When replying put the signature on top not at the bottom!
 
+set sendmail            = "msmtp -a Gmail"
+
+
+
+
+
+
+# Sepecific bindings ------------------------------------
 bind index g noop
 bind editor <space> noop      # To handle space in folder names
 #macro index ga "<change-folder>=[Gmail]/All Mail<enter>"      "Go to all mail"

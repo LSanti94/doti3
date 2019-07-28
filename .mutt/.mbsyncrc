@@ -1,0 +1,87 @@
+# *********************************
+# **        Gmail Account        **
+# *********************************
+
+# IMAPAccount gmail
+
+# ================
+# = Gmail-Remote =
+# ================
+
+IMAPStore Gmail-remote
+Host imap.gmail.com
+Port  993
+User existme@gmail.com
+PassCmd "sudo cat ~/.private/gmail.key"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# ================
+# = Gmail-Local  =
+# ================
+
+MaildirStore Gmail-local
+Subfolders Verbatim
+# The trailing "/" is importan
+Path ~/mail/Gmail/
+Inbox ~/mail/Gmail/INBOX
+Flatten .
+
+Channel Gmail
+Expunge Both
+Master :Gmail-remote:
+Slave :Gmail-local:
+# Only Inbox, Drafts, and Sent Mail are allowed to be fetched
+Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Sent Mail"
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+# MaxMessages $maxmes
+# End profile
+
+
+# *********************************
+# **        Axis Account         **
+# *********************************
+
+# IMAPAccount Axis
+IMAPStore Axis-remote
+Host imap.axis.com
+Port  993
+User rezasa@axis.com
+PassCmd "sudo cat ~/.private/axis.key"
+# SSLVersions TLSv1.2
+AuthMechs LOGIN
+SSLType None
+#SSLType IMAPS
+SSLVersions TLSv1.2
+Tunnel "ssh LNAX openssl s_client -connect imap.axis.com:993 -CApath /etc/ssl/certs/ -quiet"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# =============================
+# =        Axis-local         =
+# =============================
+
+MaildirStore Axis-local
+Subfolders Verbatim
+# The trailing "/" is importan
+Path ~/mail/Axis/
+Inbox ~/mail/Axis/INBOX
+Flatten .
+
+Channel Axis
+Expunge Both
+Master :Axis-remote:
+Slave :Axis-local:
+Patterns "INBOX" "Drafts" "Sent Items" "Deleted Items"
+
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+MaxMessages 500
+# End profile

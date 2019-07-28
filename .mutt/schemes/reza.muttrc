@@ -1,4 +1,4 @@
-#! /bin/bash      just for vscode highlighting
+#! /bin/bash
 # -*- muttrc -*-
 #
 # Colour settings for mutt.
@@ -72,6 +72,7 @@ color index_number   brightwhite default
 color index_subject  color255    default     '.*'
 color index_subject  black       green       ~T
 color index_subject  color214    default     ~N
+color index_subject  black       color100    ~T~N
 color index_subject  color0      color220    ~D
 color index_size     color229    default
 color index_flags    white       default     '~A'
