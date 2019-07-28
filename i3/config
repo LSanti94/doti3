@@ -504,7 +504,7 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -597,6 +597,7 @@ bindsym $mod+Shift+w exec /home/$USER/bini3/i3-renamewindow `zenity --entry --te
 bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
 bindsym Print exec "shutter -s"
 bindsym $mod+Print exec shutter 
+bindsym $mod+a exec "~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy"
 # Volume
 
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
