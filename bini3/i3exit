@@ -22,7 +22,8 @@ close_apps(){
 
 lock() {
     # i3-msg "exec $HOME/bini3/i3-colorlock"
-    $HOME/bini3/i3-colorlock
+    # $HOME/bini3/i3-colorlock
+    $HOME/bini3/i3-lock
 }
 
 echo "i3exit was called with: $1" >> /tmp/i3exit.log
@@ -50,17 +51,17 @@ case "$1" in
         ;;
     hibernate)
 		  echo "hibernate... "+`date` 
-        lock & systemctl hibernate
+        lock & sudo systemctl hibernate
         ;;
     reboot)
 		  echo "reboot... "+`date` >> /tmp/i3exit.log
         close_apps
-        systemctl reboot
+        sudo systemctl reboot
         ;;
     shutdown)
 		  echo "shutdown... "+`date` >> /tmp/i3exit.log
         close_apps
-        systemctl poweroff
+        sudo systemctl poweroff
         ;;
     *)
 		  echo "unknown [$1] action... "+`date` >> /tmp/i3exit.log

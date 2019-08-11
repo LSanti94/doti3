@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+WALL_PATH="$HOME/Pictures/wallpapers"
+WALL=$(find $WALL_PATH -iname '*.png'| shuf -n 1)
+i3lock -i $WALL -f -p default
+
+

@@ -20,19 +20,19 @@ fi
 dunstify "i3-dexit called with [$action] Home is [$HOME]"
 case "$action" in
     lock)
-        i3exit $HOME/bini3/lock 
+        $HOME/bini3/i3exit lock 
         ;;
     logout)
-        i3exit $HOME/bini3/logout 
+        $HOME/bini3/i3exit logout 
         ;;
     reboot)
-        sudo $HOME/bini3/i3exit reboot 
+        $HOME/bini3/i3exit reboot 
         ;;
     suspend)
-        sudo $HOME/bini3/i3exit suspend 
+        $HOME/bini3/i3exit suspend 
         ;;
     shutdown)
-        sudo $HOME/bini3/i3exit shutdown 
+        $HOME/bini3/i3exit shutdown 
         ;;
     *)
         echo "Usage: $0 (lock|suspend|logout|reboot|shutdown)"
