@@ -1,7 +1,10 @@
 #!/bin/zsh
 
-WALL_PATH="$HOME/Pictures/wallpapers"
-WALL=$(find $WALL_PATH -iname '*.png'| shuf -n 1)
-i3lock -i $WALL -f -p default
+# RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
+# WALL_PATH="$HOME/Pictures/wallpapers"
+# WALL=$(find $WALL_PATH -iname '*.*'| shuf -n 1)
+# convert -scale $RES $WALL /tmp/lock.png
+# i3lock -i /tmp/lock.png -f -p default
 
+betterlockscreen -l
 
