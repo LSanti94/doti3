@@ -12,7 +12,7 @@ sudo apt install xautomation
 # or in i3-mousewheel for fast scrolling
 sudo apt install lockfile-progs
 # xdotool is used in some bindingings of xbindkeys
-sudo apt install xdotool
+sudo apt install xdotool -y
 # xbindkeys for additional shortcut configuration
 sudo apt install xbindkeys xbindkeys_config
 # for setting numlock state
@@ -21,3 +21,4 @@ sudo apt install numlockx
 
 # For mounting remote file systems
 sudo apt install nfs-common cifs-utils
+sudo apt install -y toilet pv 
