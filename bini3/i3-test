@@ -7,12 +7,13 @@ echo "args: [$@]" >> $FILE
 
 # pango-view test
 # exec "/usr/bin/pango-view" ~/bin/sample/pango-test.markup --hinting full --markup
-exec dunstify "$1"
-# dunst test
-killall dunst ; dunst -config ~/.config/dunst/dunstrc -print &
-sleep 1
 # killall compton ; compton --config ~/.config/compton.conf -b -d :0
-key_layout_msg="<span font_variant='smallcaps' foreground='#eeeeee' font='ProFontIIx Nerd Font Book 50'>en</span> <b><span foreground='#000000' font='40'> </span></b>"
-exec dunstify -app "layout" "$key_layout_msg" -r 10001 -u n -i "$HOME/bini3/ext-icons/kb-4.png"
+key_layout_msg="<span font_variant='smallcaps' font='SauceCodePro Nerd Font Bold 32' foreground='#eeeeee'>en<b><span foreground='#bbbbbb' > </span></b></span>"
+# key_layout_msg="<span font_variant='smallcaps' font='ProFontIIx Nerd Font Book 50' foreground='#eeeeee'>$(xkb-switch | cut -c1-2)</span> <b><span foreground='#bbbbbb' font='40'> </span></b>"
+key_icon="$HOME/bini3/ext-icons/kb-4.png"
+
+# exec dunstify -app "layout" "$key_layout_msg" -r 10001 -u n -i $key_icon
+exec dunstify -app layout "keyboard layout changed:" "$key_layout_msg" -i $key_icon #-r 10001
+# exec dunstify -app layout "keyboard layout changed:" "<span font='Gochi Hand Regular 44' foreground='#eeeeee'>en ok?</span>" -i $key_icon #-r 10001
 
 
