@@ -19,7 +19,7 @@ set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
 # exec_always $nsi compton --config ~/.config/compton.conf -b 
-exec_always $HOME/bini3/i3-test $dp0
+exec_always $HOME/bini3/i3-test $HOME
 exec_always "$HOME/bin/flog -st i3.config"
 
 set $bg-color                       #1d2021
@@ -582,13 +582,15 @@ bindsym $mod+Shift+KP_Subtract move scratchpad
 bindsym $mod+KP_Subtract scratchpad show
 
 bindsym $mod+Pause exec "$HOME/bini3/i3-dexit"
-bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
+bindsym $mod+x     exec "$HOME/bini3/i3-test $HOME"
+# bindsym $mod+Shift+h     exec "$HOME/bini3/i3-test $HOME"
+bindsym $mod+Shift+h     exec "$HOME/bin/,switch-display"
+# bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
 bindsym --release button2 kill
 bindsym --release shift+button2 kill
 bindsym $mod+button2 floating toggle
 bindsym $mod+o move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
-bindsym $mod+p exec /home/$USER/bini3/i3-test $IW0
 bindsym $mod+Shift+d exec $nsi /usr/bin/xfce4-appfinder
 bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 # Resize
@@ -633,7 +635,7 @@ bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
 # screen lock
-bindsym $mod+l exec "$HOME/bini3/i3exit lock"
+bindsym $mod+l exec $HOME/bini3/i3exit lock
 
 # start a terminal
 # bindsym $mod+Return exec "terminator"

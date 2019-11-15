@@ -6,5 +6,5 @@
 # convert -scale $RES $WALL /tmp/lock.png
 # i3lock -i /tmp/lock.png -f -p default
 
-betterlockscreen -l
+$HOME/bini3/betterlockscreen -l
 

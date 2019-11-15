@@ -13,7 +13,10 @@ key_layout_msg="<span font_variant='smallcaps' font='SauceCodePro Nerd Font Bold
 key_icon="$HOME/bini3/ext-icons/kb-4.png"
 
 # exec dunstify -app "layout" "$key_layout_msg" -r 10001 -u n -i $key_icon
-exec dunstify -app layout "keyboard layout changed:" "$key_layout_msg" -i $key_icon #-r 10001
+# exec dunstify -app layout "keyboard layout changed:" "$key_layout_msg" -i $key_icon #-r 10001
+echo "here" >> $FILE
+echo "HOME: $HOME" >> $FILE
+$HOME/bin/dunstify -app layout "keyboard layout changed:" "$key_layout_msg    $@" -i $key_icon 
 # exec dunstify -app layout "keyboard layout changed:" "<span font='Gochi Hand Regular 44' foreground='#eeeeee'>en ok?</span>" -i $key_icon #-r 10001
 
 

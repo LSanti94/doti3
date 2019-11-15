@@ -34,6 +34,9 @@ function reLink(){
    local ppFolder=${pFolder//$appFolder/} # ~/bini3 -> ~/
    local linkedPath="$DIR/$2"
 
+   # ensure parent folder exists before linking
+   mkdir -p $ppFolder
+
    if [[ -L "$pFolder" ]]; then
       echo " ${bW}${cZ} Removing ${bY}$pFolder${cZ} (It was symlink)"
       if [ "$skip" = 1 ]; then
