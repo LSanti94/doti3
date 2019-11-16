@@ -68,5 +68,6 @@
         }
     ],
     "python.linting.pylintEnabled": true,
-    "breadcrumbs.enabled": true
+    "breadcrumbs.enabled": true,
+    "vsicons.dontShowNewVersionMessage": true
 }

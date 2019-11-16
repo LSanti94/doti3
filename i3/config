@@ -69,7 +69,7 @@ floating_modifier $mod
 # -------------------------------------------
 mouse_warping none
 #focus_wrapping force
-focus_follows_mouse no
+focus_follows_mouse yes
 workspace_layout tabbed
 
 # -------------------------------------------
