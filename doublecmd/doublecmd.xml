@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="0.8.2 beta" ConfigVersion="10">
+<doublecmd DCVersion="0.9.2 beta" ConfigVersion="10">
   <Configuration Save="True" SortOrder="0" TreeType="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
     <FolderTabs Save="True"/>
@@ -308,12 +308,22 @@
     <OnlyOneAppInstance>True</OnlyOneAppInstance>
     <LynxLike>True</LynxLike>
     <FileSizeFormat>0</FileSizeFormat>
+    <OperationSizeFormat>0</OperationSizeFormat>
+    <HeaderFooterSizeFormat>0</HeaderFooterSizeFormat>
     <FileSizeDigits>1</FileSizeDigits>
+    <HeaderFooterDigits>1</HeaderFooterDigits>
+    <OperationSizeDigits>1</OperationSizeDigits>
+    <PersonalizedByte>B</PersonalizedByte>
+    <PersonalizedKilo>KB</PersonalizedKilo>
+    <PersonalizedMega>MB</PersonalizedMega>
+    <PersonalizedGiga>GB</PersonalizedGiga>
+    <PersonalizedTera>TB</PersonalizedTera>
     <MinimizeToTray>False</MinimizeToTray>
     <AlwaysShowTrayIcon>False</AlwaysShowTrayIcon>
     <Mouse>
       <Selection Enabled="True">
         <Button>0</Button>
+        <IconClick>0</IconClick>
       </Selection>
       <SingleClickStart>0</SingleClickStart>
       <ScrollMode>1</ScrollMode>
@@ -551,17 +561,13 @@
             <Sortings>
               <Sorting>
                 <Direction>1</Direction>
-                <Function>7</Function>
+                <Function>12</Function>
               </Sorting>
             </Sortings>
             <History>
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="Habib Khani">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/Habib Khani/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/Ghazal Films/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/NewFilms/</Path>
                   <Path Filename="P">/media/existme/My Book/Cinematic/</Path>
                   <Path Filename="..">/media/existme/My Book/Cinematic/P/</Path>
                   <Path Filename="Serials">/media/existme/My Book/Cinematic/</Path>
@@ -607,7 +613,11 @@
                   <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Comic/TinTin/</Path>
                   <Path Filename="..">/media/existme/My Book/DESKTOP/Books/EBook/Comic/</Path>
                   <Path Filename="">/media/</Path>
-                  <Path Filename="..">/home/rezasa/git/user-api/./</Path>
+                  <Path Filename="">/home/rezasa/git/user-api/./</Path>
+                  <Path Filename=".leptonrc">/home/rezasa/</Path>
+                  <Path Filename="..">/home/rezasa/Downloads/</Path>
+                  <Path Filename="Downloads">/home/rezasa/</Path>
+                  <Path Filename="idsvr-4.2.1-linux-release.tar.gz">/home/rezasa/Downloads/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -631,15 +641,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="visa-parastoo">/home/existme/Dropbox/Docs/Visa/apply 2017/For-Parastoo/</Path>
-                  <Path Filename="bl_forsakran_228011F-filled.pdf">/home/existme/Dropbox/Docs/Visa/apply 2017/For-Parastoo/visa-parastoo/</Path>
-                  <Path Filename="calendar2018">/home/existme/Downloads/</Path>
-                  <Path Filename="..">/home/existme/Downloads/calendar2018/</Path>
-                  <Path Filename="">/home/existme/Downloads/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Reading Materials (Selective Sync Conflict)/</Path>
-                  <Path Filename="Reading Materials">/home/existme/Dropbox/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Reading Materials/</Path>
-                  <Path Filename="Docs">/home/existme/Dropbox/</Path>
                   <Path Filename="Visa">/home/existme/Dropbox/Docs/</Path>
                   <Path Filename="apply for family">/home/existme/Dropbox/Docs/Visa/</Path>
                   <Path Filename="..">/home/existme/Dropbox/Docs/Visa/apply for family/</Path>
@@ -681,6 +682,15 @@
                   <Path Filename="..">/home/existme/.thumbnails/</Path>
                   <Path Filename=".ansible">/home/existme/</Path>
                   <Path Filename="..">/home/</Path>
+                  <Path Filename="idsvr-4.2.1">/home/rezasa/Downloads/</Path>
+                  <Path Filename="misc">/home/rezasa/Downloads/idsvr-4.2.1/</Path>
+                  <Path Filename="upgrade">/home/rezasa/Downloads/idsvr-4.2.1/misc/</Path>
+                  <Path Filename="4.0-to-4.1">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/</Path>
+                  <Path Filename="..">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/4.0-to-4.1/</Path>
+                  <Path Filename="lib">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/</Path>
+                  <Path Filename="..">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/lib/</Path>
+                  <Path Filename="..">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/</Path>
+                  <Path Filename="upgrade">/home/rezasa/Downloads/idsvr-4.2.1/misc/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -852,6 +862,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default</Name>
       <CustomView>False</CustomView>
+      <FileSystem>&lt;General&gt;</FileSystem>
       <PixelsPerInch>96</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
@@ -977,6 +988,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default (2017-08-12@10-46-30)</Name>
       <CustomView>True</CustomView>
+      <FileSystem>&lt;General&gt;</FileSystem>
       <PixelsPerInch>96</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
@@ -1102,6 +1114,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default (2017-08-12@10-46-30)(2017-08-12@10-48-23)</Name>
       <CustomView>True</CustomView>
+      <FileSystem>&lt;General&gt;</FileSystem>
       <PixelsPerInch>96</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
@@ -1227,6 +1240,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>with link</Name>
       <CustomView>True</CustomView>
+      <FileSystem>&lt;General&gt;</FileSystem>
       <PixelsPerInch>96</PixelsPerInch>
       <CursorBorder Enabled="True">
         <Color>-2147483635</Color>
@@ -1375,10 +1389,10 @@
   </ColumnsSets>
   <MainWindow>
     <Position Save="True">
-      <Left>4480</Left>
-      <Top>49</Top>
-      <Width>2560</Width>
-      <Height>1391</Height>
+      <Left>0</Left>
+      <Top>169</Top>
+      <Width>1920</Width>
+      <Height>1151</Height>
       <Maximized>False</Maximized>
       <Splitter>51.4390371533229</Splitter>
       <PixelsPerInch>96</PixelsPerInch>
