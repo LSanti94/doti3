@@ -634,6 +634,7 @@ bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
+
 # screen lock
 bindsym $mod+l exec $HOME/bini3/i3exit lock
 

@@ -5,10 +5,13 @@
 #
 # Version: 1.8.6
 #
-# If you edit this file, do not forget to uncomment any lines
-# that you change.
-# The pound(#) symbol may be used anywhere for comments.
+
+###################################################
+# MORE INFO:
 #
+# https://wiki.archlinux.org/index.php/Xbindkeys
+###################################################
+
 # To specify a key, you can use 'xbindkeys --key' or
 # 'xbindkeys --multikey' and put one of the two lines in this file.
 #
@@ -20,7 +23,7 @@
 # A list of keys is in /usr/include/X11/keysym.h and in
 # /usr/include/X11/keysymdef.h
 # The XK_ is not needed.
-#
+
 # List of modifier:
 #   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
 #   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
@@ -39,16 +42,6 @@
 
 # Examples of commands:
 
-"xbindkeys_show" 
-  control+shift + q
-
-# set directly keycode (here control + f with my keyboard)
-#"xterm"
-#  c:41 + m:0x4
-
-# specify a mouse button
-#"xterm"
-#  control + b:2
 
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
@@ -60,12 +53,6 @@
 ## Control+Shift+a  release event starts rxvt
 #"rxvt"
 #  release+control+shift + a
-#
-## Control + mouse button 2 release event starts rxvt
-#"rxvt"
-#  Control + b:2 + Release
-#"$HOME/bini3/notify.sh 'shift click' 'xbindkeys'"
-# "/usr/bin/xdotool click --clearmodifiers 3 && $HOME/bin/tnotify `xbindkey`"
 
 # Bind Shift+Click -> MiddleClick
 "/usr/bin/xte 'mouseclick 2';pn mclick; "

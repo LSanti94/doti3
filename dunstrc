@@ -302,6 +302,10 @@
     appname = layout
     history_ignore = yes
     script = ",ding"
+[lang]
+    appname = lang
+    history_ignore = yes
+    script = ",s-awkward"
 [pa-applet]
    appname = *pa-applet*
    format = "%p"

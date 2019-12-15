@@ -11,7 +11,20 @@
 ;;
 ;; It also allow to add or remove a key on the fly!
 
-;; use xbindkeys-config to get the correct key-configuration
+;; ###################################################
+;; # MORE INFO:
+;; #
+;; #        REF: https://wiki.archlinux.org/index.php/Xbindkeys
+;; #
+;; #        Use xbindkeys-config to get the correct key-configuration
+;; #
+;; #        To force reload the configuration:
+;; #        killall -HUP xbindkeys
+;; #
+;; #        After that use the following command to see if the config is correctly loaded!
+;; #        xbindkeys -s
+;; #
+;; ###################################################
 
 ;; Move pointer to position x,y
 (xbindkey '(Menu) "xdotool mousemove 640 800; xdotool mousemove 960 0")
@@ -25,6 +38,10 @@
 ;; Shift+Wheel Up/Down should run fast scroll+sounds 
 (xbindkey '("m:0x11" "b:5") "~/bini3/i3-mousewheel up")
 (xbindkey '("m:0x11" "b:4") "~/bini3/i3-mousewheel down")
+
+;; Ctrl_L+Ctrl_R shows the language notification
+(xbindkey '(release "m:0x14" "c:105") "~/bini3/,notify-lang")
+
 
 ; (xbindkey '(release shift "b:5") "pn mclick;xte 'mousedown 5' 'mouseclick 5' 'mouseup 5'")
 ; (xbindkey '(shift "b:4") "repeat 3|xte 'mouseclick 4'")
