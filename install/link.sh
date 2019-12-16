@@ -107,3 +107,7 @@ cp     $DIR/.mutt/msmtprc                     $HOME/.msmtprc
 echo "$green  ${cZ}cp ${bY}$DIR/.mutt/msmtprc${bW}  ${bY}$HOME/.msmtprc${cZ}  " || \
 
 echo "\nRelink completed\n"
+
+echo "Restarting affected services\n"
+killall dunst && dunst -config ~/.config/dunst/dunstrc&
+killall -HUP xbindkeys
