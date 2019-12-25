@@ -17,7 +17,8 @@ sudo apt install xdotool -y
 sudo apt install xbindkeys xbindkeys_config
 # for setting numlock state
 sudo apt install numlockx
-
+# yad is used instead of zenity for dialog boxes such as rename window dialog
+sudo apt install -yf yad 
 
 # For mounting remote file systems
 sudo apt install nfs-common cifs-utils
