@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
 # Depends on: xdotool, wmctrl
-
+current_title=$(xprop -id $(xdotool getactivewindow) | /bin/grep _NET_WM_VISIBLE_NAME | awk -F'"' '{print $2}')
+icon=$(readlink -f ~/git/doti3/bini3/ext-icons/candle-32.png)
+# title=$(zenity --entry --text "Rename window to:")
+title=$(yad --form --center --title="Rename window to:" --field="Rename window to:" "$current_title" --image=$icon --separator=" " --width=1000)
+if [[ "$title" = "" ]]; then
+   exit
+fi
 FOCUSED=$(wmctrl -lp | grep $(xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'))
 FPID=$(echo $FOCUSED | awk '{print $3}')
 FNME=$(echo $FOCUSED | cut -f -4  -d ' ' --complement)
 echo $FPID $FNME
-xdotool search -all --pid $FPID --name "$FNME" set_window -name "$*"
+# xdotool search -all --pid $FPID --name "$FNME" set_window -name "$*"
+xdotool set_window --name "$title" `xdotool getactivewindow` 
+i3-msg title_format "$title"
+i3-msg focus parent, title_format "$title", focus child
+# notify-send "Window title changed to" "$title" -i window-whitesmoke-config
