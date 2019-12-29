@@ -3,6 +3,7 @@ alreadyRunning=`xdotool search --class "chrome" | wc -l`
 if [ "$alreadyRunning" != "0" ]; then
    exit
 fi
+$HOME/bini3/i3-subscribe window &
 # export $(dbus-launch)
 export BUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 ~/.screenlayout/layout.sh

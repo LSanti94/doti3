@@ -1,0 +1,11 @@
+#!/bin/bash
+
+wid=$1
+
+CURRENT_TITLE=$(~/bini3/i3-get-best-guess-title "$wid")
+if [[ $CURRENT_TITLE == "OI::"* ]]; then
+  # Replace OI:: and append %title to have dynamic titles
+  CURRENT_TITLE="${CURRENT_TITLE//OI\:\:/}%title"
+fi
+i3-msg "[id=$wid] focus; title_format $CURRENT_TITLE"
+echo "$CURRENT_TITLE"

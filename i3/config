@@ -481,6 +481,7 @@ for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 
 # If you want to change title format per class
 for_window [class="Google-chrome"] title_format "Chrome::%title"
+for_window [class="*"] exec $HOME/bini3/i3-window-event
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
 # bindsym $mod+m exec "exec $HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
 
@@ -650,6 +651,7 @@ bindsym $mod+Shift+Next    resize grow height $size,resize grow width $size
 bindsym $mod+Shift+Prior   resize shrink height $size,resize shrink width $size
 bindsym $mod+d             exec zsh -c "rofi -show run"
 
+bindsym $mod+i             exec "$HOME/bini3/,nerd-selector"
 bindsym $mod+Home          exec "$HOME/bini3/,wiki"
 bindsym $mod+Shift+Home    exec "xdg-open http://localhost:8090/info/info"
 # bindsym $mod+Shift+Home exec "$HOME/bini3/tempscript"

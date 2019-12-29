@@ -1,0 +1,24 @@
+#!/bin/bash
+# send the supplied argument to the current window using clipboard copy/paste
+# if two parameter is specified the second one would be the window id 
+printf $1|xclip -selection clipboard
+match_qstring='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
+WID=$2
+
+if [[ ! $WID ]]; then
+   WID=$(xdotool getactivewindow)
+fi
+
+#class=$(xprop -id $WID | /bin/grep WM_CLASS | awk -F'"' '{print $2}')
+WM_CLASS=$(xprop -id $WID| sed -nr -e "s/^WM_CLASS\(STRING\) = ($match_qstring), ($match_qstring)$/\3/p" | sed 's/"//g')
+# Some apps accept ctrl+v some other accept ctrl+shift+v
+# decide depending on the window class which one to use
+case $WM_CLASS in
+   Yad|jetbrains-idea)
+      wmctrl -i -a $WID && xdotool key ctrl+v
+      ;;
+   *)
+      wmctrl -i -a $WID && xdotool key ctrl+shift+v
+      ;;
+esac
+

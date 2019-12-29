@@ -1,18 +1,31 @@
-#!/usr/bin/env bash
-# Depends on: xdotool, wmctrl
-current_title=$(xprop -id $(xdotool getactivewindow) | /bin/grep _NET_WM_VISIBLE_NAME | awk -F'"' '{print $2}')
-icon=$(readlink -f ~/git/doti3/bini3/ext-icons/candle-32.png)
-# title=$(zenity --entry --text "Rename window to:")
-title=$(yad --form --center --title="Rename window to:" --field="Rename window to:" "$current_title" --image=$icon --separator=" " --width=1000)
-if [[ "$title" = "" ]]; then
+#!/bin/bash
+# This script allows renaming a window permanantly
+# Depends on: xdotool, wmctrl, yad (, and i3-get-best-guess-title)
+
+MATCH_QSTRING='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
+WID=$(xdotool getactivewindow)
+CURRENT_TITLE=$(~/bini3/i3-get-best-guess-title "$WID" "--no-delay")
+ICON=$(readlink -f ~/git/doti3/bini3/ext-icons/candle-32.png)
+
+if [[ $CURRENT_TITLE == "OI::"* ]]; then
+  # Replace OI:: and append %title to have dynamic titles
+  CURRENT_TITLE="${CURRENT_TITLE//OI\:\:/}%title"
+fi
+
+WM_CLASS=$(xprop -id $WID| sed -nr -e "s/^WM_CLASS\(STRING\) = ($MATCH_QSTRING), ($MATCH_QSTRING)$/\3/p" | sed 's/"//g')
+WM_ROLE=$(xprop -id $WID | sed -nr "s/^WM_WINDOW_ROLE\(STRING\) = ($MATCH_QSTRING)$/\1/p" | sed 's/"//g')
+WM_WINDOW_TYPE=$(xprop -id $WID | /bin/grep NET_WM_WINDOW_TYPE| awk -F' = ' '{print $2}')
+
+TITLE=$(yad --form --center --title="Rename W($WID) C($WM_CLASS) R($WM_ROLE) T($WM_WINDOW_TYPE):" \
+   --field="Rename window to:" "$CURRENT_TITLE" --image=$ICON \
+   --separator=" " --width=1000 \
+   --window-icon="$ICON" --column "Files"\
+   )
+if [[ "$TITLE" = "" ]]; then
    exit
 fi
-FOCUSED=$(wmctrl -lp | grep $(xprop -root | grep _NET_ACTIVE_WINDOW | head -1 | awk '{print $5}' | sed 's/,//' | sed 's/^0x/0x0/'))
-FPID=$(echo $FOCUSED | awk '{print $3}')
-FNME=$(echo $FOCUSED | cut -f -4  -d ' ' --complement)
-echo $FPID $FNME
-# xdotool search -all --pid $FPID --name "$FNME" set_window -name "$*"
-xdotool set_window --name "$title" `xdotool getactivewindow` 
-i3-msg title_format "$title"
-i3-msg focus parent, title_format "$title", focus child
-# notify-send "Window title changed to" "$title" -i window-whitesmoke-config
+
+xdotool set_window --name "$TITLE" $WID
+i3-msg title_format "$TITLE"
+i3-msg focus parent, title_format "$TITLE", focus child
+# notify-send "Window title changed to" "$TITLE" -i window-whitesmoke-config

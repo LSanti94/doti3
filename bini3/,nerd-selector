@@ -1,0 +1,9 @@
+#!/bin/bash 
+# Pick a font icon character using rofi and send it to the active window
+windowid=$(xdotool getactivewindow)
+res=$(cat $HOME/bini3/nerd-symbols.dat|$HOME/bini3/rmenu2 "select" "nothing" 1 -m "Select your desired <b>NerdFont</b> icon" -fs 1)
+icon=$(echo $res | awk -F'</*span>' '{print $2}'|sed -e 's/<span.*>//' -e 's/ //')
+
+# convert unicode code to unicode character 
+icon=$(printf $icon)
+$HOME/bini3/,send-text-to-current-window $(printf $icon) $windowid

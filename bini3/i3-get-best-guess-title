@@ -1,0 +1,156 @@
+#!/bin/bash
+# Depends on: xdotool, wmctrl
+
+#set -ex
+WID=$1
+NO_DELAY=$2
+
+MATCH_INT='[0-9][0-9]*'
+MATCH_STRING='".*"'
+MATCH_QSTRING='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
+SPACE=$(printf "\u2009")
+
+pause(){
+    local seconds=$1
+    if [[ ! ${NO_DELAY} = "--no-delay" ]]; then
+        sleep ${seconds}
+    fi
+}
+get_class_icon(){
+   local CLASS=$1
+   local WM_ROLE=$2
+   local WM_WINDOW_TYPE=$3
+   local icon=""
+   case $CLASS in
+      Chromium-browser)
+         icon=""
+      ;;
+      Google-chrome)
+         if [[ $WM_ROLE == "pop-up" ]]; then
+            icon=""
+         else
+            icon=""
+         fi
+      ;;
+      TelegramDesktop)
+         icon=""
+      ;;
+      jetbrains-idea)
+         icon=""
+         [[ "$WM_WINDOW_TYPE" != "_NET_WM_WINDOW_TYPE_DIALOG" ]] && \
+            pause 2
+      ;;
+      Tilix)
+         icon=""
+      ;;
+      Code)
+         icon=""
+      ;;
+      vlc)
+         icon="嗢"
+      ;;
+      mpv)
+         icon="奈"
+      ;;
+      calibre)
+         icon=""
+      ;;
+      mpv)
+         icon=""
+      ;;
+      Firefox)
+         icon=""
+      ;;
+      Shutter)
+         icon=""
+      ;;
+      Thunar)
+         icon="漣"
+      ;;
+      "Org.gnome.Nautilus")
+         icon=""
+      ;;
+      *)
+         icon="" #     
+      ;;
+   esac
+   echo $icon
+}
+get_icon_text(){
+   local icon=$1
+   if [[ "$icon" != "" ]]; then
+      echo "$SPACE$icon "
+   else
+      print ""
+   fi
+}
+
+get_window_text(){
+   local CLASS=$1
+   local text=$2
+   local WM_ROLE=$3
+   local WM_WINDOW_TYPE=$4
+
+   local proposed_text=""
+
+   case $CLASS in
+      Chromium-browser)
+        proposed_text="Chromium::"
+      ;;
+      Google-chrome)
+         if [[ $WM_ROLE == "pop-up" ]]; then
+            proposed_text="Chrome-DEVTOOLS::"
+         else
+            proposed_text="Chrome::"
+         fi
+
+      ;;
+      TelegramDesktop)
+        proposed_text="Jaelyne::"
+      ;;
+      jetbrains-idea)
+         proposed_text=$(echo $text | sed -e 's/\s.*$//')
+      ;;
+      Tilix)
+         proposed_text="$(hostname)"
+      ;;
+      Code)
+         proposed_text="VSCode"
+      ;;
+      Firefox)
+         proposed_text="Firefox::"
+      ;;
+   esac
+   echo ${proposed_text}
+}
+
+if [[ "$WID" = "" ]]; then
+    echo "Usage: i3-best-guess-title <window-id>"
+    exit 1
+fi
+
+WM_CLASS=$(xprop -id $WID| sed -nr -e "s/^WM_CLASS\(STRING\) = ($MATCH_QSTRING), ($MATCH_QSTRING)$/\3/p" | sed 's/"//g')
+WM_WINDOW_TYPE=$(xprop -id $WID | /bin/grep NET_WM_WINDOW_TYPE| awk -F' = ' '{print $2}')
+WM_ROLE=$(xprop -id $WID | sed -nr "s/^WM_WINDOW_ROLE\(STRING\) = ($MATCH_QSTRING)$/\1/p" | sed 's/"//g')
+WM_INSTANCE=$(xprop -id $WID| sed -nr -e "s/^WM_CLASS\(STRING\) = ($MATCH_QSTRING), ($MATCH_QSTRING)$/\1/p" | sed 's/"//g')
+
+# NOTE: get_class_icon cal delay the script so the app is initialized and you can get the proper text
+# Example: it takes time for IntelliJ to be initiated and you could get the project name
+WM_ICON=$(get_class_icon "$WM_CLASS" "$WM_ROLE" "$WM_WINDOW_TYPE")
+WM_ICON_text=$(get_icon_text "$WM_ICON")
+
+CURRENT_TITLE=$(xprop -id $WID | /bin/grep _NET_WM_VISIBLE_NAME | awk -F'"' '{print $2}')
+if [[ "$CURRENT_TITLE" = "" ]]; then
+   CURRENT_TITLE=$(xprop -id $WID | /bin/grep _NET_WM_NAME | awk -F'"' '{print $2}')
+fi
+
+PROPOSED_TITLE=$(get_window_text "$WM_CLASS" "$CURRENT_TITLE" "$WM_ROLE" "$WM_WINDOW_TYPE")
+if [[ "$PROPOSED_TITLE" == "" ]]; then
+    printf "OI::${WM_ICON_text}"
+else
+    if [[ ! "$CURRENT_TITLE" == $WM_ICON_text* ]]; then
+       CURRENT_TITLE="${WM_ICON_text}${PROPOSED_TITLE}"
+    fi
+    printf "$CURRENT_TITLE"
+fi
+

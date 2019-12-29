@@ -1,0 +1,128 @@
+#!/bin/bash
+# Cleanded version of rmenu rofi stub
+usage() {
+  echo "usage: $(basename $0) [--message|-m <STR>] [--font-scale|-fs <num>] [-v] [--leader|-l <STR>] [--prompt|-p <STR>]"
+  exit 1
+}
+
+# ..................................................................... Defaults
+declare -i rresult=50
+MONOFONT="Fira Code"
+lead=right
+leader=' '
+indent=''
+font_scale=1
+debug=0
+MESG=""
+matching=normal
+
+# ............................................................ Option extraction
+while [ $# -gt 0 ]; do    # Until you run out of parameters . . .
+   case "$1" in
+      "--font-scale"|"-fs")
+         font_scale=$2
+         shift
+         ;;
+      "--leader"|"-l")
+         leader=$2
+         shift
+         ;;
+      "--prompt"|"-p")
+         prompt=$2
+         shift
+         ;;
+      "--message"|"-m")
+         MESG="$2"
+         shift
+         ;;
+      "-v")
+         debug=1
+         ;;
+      "-s")
+         shift
+         server=$1
+         ;;
+   esac
+   shift
+done
+
+# ............................................................... Calculate size
+
+display=$(,query-current-display)
+width=$(,query-display-width)
+
+# set padding and fontsize
+padsize() {
+ # padding calculation = displaywidth / fontsize * factor
+ fontsize=$(echo $2*$font_scale|bc )
+ padding=$(echo $1/$fontsize*$3|bc )
+}
+
+# tune padding to displaywidth / (font * factor) for current monitor resolutions in system
+if [ $width -gt 1920 ] ;then
+ padsize $width 22 '3 / 2'
+elif [ $width -gt 1680 ] ;then
+ padsize $width 20 '5 / 3'
+elif [ $width -gt 1440 ] ;then
+ padsize $width 16 2
+elif [ $width -gt 1024 ] ;then
+ padsize $width 14 '3 / 2'
+else
+ padsize $width 11 1
+fi
+
+
+# ....................................................................... Prompt
+prompt="$leader   $(echo "$prompt" | lowercase)"
+
+# ........................................................................ DEBUG
+if [[ $debug = 1 ]]; then
+   echo "${bY}RMENU2${cZ} debug parameters:"
+   echo "font_scale=$font_scale"
+   echo "font_size=$fontsize"
+   echo "padding=$padding"
+   echo "title=$title"
+   echo "leader=$leader"
+   echo "prompt=$prompt"
+   echo "select=$select"
+   echo "MESG=$MESG"
+   echo "matching=$matching"
+   echo "MONOFONT=$MONOFONT"
+fi
+# ......................................................................... Read
+rofi_stub() {
+
+   local MORE_FLAGS=( -dmenu -monitor $display -i -levenshtein-sort )
+   MORE_FLAGS+=( $@ )
+   MORE_FLAGS+=( -font \"$MONOFONT $fontsize\" )
+   MORE_FLAGS+=( -bw 2 -color-enabled -eh 1 -markup-rows -show-icons -no-custom )
+   MORE_FLAGS+=( -theme "/usr/local/share/rofi/themes/glue_pro_blue.rasi" )
+   MORE_FLAGS+=( -matching ${matching:-fuzzy})
+   MORE_FLAGS+=( -theme-str "'#window mainbox listview box { border: 14px 2px; border-radius: 80px 14px 8px; }'")
+   MORE_FLAGS+=( -p "\"$prompt\"" )
+   MORE_FLAGS+=( -i $select )
+   MORE_FLAGS+=( -width 80 )
+   MORE_FLAGS+=( -separator-style dash )
+   MORE_FLAGS+=( -fake-transparency 1 )
+   if [[ ! $MESG = "" ]]; then MORE_FLAGS+=( -mesg \"$MESG\" ); fi
+   # MORE_FLAGS+=( -kb-custom-1 "Alt-a")
+   # MORE_FLAGS+=( -fullscreen )
+   # MORE_FLAGS+=( -u 2-3 )
+   # MORE_FLAGS+=( -a 1-1 )
+
+   eval rofi ${MORE_FLAGS[@]} 
+
+   # Write rofi output to a file
+   echo $? > /tmp/rmenu-res
+
+}
+
+input=$(sed "s/^/$indent/" | rofi_stub $@)
+rresult=$(cat /tmp/rmenu-res)
+[ $? -ne 0 ] && exit 1
+
+# strip indent from input!
+echo "$input" | sed "s/^$indent//"
+exit $rresult
+
+# vim: set ft=sh: #
