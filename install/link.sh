@@ -83,6 +83,7 @@ reLink $HOME/.config/rofi                     rofi
 reLink $HOME/.config/terminator               terminator
 reLink $HOME/.config/i3                       i3
 reLink $HOME/.config/dunst/dunstrc            dunstrc
+reLink $HOME/.config/dolphinrc                dolphinrc
 reLink $HOME/.config/geany                    geany
 reLink $HOME/.config/mpv                      mpv
 reLink $HOME/.config/ranger                   ranger

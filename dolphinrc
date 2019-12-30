@@ -1,0 +1,63 @@
+Height 1080=827
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC4AAAC7vwCAAAAAfsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawEAAABNAAAC7gAAAHIBAAADAAAAAQAAAS0AAALu/AIAAAAC+wAAABAAaQBuAGYAbwBEAG8AYwBrAQAAAE0AAAI5AAABIwEAAAP7AAAAFABwAGwAYQBjAGUAcwBEAG8AYwBrAQAAAocAAAC0AAAAcgEAAAMAAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAEQBAAADAAADgAAAAu4AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+Width 1920=1383
+
+[CompactMode]
+FontFamily=Fira Code
+FontWeight=57
+IconSize=32
+PreviewSize=64
+UseSystemFont=false
+
+[DetailsMode]
+FontWeight=50
+IconSize=32
+
+[General]
+EditableUrl=true
+FilterBar=true
+ShowCopyMoveMenu=true
+ShowFullPathInTitlebar=true
+ShowSelectionToggle=false
+SortingChoice=CaseInsensitiveSorting
+UseTabForSwitchingSplitView=true
+Version=200
+ViewPropsTimestamp=2018,6,9,5,56,17
+
+[IconsMode]
+FontFamily=Fira Code
+FontWeight=57
+IconSize=48
+PreviewSize=80
+UseSystemFont=false
+
+[KPropertiesDialog]
+Height 1080=508
+Width 1920=530
+
+[MainWindow]
+Height 1080=1031
+State=AAAA/wAAAAD9AAAAAwAAAAAAAADzAAADuvwCAAAAAfsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawEAAABNAAADugAAAFoBAAADAAAAAQAAAU0AAAO6/AIAAAAC+wAAABAAaQBuAGYAbwBEAG8AYwBrAQAAAE0AAAJHAAABEQEAAAP7AAAAFABwAGwAYQBjAGUAcwBEAG8AYwBrAQAAApUAAAFyAAAAWgEAAAMAAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAoBAAADAAAFPgAAA7oAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+Width 1920=1920
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=32
+
+[Open-with settings]
+CompletionMode=1
+History=za,edit
+
+[PreviewSettings]
+Plugins=audiothumbnail,blenderthumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+
+[SettingsDialog]
+Height 1080=470
+Width 1920=800
+
+[Toolbar mainToolBar]
+IconSize=32
+
+[ViewPropertiesDialog]
+Height 1080=550
+Width 1920=423

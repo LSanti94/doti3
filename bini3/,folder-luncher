@@ -2,7 +2,7 @@
 APP="thunar"
 windowid=$(xdotool getwindowfocus)
 MESG=$(cat <<-END
-   """Use <b>Alt-e</b> to copy to open in VSCODE or <b>Alt-c</b> to paste to current app or <b>Enter</b> to open with thunar
+   """Use <b>Alt-e</b> to copy to open in DoubleCommander or <b>Alt-c</b> to paste to current app or <b>Enter</b> to open with thunar
    """
 END
 )
@@ -38,10 +38,11 @@ res=${res//\~\//$HOME/}
 
 echo $RTR
 if [ $RTR = "10" ]; then 
-   code $res
+   doublecmd $res
 elif [ $RTR = "11" ]; then
    sleep 0.5 && xdotool windowactivate --sync $windowid type $res
 else
-   thunar "$res"
+   export QT_QPA_PLATFORMTHEME=qt5ct
+   dolphin "$res"
 fi
 

@@ -447,7 +447,7 @@ for_window [class="Meld|gnome-software|WM_WINDOW_ROLE|do|GV|Onboard-settings|ubu
 for_window [class="Zenity|Wifi-radar|Pavucontrol|Slack|Nitrogen|Gucharmap|Sqliteman|Nautilus|File-roller|Gpick|Font-manager|Pidgin"] $fmod
 for_window [class="Thunar|.*gtk|Pick-colour-picker|Gcolor2|Lxappearance|Eog|Pcmanfm|Lxsession-default-apps"] $fmod
 for_window [class="Totem|smplayer|vlc|Rhythmbox|Winff|anbox|Xbindkeys-config|Shutter"] $fmod
-for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince|Flutter|Yad"] $fmod
+for_window [class="Nvidia-settings|TorGuard|Update-manager|Evince|Flutter|Yad|Org\.gnome\.gedit|Geany"] $fmod
 for_window [class="Terminator" title="Terminator Preferences"] $fmod
 for_window [window_type="dialog|menu"] $fmod
 for_window [class="Doublecmd" title="File operations"] $fmod

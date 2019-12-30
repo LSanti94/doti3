@@ -46,7 +46,6 @@
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "python.jediEnabled": false,
     "editor.formatOnSave": true,
     "html.format.wrapLineLength": 160,
@@ -69,5 +68,6 @@
     ],
     "python.linting.pylintEnabled": true,
     "breadcrumbs.enabled": true,
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Hopscotch (TextMate Theme)"
 }
