@@ -21,8 +21,8 @@
     "workbench.tips.enabled": true,
     "window.zoomLevel": 1,
     "window.openFoldersInNewWindow": "off",
-    "editor.minimap.showSlider": "mouseover",
-    "editor.minimap.enabled": false,
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.enabled": true,
     "editor.folding": true,
     "editor.renderWhitespace": "none",
     "workbench.startupEditor": "newUntitledFile",
@@ -69,5 +69,12 @@
     "python.linting.pylintEnabled": true,
     "breadcrumbs.enabled": true,
     "vsicons.dontShowNewVersionMessage": true,
-    "workbench.colorTheme": "Hopscotch (TextMate Theme)"
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "workbench.iconTheme": "vscode-icons",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
 }

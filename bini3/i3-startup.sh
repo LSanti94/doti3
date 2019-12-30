@@ -1,9 +1,13 @@
 #!/usr/bin/env /bin/zsh
 alreadyRunning=`xdotool search --class "chrome" | wc -l`
+
+# i3-subscribe should only have one instance and should be renewed on each restart
+ps -fC perl | grep i3-subscribe | awk '{print $2}' | xargs kill
+$HOME/bini3/i3-subscribe window &
+
 if [ "$alreadyRunning" != "0" ]; then
    exit
 fi
-$HOME/bini3/i3-subscribe window &
 # export $(dbus-launch)
 export BUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 ~/.screenlayout/layout.sh
