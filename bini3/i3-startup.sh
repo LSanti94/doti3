@@ -110,7 +110,8 @@ $HOME/bini3/,volume up # to show the current volume on i3bar
 paplay ~/sounds/effects/UL_FS_Low_Boom_Var4.wav &
 
 $HOME/bin/flog -se "i3-startup"
-# experimental to fix delays when lunching Gnome apps
-gnome-keyring-daemon &
+# experimental to fix delays when lunching Gnome apps (see http://bit.ly/35mdqvL )
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCKS
 
 
