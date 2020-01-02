@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # set -ex
 CURSOR_THEME=$1
 CURSOR_SIZE=$2
@@ -50,19 +50,23 @@ gsettings set org.mate.peripherals-mouse cursor-theme "$CURSOR_THEME"
 gsettings set org.mate.peripherals-mouse cursor-size "$CURSOR_SIZE"
 gsettings set com.ubuntu.user-interface.desktop cursor-size "$CURSOR_SIZE"
 
-CONFIG_FILE=~/.config/gtk-3.0/settings.ini
+replace_in_file() {
+  local CONFIG_FILE="$(readlink -f $1)"
+  local TARGET_KEY="$2"
+  local REPLACEMENT_VALUE="$3"
+  local SUDO="$4"
 
-TARGET_KEY="gtk-cursor-theme-name"
-REPLACEMENT_VALUE="$CURSOR_THEME"
-sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+  if [ "$SUDO" = "sudo" ]; then
+    sudo sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+  else
+    sed -i "s/\($TARGET_KEY *[=:] *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+  fi 
+}
 
-TARGET_KEY="gtk-cursor-theme-size"
-REPLACEMENT_VALUE="$CURSOR_SIZE"
-sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
-
-CONFIG_FILE=/usr/share/icons/default/index.theme
-TARGET_KEY="Inherits"
-REPLACEMENT_VALUE="$CURSOR_THEME"
-sudo sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+replace_in_file ~/.config/gtk-3.0/settings.ini "gtk-cursor-theme-name" "$CURSOR_THEME"
+replace_in_file ~/.config/gtk-3.0/settings.ini "gtk-cursor-theme-size" "$CURSOR_SIZE"
+replace_in_file /usr/share/icons/default/index.theme "Inherits" "$CURSOR_THEME" sudo
+replace_in_file ~/.Xresources "Xcursor.theme" "$CURSOR_THEME"
+replace_in_file ~/.Xresources "Xcursor.size" "$CURSOR_SIZE"
 
 chromium-browser "https://duckduckgo.com/?q=test+speed&t=h_&ia=web" &> /dev/null &
