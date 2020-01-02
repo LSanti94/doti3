@@ -20,6 +20,8 @@ sudo apt install numlockx
 # yad is used instead of zenity for dialog boxes such as rename window dialog
 sudo apt install -yf yad
 
+sudo apt install -yf arc-theme
+
 # For mounting remote file systems
 sudo apt install nfs-common cifs-utils
 sudo apt install -y toilet pv
