@@ -46,6 +46,12 @@ get_class_icon(){
       Code)
          icon=""
       ;;
+      Postman)
+         icon="  "
+      ;;
+      Apache\ Directory\ Studio)
+         icon=" "
+      ;;
       vlc)
          icon="嗢"
       ;;

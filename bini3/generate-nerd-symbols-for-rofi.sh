@@ -3,7 +3,7 @@
 # selection entries of all available symbols in NerdFonts and can be used
 # by rofi to be searched
 
-set -ex
+# set -ex
 get_hex_cb(){
    local from=$(echo "ibase=16; $1"|bc)
    local to=$(echo "ibase=16; $2"|bc)
@@ -25,27 +25,39 @@ get_hex_cb(){
 pars_file(){
    local f=$1
    local out=$2
+   local outb=$3
    local count=0
+   local str=""
+   echo "$(basename $f)" >> $outb
    while read line; do
       key=$(echo $line | awk -F'[= ]' '{print $3}'| cut -c 3- | tr '_' ' ' )
       if [[ ! $line =~ (^\#|^test|^unset) ]] && [[ -n $key ]]; then
-         char=$(echo $line | cut -c4-6)
-         unicode=$(printf $char | iconv -f utf8 -t utf16 - | od -An -tx2 | sed 's/.*/\U&/; s/^ FEFF//; s/ /\\u/g')
-         printf "\u200E<span color='white' background='black'> $char </span>\t<span color='yellow'>\\$unicode</span>\t<span color='LightYellow'>$key</span>\n" >> $out
+        char=$(echo $line | cut -c4-6)
+        unicode=$(printf $char | iconv -f utf8 -t utf16 - | od -An -tx2 | sed 's/.*/\U&/; s/^ FEFF//; s/ /\\u/g')
+        printf "\u200E<span color='white' background='black'> $char </span>\t<span color='yellow'>\\$unicode</span>\t<span color='LightYellow'>$key</span>\n" >> $out
+        str+=$(printf "$char\t")
+        ((count++))
       fi
-      ((count++))
+      if [ $count -ge 25 ]; then
+        printf "$str\n" >> $outb
+        count=0
+        str=""
+      fi
    done < "$f"
 }
 
 # assuming nerd-fonts source is installed in $HOME/git/nerd-fonts 
 nerd_base=$(readlink -f ~/git/nerd-fonts/bin/scripts/lib)
 out=$(readlink -f ~/bini3/nerd-symbols.dat)
+outb=$(readlink -f ~/bini3/nerd-symbolsb.dat)
 
 truncate $out --size 0
-# pars_file $nerd_base/i_dev.sh $out
+truncate $outb --size 0
+# pars_file $nerd_base/i_dev.sh $out $outb
 # pars_file /home/existme/tmp/x.sh $out
 for filename  in  $nerd_base/*.sh; do
    echo $filename
-   pars_file $filename $out
+   pars_file $filename $out $outb
 done
-cat $out |rmenu "select"
+# cat $out |rmenu "select"
+# lnav $outb

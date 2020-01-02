@@ -7,7 +7,7 @@ usage() {
 
 # ..................................................................... Defaults
 declare -i rresult=50
-MONOFONT="Fira Code"
+MONOFONT="FuraCode Nerd Font Regular"
 lead=right
 leader=' '
 indent=''
@@ -118,9 +118,8 @@ rofi_stub() {
 }
 
 input=$(sed "s/^/$indent/" | rofi_stub $@)
-rresult=$(cat /tmp/rmenu-res)
 [ $? -ne 0 ] && exit 1
-
+rresult=$(cat /tmp/rmenu-res)
 # strip indent from input!
 echo "$input" | sed "s/^$indent//"
 exit $rresult
