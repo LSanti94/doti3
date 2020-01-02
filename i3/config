@@ -18,7 +18,7 @@ set_from_resource $DP0 i3.dp0
 set_from_resource $DP1 i3.dp1
 set_from_resource $DP2 i3.dp2
 
-# exec_always $nsi compton --config ~/.config/compton.conf -b 
+# exec_always $nsi compton --config ~/.config/compton.conf -b
 exec_always $HOME/bini3/i3-test $HOME
 exec_always "$HOME/bin/flog -st i3.config"
 
@@ -42,7 +42,7 @@ set $active-indicator-color         #00FF00
 set $inactive-indicator-color       #005500
 set $focused-inactive-text          #FBFBFB
 set $key_layout_msg                 "<span font_variant='smallcaps' font='ProFontIIx Nerd Font Book 50' foreground='#eeeeee'>$(xkb-switch | cut -c1-2)<b><span foreground='#bbbbbb' font='40'> </span></b></span>"
-set $key_icon                       $HOME/bini3/ext-icons/kb-4.png 
+set $key_icon                       $HOME/bini3/ext-icons/kb-4.png
 set $loud_volume                    150
 # before urgent-bg was 242c33
 
@@ -327,7 +327,7 @@ bindsym $mod+9 workspace $w9
 bindsym $mod+0 workspace $w0
 
 # to bind numpad there is a bug and as workaround Mod2 should be included
-bindsym $mod+Mod2+KP_1 workspace $w1; 
+bindsym $mod+Mod2+KP_1 workspace $w1;
 bindsym $mod+Mod2+KP_2 workspace $w2;
 bindsym $mod+Mod2+KP_3 workspace $w3;
 bindsym $mod+Mod2+KP_4 workspace $w4;
@@ -413,7 +413,7 @@ mode "$mode_language" {
     # 'e' for English
     bindcode $mod+26 exec setxkbmap us
     # 's' for Swedish
-    bindsym $mod+s exec setxkbmap se 
+    bindsym $mod+s exec setxkbmap se
 
     bindsym Escape mode "default" exec setxkbmap us
 }
@@ -424,10 +424,10 @@ mode "$mode_language" {
 # *********************************************************************************************************************************************************
 
 #fibonacci toggle
-# default_orientation vertical 
+# default_orientation vertical
 # for_window [class=".*"] split toggle
-# bindsym $mod+shift+q split toggle kill 
-# bindsym $mod+alt+e layout toggle split 
+# bindsym $mod+shift+q split toggle kill
+# bindsym $mod+alt+e layout toggle split
 new_window 1pixel
 new_float normal
 
@@ -554,8 +554,8 @@ bindcode $mod+Shift+Pev move workspace to output right
 # Language selection
 # Use this if you want to update block information
 # exec pkill -SIGRTMIN+11 i3blocks;
-# bindsym Mod1+Caps_Lock exec beep 
-# bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' '; 
+# bindsym Mod1+Caps_Lock exec beep
+# bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' ';
 bindsym Mod1+ISO_Next_Group      exec dunstify -app layout "keyboard layout changed:" $key_layout_msg -i $key_icon -r 10001
 bindsym --release Num_Lock       exec beep
 
@@ -600,26 +600,26 @@ bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
 # Resize
 # bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 bindsym $mod+Control+r exec i3-msg rename workspace to `zenity --entry --text "Rename workspace to:"`
-bindsym $mod+Shift+w exec /home/$USER/bini3/i3-renamewindow 
+bindsym $mod+Shift+w exec /home/$USER/bini3/i3-renamewindow
 bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
 bindsym Print exec "shutter -s"
-bindsym $mod+Print exec shutter 
+bindsym $mod+Print exec shutter
 bindsym $mod+a exec "~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy"
 # Volume
 
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym XF86AudioRaiseVolume exec $nsi "exec $HOME/bini3/,volume up" 
+bindsym XF86AudioRaiseVolume exec $nsi "exec $HOME/bini3/,volume up"
 # bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 4.091db- unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
 bindsym XF86AudioLowerVolume exec $nsi "exec $HOME/bini3/,volume down"
 
 # bindsym $mod+F10 exec "amixer -q sset Master,0 4.097db- unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F10 exec $nsi "exec $HOME/bini3/,volume down" 
+bindsym $mod+F10 exec $nsi "exec $HOME/bini3/,volume down"
 # bindsym $mod+F11 exec "amixer -q sset Master,0 4.091db+ unmute &&  ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
-bindsym $mod+F11 exec $nsi "exec $HOME/bini3/,volume up" 
-bindsym XF86AudioMute exec $nsi "exec $HOME/bini3/,volume mute" 
+bindsym $mod+F11 exec $nsi "exec $HOME/bini3/,volume up"
+bindsym XF86AudioMute exec $nsi "exec $HOME/bini3/,volume mute"
 
-bindsym $mod+button6 exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" 
-bindsym $mod+button7 exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute" 
+bindsym $mod+button6 exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute"
+bindsym $mod+button7 exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute"
 
 # Media
 bindsym XF86AudioPlay exec $nsi "exec playerctl play-pause"

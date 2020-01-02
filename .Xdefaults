@@ -162,3 +162,5 @@ URxvt.meta:             ignore
 URxvt.utmpInhibit:      true
 URxvt.insecure:         true
 !XTerm*termName:         rxvt-unicode
+
+! vim: set syntax=xdefaults expandtab tabstop=4 shiftwidth=4:

@@ -1,0 +1,68 @@
+#!/bin/bash
+# set -ex
+CURSOR_THEME=$1
+CURSOR_SIZE=$2
+
+if [ -z $2 ]; then
+  if [ "$1" = "-h" ]; then
+    echo "Usage: ,set-cursor [cursor-name] [cursor_size]"
+    echo
+    echo "cursor-size: 24|32|48|64|96"
+    echo
+    # echo "Get all installed cursor names:"
+    # echo "ffb index.theme | xargs cat | grep  Name="
+    # echo 'ffb index.theme | xargs egrep "Name\ =|Name="'
+    echo "Examples:"
+    echo ""
+    echo ",set-cursor redglass 96"
+    echo ",set-cursor 96"
+    echo ",set-cursor -h"
+    exit 1
+  else
+    if [ -z $1 ]; then
+      CURSOR_SIZE=96
+    else
+      CURSOR_SIZE=$1
+    fi
+    # CURSOR_THEME=$(find /usr/share/icons -iwholename "*/index.theme" -printf '%P\n' | cut -d/ -f1 | sort | rmenu2 "select")
+    CURSOR_THEME=$(find /usr/share/icons/* -maxdepth 1 -prune -type d -printf "%f\n" | sort | rmenu2 "select")
+  fi
+fi
+if [ "$CURSOR_THEME" = "" ]; then
+  exit 0
+fi
+# sudo update-alternatives --install /usr/share/icons/default/index.theme x-cursor-theme /usr/share/icons/$CURSOR/cursor.theme 20
+# sudo update-alternatives --config x-cursor-theme
+# sudo update-alternatives --set x-cursor-theme /usr/share/icons/DMZ-Black/cursor.theme
+#
+# ~/.Xresources
+# Xcursor*theme: redglass
+# Xcursor.theme: ThemeName
+# Xcursor.size: xx
+# Look here for more: https://www.cinnamon-look.org/p/999859/
+
+echo
+echo "Setting cursor to ${bY}$CURSOR_THEME${cZ}:${bB}$CURSOR_SIZE${cZ}. Chromium will be launched for testing"
+CURSOR_THEME=$(escape-sed "$CURSOR_THEME")
+gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_THEME"
+gsettings set org.gnome.desktop.interface cursor-size "$CURSOR_SIZE"
+gsettings set org.mate.peripherals-mouse cursor-theme "$CURSOR_THEME"
+gsettings set org.mate.peripherals-mouse cursor-size "$CURSOR_SIZE"
+gsettings set com.ubuntu.user-interface.desktop cursor-size "$CURSOR_SIZE"
+
+CONFIG_FILE=~/.config/gtk-3.0/settings.ini
+
+TARGET_KEY="gtk-cursor-theme-name"
+REPLACEMENT_VALUE="$CURSOR_THEME"
+sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+
+TARGET_KEY="gtk-cursor-theme-size"
+REPLACEMENT_VALUE="$CURSOR_SIZE"
+sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+
+CONFIG_FILE=/usr/share/icons/default/index.theme
+TARGET_KEY="Inherits"
+REPLACEMENT_VALUE="$CURSOR_THEME"
+sudo sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
+
+chromium-browser "https://duckduckgo.com/?q=test+speed&t=h_&ia=web" &> /dev/null &

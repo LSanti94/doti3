@@ -144,5 +144,9 @@
     {
         "key": "alt+left",
         "command": "workbench.action.focusPreviousGroup"
+    },
+    {
+        "key": "alt+`",
+        "command": "workbench.action.focusActiveEditorGroup"
     }
 ]

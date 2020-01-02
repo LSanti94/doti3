@@ -9,7 +9,8 @@
     "files.hotExit": "off",
     "code-runner.runInTerminal": true,
     "workbench.colorCustomizations": {
-        "tab.activeBackground": "#881021A8"
+        "tab.activeBackground": "#881021A8",
+        "editor.inactiveSelectionBackground": "#22476C"
     },
     "python.linting.pylintArgs": [
         "--rcfile=~/.config/pylint/pylint.config",
@@ -45,6 +46,9 @@
     "diffEditor.renderSideBySide": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.suggestSelection": "first",
+    // ~/.vscode/extensions/foxundermoon.shell-format-7.0.0/bin/shfmt_v3.0.0_linux_amd64 -h
+    // Google style guid: https://google.github.io/styleguide/shell.xml
+    "shellformat.flag": "-i=2 -ci -sr -bn -ln=bash",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": false,
     "editor.formatOnSave": true,
@@ -53,28 +57,29 @@
         "--max-line-length=200",
         "--indent-size=4"
     ],
-    "prettifySymbolsMode.substitutions": [
-        {
-            "language": "shellscript",
-            "revealOn": "active-line",
-            "substitutions": [
-                {
-                    "ugly": "macro index",
-                    "pretty": "MACRO INDEX",
-                    "pre": "$"
-                },
-            ]
-        }
-    ],
     "python.linting.pylintEnabled": true,
     "breadcrumbs.enabled": true,
     "vsicons.dontShowNewVersionMessage": true,
-    "workbench.colorTheme": "Gruvbox Dark (Hard)",
     "workbench.iconTheme": "vscode-icons",
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "files.associations": {
+        ".Xdefaults": "makefile",
+        "i3/config": "i3",
+        "config": "i3",
+        ".xinitrc": "shellscript",
+        "*.sh": "shellscript"
+    },
+    "bashBeautify.tabSize": 3,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[shellscript]": {
+        "editor.formatOnSave": false
+   }
 }

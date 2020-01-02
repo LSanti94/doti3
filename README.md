@@ -1,6 +1,6 @@
 My personal i3 window manager dot files
 ---------------------------------------
-My attempt to organize i3 configuration and tricks to get it working on 
+My attempt to organize i3 configuration and tricks to get it working on
 different computer with different display setups
 
 This repo includes the needed configuration to integerate rofi as dmenu
@@ -28,7 +28,6 @@ Other resource configurations included
 * ~/.Xdefault
 * ~/.Xresources
 * ~/.XresourcesLocal
-* ~/.xinitrc
 * i3/conkyrc as ~/.conkyrc
 * rofi/config
 * ~/.weechat
@@ -71,7 +70,7 @@ Mod _+ l              | Run `~/bini3/i3colorlock`
 Mod + u              | Youtube trick (only works with chrome)
 Mod + q              | Kill focused window
 Mod + x              | Dump i3 window layout in a graph
-Mod + y              | Toggle border 
+Mod + y              | Toggle border
 Mod + z              | "Mouse-Key" Mode
 Mod + Shift + z      | "Mouse" Mode (easy scroll)
 Mod + Shift + n      | Run `Thunar`
@@ -101,4 +100,4 @@ Caps_Lock             | Change keyboard layout
 Scripts which are used
 --------------------------------------
 1. `~/bini3/i3exit` : Contains the routings for hibernate and lock
-1. `~/bini3/i3-colorlock`: Contains routins for calling 
+1. `~/bini3/i3-colorlock`: Contains routins for calling
