@@ -55,7 +55,7 @@ set guioptions csv             #svhc
 set n-completion-items 10
 set show-scrollbars true
 set window-title-basename true
-set statusbar-basename false
+set statusbar-basename true
 set statusbar-v-padding 0
 set statusbar-h-padding 20
 set page-padding 10
@@ -71,7 +71,7 @@ set zoom-step 5
 set selection-clipboard primary
 set scroll-full-overlap 0.1
 set scroll-page-aware "true"
-set guioptions "v"
+set guioptions "sv"
 set adjust-open width
 # key bindings
 

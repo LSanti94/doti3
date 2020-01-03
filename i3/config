@@ -7,8 +7,6 @@ set $mod Mod4
 set $alt Mod1
 # --no-startup-id disables the startup notification so you don't have an hourglass in your way for 60 seconds.
 set $nsi --no-startup-id
-set $r --release
-set $w --whole-window
 show_marks yes
 workspace_auto_back_and_forth yes
 set_from_resource $HOME echo $HOME
@@ -376,7 +374,6 @@ bindcode $mod+Shift+Mod2+90 move container to workspace $w0
 ## assign [class="Yelp"]                               → $w6
 ## assign [class="TkMan"]                              → $w6
 ## assign [instance="sun-awt-X11-XFramePeer"]          → $w9
-for_window [class="^"] focus
 ## assign [class="Google-chrome" title="^Developer Tools -.*"] → $w2
 ## assign [class="Firefox" instance="Devtools"]                → $w2
 
@@ -406,22 +403,24 @@ mode "$mode_border" {
     bindsym Escape mode "default"
 }
 
-set $mode_language Key Layout - Mod + (E)nglish / (F)arsi / (S)wedish
-mode "$mode_language" {
-    # 'f' for farsi
-    bindcode $mod+41 exec setxkbmap ir
-    # 'e' for English
-    bindcode $mod+26 exec setxkbmap us
-    # 's' for Swedish
-    bindsym $mod+s exec setxkbmap se
-
-    bindsym Escape mode "default" exec setxkbmap us
-}
+# set $mode_language Key Layout - Mod + (E)nglish / (F)arsi / (S)wedish
+# mode "$mode_language" {
+#     # 'f' for farsi
+#     bindcode $mod+41 exec setxkbmap ir
+#     # 'e' for English
+#     bindcode $mod+26 exec setxkbmap us
+#     # 's' for Swedish
+#     bindsym $mod+s exec setxkbmap se
+#
+#     bindsym Escape mode "default" exec setxkbmap us
+# }
 # bindsym $mod+k mode "$mode_language"
 
-# *********************************************************************************************************************************************************
-#                                                             Float settings
-# *********************************************************************************************************************************************************
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                                                          ║
+# ║                           Floating Settings                              ║
+# ║                                                                          ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 
 #fibonacci toggle
 # default_orientation vertical
@@ -438,7 +437,9 @@ set $fmod2 "floating enable,  border hidden, focus, move position center"
 set $fmod3 "floating enable,  border none,   focus, move position center"
 set $fmod4 "floating disable, border none,   focus"
 set $fmod5 "floating disable, border none,   focus, sticky enable"
+set $fmod6 "border normal"
 
+for_window [class="^"] focus
 for_window [class="^.*"] border pixel 0
 for_window [class="X-terminal-emulator|Terminator"] title_format "→ %title"
 
@@ -472,24 +473,31 @@ for_window [window_role="Transfers"] $fmod
 for_window [title="Mattermost|Slack"] $fmod4
 for_window [class="Chromium-browser|Xdot|Postman"] $fmod4
 
-# For chrome and firefox Developer Tools, we want them in separate workspace
+#   For chrome and firefox Developer Tools, we want them in separate workspace
 for_window [class="Google-chrome" title="^Developer Tools -.*"] floating disable, move container to workspace $w2
 for_window [class="Firefox" instance="Devtools"]                floating disable, move container to workspace $w2
 for_window [class="jetbrains-studio" instance="sun-awt-X11-XFramePeer"]  floating disable, move container to workspace $w2
 
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 
-# If you want to change title format per class
-for_window [class="Google-chrome"] title_format "Chrome::%title"
+#   For all these windows the title bar should be visible so scroll up can toggle floating
+for_window [window_role="browser|browser-window"] $fmod6
+for_window [class="Tilix|Xfce4-terminal|URxvt|Gnome-terminal|calibre"] $fmod6
+for_window [title="Event Tester"] $fmod6
+
+#   If you want to change title format per class
+for_window [class="Google-chrome"] title_format "Chrome::%title" 
 for_window [class="*"] exec $HOME/bini3/i3-window-event
+
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
-# bindsym $mod+m exec "exec $HOME/bini3/compiled/twmnc -c 'Keyboard layout changed to [ir]  ' -i warning"
 
 #hide_edge_borders none
 
-# *********************************************************************************************************************************************************
-#                                                           Standard key bindings
-# *********************************************************************************************************************************************************
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                                                          ║
+# ║                       Standard key bindings                              ║
+# ║                                                                          ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 
 bindsym $mod+h split h
 bindsym $mod+v split v; mark "lastsplit"
@@ -590,21 +598,38 @@ bindsym $mod+x     exec "$HOME/bini3/i3-test $HOME"
 # bindsym $mod+Shift+h     exec "$HOME/bini3/i3-test $HOME"
 bindsym $mod+Shift+h     exec "$HOME/bin/,switch-display"
 # bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
-bindsym --release button2 kill
-bindsym --release shift+button2 kill
-bindsym $mod+button2 floating toggle
-bindsym $mod+o move window to mark "lastsplit"
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                                                          ║
+# ║                            Button bindings                               ║
+# ║                                                                          ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+bindsym --release button2                          kill
+bindsym --release shift+button2                    kill
+#   mod+middleClick          will cause a fullscreen toggle
+bindsym --whole-window $mod+button2                fullscreen toggle
+#   mod+shift+middleClick    will toggle floating
+bindsym --whole-window $mod+shift+button2          floating toggle
+#   mouse wheel up           will toggle floating on the titlebar
+bindsym button4                                    floating toggle
+#   Volume control
+bindsym $mod+button6                exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute"
+bindsym $mod+button7                exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute"
+
+
+bindsym $mod+o                      move window to mark "lastsplit"
 #bindsym $mod+p exec "notify-send \\"Hello, i3; from $USER\\""
-bindsym $mod+Shift+d exec $nsi /usr/bin/xfce4-appfinder
-bindsym $mod+Shift+a exec $nsi /usr/bin/thunderbird -addressbook
+bindsym $mod+Shift+d                exec $nsi /usr/bin/xfce4-appfinder
+bindsym $mod+Shift+a                exec $nsi /usr/bin/thunderbird -addressbook
 # Resize
 # bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
-bindsym $mod+Control+r exec i3-msg rename workspace to `zenity --entry --text "Rename workspace to:"`
-bindsym $mod+Shift+w exec /home/$USER/bini3/i3-renamewindow
-bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
-bindsym Print exec "shutter -s"
-bindsym $mod+Print exec shutter
-bindsym $mod+a exec "~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy"
+bindsym $mod+Control+r              exec i3-msg rename workspace to `zenity --entry --text "Rename workspace to:"`
+bindsym $mod+Shift+w                exec /home/$USER/bini3/i3-renamewindow
+bindsym $mod+t                      exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
+bindsym Print                       exec "shutter -s"
+bindsym $mod+Print                  exec shutter
+bindsym $mod+a                      exec "~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy"
 # Volume
 
 # bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute" exec "pkill -SIGRTMIN+11 i3blocks"
@@ -618,8 +643,6 @@ bindsym $mod+F10 exec $nsi "exec $HOME/bini3/,volume down"
 bindsym $mod+F11 exec $nsi "exec $HOME/bini3/,volume up"
 bindsym XF86AudioMute exec $nsi "exec $HOME/bini3/,volume mute"
 
-bindsym $mod+button6 exec $nsi "exec amixer -q sset Master,0 4.091db+ unmute && ,volume notify && $HOME/bini3/unmute"
-bindsym $mod+button7 exec $nsi "exec amixer -q sset Master,0 4.097db- unmute && ,volume notify && $HOME/bini3/unmute"
 
 # Media
 bindsym XF86AudioPlay exec $nsi "exec playerctl play-pause"
