@@ -1,0 +1,70 @@
+// vim:ft=cpp 
+configuration {
+	modi: "window,run,ssh,windowcd,combi,drun";
+	// modi: "";
+   theme: "glue_pro_blue.rasi";
+	font: "FuraCode Nerd Font Regular 18";
+	show-icons: true;
+	sidebar-mode: false;
+          
+	width: 50;
+	lines: 15;
+	columns: 1;
+	bw: 7;
+	padding: 5;
+	yoffset: 24;
+	xoffset: 0;
+	fixed-num-lines: true;
+	terminal: "rofi-sensible-terminal";
+	ssh-client: "ssh";
+	ssh-command: "{terminal} -e {ssh-client} {host}";
+	run-command: "{cmd}";
+	// drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	disable-history: false;
+	case-sensitive: false;
+	eh: 1;
+	auto-select: false;
+	parse-hosts: false;
+	parse-known-hosts: true;
+	combi-modi: "drun,run";
+	matching: "fuzzy";
+	tokenize: true;
+	line-margin: 2;
+	separator-style: "dash";
+	hide-scrollbar: false;
+	fullscreen: false;
+	fake-transparency: true;
+	dpi: 120;
+	threads: 1;
+	scrollbar-width: 8;
+	scroll-method: 0;
+	color-normal: "#273238, #c1c1c1, #273238, #394249, #ffffff";
+	color-urgent: "#273238, #ff1844, #273238, #394249, #ff1844";
+	color-active: "#273238, #80cbc4, #273238, #394249, #80cbc4";
+	color-window: "#282828, #282828, #181818";
+	display-window: "(window)";
+	display-windowcd: "(windowcd)";
+	display-run: "(run)";
+	display-ssh: "(ssh)";
+	display-drun: "(drun)";
+	display-combi: "(combi)";
+	drun-display-format: "{name} - [<span weight='light' size='small'><i>({generic})</i></span>]";
+	kb-mode-next: "Shift+Right,Control+Tab,Alt+l";
+	kb-mode-previous: "Shift+Left,Control+Shift+Tab,Alt+h";
+	kb-row-up: "Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k";
+	kb-row-down: "Down,Control+n,Alt+j";
+}
+#element-icon{
+   size: 32;
+   horizontal-align: 100.8;
+   // border:       0px 0px 2px ;
+   // border-color: @separatorcolor;
+}
+// window,mainbox,listview,entry,element { 
+#window { 
+   // border: 2px 2px 2px 2px;
+   border: 1;
+   border-color: #c1c1c1c1;
+   border-radius: 0px 0px 20px 0;
+   scrollbar: true;
+}

@@ -486,7 +486,7 @@ for_window [class="Tilix|Xfce4-terminal|URxvt|Gnome-terminal|calibre"] $fmod6
 for_window [title="Event Tester"] $fmod6
 
 #   If you want to change title format per class
-for_window [class="Google-chrome"] title_format "Chrome::%title" 
+for_window [class="Google-chrome"] title_format "Chrome::%title"
 for_window [class="*"] exec $HOME/bini3/i3-window-event
 
 # bindsym $mod+m exec --no-startup-id urxvt -name scratchpad -e ncmpcpp
@@ -581,7 +581,7 @@ bindsym $mod+shift+F12 exec $nsi $HOME/bin/toggle-loudness 'ALSA plug-in [chrome
 
 # ************************************************************************************************************
 # Rofi
-bindsym $mod+Next exec "exec /usr/bin/rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+Next exec "exec rofi -show drun"
 # htop
 bindsym $mod+F1 exec $nsi "exec /usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'", focus
 bindsym $mod+shift+n exec $nsi "exec $HOME/bini3/,folder-luncher", focus

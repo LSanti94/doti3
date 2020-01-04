@@ -24,4 +24,8 @@ vscode/User/globalStorage/state.vscdb.backup
 .mutt/certificates
 mutt
 gtk-3.0/bookmarks
+albert/albert.conf.*
+albert/core.db
+albert/last_used_version
+albert/org.albert.extension.snippets
 
