@@ -1,0 +1,13 @@
+[Unit]
+Description=Dunst notification daemon
+Documentation=man:dunst(1)
+PartOf=i3-session.target
+
+[Service]
+Type=dbus
+Environment=DISPLAY=:0
+BusName=org.freedesktop.Notifications
+ExecStart=/usr/local/bin/dunst -config ${HOME}/.config/dunst/dunstrc -print
+
+[Install]
+WantedBy=i3-session.target

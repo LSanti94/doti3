@@ -22,6 +22,9 @@ my $i3 = i3();
 
 my $tree = $i3->get_tree->recv;
 
+use Data::Dumper;
+# print Dumper($tree);
+
 my $tmp = File::Temp->new(UNLINK => 0, SUFFIX => '.asy');
 
 say $tmp "import drawtree;";
@@ -39,11 +42,15 @@ sub dump_node {
     $na =~ s/&/\\&/g;
     $na =~ s/_/\\_/g;
     $na =~ s/~/\\textasciitilde{}/g;
+    $na =~ s/~/\\textasciitilde{}/g;
+    $na =~ s/<.+?>//g;
+    $na =~ s/[^[:ascii:]]//g;
     my $type = 'leaf';
     if (!defined($n->{window})) {
         $type = $n->{orientation} . '-split';
     }
     my $name = qq|``$na'' ($type)|;
+    # print "  $name\n";
     # fix for names containing %
     $name =~ s/%/\\%/g;
     print $tmp "TreeNode n" . $n->{id} . " = makeNode(";
@@ -51,7 +58,7 @@ sub dump_node {
     print $tmp "n" . $parent->{id} . ", " if defined($parent);
     print $tmp "\"" . $name . "\");\n";
 
-	dump_node($_, $n) for @{$n->{nodes}};
+    dump_node($_, $n) for @{$n->{nodes}};
 }
 
 sub find_node_with_name {
@@ -80,5 +87,6 @@ say $tmp "draw(n" . $root->{id} . ", (0, 0));";
 close($tmp);
 my $rep = "$tmp";
 $rep =~ s/asy$/eps/;
+system("cat $tmp");
 system("cd /tmp && asy $tmp && gv --page='$root' --noresize --antialias --scale=-1000 --fullscreen --widgetless  $rep && rm $rep");
 

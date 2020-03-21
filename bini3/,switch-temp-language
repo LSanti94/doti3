@@ -1,0 +1,24 @@
+#!/bin/bash
+# Temporarily add a language to the layout / remove it if it's already there
+
+LANG="$1"
+CURRENT_LAYOUT=$(setxkbmap -query | \grep layout | cut -f 2 -d ":" | trim)
+# OUT=$(xkb-switch -s $LANG 2>&1)
+
+if [[ $CURRENT_LAYOUT == *"$LANG"* ]]; then
+  # Remove the supplied language from the layout
+  LAYOUT="${CURRENT_LAYOUT/",$LANG"/}"
+  setxkbmap $LAYOUT
+  # Switch to the first language available in the layout
+  FIRST_LANG=$(echo $CURRENT_LAYOUT | cut -f1 -d ",")
+  xkb-switch -s $FIRST_LANG
+  echo "Language [$LANG] was removed from the layout"
+else
+  # Add the supplied language to the layout and switch to it
+  LAYOUT="$CURRENT_LAYOUT,$LANG"
+  setxkbmap $LAYOUT
+  xkb-switch -s $LANG
+  echo "Language [$LANG] was added to the layout"
+fi
+$HOME/bini3/,notify-lang
+

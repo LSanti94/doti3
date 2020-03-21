@@ -26,10 +26,11 @@ sub subscribe {
                 print Dumper($msg);
             }
             # say "-->$ev,";
-            if (($ev eq "window")&&($msg->{'change'} eq "new")){
+            if ($ev eq "window"){
+                my $change=$msg->{'change'};
                 my $winid=$msg->{'container'}->{'window'};
                 # say "winid=$winid";
-                system("~/bini3/i3-window-event $winid");
+                system("~/bini3/i3-window-event $winid $change");
             }
         }
     })->recv->{success}) {

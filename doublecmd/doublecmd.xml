@@ -568,13 +568,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="P">/media/existme/My Book/Cinematic/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/P/</Path>
-                  <Path Filename="Serials">/media/existme/My Book/Cinematic/</Path>
-                  <Path Filename="Of">/media/existme/My Book/Cinematic/Serials/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Of/</Path>
-                  <Path Filename="Season">/media/existme/My Book/Cinematic/Serials/</Path>
-                  <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Season/</Path>
                   <Path Filename="Sex">/media/existme/My Book/Cinematic/Serials/</Path>
                   <Path Filename="..">/media/existme/My Book/Cinematic/Serials/Sex/</Path>
                   <Path Filename="..">/media/existme/My Book/Cinematic/Serials/</Path>
@@ -618,6 +611,13 @@
                   <Path Filename="..">/home/rezasa/Downloads/</Path>
                   <Path Filename="Downloads">/home/rezasa/</Path>
                   <Path Filename="idsvr-4.2.1-linux-release.tar.gz">/home/rezasa/Downloads/</Path>
+                  <Path Filename="..">/home/</Path>
+                  <Path Filename="LBRY_0.39.1.deb">/home/existme/Downloads/</Path>
+                  <Path Filename="Rouzbeh-brain">/home/existme/Dropbox/</Path>
+                  <Path Filename="..">/home/existme/Dropbox/Rouzbeh-brain/</Path>
+                  <Path Filename="Rouzbeh-brain">/home/existme/Dropbox/</Path>
+                  <Path Filename="..">/home/existme/Dropbox/Rouzbeh-brain/</Path>
+                  <Path Filename="Rouzbeh-brain">/home/existme/Dropbox/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -641,19 +641,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="Visa">/home/existme/Dropbox/Docs/</Path>
-                  <Path Filename="apply for family">/home/existme/Dropbox/Docs/Visa/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Docs/Visa/apply for family/</Path>
-                  <Path Filename="vim">/home/existme/git/MyDotFiles/</Path>
-                  <Path Filename="..">/home/existme/git/MyDotFiles/vim/</Path>
-                  <Path Filename="..">/home/existme/git/MyDotFiles/</Path>
-                  <Path Filename="..">/home/existme/git/</Path>
-                  <Path Filename="git">/home/existme/</Path>
-                  <Path Filename="Purchased music">/home/existme/Dropbox/</Path>
-                  <Path Filename="audible">/home/existme/Dropbox/Purchased music/</Path>
-                  <Path Filename="..">/home/existme/Dropbox/Purchased music/audible/</Path>
-                  <Path Filename="purchased-music">/home/existme/Dropbox/</Path>
-                  <Path Filename="audible">/home/existme/Dropbox/purchased-music/</Path>
                   <Path Filename="..">/home/existme/Dropbox/purchased-music/audible/</Path>
                   <Path Filename="..">/home/existme/Dropbox/purchased-music/</Path>
                   <Path Filename="..">/home/existme/Dropbox/</Path>
@@ -691,6 +678,19 @@
                   <Path Filename="..">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/lib/</Path>
                   <Path Filename="..">/home/rezasa/Downloads/idsvr-4.2.1/misc/upgrade/</Path>
                   <Path Filename="upgrade">/home/rezasa/Downloads/idsvr-4.2.1/misc/</Path>
+                  <Path Filename="..">/home/</Path>
+                  <Path Filename="brain">/home/existme/Pictures/</Path>
+                  <Path Filename="..">/home/existme/Pictures/brain/</Path>
+                  <Path Filename="..">/home/existme/Pictures/</Path>
+                  <Path Filename="Dropbox">/home/existme/</Path>
+                  <Path Filename="Camera Uploads">/home/existme/Dropbox/</Path>
+                  <Path Filename="brain">/home/existme/Pictures/</Path>
+                  <Path Filename="shutterstock_1036533352.jpg">/home/existme/Pictures/brain/</Path>
+                  <Path Filename="old">/home/existme/Downloads/</Path>
+                  <Path Filename="brain">/home/existme/Pictures/</Path>
+                  <Path Filename="shutterstock_1036533352.jpg">/home/existme/Pictures/brain/</Path>
+                  <Path Filename="">/home/existme/Downloads/</Path>
+                  <Path Filename="shutterstock_709220641.jpg">/home/existme/Dropbox/Rouzbeh-brain/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -1390,9 +1390,9 @@
   <MainWindow>
     <Position Save="True">
       <Left>0</Left>
-      <Top>169</Top>
+      <Top>51</Top>
       <Width>1920</Width>
-      <Height>1151</Height>
+      <Height>1029</Height>
       <Maximized>False</Maximized>
       <Splitter>51.4390371533229</Splitter>
       <PixelsPerInch>96</PixelsPerInch>

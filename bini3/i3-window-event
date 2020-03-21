@@ -1,11 +1,30 @@
 #!/bin/bash
 
 wid=$1
+mod=$2
 
-CURRENT_TITLE=$(~/bini3/i3-get-best-guess-title "$wid")
-if [[ $CURRENT_TITLE == "OI::"* ]]; then
-  # Replace OI:: and append %title to have dynamic titles
-  CURRENT_TITLE="${CURRENT_TITLE//OI\:\:/}%title"
+if [[ $mod == "new" ]]; then
+  CURRENT_TITLE=$(~/bini3/i3-get-best-guess-title "$wid")
+  echo "$CURRENT_TITLE"
+  if [[ $CURRENT_TITLE == "OI::"* ]]; then
+    # Replace OI:: and append %title to have dynamic titles
+    CURRENT_TITLE="${CURRENT_TITLE//OI\:\:/}%title"
+  fi
+  i3-msg "[id=$wid] focus; title_format $CURRENT_TITLE"
+  echo "$CURRENT_TITLE"
+elif [[ $mod == "focus" ]]; then
+  class=$(xprop -id "$wid" WM_CLASS | cut -d\" -f4)
+  case "$class" in
+    TelegramDesktop)
+      CURRENT_LANG=$(xkb-switch | cut -c1-2)
+      # notify-send "$class" "$mod $CURRENT_LANG" 
+      xkb-switch -s ir
+      ;;
+    "Org.gnome.gedit")
+      xkb-switch -s ir
+      ;;
+    *)
+      xkb-switch -s us
+      ;;
+  esac
 fi
-i3-msg "[id=$wid] focus; title_format $CURRENT_TITLE"
-echo "$CURRENT_TITLE"

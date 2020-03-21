@@ -31,18 +31,18 @@ fi
 set -x
 
 $HOME/bin/flog -st "i3-startup"
-sudo killall dunst
-dunst -config ~/.config/dunst/dunstrc &
-$HOME/bin/flog "dunst loaded"
+
+# Start the target service which loads all dependant services like dunst, sxhkd, ...
+systemctl --no-block --user start i3-session.target
 
 # use " &> /dev/null " to get rid of both errors and outputs of an exec
-exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null & 
+exec "$HOME/.dropbox-dist/dropboxd" &> /dev/null &
 
 # this is network applet
 killall nm-applet &> /dev/null
 sudo /usr/bin/nm-applet &> /dev/null &
 
-# exec "mate-settings-daemon" --replace &> /dev/null & 
+# exec "mate-settings-daemon" --replace &> /dev/null &
 
 # to fix redshift error for geolocation edit `/etc/geoclue/geoclue.conf` add:
 # [redshift]
@@ -52,16 +52,13 @@ sudo /usr/bin/nm-applet &> /dev/null &
 # also:
 #  sudo apt-get remove geoclue*
 #  sudo apt-get install geoclue-2.0
-killall redshift &> /dev/null  
-killall redshift-gtk &> /dev/null  
+killall redshift &> /dev/null
+killall redshift-gtk &> /dev/null
 
 # $HOME/bini3/toggle-gaps set
 
-killall albert &> /dev/null  
+killall albert &> /dev/null
 exec "/usr/bin/albert" &> /dev/null &
-
-killall xbindkeys &> /dev/null  
-exec "/usr/bin/xbindkeys" &> /dev/null &
 
 killall compton &> /dev/null
 exec compton --config ~/.config/compton.conf -b &
@@ -83,7 +80,7 @@ if [ "$alreadyRunning" = "0" ]; then
    i3-msg "workspace $W1; append_layout $HOME/bini3/layout/w1-browser.json"
    i3-msg "workspace $W2; append_layout $HOME/bini3/layout/w2-terminal.json"
 
-   # $HOME/bini3/,ow 2          0           "/usr/bin/terminator" 
+   # $HOME/bini3/,ow 2          0           "/usr/bin/terminator"
    # $HOME/bini3/,ow 2          1           "/usr/bin/thunar" --daemon
    # $HOME/bini3/,ow 1          3           "/usr/bin/google-chrome" --force-device-scale-factor=1.25 &
    # $HOME/bini3/,ow 1          15          "redshift-gtk" &

@@ -1,0 +1,69 @@
+#!/bin/bash
+# Helper script to deal with i3 session level services that are dependent on
+# i3-session.target
+
+ACTION=${1:-status}
+
+status() {
+    systemctl --user status i3-session.target
+    echo
+    systemctl --user status dunst
+    echo
+    systemctl --user status sxhkd
+    echo
+    systemctl --user status xbindkeys
+    echo
+    systemctl --user status compton
+    echo
+    systemctl list-dependencies --user
+}
+
+restart() {
+    echo "i3-session.target and all dependant services restarted"
+    systemctl --user restart i3-session.target
+}
+
+stop() {
+    echo "i3-session.target and all dependant services stopped"
+    systemctl --user stop i3-session.target
+}
+
+start() {
+    echo "i3-session.target and all dependant services started"
+    systemctl --user start i3-session.target
+}
+
+case "$ACTION" in
+    stop)
+        stop
+        status
+        ;;
+    start)
+        start
+        status
+        ;;
+    restart)
+        restart
+        status
+        ;;
+    help)
+        echo "usage:"
+        echo
+        echo "i3-service [start|stop|restart|help|dunst|sxhkd|xbindkeys|compton]"
+        ;;
+    dunst)
+        journalctl --user -u dunst
+        ;;
+    sxhkd)
+        journalctl --user -u sxhkd
+        ;;
+    xbindkeys)
+        journalctl --user -u sxhkd
+        ;;
+    compton)
+        journalctl --user -u compton
+        ;;
+    status)
+        status
+        ;;
+esac

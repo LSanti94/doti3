@@ -1,0 +1,9 @@
+# super + @space
+# super + {_,shift + }w
+# super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
+# super + period
+
+# Temporarily add Swedish to language layout
+super + F3
+   $HOME/bini3/,switch-temp-language se

@@ -237,7 +237,7 @@ set $bumbleModules  cpu         \
                     memory      \
                     traffic     \
                     datetime    \
-                    spacer      \
+                    layout-xkbswitch   \
                     pasink
 
 bar {
@@ -258,7 +258,7 @@ bar {
       inactive_workspace #333333 #282828 #888888
       urgent_workspace   #2f343a #cc241d #ffffff
    }
-   status_command ~/git/bumblebee-status/bumblebee-status -d -m $bumbleModules -t gruvbox-reza
+   status_command ~/git/bumblebee-status/bumblebee-status -m $bumbleModules -t gruvbox-reza
    # status_command i3blocks
    #status_command ~/bini3/conkyi3.sh
    #status_command i3status
@@ -564,7 +564,7 @@ bindcode $mod+Shift+Pev move workspace to output right
 # exec pkill -SIGRTMIN+11 i3blocks;
 # bindsym Mod1+Caps_Lock exec beep
 # bindsym Mod1+ISO_Next_Group      exec notify.sh "language" "$(xkb-switch | cut -c1-2)" "kxkb" ' ';
-bindsym Mod1+ISO_Next_Group      exec dunstify -app layout "keyboard layout changed:" $key_layout_msg -i $key_icon -r 10001
+# bindsym Mod1+ISO_Next_Group      exec dunstify -app layout "keyboard layout changed:" $key_layout_msg -i $key_icon -r 10001
 bindsym --release Num_Lock       exec beep
 
 #bindsym F1 exec $nsi "default"
@@ -594,10 +594,10 @@ bindsym $mod+Shift+KP_Subtract move scratchpad
 bindsym $mod+KP_Subtract scratchpad show
 
 bindsym $mod+Pause exec "$HOME/bini3/i3-dexit"
-bindsym $mod+x     exec "$HOME/bini3/i3-test $HOME"
+# bindsym $mod+x     exec "$HOME/bini3/i3-test $HOME"
 # bindsym $mod+Shift+h     exec "$HOME/bini3/i3-test $HOME"
 bindsym $mod+Shift+h     exec "$HOME/bin/,switch-display"
-# bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
+bindsym $mod+x exec "$HOME/bini3/dump-asy.pl 3"
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                                                          ║
@@ -689,10 +689,11 @@ exec i3-msg "workspace number 5, layout tabbed"
 #                                                           StartUp
 # *********************************************************************************************************************************************************
 
-# Keyboard layout
 exec_always $nsi "$HOME/bini3/i3-startup.sh"
 exec_always $nsi xset dpms 600
-exec_always $nsi setxkbmap -option grp:ctrls_toggle "us,ir,se" -option grp_led:scroll
+# Keyboard layout
+# displaying the language is done in "~/.xbindkeysrc.scm" through calling "~/bini3/,notify-lang"
+exec_always $nsi setxkbmap -option grp:ctrls_toggle "us,ir" -option grp_led:scroll
 
 # for_window [class="^.*"] border pixel 0
 hide_edge_borders both

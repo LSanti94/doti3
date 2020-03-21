@@ -1,0 +1,16 @@
+[Unit]
+Description=compton daemon
+Documentation=man:compton(1)
+After=graphical-session.target
+PartOf=i3-session.target
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/compton --config ${HOME}/.config/compton.conf
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+RemainAfterExit=no
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=i3-session.target

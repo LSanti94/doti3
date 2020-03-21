@@ -57,6 +57,7 @@ mailboxes = "+INBOX"
 mailboxes = "+[Gmail]/Important"
 mailboxes = "+[Gmail].Drafts"
 mailboxes = "+[Gmail].Sent Mail"
+mailboxes = "+[Gmail]/Updates"
 mailboxes = "+Drafts"
 
 # vim: fdm=marker
