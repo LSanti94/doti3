@@ -148,5 +148,9 @@
     {
         "key": "alt+`",
         "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "filesExplorer.findInWorkspace"
     }
 ]

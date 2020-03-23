@@ -15,9 +15,12 @@ if [ -z "$action" ]; then
     index=$(echo -e "${menu}" |
                 rofi -dmenu -i -markup-rows \
                      -no-custom -p "Action: " -format i)
-    action="${actions[$((index * 2 + 1))]}"
+    if [[ -n "$index" ]]; then
+      action="${actions[$((index * 2 + 1))]}"
+    fi
 fi
-dunstify "i3-dexit called with [$action] Home is [$HOME]"
+echo "i3-dexit called with [$action] Home is [$HOME]"
+dunstify "i3-dexit called with action:[$action]"
 case "$action" in
     lock)
         $HOME/bini3/i3exit lock 

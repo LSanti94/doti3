@@ -78,6 +78,7 @@ reLink $HOME/.xinitrc                         .xinitrc
 reLink $HOME/.i3blocks.conf                   i3/i3blocks.conf
 reLink $HOME/bini3                            bini3
 reLink $HOME/.config/compton.conf             i3/compton.conf
+reLink $HOME/.config/jgmenu                   jgmenu
 reLink $HOME/.config/rofi                     rofi
 reLink $HOME/.config/sxhkd                    sxhkd
 reLink $HOME/.config/albert                   albert

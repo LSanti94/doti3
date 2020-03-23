@@ -60,10 +60,6 @@ killall redshift-gtk &> /dev/null
 killall albert &> /dev/null
 exec "/usr/bin/albert" &> /dev/null &
 
-killall compton &> /dev/null
-exec compton --config ~/.config/compton.conf -b &
-$HOME/bin/flog "compton loaded"
-
 #it's important that you distinguish between the command and its parameters
 #Open in        $Workspace $WaitTime   $Command
 W1=$(xgetres i3.w1)
@@ -89,8 +85,8 @@ if [ "$alreadyRunning" = "0" ]; then
    exec /usr/bin/tilix &
    exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
    exec code ~/notes.md &
-   $HOME/bin/flog "delay loading redshift"
-   (sleep 10 && exec redshift-gtk) &
+   # $HOME/bin/flog "delay loading redshift"
+   # (sleep 10 && exec redshift-gtk) &
 else
    alert "passing..."
 fi

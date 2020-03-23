@@ -1,9 +1,199 @@
+# [MODIFIER + ]*[@|!]KEYSYM
+#    COMMAND
+#
+# MODIFIER: super, hyper, meta, alt, control, ctrl, shift, mode_switch, lock, mod1, mod2, mod3, mod4, mod5
+# If @ is added at the beginning of the keysym, the command will be run on key release events, otherwise on key press events.
+# KEYSYM: keycode can get from "xev -event keyboard | grep keysym"
+#
+# To reload the configuration use:
+#     systemctl --user reload sxhkd
+#
+# button1: left click
+# button4: wheel up
+#
+# Next: Page down
+# Prior: Page up
+#
 # super + @space
 # super + {_,shift + }w
 # super + ctrl + {m,x,y,z}
 #	bspc node -g {marked,locked,sticky,private}
 # super + period
 
+#########################
+# Function keys & Media #
+#########################
+
+super + F1
+   sudo /usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'
+
 # Temporarily add Swedish to language layout
 super + F3
    $HOME/bini3/,switch-temp-language se
+
+super + {F10,button6}
+   $HOME/bini3/,volume down
+
+super + {F11,button7}
+   $HOME/bini3/,volume up
+
+# Toggle chrome loudness
+super + shift + F12
+   load_volume=150; \
+   $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $load_volume false; \
+   $HOME/bin/toggle-loudness Chrome $load_volume true
+
+XF86AudioRaiseVolume
+   $HOME/bini3/,volume up
+
+XF86AudioLowerVolume
+   $HOME/bini3/,volume down
+
+XF86AudioMute
+   $HOME/bini3/,volume mute
+
+XF86AudioPlay
+   playerctl play-pause
+
+XF86AudioNext
+   playerctl next
+
+XF86AudioPrev
+   playerctl previous
+
+########################
+#   i3 conrols         #
+########################
+
+super + Pause
+   $HOME/bini3/i3-dexit
+
+super + l
+   $HOME/bini3/i3exit lock
+
+super + shift + c
+   i3 reload
+
+super + shift + r
+   i3 restart
+
+super + {Left,Right,Up,Down}
+   i3-msg focus {left,right,up,down}
+
+super + shift + {Left,Right,Up,Down}
+   i3-msg move {left,right,up,down} 100 px
+
+super + control + shift + {Left,Right,Up,Down}
+   i3-msg resize {shrink width,grow width,shrink height,grow height} 10 px or 10 ppt
+
+super + shift + {Next,Prior}
+   mode={grow,shrink}; \
+   size="100 px or 100 ppt"; \
+   i3-msg resize $mode height $size,resize $mode width $size
+
+super + control + shift + {Next,Prior}
+   i3-msg move workspace to output {left,right}
+
+super + {s,w,e}
+   i3-msg layout {stacking,tabbed,toggle split}
+
+super + h
+   i3-msg split h
+
+super + v
+   i3-msg split v, mark "lastsplit"
+
+super + q
+   i3-msg kill
+
+super + space
+   i3-msg focus mode_toggle
+
+super + shift + {space,s}
+   i3-msg {floating,sticky} toggle
+
+super + g
+   i3-msg fullscreen toggle global
+
+super + r
+   i3-msg mod " "
+
+super + {f,Caps_Lock,Hyper_L}
+   i3-msg fullscreen toggle
+
+super + y
+   i3-msg border toggle
+
+super + Tab
+   i3-msg workspace next
+
+super + shift + Tab
+   i3-msg workspace prev
+
+super + control + {Right,Left}
+   i3-msg workspace {next,prev}
+
+super + shift + KP_Subtract
+   i3-msg move scratchpad
+
+super + KP_Subtract
+   i3-msg scratchpad show
+
+super + shift + w
+   $HOME/bini3/i3-renamewindow
+
+super + shift + button3
+   $HOME/bini3/i3-contextmenu
+
+button12
+   $HOME/bini3/i3-contextmenu
+
+########################
+#   Misc keys          #
+########################
+
+super + Return
+   /usr/bin/tilix
+
+
+super + Next
+   rofi -show drun
+
+super + shift + n
+   $HOME/bini3/,folder-luncher
+
+super + shift + i
+   $HOME/bini3/,nerd-selector
+
+super + Home
+   $HOME/bini3/,wiki
+
+super + shift + Home
+   xdg-open http://localhost:8090/info/info
+
+super + shift + h
+   $HOME/bin/,switch-display
+
+super + grave
+   tilix --quake --profile="quack"
+
+super + c
+   copyq toggle
+
+super shift + v
+   copyq menu&
+
+Print
+   shutter -s
+
+super + Print
+   shutter
+
+super + a
+   ~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy
+
+@Num_Lock
+   beep
+
+super + x
+   $HOME/bini3/dump-asy.pl 3

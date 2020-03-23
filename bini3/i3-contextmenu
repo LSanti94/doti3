@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# description, command, icon, working directory, metadata
+# use triple quotes in commands to have commas
+# - is used to support identation see https://stackoverflow.com/a/23930212/161312
+read -r -d '' menu <<- EOT
+  Close Window,echo close,emblem-noread
+  ^sep()
+  Fullscreen toggle,echo fullscreen,system
+  Youtube hack,echo youtube,krunner_youtube.com
+  Toggle float,echo float,mate-panel-workspace-switcher
+  Rename window,echo rename,kate
+  ^sep()
+  Move to ScratchPad,echo movesToScratch,gnome-netstatus-rx
+  Show ScratchPad,echo showScratch,user-online
+EOT
+# the quotes around the menu variable is necessary otherwise new lines are not showed
+res=$(echo "$menu"|jgmenu --simple --at-pointer --icon-size=32)
+
+
+case "$res" in
+  close)
+    i3-msg kill
+    ;;
+  fullscreen)
+    i3-msg fullscreen toggle
+    ;;
+  youtube)
+    # /usr/bin/xdotool key F11;
+    i3-msg border none
+    # sleep 0.2;
+    i3-msg fullscreen disable, floating enable, resize set 600 400, sticky enable, move window to position 1940 54
+    ;;
+  float)
+    i3-msg floating toggle
+    ;;
+  rename)
+    $HOME/bini3/i3-renamewindow
+    ;;
+  movesToScratch)
+    i3-msg move scratchpad
+    ;;
+  showScratch)
+    i3-msg scratchpad show
+    ;;
+esac
+# cat ~/readme.txt| jgmenu --vsimple --icon-size=0 --at-pointer

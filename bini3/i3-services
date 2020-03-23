@@ -5,15 +5,15 @@
 ACTION=${1:-status}
 
 status() {
-    systemctl --user status i3-session.target
+    systemctl --user status i3-session.target --no-pager -l
     echo
-    systemctl --user status dunst
+    systemctl --user status dunst --no-pager -l
     echo
-    systemctl --user status sxhkd
+    systemctl --user status sxhkd --no-pager -l
     echo
-    systemctl --user status xbindkeys
+    systemctl --user status xbindkeys --no-pager -l
     echo
-    systemctl --user status compton
+    systemctl --user status compton --no-pager -l
     echo
     systemctl list-dependencies --user
 }

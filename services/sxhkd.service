@@ -8,7 +8,7 @@ PartOf=i3-session.target
 [Service]
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/sxhkd
-ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+ExecReload=/bin/kill -SIGUSR1 $MAINPID
 
 [Install]
 WantedBy=i3-session.target

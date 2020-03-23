@@ -28,4 +28,4 @@ albert/albert.conf.*
 albert/core.db
 albert/last_used_version
 albert/org.albert.extension.snippets
-
+jgmenu/backup/**
