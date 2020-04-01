@@ -451,7 +451,7 @@ for_window [class="jetbrains-studio" instance="sun-awt-X11-XFramePeer"]  floatin
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 
 #   For all these windows the title bar should be visible so scroll up can toggle floating
-for_window [window_role="browser|browser-window"] $fmod6
+# for_window [window_role="browser|browser-window"] $fmod6
 for_window [class="Tilix|Xfce4-terminal|URxvt|Gnome-terminal|calibre"] $fmod6
 for_window [title="Event Tester"] $fmod6
 
