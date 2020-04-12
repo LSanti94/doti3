@@ -34,7 +34,9 @@ function reLink() {
   local  linkedPath="$DIR/$2"
 
   # ensure parent folder exists before linking
-  mkdir  -p $ppFolder
+  if ! [[ -L $ppFolder ]]; then
+    mkdir  -p $ppFolder
+  fi
 
   if  [[ -L "$pFolder" ]]; then
     echo   " ${bW}${cZ} Removing ${bY}$pFolder${cZ} (It was symlink)"
@@ -67,13 +69,37 @@ function reLink() {
 
   # exec 3>&- 4>&- # release the extra file descriptors
 }
+
+function copyFileOnce() {
+  # The physicalFolder link that is going to be symlinked
+  declare local targetFile=$1 
+  local originalFile=$2
+
+  # get the parent folder destination folder
+  # the link to the original file/folder being linked
+  local fullTargetFile="$DIR/$2"
+  local pFolder="$(dirname "$targetFile")"
+  # ensure parent folder exists before linking
+  echo "  CopyOnce ${bY}$fullTargetFile ${bW}  ${bY}$targetFile${cZ}"
+  mkdir  -p $pFolder
+  if [[ -e $targetFile ]]; then
+    echo "   ${bR} ${cZ} File exists... skipping"
+  else
+    cp $fullTargetFile $targetFile
+    echo "   ${bG} ${cZ} File copied"
+  fi
+  echo
+
+}
+
 clear
 echo "doti3 folder is ${bG}$DIR${cZ}\n"
 
 reLink $HOME/.conkyrc                         i3/conkyrc
 reLink $HOME/.xbindkeysrc.scm                 .xbindkeysrc.scm
 reLink $HOME/.Xresources                      .Xresources
-reLink $HOME/.XresourcesLocal                 .XresourcesLocal
+copyFileOnce $HOME/.XresourcesLocal           .XresourcesLocal
+copyFileOnce $HOME/.Xprofile                  .xprofile
 reLink $HOME/.xinitrc                         .xinitrc
 reLink $HOME/.i3blocks.conf                   i3/i3blocks.conf
 reLink $HOME/bini3                            bini3

@@ -146,7 +146,6 @@ Xft*rgba: rgb
 URxvt*fading: 0
 URxvt*tintColor: #ffffff
 URxvt*shading: 0
-URxvt*inheritPixmap: False
 ! black
 URxvt.color0:       #33302e
 URxvt.color8:       #81776f

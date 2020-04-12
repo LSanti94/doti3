@@ -217,26 +217,27 @@ exec $nsi numlockx on
 #                                                           monitors
 # *********************************************************************************************************************************************************
 
-#set $DP0 DVI-1
-#set $DP1 DVI-0
-#set $DP2 DVI-1
-#set $DP0 "DVI-D-0"
-#set $DP1 "DP-0.8"
-#set $DP2 "HDMI-1"
-
-
 # *********************************************************************************************************************************************************
 #                                                               i3bar
 # *********************************************************************************************************************************************************
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-set $bumbleModules  cpu         \
-                    memory      \
-                    traffic     \
-                    datetime    \
-                    layout-xkbswitch   \
-                    pasink
+# The modules are listed here: https://github.com/tobi-wan-kenobi/bumblebee-status/wiki/Available-Modules
+# or just use the following command:
+# ~/git/bumblebee-status/bumblebee-status -l modules |& lnav
+# 
+# For additional theming, modules sources are available here: 
+#     https://github.com/tobi-wan-kenobi/bumblebee-status/tree/master/bumblebee/modules
+#
+# To trouble shoot modules run: 
+#    ~/git/bumblebee-status/bumblebee-status -t gruvbox-reza -m cpu memory traffic datetime battery layout-xkbswitch pasink
+#
+# each module has something called state (look for ".state" in module code). This can be used in the theme for coloring or formatting for example ( critical, warning, ac, charged in battery module )
+# also each module has to main functions "update" and "state" which at the end produces the display. A mandatory parameter for all modules is "full_text"
+#
+# for themeing look into https://github.com/tobi-wan-kenobi/bumblebee-status/blob/master/bumblebee/theme.py
+#     basically we have these keywords: separator, fg, bg, padding, prefix, prefixfg, prefixbg, suffix, separator-block-width, align, minwidth ...
+# 
+set $bumbleModules  cpu memory traffic datetime battery layout-xkbswitch pasink
 
 bar {
 	# font pango:FantasqueSansMono Nerd Font 14

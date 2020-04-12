@@ -5,7 +5,6 @@ PartOf=i3-session.target
 
 [Service]
 Type=dbus
-Environment=DISPLAY=:0
 BusName=org.freedesktop.Notifications
 ExecStart=/usr/local/bin/dunst -config ${HOME}/.config/dunst/dunstrc -print
 
