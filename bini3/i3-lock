@@ -6,5 +6,7 @@
 # convert -scale $RES $WALL /tmp/lock.png
 # i3lock -i /tmp/lock.png -f -p default
 
+# to cache images with better lockscreen use the following command:
+# ~/bini3/betterlockscreen -u ~/Pictures/wallpapers
 $HOME/bini3/betterlockscreen -l
-
+$HOME/bini3/betterlockscreen -u ~/Pictures/wallpapers
