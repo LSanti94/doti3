@@ -20,29 +20,140 @@
 #	bspc node -g {marked,locked,sticky,private}
 # super + period
 
-#########################
-# Function keys & Media #
-#########################
+# Above each binding there is a semicolone separated description which is read by $HOME/bini3/i3-help
+# The syntax is as follows:
+#        <icon>;<command>;<description>
+#
+# The line should start with two hash signs and a space (## )
+# In the command section the following replacements happen for convenience:
+# $W -> גּ    (Super/Windows key)
+# $S -> וּ    (Shift key)
+# $C -> דּ    (Control key)
+# $A -> הּ    (Alt key)
 
+###############################################################################
+#  Application openners  
+###############################################################################
+### Application Openners
+
+##  ;$W F1; Show i3 help
 super + F1
+   $HOME/bini3/i3-help
+
+##  ;$W F2; Show htop window
+super + F2
    sudo /usr/bin/terminator -l big -T '**SUDO** HTOP: Beaware that you can kill anything!!!' -r pop-up -e 'sudo htop'
 
-# Temporarily add Swedish to language layout
-super + F3
-   $HOME/bini3/,switch-temp-language se
+##  ;$W Return ; Open terminal window
+super + Return
+   /usr/bin/tilix
 
+##  ;$W Page down ; Show rofi contextmenu
+super + Next
+   rofi -show drun
+
+##  ;$W PrintScreen; Show shutter dialog
+super + Print
+   shutter
+
+##  ;$W a; Show email selector (~/.mutt/scripts/alias-manager.py)
+super + a
+   ~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy
+
+##  ;$W$S n ; Show folder luncher (,folder-luncher)
+super + shift + n
+   $HOME/bini3/,folder-luncher
+
+##  ;$W$S i ; Show symbol selector (,nerd-selector)
+super + shift + i
+   $HOME/bini3/,nerd-selector
+
+##   ;$W Home ; Browse public wiki (,wiki)
+super + Home
+   $HOME/bini3/,wiki
+
+##   ;$W$S Home ; Browse private wiki
+super + shift + Home
+   xdg-open http://localhost:8090/info/info
+
+##  ;$W$S h ; Show switch display menu (,switch-display)
+super + shift + h
+   $HOME/bin/,switch-display
+
+##  ;$W `(grave) ; Show tilix quack mode
+super + grave
+   tilix --quake --profile="quack"
+
+###############################################################################
+#   Misc keys          
+###############################################################################
+### Misc keys
+
+##  ;$W c ; Toggle copyq
+super + c
+   copyq toggle
+
+##  ;$W$S v; Show copyq menu
+super shift + v
+   copyq menu&
+
+##  ;PrintScreen; Take a screenshot using the shutter
+Print
+   shutter -s
+
+@Num_Lock
+   beep
+
+##  ;$W x; Show graph of current workspace (~/bini3/dump-asy.pl)
+super + x
+   $HOME/bini3/dump-asy.pl 3
+
+###############################################################################
+#   Service Controls    
+###############################################################################
+### Service Controls
+
+## 凜;$W$S w ; Rename window
+super + shift + w
+   $HOME/bini3/i3-renamewindow
+
+## ﱜ ;$W F10; Volume down
 super + {F10,button6}
    $HOME/bini3/,volume down
 
+## ﱛ ;$W F11; Volume up
 super + {F11,button7}
    $HOME/bini3/,volume up
 
-# Toggle chrome loudness
+##  ;$W$S F12; Toggle chrome loudness
 super + shift + F12
    load_volume=150; \
    $HOME/bin/toggle-loudness 'ALSA plug-in [chrome]' $load_volume false; \
    $HOME/bin/toggle-loudness Chrome $load_volume true
 
+##  ;$W F3; Temporarily add Swedish to the language layout
+super + F3
+   $HOME/bini3/,switch-temp-language se
+
+##  ;Left+Right $C; Switch language
+
+## ⏼ ;$W Pause; Show system shutdown menu (i3-dexit)
+super + Pause
+   $HOME/bini3/i3-dexit
+
+##  ;$W l; Lock the screen (i3exit lock)
+super + l
+   $HOME/bini3/i3exit lock
+
+## 煉;$W$S (middle) ; Show jgmenu contxt menu (i3-contextmenu)
+super + shift + button3
+   $HOME/bini3/i3-contextmenu
+
+## 煉;(near left) ; Show jgmenu contxt menu (Mouse Button 12)
+button12
+   $HOME/bini3/i3-contextmenu
+
+################ Special mouse button mappings (no doc)
 XF86AudioRaiseVolume
    $HOME/bini3/,volume up
 
@@ -61,139 +172,102 @@ XF86AudioNext
 XF86AudioPrev
    playerctl previous
 
-########################
-#   i3 conrols         #
-########################
+###############################################################################
+#   I3 conrols         
+###############################################################################
+### I3 Controls
 
-super + Pause
-   $HOME/bini3/i3-dexit
-
-super + l
-   $HOME/bini3/i3exit lock
-
+## 煉;$W$S c; Reload i3 configuration
 super + shift + c
    i3 reload
 
+## 煉;$W$S r; Restart i3 
 super + shift + r
    i3 restart
 
+##  ;$W     ; Focus on the left/up/right/down/panel
 super + {Left,Right,Up,Down}
    i3-msg focus {left,right,up,down}
 
+## ﭕ ;$W$S     ; Move panel to the left/up/right/down/panel
 super + shift + {Left,Right,Up,Down}
    i3-msg move {left,right,up,down} 100 px
 
+## ﭕ ;$W$C$S Page Up/Down ; Move workspace to the output left/right
+super + control + shift + {Next,Prior}
+   i3-msg move workspace to output {left,right}
+
+## ﭕ ;$W$S - ; Move window/panel to the Scratchpad
+super + shift + KP_Subtract
+   i3-msg move scratchpad
+
+## ﭔ ;$W$C$S     ; Resize panel 10x10 pixel
 super + control + shift + {Left,Right,Up,Down}
    i3-msg resize {shrink width,grow width,shrink height,grow height} 10 px or 10 ppt
 
+## ﭔ ;$W$S Page Up/Down ; Resize panel 100x100 pixel
 super + shift + {Next,Prior}
    mode={grow,shrink}; \
    size="100 px or 100 ppt"; \
    i3-msg resize $mode height $size,resize $mode width $size
 
-super + control + shift + {Next,Prior}
-   i3-msg move workspace to output {left,right}
-
-super + {s,w,e}
-   i3-msg layout {stacking,tabbed,toggle split}
-
-super + h
-   i3-msg split h
-
-super + v
-   i3-msg split v, mark "lastsplit"
-
-super + q
-   i3-msg kill
-
-super + space
-   i3-msg focus mode_toggle
-
-super + shift + {space,s}
-   i3-msg {floating,sticky} toggle
-
-super + g
-   i3-msg fullscreen toggle global
-
+## ﭔ ;$W r; Go into i3 resize mode
 super + r
    i3-msg mod " "
 
-super + {f,Caps_Lock,Hyper_L}
-   i3-msg fullscreen toggle
-
-super + y
-   i3-msg border toggle
-
+##  ;$W Tab; Switch to the next workspace
 super + Tab
    i3-msg workspace next
 
+##  ;$W$S Tab; Switch to the previous workspace
 super + shift + Tab
    i3-msg workspace prev
 
+##  ;$W$C   ; Switch to the previous/next workspace
 super + control + {Right,Left}
    i3-msg workspace {next,prev}
 
-super + shift + KP_Subtract
-   i3-msg move scratchpad
+##  ;$W s; Change layout to stacking
+##  ;$W w; Change layout to tabbed
+##  ;$W e; Toggle horizontal/vertical splits
+super + {s,w,e}
+   i3-msg layout {stacking,tabbed,toggle split}
 
+##  ;$W h; Split layout horizontaly
+super + h
+   i3-msg split h
+
+##  ;$W v; Split layout verticaly
+super + v
+   i3-msg split v, mark "lastsplit"
+
+##  ;$W q; Kill the current panel/window
+super + q
+   i3-msg kill
+
+##  ;$W space; Toggle floating on a pannel or window
+super + space
+   i3-msg focus mode_toggle
+
+##  ;$W$S s; Toggle stickyness on a window
+super + shift + {space,s}
+   i3-msg {floating,sticky} toggle
+
+##  ;$W g; Toggle global full screen toggle
+super + g
+   i3-msg fullscreen toggle global
+
+##  ;$W f/Caps Lock; Toggle fullscreen
+super + {f,Caps_Lock,Hyper_L}
+   i3-msg fullscreen toggle
+
+##   ;$W y; Toggle border
+super + y
+   i3-msg border toggle
+
+##  ;$W - ; Toggle Scratchpad
 super + KP_Subtract
    i3-msg scratchpad show
 
-super + shift + w
-   $HOME/bini3/i3-renamewindow
-
-super + shift + button3
-   $HOME/bini3/i3-contextmenu
-
-button12
-   $HOME/bini3/i3-contextmenu
-
-########################
-#   Misc keys          #
-########################
-
-super + Return
-   /usr/bin/tilix
 
 
-super + Next
-   rofi -show drun
-
-super + shift + n
-   $HOME/bini3/,folder-luncher
-
-super + shift + i
-   $HOME/bini3/,nerd-selector
-
-super + Home
-   $HOME/bini3/,wiki
-
-super + shift + Home
-   xdg-open http://localhost:8090/info/info
-
-super + shift + h
-   $HOME/bin/,switch-display
-
-super + grave
-   tilix --quake --profile="quack"
-
-super + c
-   copyq toggle
-
-super shift + v
-   copyq menu&
-
-Print
-   shutter -s
-
-super + Print
-   shutter
-
-super + a
-   ~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l | xcopy
-
-@Num_Lock
-   beep
-
-super + x
-   $HOME/bini3/dump-asy.pl 3

@@ -11,6 +11,7 @@ doublecmd/history.xml
 doublecmd/session.ini
 doublecmd/wfx.ini
 doublecmd/pwd.ini
+doublecmd/highlighters.xml
 ranger/colorschemes/*.pyo
 ranger/tagged
 *.pyo
@@ -29,3 +30,4 @@ albert/core.db
 albert/last_used_version
 albert/org.albert.extension.snippets
 jgmenu/backup/**
+doublecmd/gvfs.ini

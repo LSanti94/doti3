@@ -1,0 +1,94 @@
+#!/bin/bash
+# i3-help uses yad and reads sxhkd/sxhkdrc file and displays
+# the comments there for keybindings in a popup window
+
+l=$(echo -e '\u200E')   # Unicode LTR char
+c=$l"דּ"
+w=$l"גּ"
+s=$l"וּ"
+a=$l"הּ"
+i=0
+
+add(){
+  local icon="$1"
+  local cmd="$2"
+  local desc="$3"
+  if [[ -z $desc ]]; then
+    cmd=$1
+    desc=$2
+    icon=""
+  fi
+  ((i=i+1))
+  items+=("$cmd" "$icon" "$desc")
+}
+add-sep(){
+  add "" "" ""
+}
+
+input="$HOME/.config/sxhkd/sxhkdrc"
+while IFS= read -r line
+do
+  if [[ $line == "## "* ]]; then
+    line=${line#"## "}
+    IFS=";"
+    arr=($line)
+    icon=${arr[0]//[[:space:]]/} # trim arr[0]
+    cmd=$l${arr[1]}
+    cmd=${cmd/\$W/$w}
+    cmd=${cmd/\$S/$s}
+    cmd=${cmd/\$C/$c}
+    cmd=${cmd/\$A/$a}
+    desc=${arr[2]}
+    add $icon $cmd $desc
+  elif [[ $line == "### "* ]]; then
+    line=${line#"### "}
+    len=23
+    linelen=${#line}
+    right=$(( (($len - $linelen) / 2) ))
+    left=$(( $len - $right - $linelen ))
+    rightstr=$(printf '%*s' $right) 
+    leftstr2=$(printf '%*s' $left) 
+    # line=$(printf "%-${left}s$line%-${right}s║" "*" "*")
+    echo "|${leftstr2}${line}${rightstr}|"
+    add "══" "╔════════════════════════" "════════════════════╗"
+    add " " "║${leftstr2}${line}${rightstr}" "                    ║"
+    add "══" "╚════════════════════════" "════════════════════╝"
+  fi
+done < "$input"
+
+yad --width 840 --height 500 --title "i3 keyboard shortcut help" \
+          --button="Show sxhkd logs:3" \
+          --button="gtk-refresh:2" \
+          --button="gtk-about:1" \
+          --button="gtk-ok:0" \
+          --text "Command binding's list:" \
+          --list \
+          --grid-lines=both \
+          --column="Command" \
+          --column="" \
+          --column="Description" "${items[@]}"
+res=$?
+if [[ $res == 1 ]]; then
+  items=
+  unset items
+  add $w "Windows Key"
+  add $s "Shift Key"
+  add $a "Alt Key"
+  add $c "Control Key"
+
+  yad --width 840 --height 500 --title "Info on keys" \
+      --button="gtk-ok:0" \
+      --list \
+      --text "Command binding's list:" \
+      --grid-lines=both \
+      --column="Command" \
+      --column="" \
+      --column="Description" "${items[@]}"
+  exec $HOME/bini3/i3-help
+elif [[ $res == 2 ]]; then
+  systemctl --no-block --user restart i3-session.target
+  notify-send "sxhkd service restarted"
+elif [[ $res == 3 ]]; then
+  /usr/bin/terminator -l big -T 'sxhkd logs' -r pop-up -e 'journalctl --user -u sxhkd --no-pager |& lnav'
+fi
+      
