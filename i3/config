@@ -409,6 +409,7 @@ set $fmod3 "floating enable,  border none,   focus, move position center"
 set $fmod4 "floating disable, border none,   focus"
 set $fmod5 "floating disable, border none,   focus, sticky enable"
 set $fmod6 "border normal"
+set $fmod7 "floating enable,  border none,   focus"
 
 for_window [class="^"] focus
 for_window [class="^.*"] border pixel 0
@@ -452,7 +453,7 @@ for_window [class="jetbrains-studio" instance="sun-awt-X11-XFramePeer"]  floatin
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 
 #   For all these windows the title bar should be visible so scroll up can toggle floating
-# for_window [window_role="browser|browser-window"] $fmod6
+for_window [window_role="browser-window" instance="microsoft teams - preview"] $fmod7
 for_window [class="Tilix|Xfce4-terminal|URxvt|Gnome-terminal|calibre"] $fmod6
 for_window [title="Event Tester"] $fmod6
 
