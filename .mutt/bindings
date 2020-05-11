@@ -21,6 +21,11 @@ macro index I "<tag-prefix><set-flag>N" "mark as unread"
 macro pager i <clear-flag>N "mark as read"
 macro index i "<tag-prefix><clear-flag>N" "mark as read"
 
+# The following macro binds k to filter messages by sender
+# make note about the special variable my_tmp_pipe_decode it's predefined and you can't use an arbitrary variable
+# Refer to the following question: https://unix.stackexchange.com/a/510349/114816
+macro index,pager k "<pipe-message>formail -X from:|awk -F'[<>]' '{print \"set my_tmp_pipe_decode=\\\"\"$2\"\\\"\" }'>/tmp/sender<enter>:source /tmp/sender<enter>l~f $my_tmp_pipe_decode<enter>" "Filter Messages Like"
+
 macro pager <S-HOME>       "q<first-entry><enter>"
 macro pager <S-END>        "q<last-entry><enter>"
 macro pager <S-Prev>       "<previous-page>"
