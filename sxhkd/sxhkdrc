@@ -145,7 +145,7 @@ super + Pause
 super + l
    $HOME/bini3/i3exit lock
 
-## 煉;$W$S (middle) ; Show jgmenu contxt menu (i3-contextmenu)
+## 煉;$W$S (right) ; Show jgmenu contxt menu (i3-contextmenu)
 super + shift + button3
    $HOME/bini3/i3-contextmenu
 
