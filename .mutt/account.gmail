@@ -13,10 +13,6 @@ set ssl_starttls  = yes
 set ssl_force_tls = yes
 
 
-set folder     = "~/mail/Gmail"
-set spoolfile  = "~/mail/Gmail/INBOX"
-set record     = "~/mail/Gmail/Sent"
-set postponed  = "~/mail/[Gmail].Drafts"
 set preconnect = ""
 
 set mbox_type=Maildir
@@ -28,11 +24,6 @@ set sig_dashes       = no
 set sig_on_top       = yes    # When replying put the signature on top not at the bottom!
 
 set sendmail            = "msmtp -a Gmail"
-
-
-
-
-
 
 # Sepecific bindings ------------------------------------
 bind index g noop
@@ -53,12 +44,16 @@ macro index,pager $ "<sync-mailbox><shell-escape>mailsync Gmail<enter>" "run mbs
 # List of folders that are considered to be "mailboxes" (folders that
 # receive incoming mail).
 #
-mailboxes = "+INBOX"
-mailboxes = "+[Gmail]/Important"
-mailboxes = "+[Gmail].Drafts"
-mailboxes = "+[Gmail].Sent Mail"
-mailboxes = "+[Gmail]/Updates"
-mailboxes = "+Drafts"
+set folder     = "~/mail/Gmail"
+set spoolfile  = "~/mail/Gmail/INBOX"
+set record     = "~/mail/Gmail/Sent"
+set postponed  = "~/mail/[Gmail].Drafts"
+named-mailboxes "   INBOX" =INBOX
+named-mailboxes "   Sent" ="[Gmail].Sent Mail"
+named-mailboxes "   Important" ="[Gmail].Important"
+named-mailboxes "   Drafts" ="[Gmail].Drafts"
+# named-mailboxes "+[Gmail]/Updates"=Updates
+# named-mailboxes "+Drafts"=LOCALDRAFTS
 
 # vim: fdm=marker
 # vim: filetype=muttrc

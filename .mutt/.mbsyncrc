@@ -32,7 +32,7 @@ Expunge Both
 Master :Gmail-remote:
 Slave :Gmail-local:
 # Only Inbox, Drafts, and Sent Mail are allowed to be fetched
-Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Sent Mail"
+Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Sent Mail" "[Gmail]/Important"
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
 # Save the synchronization state files in the relevant directory

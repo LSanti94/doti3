@@ -41,7 +41,8 @@
     "editor.tabSize": 3
   },
   "[json]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "diffEditor.renderSideBySide": true,
   "diffEditor.ignoreTrimWhitespace": true,

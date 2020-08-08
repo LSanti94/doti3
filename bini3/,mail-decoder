@@ -54,7 +54,9 @@ def main():
             print("Unknown browser selected %s"%aBrowserType);
             sys.exit()
     else:
-        viewer = "surf -z 2 %s"
+        # viewer = "surf -z 2 %s"
+        # for other qutebrower options see https://qutebrowser.org/doc/help/settings.html
+        viewer = "qutebrowser -s zoom.default 200 -s tabs.show never -s statusbar.hide true -s qt.highdpi true -s content.plugins false %s 2>&1"
     # print(args)
 
     p = Parser()

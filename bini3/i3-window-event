@@ -14,17 +14,27 @@ if [[ $mod == "new" ]]; then
   echo "$CURRENT_TITLE"
 elif [[ $mod == "focus" ]]; then
   class=$(xprop -id "$wid" WM_CLASS | cut -d\" -f4)
+  TITLE=$(xprop -id "$wid" _NET_WM_VISIBLE_NAME | cut -d\" -f2)
+  # notify-send "$class:$TITLE" "$mod $CURRENT_LANG" 
   case "$class" in
-    TelegramDesktop)
-      CURRENT_LANG=$(xkb-switch | cut -c1-2)
-      # notify-send "$class" "$mod $CURRENT_LANG" 
-      xkb-switch -s ir
-      ;;
-    "Org.gnome.gedit")
-      xkb-switch -s ir
-      ;;
+    # Gedit|TelegramDesktop)
+    #   CURRENT_LANG=$(xkb-switch | cut -c1-2)
+    #   xkb-switch -s ir
+    #   ;;
+    # "Org.gnome.gedit")
+    #   xkb-switch -s ir
+    #   ;;
     *)
-      xkb-switch -s us
+      # If the class is not important switch based on the title
+      case "$TITLE" in
+      *PLS*)
+        CURRENT_LANG=$(xkb-switch | cut -c1-2)
+        xkb-switch -s ir
+        ;;
+      *)
+        xkb-switch -s us
+        ;;
+      esac
       ;;
   esac
 fi

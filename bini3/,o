@@ -13,6 +13,6 @@ shift
 rest=$@
 W=$(xgetres i3.w$w)
 i3-msg "workspace $W"
-echo "${bY}Executing:${cZ}\n"
+echo "${bY}Executing:${cZ}\n $cmd $rest"
 ~/bin/flog "$cmd $rest"
 exec $cmd $rest &> /dev/null &
