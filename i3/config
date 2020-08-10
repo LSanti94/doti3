@@ -459,7 +459,7 @@ for_window [title="Event Tester"] $fmod6
 
 #   If you want to change title format per class
 for_window [class="Google-chrome"] title_format "Chrome::%title"
-for_window [class="*"] exec $HOME/bini3/i3-window-event
+for_window [class=".*"] exec --no-startup-id $HOME/bini3/i3-window-event
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                                                          ║
