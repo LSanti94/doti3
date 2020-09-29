@@ -118,11 +118,11 @@ super + shift + w
    $HOME/bini3/i3-renamewindow
 
 ## ﱜ ;$W F10; Volume down
-super + {F10,button6}
+super + {F10}
    $HOME/bini3/,volume down
 
 ## ﱛ ;$W F11; Volume up
-super + {F11,button7}
+super + {F11}
    $HOME/bini3/,volume up
 
 ##  ;$W$S F12; Toggle chrome loudness

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # You can call this script like this:
 # $./volume.sh up
@@ -15,7 +15,7 @@ function is_mute {
 
 #Repeat char n times
 function rchar {
-   print "${$(printf "%$1s" "")// /$2}"
+   for ((i=1; i<=$1; i++)); do echo -n $2; done
 }
 
 function send_notification {

@@ -31,6 +31,10 @@ elif [[ $mod == "focus" ]]; then
         CURRENT_LANG=$(xkb-switch | cut -c1-2)
         xkb-switch -s ir
         ;;
+      *SLS*)
+        CURRENT_LANG=$(xkb-switch | cut -c1-2)
+        xkb-switch -s se
+        ;;
       *)
         xkb-switch -s us
         ;;

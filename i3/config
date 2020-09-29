@@ -479,6 +479,9 @@ bindsym --whole-window $mod+shift+button2          floating toggle
 
 bindsym $mod+d             exec zsh -c "rofi -show run"
 
+bindsym XF86AudioRaiseVolume exec $nsi "exec $HOME/bini3/,volume up"
+bindsym XF86AudioLowerVolume exec $nsi "exec $HOME/bini3/,volume down"
+
 # workspace arrangement
 exec i3-msg "workspace number 1, layout tabbed"
 exec i3-msg "workspace number 3, layout tabbed"

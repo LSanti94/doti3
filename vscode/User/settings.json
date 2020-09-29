@@ -68,7 +68,7 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "Grunge (rainglow)",
   "files.associations": {
     ".Xdefaults": "makefile",
     "i3/config": "i3",
