@@ -24,6 +24,7 @@ lock() {
     # i3-msg "exec $HOME/bini3/i3-colorlock"
     # $HOME/bini3/i3-colorlock
     $HOME/bini3/i3-lock
+    pkill -f 'chrome \-\-type=gpu-process'
 }
 
 echo "i3exit was called with: $1" >> /tmp/i3exit.log
@@ -46,6 +47,8 @@ case "$1" in
         # $HOME/bini3/refresh
         # $HOME/bini3/rearrange
 		  echo "After susspend... "+`date` >> /tmp/i3exit.log
+        # see https://askubuntu.com/questions/1273399/problems-with-chrome-browser-after-suspending-the-computer-on-ubuntu-20-04/1289285#1289285
+        pkill -f 'chrome \-\-type=gpu-process'
         lock
         sudo service autofs start
         ;;

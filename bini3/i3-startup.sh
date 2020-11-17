@@ -83,7 +83,7 @@ if [ "$alreadyRunning" = "0" ]; then
 
    exec /usr/bin/tilix &
    exec /usr/bin/tilix &
-   exec /usr/bin/google-chrome --force-device-scale-factor=1.25 &
+   exec $HOME/bin/,chromium-video &
    exec code ~/notes.md &
    # $HOME/bin/flog "delay loading redshift"
    # (sleep 10 && exec redshift-gtk) &

@@ -257,7 +257,7 @@ bar {
       inactive_workspace #333333 #282828 #888888
       urgent_workspace   #2f343a #cc241d #ffffff
    }
-   status_command ~/git/bumblebee-status/bumblebee-status -m $bumbleModules -t gruvbox-reza
+   status_command ~/git/bumblebee-status/bumblebee-status -m $bumbleModules -t gruvbox-reza -m shell -p shell.command=',headset-status' 
    # status_command i3blocks
    #status_command ~/bini3/conkyi3.sh
    #status_command i3status
@@ -436,13 +436,17 @@ for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmo
 for_window [class="com.existme.*|Yad"] $fmod
 for_window [window_role="pop-up|bubble|task_dialog|Preferences|app|dialog|menu|utility|xbindkeys_show"] $fmod
 for_window [window_role="dialog|toolbar|splash|dropdown_menu|notification|popup_menu|tooltip|GtkFileChooserDialog|TfrmFileOp|Transfers|ChanList|servlist"] $fmod
-for_window [window_role="^$"] $fmod
+
+# disabled not working with the new versions of i3, will cause all windows to popup!
+# for_window [window_role="^$"] $fmod
+
 for_window [title="^[Oo]ptions$|[Ff]ind files|^About|Address Book|^PangoCairo:"] $fmod
 for_window [class="vscode-color-ui|Toggl Desktop|Paman"] floating enable
 for_window [class="Apache Directory Studio" title="Properties for.*"] resize grow right 900px, floating enable,  border normal, focus, move position center
 
 for_window [window_role="Transfers"] $fmod
 for_window [title="Mattermost|Slack"] $fmod4
+for_window [class="zoom" title="Settings"] $fmod
 for_window [class="Chromium-browser|Xdot|Postman"] $fmod4
 
 #   For chrome and firefox Developer Tools, we want them in separate workspace
