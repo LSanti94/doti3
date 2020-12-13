@@ -1,1 +1,2 @@
 *.key filter=git-crypt diff=git-crypt
+doublecmd.xml filter=git-crypt diff=git-crypt

@@ -23,7 +23,7 @@
   "window.zoomLevel": 1,
   "window.openFoldersInNewWindow": "off",
   "editor.minimap.showSlider": "always",
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.folding": true,
   "editor.renderWhitespace": "none",
   "workbench.startupEditor": "newUntitledFile",
@@ -38,7 +38,8 @@
     "editor.tabSize": 4
   },
   "[javascript]": {
-    "editor.tabSize": 3
+    "editor.tabSize": 3,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[json]": {
     "editor.tabSize": 2,
@@ -68,7 +69,7 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "workbench.colorTheme": "Grunge (rainglow)",
+  "workbench.colorTheme": "🌑 DarkCode Contrast++",
   "files.associations": {
     ".Xdefaults": "makefile",
     "i3/config": "i3",
@@ -82,5 +83,7 @@
   },
   "[shellscript]": {
     "editor.formatOnSave": false
-  }
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true
 }

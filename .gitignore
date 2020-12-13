@@ -19,6 +19,7 @@ vscode/User/User
 **/__pycache__/**
 vscode/User/globalStorage/state.vscdb
 vscode/User/globalStorage/state.vscdb.backup
+vscode/User/globalStorage/redhat.java
 .mutt/account.axis2
 .mutt/cache
 .mutt/b-certificates

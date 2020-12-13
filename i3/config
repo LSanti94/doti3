@@ -429,7 +429,7 @@ for_window [class="*" instance="Toplevel|SessionManager|Places|CcOptions|Termina
 for_window [class="Thunderbird" instance="Calendar|Msgcompose"] $fmod
 for_window [class="Xbindkeys_show|Qtconfig-qt4"] $fmod
 for_window [class="System-config-printer\.py|Nm-connection-editor|com-sun-deploy-panel-ControlPanel"] $fmod
-for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte|Zathura|Audacious"] $fmod
+for_window [class="sun-security-tools-policytool-PolicyTool|Arandr|Gtkorphan|Alacarte|Zathura|Audacious|Sxiv"] $fmod
 for_window [class="Gnome-.*|Xfce4-.*|Mate-.*|Gtk-.*|.*-gtk"] $fmod
 for_window [class="jetbrains-idea" instance="sun-awt-X11-XDialogPeer"] $fmod
 for_window [class="^(?!jetbrains-idea$)" instance="sun-awt-X11-XFramePeer"] $fmod
