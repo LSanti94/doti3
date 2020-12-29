@@ -3,7 +3,10 @@
 {
   // to list all mono fonts use: fc-list :mono
   "editor.fontFamily": "'Fira Code','Inconsolata Nerd Font'",
-  "editor.fontSize": 18,
+  "window.zoomLevel": 2,
+  "editor.fontSize": 15,
+  "terminal.integrated.fontFamily": "'Inconsolata Nerd Font'",
+  "terminal.integrated.fontSize": 18,
   "editor.fontLigatures": false,
   "window.restoreWindows": "none",
   "files.hotExit": "off",
@@ -20,7 +23,6 @@
   "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "workbench.tips.enabled": true,
-  "window.zoomLevel": 1,
   "window.openFoldersInNewWindow": "off",
   "editor.minimap.showSlider": "always",
   "editor.minimap.enabled": false,
@@ -28,8 +30,6 @@
   "editor.renderWhitespace": "none",
   "workbench.startupEditor": "newUntitledFile",
   "window.menuBarVisibility": "default",
-  "terminal.integrated.fontFamily": "'Inconsolata Nerd Font'",
-  "terminal.integrated.fontSize": 18,
   "editor.renderControlCharacters": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
@@ -62,7 +62,7 @@
   "python.linting.pylintEnabled": true,
   "breadcrumbs.enabled": true,
   "vsicons.dontShowNewVersionMessage": true,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -85,5 +85,9 @@
     "editor.formatOnSave": false
   },
   "emmet.showSuggestionsAsSnippets": true,
-  "emmet.triggerExpansionOnTab": true
+  "emmet.triggerExpansionOnTab": true,
+  "material-icon-theme.opacity": 1,
+  "material-icon-theme.saturation": 1,
+  "material-icon-theme.activeIconPack": "react_redux",
+  "material-icon-theme.hidesExplorerArrows": false
 }
